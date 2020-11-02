@@ -4,3 +4,19 @@
 @import "{{ site.theme }}";
 
 h1 { display: none } /* hide banner "website" */
+
+body {
+   background-color: wheat;
+}
+.markdown-body {
+   background-color: #fff7cf;
+}
+
+.px-3 {
+   padding-top: 32px;
+   padding-bottom: 32px;
+}
+.my-5 {
+   margin-top: 0 !important;
+   margin-bottom: 0 !important;
+}
