@@ -11,6 +11,9 @@ body {
 .markdown-body {
    background-color: #fff7cf;
 }
+.markdown-body img {
+   background-color: inherit;
+}
 
 .px-3 {
    padding-top: 32px;
