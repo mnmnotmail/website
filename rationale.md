@@ -1,3 +1,7 @@
+<a href="/"><img width="36" align="left" src="logo-48-bleed-bright.png"></a>
+<a href="https://facebook.com/mnmnotmail"><img width="36" align="right" src="icon-fb-gray-58.png"></a>
+<a href="https://twitter.com/mnmnotmail"><img width="36" align="right" src="icon-tw-gray.svg"></a> &nbsp;
+
 ### Why TMTP?
 
 _The Internet Crime Wave_
@@ -32,16 +36,16 @@ and the only people using the Internet were friendly researchers in academia and
 SMTP cannot cope with the 21st Century, and must be phased out.
 
 References  
-https://krebsonsecurity.com/2020/08/sendgrid-under-siege-from-hacked-accounts/  
-https://www.theregister.co.uk/2020/05/21/gitlab_phishing_pentest/  
+[https://krebsonsecurity.com/2020/08/sendgrid-under-siege-from-hacked-accounts/](https://krebsonsecurity.com/2020/08/sendgrid-under-siege-from-hacked-accounts/)  
+[https://www.theregister.co.uk/2020/05/21/gitlab_phishing_pentest/](https://www.theregister.co.uk/2020/05/21/gitlab_phishing_pentest/)  
 [https://arstechnica.com/.../2019/02/catastrophic-hack-on-email-provider-destroys-almost-two-decades-of-data/](https://arstechnica.com/information-technology/2019/02/catastrophic-hack-on-email-provider-destroys-almost-two-decades-of-data/)  
-https://krebsonsecurity.com/2013/06/the-value-of-a-hacked-email-account/  
-https://qz.com/1329961/hackers-account-for-90-of-login-attempts-at-online-retailers/  
-https://www.wired.com/story/how-email-open-tracking-quietly-took-over-the-web/  
-http://www.nytimes.com/2017/08/21/business/dealbook/phone-hack-bitcoin-virtual-currency.html  
-http://www.zerohedge.com/news/2017-08-21/one-statistics-professor-was-just-banned-google-here-his-story  
-http://edition.cnn.com/2017/07/31/politics/white-house-officials-tricked-by-email-prankster/  
-https://www.wired.com/2012/08/apple-amazon-mat-honan-hacking/  
+[https://krebsonsecurity.com/2013/06/the-value-of-a-hacked-email-account/](https://krebsonsecurity.com/2013/06/the-value-of-a-hacked-email-account/)  
+[https://qz.com/1329961/hackers-account-for-90-of-login-attempts-at-online-retailers/](https://qz.com/1329961/hackers-account-for-90-of-login-attempts-at-online-retailers/)  
+[https://www.wired.com/story/how-email-open-tracking-quietly-took-over-the-web/](https://www.wired.com/story/how-email-open-tracking-quietly-took-over-the-web/)  
+[http://www.nytimes.com/2017/08/21/business/dealbook/phone-hack-bitcoin-virtual-currency.html](http://www.nytimes.com/2017/08/21/business/dealbook/phone-hack-bitcoin-virtual-currency.html)  
+[http://www.zerohedge.com/news/2017-08-21/one-statistics-professor-was-just-banned-google-here-his-story](http://www.zerohedge.com/news/2017-08-21/one-statistics-professor-was-just-banned-google-here-his-story)  
+[http://edition.cnn.com/2017/07/31/politics/white-house-officials-tricked-by-email-prankster/](http://edition.cnn.com/2017/07/31/politics/white-house-officials-tricked-by-email-prankster/)  
+[https://www.wired.com/2012/08/apple-amazon-mat-honan-hacking/](https://www.wired.com/2012/08/apple-amazon-mat-honan-hacking/)  
 
 ### Supplanting SMTP
 
