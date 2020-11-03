@@ -10,16 +10,12 @@ body {
 }
 .markdown-body {
    background-color: #fff7cf;
+   max-width: 912px;
+   padding-top: 32px;
+   padding-bottom: 32px;
+   margin-top: 0 !important;
+   margin-bottom: 8px !important;
 }
 .markdown-body img {
    background-color: inherit;
-}
-
-.px-3 {
-   padding-top: 32px;
-   padding-bottom: 32px;
-}
-.my-5 {
-   margin-top: 0 !important;
-   margin-bottom: 0 !important;
 }
