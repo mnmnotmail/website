@@ -26,7 +26,6 @@ mnm has two major goals.
 \+ always know from which site a message originated  
 \+ can block anyone with whom you've made contact  
 \+ may leave a site and never see traffic from it again  
-See [_How It Works_](https://github.com/networkimprov/mnm-hammer/blob/master/Howitworks.md) for diagrams of the model.
 
 2. To offer capabilities missing in traditional email, including:  
 \+ forms/surveys whose results are collected into tables  
@@ -37,7 +36,7 @@ See [_How It Works_](https://github.com/networkimprov/mnm-hammer/blob/master/How
 \+ message formatting &amp; layout via Markdown (aka CommonMark)  
 \+ many more features to foster efficiency, creativity, focus, and understanding  
 
-Further reading: [_Why TMTP?_](https://github.com/networkimprov/mnm/blob/master/Rationale.md) 
+Further reading: [_Why TMTP?_](rationale.html) 
 
 
 ### Status
