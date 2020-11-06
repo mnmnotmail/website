@@ -91,7 +91,7 @@ function selectTab(iSet) {
 <span id="tab-macos"   class="tab"       onclick="selectTab('macos')">MacOS</span>
 <span id="tab-linux"   class="tab"       onclick="selectTab('linux')">Linux</span>
 
-<div id="select-windows" style="display:block">
+<div id="select-windows" style="display:block" markdown="1">
 
 1. Download & save  
 a) Click [mnm-app-windows-amd64-v0.8.0.zip](https://github.com/networkimprov/mnm-hammer/releases/download/v0.8.0/mnm-app-windows-amd64-v0.8.0.zip).  
@@ -116,7 +116,7 @@ c) You'll see a system notice, "Do you want to allow ...?" Click "Yes".
 a) Right-click [localhost:8123](http://localhost:8123/), and select "Open link in new tab".  
 +&nbsp; You'll see the landing page, with a tour.
 
-</div><div id="select-macos" style="display:none">
+</div><div id="select-macos" style="display:none" markdown="1">
 
 1. Download & save  
 a) Click [mnm-app-macos-v0.8.0.tgz](https://github.com/networkimprov/mnm-hammer/releases/download/v0.8.0/mnm-app-macos-v0.8.0.tgz).  
@@ -137,7 +137,7 @@ b) You'll see a notice, "_App_ is from an unidentified developer..." Click "Open
 a) Ctrl-click (or two-finger tap) [localhost:8123](http://localhost:8123/), and select "Open link in new tab".  
 +&nbsp; You'll see the landing page, with a tour.
 
-</div><div id="select-linux" style="display:none">
+</div><div id="select-linux" style="display:none" markdown="1">
 
 1. Download & save  
 a) Click [mnm-app-linux-amd64-v0.8.0.tgz](https://github.com/networkimprov/mnm-hammer/releases/download/v0.8.0/mnm-app-linux-amd64-v0.8.0.tgz).  
