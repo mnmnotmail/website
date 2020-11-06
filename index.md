@@ -141,3 +141,39 @@ Updating from a previous version moves the folder `mnm-app-v0.X.0/store` to the 
 and leaves the previous version otherwise untouched. 
 Launching `App.cmd` or `App` in the previous version will offer to update to it, 
 moving the `store` folder back again (not recommended).
+
+### Credits
+
+<p>The mnm app and TMTP server are written in
+<a target="_blank" href="https://golang.org/">Go</a>.
+The app also depends on
+<a target="_blank" href="https://github.com/blevesearch/bleve">Couchbase-sponsored Bleve</a>, and
+<a target="_blank" href="https://github.com/gorilla/websocket">Gorilla Websocket</a>.
+The server also depends on
+<a target="_blank" href="https://github.com/beevik/ntp">Brett Vickers' NTP client</a>.
+</p>
+
+<p>The browser-based UI depends on
+<a target="_blank" href="https://vuejs.org/">Vue.js</a> for HTML templates and components,
+<a target="_blank" href="https://getuikit.com/">UIkit</a> for icons,
+<a target="_blank" href="https://github.com/markdown-it/markdown-it">markdown-it</a>
+for Markdown rendering,
+<a target="_blank" href="https://github.com/moment/luxon">Luxon</a> for Date/Time formatting, and
+<a target="_blank" href="https://github.com/vue-generators/vue-form-generator">vue-form-generator</a>
+for the Blank Forms feature.
+</p>
+
+<p>mnm is always tested first with
+<a target="_blank" href="https://www.mozilla.org/">Mozilla Firefox</a>,
+and the author frequently turns to the
+<a target="_blank" href="https://developer.mozilla.org/">MDN web docs</a>.
+Development of mnm is managed with
+<a target="_blank" href="https://git-scm.com/">Git</a>.
+</p>
+
+<p>The logo is by
+<a target="_blank" href="https://david-gilmore.com/portfolio/">David Gilmore</a>.
+</p>
+
+<p>Robin Eng tested the preview releases at length.
+</p>
