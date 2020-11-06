@@ -60,7 +60,38 @@ You'll need Firefox or Chrome. (I endorse [Firefox](https://www.mozilla.org/en-U
 You'll need an invitation to a TMTP service. 
 To run your own service, see the [mnm TMTP server](https://github.com/networkimprov/mnm).
 
-#### Windows &nbsp; &bull; [_MacOS_](#macos) &nbsp; &bull; [_Linux_](#linux)
+<style>
+.tab {
+   border: 1px solid transparent;
+   border-radius: 4px;
+   padding: 0.2em;
+   cursor: pointer;
+   color: #0366d6;
+   font-weight: bold;
+}
+.tab.shown {
+   border-color: #888;
+   cursor: default;
+   color: inherit;
+}
+</style>
+<script>
+var gSelect = 'windows';
+function selectTab(iSet) {
+   if (iSet === gSelect)
+      return;
+   document.getElementById('select-'+ gSelect).style.display = 'none';
+   document.getElementById('select-'+ iSet).style.display = 'block';
+   document.getElementById('tab-'+ gSelect).classList.toggle('shown');
+   document.getElementById('tab-'+ iSet).classList.toggle('shown');
+   gSelect = iSet;
+}
+</script>
+<span id="tab-windows" class="tab shown" onclick="selectTab('windows')">Windows</span>
+<span id="tab-macos"   class="tab"       onclick="selectTab('macos')">MacOS</span>
+<span id="tab-linux"   class="tab"       onclick="selectTab('linux')">Linux</span>
+
+<div id="select-windows" style="display:block">
 
 1. Download & save  
 a) Click [mnm-app-windows-amd64-v0.8.0.zip](https://github.com/networkimprov/mnm-hammer/releases/download/v0.8.0/mnm-app-windows-amd64-v0.8.0.zip).  
@@ -85,7 +116,7 @@ c) You'll see a system notice, "Do you want to allow ...?" Click "Yes".
 a) Right-click [localhost:8123](http://localhost:8123/), and select "Open link in new tab".  
 +&nbsp; You'll see the landing page, with a tour.
 
-#### MacOS
+</div><div id="select-macos" style="display:none">
 
 1. Download & save  
 a) Click [mnm-app-macos-v0.8.0.tgz](https://github.com/networkimprov/mnm-hammer/releases/download/v0.8.0/mnm-app-macos-v0.8.0.tgz).  
@@ -106,7 +137,7 @@ b) You'll see a notice, "_App_ is from an unidentified developer..." Click "Open
 a) Ctrl-click (or two-finger tap) [localhost:8123](http://localhost:8123/), and select "Open link in new tab".  
 +&nbsp; You'll see the landing page, with a tour.
 
-#### Linux
+</div><div id="select-linux" style="display:none">
 
 1. Download & save  
 a) Click [mnm-app-linux-amd64-v0.8.0.tgz](https://github.com/networkimprov/mnm-hammer/releases/download/v0.8.0/mnm-app-linux-amd64-v0.8.0.tgz).  
@@ -125,6 +156,8 @@ a) Open the extracted `mnm-app-v0.8.0` folder, and double-click `App`.
 1. Connect Firefox or Chrome  
 a) Right-click [localhost:8123](http://localhost:8123/), and select "Open link in new tab".  
 +&nbsp; You'll see the landing page, with a tour.
+
+</div>
 
 
 ### Installation Notes
