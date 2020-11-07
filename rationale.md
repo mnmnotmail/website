@@ -36,16 +36,16 @@ and the only people using the Internet were friendly researchers in academia and
 SMTP cannot cope with the 21st Century, and must be phased out.
 
 References  
-[https://krebsonsecurity.com/2020/08/sendgrid-under-siege-from-hacked-accounts/](https://krebsonsecurity.com/2020/08/sendgrid-under-siege-from-hacked-accounts/)  
-[https://www.theregister.co.uk/2020/05/21/gitlab_phishing_pentest/](https://www.theregister.co.uk/2020/05/21/gitlab_phishing_pentest/)  
-[https://arstechnica.com/.../2019/02/catastrophic-hack-on-email-provider-destroys-almost-two-decades-of-data/](https://arstechnica.com/information-technology/2019/02/catastrophic-hack-on-email-provider-destroys-almost-two-decades-of-data/)  
-[https://krebsonsecurity.com/2013/06/the-value-of-a-hacked-email-account/](https://krebsonsecurity.com/2013/06/the-value-of-a-hacked-email-account/)  
-[https://qz.com/1329961/hackers-account-for-90-of-login-attempts-at-online-retailers/](https://qz.com/1329961/hackers-account-for-90-of-login-attempts-at-online-retailers/)  
-[https://www.wired.com/story/how-email-open-tracking-quietly-took-over-the-web/](https://www.wired.com/story/how-email-open-tracking-quietly-took-over-the-web/)  
-[http://www.nytimes.com/2017/08/21/business/dealbook/phone-hack-bitcoin-virtual-currency.html](http://www.nytimes.com/2017/08/21/business/dealbook/phone-hack-bitcoin-virtual-currency.html)  
-[http://www.zerohedge.com/news/2017-08-21/one-statistics-professor-was-just-banned-google-here-his-story](http://www.zerohedge.com/news/2017-08-21/one-statistics-professor-was-just-banned-google-here-his-story)  
-[http://edition.cnn.com/2017/07/31/politics/white-house-officials-tricked-by-email-prankster/](http://edition.cnn.com/2017/07/31/politics/white-house-officials-tricked-by-email-prankster/)  
-[https://www.wired.com/2012/08/apple-amazon-mat-honan-hacking/](https://www.wired.com/2012/08/apple-amazon-mat-honan-hacking/)  
+[https://krebsonsecurity.com/2020/08/sendgrid-under-siege-from-hacked-accounts/](https://krebsonsecurity.com/2020/08/sendgrid-under-siege-from-hacked-accounts/){:target="_blank"}  
+[https://www.theregister.co.uk/2020/05/21/gitlab_phishing_pentest/](https://www.theregister.co.uk/2020/05/21/gitlab_phishing_pentest/){:target="_blank"}  
+[https://arstechnica.com/.../2019/02/catastrophic-hack-on-email-provider-destroys-almost-two-decades-of-data/](https://arstechnica.com/information-technology/2019/02/catastrophic-hack-on-email-provider-destroys-almost-two-decades-of-data/){:target="_blank"}  
+[https://krebsonsecurity.com/2013/06/the-value-of-a-hacked-email-account/](https://krebsonsecurity.com/2013/06/the-value-of-a-hacked-email-account/){:target="_blank"}  
+[https://qz.com/1329961/hackers-account-for-90-of-login-attempts-at-online-retailers/](https://qz.com/1329961/hackers-account-for-90-of-login-attempts-at-online-retailers/){:target="_blank"}  
+[https://www.wired.com/story/how-email-open-tracking-quietly-took-over-the-web/](https://www.wired.com/story/how-email-open-tracking-quietly-took-over-the-web/){:target="_blank"}  
+[https://www.nytimes.com/2017/08/21/business/dealbook/phone-hack-bitcoin-virtual-currency.html](https://www.nytimes.com/2017/08/21/business/dealbook/phone-hack-bitcoin-virtual-currency.html){:target="_blank"}  
+[https://www.zerohedge.com/news/2017-08-21/one-statistics-professor-was-just-banned-google-here-his-story](https://www.zerohedge.com/news/2017-08-21/one-statistics-professor-was-just-banned-google-here-his-story){:target="_blank"}  
+[https://edition.cnn.com/2017/07/31/politics/white-house-officials-tricked-by-email-prankster/](https://edition.cnn.com/2017/07/31/politics/white-house-officials-tricked-by-email-prankster/){:target="_blank"}  
+[https://www.wired.com/2012/08/apple-amazon-mat-honan-hacking/](https://www.wired.com/2012/08/apple-amazon-mat-honan-hacking/){:target="_blank"}  
 
 ### Supplanting SMTP
 
