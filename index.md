@@ -69,10 +69,14 @@ To run your own service, see the [mnm TMTP server](https://github.com/networkimp
    color: #0366d6;
    font-weight: bold;
 }
+.tab:hover {
+   text-decoration: underline;
+}
 .tab.shown {
    border-color: #888;
    cursor: default;
    color: inherit;
+   text-decoration: none;
 }
 </style>
 <script>
