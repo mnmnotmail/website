@@ -47,6 +47,7 @@ References
 [https://edition.cnn.com/2017/07/31/politics/white-house-officials-tricked-by-email-prankster/](https://edition.cnn.com/2017/07/31/politics/white-house-officials-tricked-by-email-prankster/){:target="_blank"}  
 [https://www.wired.com/2012/08/apple-amazon-mat-honan-hacking/](https://www.wired.com/2012/08/apple-amazon-mat-honan-hacking/){:target="_blank"}  
 
+---
 ### Supplanting SMTP
 
 _Requirements for a TMTP Network_
