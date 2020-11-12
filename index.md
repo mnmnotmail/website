@@ -42,7 +42,7 @@ mnm has two major goals.
 
 Further reading: [_Why TMTP?_](rationale.html) 
 
-
+---
 ### Status
 
 The mnm client app has had eight preview releases since April 2019. 
@@ -65,7 +65,7 @@ To submit a question, observation, feature request, or bug report, please open o
 - [Re the mnm client app](https://github.com/networkimprov/mnm-hammer/issues)
 - [Re the mnm TMTP server](https://github.com/networkimprov/mnm/issues)
 
-
+---
 ### Quick Start
 
 You'll need an invitation to a TMTP service. 
@@ -176,7 +176,7 @@ a) Right-click [localhost:8123](http://localhost:8123/), and select "Open link i
 
 </div>
 
-
+---
 ### Installation Notes
 
 On Windows, the app needs Administrator privileges to create symlinks and configure the firewall. 
@@ -192,6 +192,7 @@ and leaves the previous version otherwise untouched.
 Launching `App.cmd` or `App` in the previous version will offer to update to it, 
 moving the `store` folder back again (not recommended).
 
+---
 ### Credits
 
 <p>The mnm app and TMTP server are written in
