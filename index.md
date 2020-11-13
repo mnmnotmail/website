@@ -138,7 +138,7 @@ a) Right-click [localhost:8123](http://localhost:8123/), and select "Open link i
 </div><div id="select-macos" style="display:none" markdown="1">
 
 1. Download & save  
-a) Click [mnm-app-macos-v0.8.0.tgz](https://github.com/networkimprov/mnm-hammer/releases/download/v0.8.0/mnm-app-macos-v0.8.0.tgz).  
+a) Click [mnm-app-macos-amd64-v0.8.0.tgz](https://github.com/networkimprov/mnm-hammer/releases/download/v0.8.0/mnm-app-macos-amd64-v0.8.0.tgz).  
 b) In the browser downloads list, find the file above and click "Open File".
 
 1. If a previous version is running  
