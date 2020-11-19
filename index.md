@@ -145,7 +145,8 @@ a) Go to its log window and press _Ctrl-C_ to stop it, then close the window.
 
 1. Start app  
 a) Open the `mnm-app-v0.8.0` folder now in `Downloads`, Ctrl-click on `App`, and select "Open".  
-b) You'll see a notice, "_App_ is from an unidentified developer..." Click "Open".  
+b) You'll see a notice, "_App_ is from an unidentified developer..." Click "Open" (if possible).  
+c) For MacOS 10.15+ (Catalina), read "How to open an app that hasn't been notarized..." on [Apple Support](https://support.apple.com/en-us/HT202491){:target="_blank"}.  
 +&nbsp; You'll see the mnm log window.  
 +&nbsp; If you have a previous version in `Downloads`, it will offer to update it.  
 +&nbsp; If the app fails, it will offer to restart it.  
