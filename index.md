@@ -230,3 +230,5 @@ Development of mnm is managed with
 
 <p>Robin Eng tested the preview releases at length.
 </p>
+
+<p>Copyright &copy; 2020 Liam Breck</p>
