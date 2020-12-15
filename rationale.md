@@ -36,6 +36,7 @@ and the only people using the Internet were friendly researchers in academia and
 SMTP cannot cope with the 21st Century, and must be phased out.
 
 References  
+[https://boingboing.net/2018/05/21/mime-considered-harmful.html](https://boingboing.net/2018/05/21/mime-considered-harmful.html){:target="_blank"}  
 [https://krebsonsecurity.com/2020/08/sendgrid-under-siege-from-hacked-accounts/](https://krebsonsecurity.com/2020/08/sendgrid-under-siege-from-hacked-accounts/){:target="_blank"}  
 [https://www.theregister.co.uk/2020/05/21/gitlab_phishing_pentest/](https://www.theregister.co.uk/2020/05/21/gitlab_phishing_pentest/){:target="_blank"}  
 [https://arstechnica.com/.../2019/02/catastrophic-hack-on-email-provider-destroys-almost-two-decades-of-data/](https://arstechnica.com/information-technology/2019/02/catastrophic-hack-on-email-provider-destroys-almost-two-decades-of-data/){:target="_blank"}  
