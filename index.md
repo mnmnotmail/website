@@ -1,5 +1,6 @@
-<a href="https://facebook.com/mnmnotmail"><img width="36" align="right" src="icon-fb-gray-58.png"></a>
-<a href="https://twitter.com/mnmnotmail"><img width="36" align="right" src="icon-tw-gray.svg"></a> &nbsp;
+<a href="https://dev.to/mnmnotmail"      ><img height="36" align="right" src="icon-dev-gray.svg"></a>
+<a href="https://facebook.com/mnmnotmail"><img height="36" align="right" src="icon-fb-gray-58.png"></a>
+<a href="https://twitter.com/mnmnotmail" ><img height="36" align="right" src="icon-tw-gray.svg"></a> &nbsp;
 
 ### mnm is not mail
 
