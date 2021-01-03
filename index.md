@@ -45,18 +45,20 @@ Further reading: [_Why TMTP?_](rationale.html)
 ---
 ### Status
 
-The mnm client app has had eight preview releases since April 2019. 
+The mnm client app has had nine preview releases since April 2019. 
 It runs on Windows, MacOS, and Linux; ports to Android and iOS are planned. 
 Its UI appears in a web browser, and is tested with Chrome & Firefox. 
 It stores all data on the user's machine, and can replicate the data to other devices. 
 It includes complete docs, and a tour for first-time users. 
-See also the [Readme](https://github.com/networkimprov/mnm-hammer/blob/master/README.md). 
+See also the [release history](https://github.com/networkimprov/mnm-hammer/releases) 
+and [Readme](https://github.com/networkimprov/mnm-hammer/blob/master/README.md). 
 
 The mnm TMTP server has been deployed on a host in a public datacenter for testing use since early 2019. 
 It runs on Linux; ports to FreeBSD, Windows, and MacOS are planned. 
 It has no runtime dependencies. 
 It does not yet support restrictions on who may create accounts. 
-See also the [Readme](https://github.com/networkimprov/mnm/blob/master/README.md). 
+See also the [release history](https://github.com/networkimprov/mnm/releases) 
+and [Readme](https://github.com/networkimprov/mnm/blob/master/README.md). 
 
 The project is seeking comments, contributors, and patrons. 
 To submit a question, observation, feature request, or bug report, please open or comment on an issue:
