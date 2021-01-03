@@ -115,15 +115,15 @@ function selectTab(iSet) {
 <div id="select-windows" style="display:block" markdown="1">
 
 1. Download & save  
-a) Click [mnm-app-windows-amd64-v0.8.0.zip](https://github.com/networkimprov/mnm-hammer/releases/download/v0.8.0/mnm-app-windows-amd64-v0.8.0.zip).  
+a) Click [mnm-app-windows-amd64-v0.9.0.zip](https://github.com/networkimprov/mnm-hammer/releases/download/v0.9.0/mnm-app-windows-amd64-v0.9.0.zip).  
 b) In the browser downloads list, find the above file and click "Open File".  
-c) Drag the item `mnm-app-v0.8.0` to the `Downloads` folder in the left-hand pane.
+c) Drag the item `mnm-app-v0.9.0` to the `Downloads` folder in the left-hand pane.
 
 1. If a previous version is running  
 a) Go to its log window and press _Ctrl-C_ and then _Y_ to stop it.
 
 1. Start app  
-a) Open the `mnm-app-v0.8.0` folder now in `Downloads`, and double-click `App` (aka `App.cmd`).  
+a) Open the `mnm-app-v0.9.0` folder now in `Downloads`, and double-click `App` (aka `App.cmd`).  
 b) You'll see a notice, either  
 b.1) "Windows protected your PC..." Click "More info" and then "Run anyway".  
 b.2) "The publisher could not be verified..." Click "Run".  
@@ -141,14 +141,14 @@ a) Right-click [localhost:8123](http://localhost:8123/), and select "Open link i
 
 1. Download & save  
 Note: MacOS 11 will be supported beginning in Feb 2021.  
-a) Click [mnm-app-macos-amd64-v0.8.0.tgz](https://github.com/networkimprov/mnm-hammer/releases/download/v0.8.0/mnm-app-macos-amd64-v0.8.0.tgz).  
+a) Click [mnm-app-macos-amd64-v0.9.0.tgz](https://github.com/networkimprov/mnm-hammer/releases/download/v0.9.0/mnm-app-macos-amd64-v0.9.0.tgz).  
 b) In the browser downloads list, find the file above and click "Open File".
 
 1. If a previous version is running  
 a) Go to its log window and press _Ctrl-C_ to stop it, then close the window.
 
 1. Start app  
-a) Open the `mnm-app-v0.8.0` folder now in `Downloads`, Ctrl-click on `App`, and select "Open".  
+a) Open the `mnm-app-v0.9.0` folder now in `Downloads`, Ctrl-click on `App`, and select "Open".  
 b) You'll see a notice, "_App_ is a Unix application..." Click "Open" (if possible).  
 c) For MacOS 10.15+ (Catalina), read "How to open an app that hasn't been notarized..." on [Apple Support](https://support.apple.com/en-us/HT202491){:target="_blank"}.  
 +&nbsp; You'll see the mnm log window.  
@@ -163,14 +163,14 @@ a) Ctrl-click (or two-finger tap) [localhost:8123](http://localhost:8123/), and 
 </div><div id="select-linux" style="display:none" markdown="1">
 
 1. Download & save  
-a) Click [mnm-app-linux-amd64-v0.8.0.tgz](https://github.com/networkimprov/mnm-hammer/releases/download/v0.8.0/mnm-app-linux-amd64-v0.8.0.tgz).  
-b) Extract the downloaded file, e.g. `tar xzf mnm-app-linux-amd64-v0.8.0.tgz`
+a) Click [mnm-app-linux-amd64-v0.9.0.tgz](https://github.com/networkimprov/mnm-hammer/releases/download/v0.9.0/mnm-app-linux-amd64-v0.9.0.tgz).  
+b) Extract the downloaded file, e.g. `tar xzf mnm-app-linux-amd64-v0.9.0.tgz`
 
 1. If a previous version is running  
 a) Go to its log window and press _Ctrl-C_ to stop it.
 
 1. Start app  
-a) Open the extracted `mnm-app-v0.8.0` folder, and double-click `App`.  
+a) Open the extracted `mnm-app-v0.9.0` folder, and double-click `App`.  
 +&nbsp; You'll see the mnm log window.  
 +&nbsp; If you have a previous version in the parent folder, it will offer to update it.  
 +&nbsp; If the app fails, it will offer to restart it.  
