@@ -8,7 +8,7 @@
 _The Internet Crime Wave_
 
 The Internet has facilitated the greatest organized crime wave since Prohibition 
-([USA, 1920-33](https://en.wikipedia.org/wiki/Prohibition_in_the_United_States)). Problematically, 
+([USA, 1920-33](https://en.wikipedia.org/wiki/Prohibition_in_the_United_States){:target="_blank"}). Problematically, 
 most cybercriminals and industrial spies are overseas, beyond the reach of US or Western 
 law enforcement. Many are quietly supported by their national governments. 
 For the foreseeable future, this crime wave will worsen.
@@ -36,7 +36,7 @@ originated at a time when the links between Internet sites were slow and intermi
 and the only people using the Internet were friendly researchers in academia and government. 
 SMTP cannot cope with the 21st Century, and must be phased out.
 
-References  
+Sources  
 [https://boingboing.net/2018/05/21/mime-considered-harmful.html](https://boingboing.net/2018/05/21/mime-considered-harmful.html){:target="_blank"}  
 [https://krebsonsecurity.com/2020/08/sendgrid-under-siege-from-hacked-accounts/](https://krebsonsecurity.com/2020/08/sendgrid-under-siege-from-hacked-accounts/){:target="_blank"}  
 [https://www.theregister.co.uk/2020/05/21/gitlab_phishing_pentest/](https://www.theregister.co.uk/2020/05/21/gitlab_phishing_pentest/){:target="_blank"}  
@@ -62,6 +62,9 @@ that **cannot receive traffic from external or unapproved senders**.
 1. Organizations that need to let certain members hear from the general public, 
 or communicate with untrusted (perhaps anonymous) customers, 
 may establish a separate service instance for that purpose. 
+
+   Organizations may also join third party messaging services which allow membership 
+   for all involved in a specific field.
 
 1. To prevent destructive correspondence (in the case of organizations with non-restrictive membership) 
 messaging services must **prevent members with whom you are not acquainted** 
