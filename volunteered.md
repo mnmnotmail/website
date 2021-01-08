@@ -1,3 +1,8 @@
+<a href="/"><img height="36" align="left" src="logo-48-bleed-bright.png"></a>
+<a href="https://dev.to/mnmnotmail"      ><img height="36" align="right" src="icon-dev-gray.svg"></a>
+<a href="https://facebook.com/mnmnotmail"><img height="36" align="right" src="icon-fb-gray-58.png"></a>
+<a href="https://twitter.com/mnmnotmail" ><img height="36" align="right" src="icon-tw-gray.svg"></a> &nbsp;
+
 ### Why I volunteered to re-architect Internet email
 
 _by Liam Breck, Menlo Park, California_ &ndash; January 2021
@@ -43,12 +48,22 @@ _Holy cow, the killer app... It's email!_
 I'd unconciously realized that email would not survive the cybercrime crisis;
 a new protocol would be required, and I'd already prototyped it.
 I also recognized that a for-profit startup probably couldn't convince the world to adopt a new email protocol.
-The evident central concern of a for-profit venture is to enrich its owners.
-The goal of my project would have to be making the Internet safer, while keeping it open.
+The central concern of a for-profit venture is to enrich its owners.
+My sole motivation would have to be making the Internet safer, while keeping it open.
 
-Three months later, I had a working server in Go, a protocol draft, and a short essay titled "Why TMTP?"
-I considered announcing the project then, 
-but decided that it would be more credible given a client application with features missing in today's email.
+Three months later, I had a working server in Go, a protocol outline, a short essay titled "Why TMTP?" 
+and a modest to-do list.
+I called it "mnm" (mnm is not mail, a self-referential acronym).
+I considered announcing the project then, but decided that it would be more credible and appealing 
+given a client application with features missing in today's email.
+So I composed a client to-do list, which quickly ballooned past modesty.
+In Spring 2019, I released the first preview to a small audience, 
+and as of January 2021, there have been eight more preview releases.
+
+At this stage, TMTP & mnm need your support to reach v1.0. That means:
+- Donors: support me on Patreon (I can't keep coding without food :-)
+- Contributors: mnm needs code review, more test cases, and many more features.
+- Evangelists: put the word out on blogs, social media, and discussion forums!
 
 
 [^1] Derived from daily active users metrics for Slack and MS Teams as of December 2020.
