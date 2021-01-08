@@ -25,25 +25,25 @@ Email technology offers no effective means to stop phishing[^2],
 so it's been a runaway success for the attackers, and a disaster for millions of victims.
 
 But _email the concept_ is too important to let corporate agendas define its future.
-Email is a foundational Internet application.
+Email is a foundational Internet application[^3].
 Therefore the open source community must act to replace it, and ___act now___.
 
-So I've drafted a protocol, TMTP[^3], 
-and published implementations of both client[^4] and server[^5] as open source.
+So I've drafted a protocol, TMTP[^4], 
+and published implementations of both client[^5] and server[^6] as open source.
 TMTP is simple, preserving the soul of email, while dramatically reducing its vulnerabilities.
 So how did I arrive here?
 
 In 2002, after I left the Internet startup I founded in Silicon Valley (Synchron Networks), 
-I began thinking and writing about how one would design a personal-area computing environment[^6] 
+I began thinking and writing about how one would design a personal-area computing environment[^7] 
 based on the Web user experience&mdash;hyperlinked, multi-format documents.
-Its apps and data should be local to your devices, but sharable with others.
+Its apps and data should be local to your devices, but sharable with collaborators and subscribers.
 I sourced one design element from software version control, 
 that each set of related edits to a collection of local-web documents is packaged as a revision.
 When saved, a revision is distributed via a store-and-forward Internet service 
 to all others sharing the collection.
 
 In 2010-12, I prototyped this in Node.js, as project Elembe.
-It displayed the UI in a browser tab, and distributed revisions via a relay server.
+It presented the UI in a browser tab, and distributed revisions via a relay server.
 It worked well enough, but it was a platform, not an application, 
 and I couldn't see the killer app which would make it fly.
 So I set it aside, and created a pocket-server hardware product, 
@@ -56,7 +56,7 @@ I'd unconciously realized that email could not survive the cybercrime crisis;
 a new protocol would be required, and I'd already prototyped it.
 I also recognized that a for-profit startup probably couldn't convince the world 
 to adopt a new email protocol.
-The central concern of a for-profit venture is to enrich its owners.
+The central concern of a for-profit venture is enriching its owners by satisfying customers.
 My sole motivation would have to be making the Internet safer, while keeping it open.
 
 Three months later, I had a working server in Go, a protocol outline, 
@@ -66,11 +66,11 @@ I considered announcing the project then, but decided that it would be more cred
 given a client application with features missing in today's email.
 So I composed a client to-do list, which quickly ballooned past modesty.
 In Spring 2019, I released the first preview to a small audience, 
-and as of January 2021, there have been eight more preview releases.
+and as of this writing, there have been eight more preview releases.
 
 At this stage, TMTP & mnm need your support to reach v1.0. That means:
-- Donors: [support me on Patreon](https://www.patreon.com/networkimprov){:target="_blank"} (I can't keep coding without food :-)
-- Contributors: add features, perform code review, and invent new test cases.
+- Donors: [support me on Patreon](https://www.patreon.com/networkimprov){:target="_blank"} (I'm getting hungry!)
+- Contributors: add features, perform code reviews, and invent new test cases.
 - Experimenters: try the client & server in different environments, and report back.
 - Evangelists: put the word out on blogs, social media, and discussion forums!
 
@@ -83,11 +83,15 @@ Sadly, some IETF participants derided such critics as "anti-spam kooks",
 and their suggestions as "FUSSPs" (final, ultimate solutions to the spam problem).
 See the [rhyolite.com kooks list](https://www.rhyolite.com/anti-spam/you-might-be.html){:target="_blank"}.
 
-[^3] [TMTP protocol draft](https://github.com/networkimprov/mnm/blob/master/Protocol.md){:target="_blank"}
+[^3] Email cannot be replaced with chatrooms, which can be useful, but also yield undesired effects.
+See the [Media Diet Slack syllabus](https://mediadiet.com/slack.html){:target="_blank"}
 
-[^4] [mnm TMTP client](https://github.com/networkimprov/mnm-hammer){:target="_blank"}
+[^4] [TMTP protocol draft](https://github.com/networkimprov/mnm/blob/master/Protocol.md){:target="_blank"}
+&ndash; see also [Supplanting SMTP](https://mnmnotmail.org/rationale.html#supplanting-smtp){:target="_blank"}
 
-[^5] [mnm TMTP server](https://github.com/networkimprov/mnm){:target="_blank"}
+[^5] [mnm client](https://github.com/networkimprov/mnm-hammer){:target="_blank"}
 
-[^6] I've long been inspired by Mark Weiser's Ubiquitous Computing research at Xerox PARC in the early 90's.
-See [his Wikipedia page](https://en.wikipedia.org/wiki/Mark_Weiser)
+[^6] [mnm server](https://github.com/networkimprov/mnm){:target="_blank"}
+
+[^7] I've long been inspired by Mark Weiser's Ubiquitous Computing research at Xerox PARC in the early 90's.
+See [his Wikipedia page](https://en.wikipedia.org/wiki/Mark_Weiser){:target="_blank"}.
