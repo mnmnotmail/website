@@ -14,15 +14,17 @@ _by Liam Breck, Menlo Park, California &ndash; January 2021_
 I have some news; it's a bit startling.
 Email must be replaced. SMTP should be blocked on public networks.
 
-At first, these sound like crazy assertions.
-But consider that at least 9% of one billion knowledge workers[^kw] have abandoned email 
-wherever possible for Slack, MS Teams, and other messaging applications.
-
-Due to phishing, email is now a universal cybercrime portal[^cp].
+Sound crazy? Consider this: Email is now a universal cybercrime portal[^cp], due to phishing.
 Consumers, organizations, governments, and specific individuals are being targeted relentlessly
 for the purposes of stealing money and confidential data, or planting malware.
 Email technology offers no effective means to stop phishing[^sp],
 so it's been a runaway success for the attackers, and a disaster for millions of victims.
+Accepting this state of affairs, now _that's_ crazy.
+
+And note that at least 9% of one billion knowledge workers[^kw] have abandoned email 
+wherever possible for Slack and MS Teams.
+In fact, a majority are plugged into multiple messaging services, 
+but the only _standard_ way those providers can reach their members is by email.
 
 Sunsetting SMTP is clearly necessary and feasible.
 But _email the concept_ is too important to let SaaS vendors or social networks define its future.
