@@ -9,32 +9,33 @@
 
 ### How I volunteered to re-architect Internet email
 
-_by Liam Breck, Menlo Park, California_ &ndash; January 2021
+_by Liam Breck, Menlo Park, California &ndash; January 2021_
 
 I have some news; it's a bit startling.
 Email must be replaced. SMTP should be blocked on public networks.
 
 At first, these sound like crazy assertions.
-But consider that at least 9% of one billion knowledge workers[^1] have abandoned email 
+But consider that at least 9% of one billion knowledge workers[^kw] have abandoned email 
 wherever possible for Slack, MS Teams, and other SaaS & intranet messaging applications.
 
-Email is going extinct, because phishing has made it a universal cybercrime portal.
+Due to phishing, email is now a universal cybercrime portal[^cp].
 Consumers, organizations, governments, and specific individuals are being targeted relentlessly
 for the purposes of stealing money and confidential data, or planting malware.
-Email technology offers no effective means to stop phishing[^2],
+Email technology offers no effective means to stop phishing[^sp],
 so it's been a runaway success for the attackers, and a disaster for millions of victims.
 
-But _email the concept_ is too important to let corporate agendas define its future.
-Email is a foundational Internet application[^3].
-Therefore the open source community must act to replace it, and ___act now___.
+Sunsetting SMTP is clearly necessary and feasible.
+But _email the concept_ is too important to let SaaS vendors or social networks define its future.
+Email is a foundational Internet application[^ia].
+Therefore the open source community must act to replace it, and ___act&nbsp;now___.
 
-So I've drafted a protocol, TMTP[^4], 
-and published implementations of both client[^5] and server[^6] as open source.
+So I've drafted a protocol, TMTP[^t], 
+and published implementations of both client[^c] and server[^s] as open source.
 TMTP is simple, preserving the soul of email, while dramatically reducing its vulnerabilities.
 So how did I arrive here?
 
 In 2002, after I left the Internet startup I founded in Silicon Valley (Synchron Networks), 
-I began thinking and writing about how one would design a personal-area computing environment[^7] 
+I began thinking and writing about how one would design a personal-area computing environment[^ce] 
 based on the Web user experience&mdash;hyperlinked, multi-format documents.
 Its apps and data should be local to your devices, but sharable with collaborators and subscribers.
 I sourced one design element from software version control, 
@@ -66,7 +67,7 @@ I considered announcing the project then, but decided that it would be more cred
 given a client application with features missing in today's email.
 So I composed a client to-do list, which quickly ballooned past modesty.
 In Spring 2019, I released the first preview to a small audience, 
-and as of this writing, there have been eight more preview releases.
+and as of this writing, there have been nine preview releases.
 
 At this stage, TMTP & mnm need your support to reach v1.0. That means:
 - Donors: [support me on Patreon](https://www.patreon.com/networkimprov){:target="_blank"} (I'm getting hungry!)
@@ -74,24 +75,30 @@ At this stage, TMTP & mnm need your support to reach v1.0. That means:
 - Experimenters: try the client & server in different environments, and report back.
 - Evangelists: put the word out on blogs, social media, and discussion forums!
 
+We have a rare opportunity to make a lasting contribution to the 21st Century Internet.
+Please volunteer!
 
-[^1] Derived from daily active users metrics for Slack and MS Teams as of December 2020.
 
-[^2] Many warned the IETF that spam, the forefather of phishing, was a serious problem, 
+[^kw]: Derived from daily-active-users figures for Slack and MS Teams as of December 2020.
+
+[^cp]: Phishing sites tripled during Q3 2019 to Q3 2020; 
+see the [APWG reports](https://apwg.org/trendsreports/){:target="_blank"}.
+
+[^sp]: Many warned the IETF that spam, the forefather of phishing, was a serious problem, 
 and should be addressed at the protocol level, even at significant cost.
 Sadly, some IETF participants derided such critics as "anti-spam kooks", 
 and their suggestions as "FUSSPs" (final, ultimate solutions to the spam problem).
 See the [rhyolite.com kooks list](https://www.rhyolite.com/anti-spam/you-might-be.html){:target="_blank"}.
 
-[^3] Email cannot be replaced with chatrooms, which can be useful, but also yield undesired effects.
+[^ia]: Email cannot be replaced by chatrooms, which can be useful, but also yield undesired effects.
 See the [Media Diet Slack syllabus](https://mediadiet.com/slack.html){:target="_blank"}
 
-[^4] [TMTP protocol draft](https://github.com/networkimprov/mnm/blob/master/Protocol.md){:target="_blank"}
+[^t]: [TMTP protocol draft](https://github.com/networkimprov/mnm/blob/master/Protocol.md){:target="_blank"}
 &ndash; see also [Supplanting SMTP](https://mnmnotmail.org/rationale.html#supplanting-smtp){:target="_blank"}
 
-[^5] [mnm client](https://github.com/networkimprov/mnm-hammer){:target="_blank"}
+[^c]: [mnm client on Github](https://github.com/networkimprov/mnm-hammer){:target="_blank"}
 
-[^6] [mnm server](https://github.com/networkimprov/mnm){:target="_blank"}
+[^s]: [mnm server on Github](https://github.com/networkimprov/mnm){:target="_blank"}
 
-[^7] I've long been inspired by Mark Weiser's Ubiquitous Computing research at Xerox PARC in the early 90's.
+[^ce] I've long been inspired by Mark Weiser's Ubiquitous Computing research at Xerox PARC in the early 90's.
 See [his Wikipedia page](https://en.wikipedia.org/wiki/Mark_Weiser){:target="_blank"}.
