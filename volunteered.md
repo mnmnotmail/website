@@ -16,7 +16,7 @@ Email must be replaced. SMTP should be blocked on public networks.
 
 At first, these sound like crazy assertions.
 But consider that at least 9% of one billion knowledge workers[^kw] have abandoned email 
-wherever possible for Slack, MS Teams, and other SaaS & intranet messaging applications.
+wherever possible for Slack, MS Teams, and other messaging applications.
 
 Due to phishing, email is now a universal cybercrime portal[^cp].
 Consumers, organizations, governments, and specific individuals are being targeted relentlessly
@@ -35,16 +35,16 @@ TMTP is simple, preserving the soul of email, while dramatically reducing its vu
 So how did I arrive here?
 
 In 2002, after I left the Internet startup I founded in Silicon Valley (Synchron Networks), 
-I began thinking and writing about how one would design a personal-area computing environment[^ce] 
+I began exploring a design for a personal-area computing environment[^ce] 
 based on the Web user experience&mdash;hyperlinked, multi-format documents.
-Its apps and data should be local to your devices, but sharable with collaborators and subscribers.
-I sourced one design element from software version control, 
+Its apps and data are local to your devices, but sharable with collaborators and subscribers.
+I sourced one element from software version control, 
 that each set of related edits to a collection of local-web documents is packaged as a revision.
 When saved, a revision is distributed via a store-and-forward Internet service 
 to all others sharing the collection.
 
-In 2010-12, I prototyped this in Node.js, as project Elembe.
-It presented the UI in a browser tab, and distributed revisions via a relay server.
+In 2010-12, I prototyped this in Node.js.
+It presented the UI in a localhost browser tab, and distributed revisions via a relay server.
 It worked well enough, but it was a platform, not an application, 
 and I couldn't see the killer app which would make it fly.
 So I set it aside, and created a pocket-server hardware product, 
