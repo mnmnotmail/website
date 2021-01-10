@@ -19,16 +19,16 @@ Consumers, organizations, governments, and specific individuals are being target
 for the purposes of stealing money and confidential data, or planting malware.
 Email technology offers no effective means to stop phishing[^sp],
 so it's been a runaway success for the attackers, and a disaster for millions of victims.
-Accepting this state of affairs, now _that's_ crazy.
+Accepting this state of affairs&mdash;now _that's_ crazy.
 
 And note that at least 9% of one billion knowledge workers[^kw] have abandoned email 
 wherever possible for Slack and MS Teams.
 In fact, a majority are plugged into multiple messaging services, 
-but the only _standard_ way those providers can reach their members is by email.
+and other online apps that issue notifications.
 
 Sunsetting SMTP is clearly necessary and feasible.
-But _email the concept_ is too important to let SaaS vendors or social networks define its future.
-Email is a foundational Internet application[^ia].
+But email is a foundational Internet application[^ia]; 
+the _concept_ is too important to let SaaS vendors or social networks define its future.
 Therefore the open source community must act to replace it, and ___act&nbsp;now___.
 
 So I've drafted a protocol, TMTP[^t], 
@@ -36,9 +36,9 @@ and published implementations of both client[^c] and server[^s] as open source.
 TMTP is simple, preserving the soul of email, while dramatically reducing its vulnerabilities.
 So how did I arrive here?
 
-In 2002, after I left the Internet startup I founded in Silicon Valley (Synchron Networks), 
+In 2002, after I left the Internet startup I founded in Silicon Valley, Synchron Networks, 
 I began exploring a design for a personal-area computing environment[^ce] 
-based on the Web user experience&mdash;hyperlinked, multi-format documents.
+based on the Web user experience (hyperlinked, multi-format, interactive documents).
 Its apps and data are local to your devices, but sharable with collaborators and subscribers.
 I sourced one element from software version control, 
 that each set of related edits to a collection of local-web documents is packaged as a revision.
@@ -51,7 +51,7 @@ It worked well enough, but it was a platform, not an application,
 and I couldn't see the killer app which would make it fly.
 So I set it aside, and created a pocket-server hardware product, 
 another dimension to personal-area computing.
-(That was an eventful misadventure, which I'll happily recount in person over drinks.)
+(That was an eventful misadventure, which I'll cheerfully recount in person over drinks.)
 
 In the Spring of 2017, I had a revelation&mdash;I don't recall what triggered it.
 _Holy cow, the killer app... It's email!_
@@ -71,11 +71,11 @@ So I composed a client to-do list, which quickly ballooned past modesty.
 In Spring 2019, I released the first preview to a small audience, 
 and as of this writing, there have been nine preview releases.
 
-At this stage, TMTP & mnm need your support to reach v1.0. That means:
-- Donors: [support me on Patreon](https://www.patreon.com/networkimprov){:target="_blank"} (I'm getting hungry!)
-- Contributors: add features, perform code reviews, and invent new test cases.
-- Experimenters: try the client & server in different environments, and report back.
-- Evangelists: put the word out on blogs, social media, and discussion forums!
+At this stage, TMTP & mnm need __your support__ to reach v1.0. That means:
+- Donate: [support me on Patreon](https://www.patreon.com/networkimprov){:target="_blank"} (I'm getting hungry!)
+- Contribute: add features, perform code reviews, and invent new test cases.
+- Experiment: try the client & server in different environments, and report back.
+- Evangelize: put the word out on blogs, social media, and discussion forums!
 
 We have a rare opportunity to make a lasting contribution to the 21st Century Internet.
 Please volunteer!
