@@ -11,17 +11,16 @@
 
 _by Liam Breck, Menlo Park, California &ndash; January 2021_
 
-I have some news; it's a bit startling.
-Email must be replaced. SMTP should be blocked on public networks.
+SMTP should be blocked on public networks. Seriously.
 
-Sound crazy? Consider this: Email is now a universal cybercrime portal[^cp], due to phishing.
+Sound crazy? Consider this: Email is now a universal cybercrime portal[^cp].
 Consumers, organizations, governments, and specific individuals are being targeted relentlessly
-for the purposes of stealing money and confidential data, or planting malware.
+by phishing attacks for the purposes of stealing money and confidential data, or planting malware.
 Email technology offers no effective means to stop phishing[^sp],
 so it's been a runaway success for the attackers, and a disaster for millions of victims.
 Accepting this state of affairs&mdash;now _that's_ crazy.
 
-And note that a majority of 1 billion knowledge workers are plugged into multiple messaging services, 
+And this: A majority of 1 billion knowledge workers are plugged into multiple messaging services, 
 and groupware apps that issue notifications.
 At least 90 million[^90] have replaced email wherever possible with Slack and MS Teams.
 
