@@ -21,10 +21,9 @@ Email technology offers no effective means to stop phishing[^sp],
 so it's been a runaway success for the attackers, and a disaster for millions of victims.
 Accepting this state of affairs&mdash;now _that's_ crazy.
 
-And note that at least 9% of one billion knowledge workers[^kw] have abandoned email 
-wherever possible for Slack and MS Teams.
-In fact, a majority are plugged into multiple messaging services, 
-and other online apps that issue notifications.
+And note that a majority of 1 billion knowledge workers are plugged into multiple messaging services, 
+and groupware apps that issue notifications.
+At least 90 million[^90] have replaced email wherever possible with Slack and MS Teams.
 
 Sunsetting SMTP is clearly necessary and feasible.
 But email is a foundational Internet application[^ia]; 
@@ -64,7 +63,7 @@ My sole motivation would have to be making the Internet safer, while keeping it 
 
 Three months later, I had a working server in Go, a protocol outline, 
 a short essay titled "Why TMTP?" and a modest to-do list.
-I called it "mnm" (mnm is not mail, a self-referential acronym).
+I named it "mnm" (mnm is not mail, a self-referential acronym).
 I considered announcing the project then, but decided that it would be more credible and appealing 
 given a client application with features missing in today's email.
 So I composed a client to-do list, which quickly ballooned past modesty.
@@ -77,11 +76,11 @@ At this stage, TMTP & mnm need __your support__ to reach v1.0. That means:
 - Experiment: try the client & server in different environments, and report back.
 - Evangelize: put the word out on blogs, social media, and discussion forums!
 
-We have a rare opportunity to make a lasting contribution to the 21st Century Internet.
 Please volunteer!
+We have a rare opportunity to make a lasting contribution to the 21st Century Internet.
 
 
-[^kw]: Derived from daily-active-users figures for Slack and MS Teams as of December 2020.
+[^90]: Derived from daily-active-users figures for Slack and MS Teams as of December 2020.
 
 [^cp]: Phishing sites tripled during Q3 2019 to Q3 2020; 
 see the [APWG reports](https://apwg.org/trendsreports/){:target="_blank"}.
