@@ -66,9 +66,12 @@ may establish a separate service instance for that purpose.
    Organizations may also join third party messaging services which allow membership 
    for all involved in a specific field.
 
-1. To prevent destructive correspondence (in the case of organizations with non-restrictive membership) 
+1. To prevent malicious correspondence (in the case of organizations with non-restrictive membership) 
 messaging services must **prevent members with whom you are not acquainted** 
 from sending you arbitrary content. 
+
+   Messaging services must be able to control how members identify themselves to other members
+   and prevent members from impersonating others.
 
 1. To prevent theft of correspondence (in the event of a compromised account or server) the messaging service 
 must **store only messages that have not yet been delivered** or returned as undeliverable. 
