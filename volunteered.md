@@ -20,9 +20,11 @@ Email technology offers no effective means to stop phishing[^sp],
 so it's been a runaway success for the attackers, and a disaster for millions of victims.
 Accepting this state of affairs&mdash;now _that's_ crazy.
 
-Furthermore, a majority of 1 billion knowledge workers are plugged into multiple messaging services, 
-and groupware apps that issue notifications.
-At least 90 million[^90] have replaced email wherever possible with Slack and MS Teams.
+Furthermore, a majority of email users are plugged into other messaging services, 
+discussion sites, and groupware apps.
+At least 90 million[^90] have replaced email where possible with Slack and MS Teams.
+We no longer need an Internet-wide messaging system that makes everyone on it 
+accessible to everyone else without consent or limits.
 
 Sunsetting SMTP is clearly necessary and feasible.
 But email is a foundational Internet application[^ia]; 
@@ -32,6 +34,8 @@ Therefore the open source community must act to replace it, and ___act&nbsp;now_
 So I've drafted a protocol, TMTP[^t], 
 and published implementations of both client[^c] and server[^s] as open source.
 TMTP is simple, preserving the soul of email, while dramatically reducing its vulnerabilities.
+It also addresses major user experience gaps in email, 
+which were solved long ago by web-based discussion apps.
 Just how did I arrive here?
 
 In 2002, after I left the Internet startup I founded in Silicon Valley, Synchron Networks, 
@@ -91,10 +95,10 @@ Follow mnm on:
 </div>
 
 
-[^90]: Derived from daily-active-users figures for Slack and MS Teams as of December 2020.
-
-[^cp]: Phishing sites tripled during Q3 2019 to Q3 2020; 
-see the [APWG reports](https://apwg.org/trendsreports/){:target="_blank"}.
+[^cp]: Phishing sites tripled during Q3 2019 to Q3 2020, per the 
+[APWG trends reports](https://apwg.org/trendsreports/){:target="_blank"}.
+Susceptibility to phishing averaged 21% in a 
+[meta-analysis of field experiments](https://docs.apwg.org/ecrimeresearch/2019/Nov15_HenrikKarlzen.pdf){:target="_blank"}.
 
 [^sp]: Many warned the IETF that spam, the forefather of phishing, was a serious problem, 
 and should be addressed at the protocol level, even at significant cost.
@@ -102,8 +106,10 @@ Sadly, some IETF participants derided such critics as "anti-spam kooks",
 and their suggestions as "FUSSPs" (final, ultimate solutions to the spam problem).
 See the [rhyolite.com kooks list](https://www.rhyolite.com/anti-spam/you-might-be.html){:target="_blank"}.
 
-[^ia]: Email cannot be replaced by chatrooms, which can be useful, but also yield undesired effects.
-See the [Media Diet Slack syllabus](https://mediadiet.com/slack.html){:target="_blank"}
+[^90]: Derived from daily-active-users figures for Slack and MS Teams as of December 2020.
+
+[^ia]: Email cannot be replaced by chatrooms, which can be useful, but also yield negative effects; 
+see the [Media Diet Slack syllabus](https://mediadiet.com/slack.html){:target="_blank"}.
 
 [^t]: [TMTP protocol draft](https://github.com/networkimprov/mnm/blob/master/Protocol.md){:target="_blank"}
 &ndash; see also [Supplanting SMTP](https://mnmnotmail.org/rationale.html#supplanting-smtp)
