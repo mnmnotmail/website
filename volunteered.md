@@ -36,14 +36,15 @@ and published implementations of both client[^c] and server[^s] as open source.
 TMTP is simple, preserving the soul of email, while dramatically reducing its vulnerabilities.
 It also addresses major user experience gaps in email, 
 which were solved long ago by web-based discussion apps.
-Just how did I arrive here?
+
+I arrived here by trying to build something completely different.
 
 In 2002, after I left the Internet startup I founded in Silicon Valley, Synchron Networks, 
 I began exploring a design for a personal-area computing environment[^ce] 
 based on the Web user experience (hyperlinked, multi-format, interactive documents).
 Its apps and data are local to your devices, but sharable with collaborators and subscribers.
 I sourced one element from software version control, 
-that each set of related edits to a collection of local-web documents is packaged as a revision.
+that related edits to a collection of local-web documents are packaged as a revision.
 When saved, a revision is distributed via a store-and-forward Internet service 
 to all others sharing the collection.
 I borrowed another aspect from the datacenter, 
@@ -51,9 +52,8 @@ that all your local-web projects (shared and not) are replicated on a few device
 so you can failover to a different device without loss of work.
 
 In 2010-12, I prototyped this in Node.js.
-It presented the UI in a localhost browser tab, and distributed revisions via a relay server.
 It worked well enough, but it was a platform, not an application, 
-and I couldn't see the killer app which would make it fly.
+and I couldn't see a killer app which would make it fly.
 So I set it aside, and created a pocket-server hardware product, 
 another dimension to personal-area computing.
 (That was an enlightening misadventure, which I'll cheerfully recount over drinks.)
