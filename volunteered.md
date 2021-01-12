@@ -3,7 +3,7 @@
 <a href="https://facebook.com/mnmnotmail"><img height="36" align="right" src="icon-fb-gray-58.png"></a>
 <a href="https://twitter.com/mnmnotmail" ><img height="36" align="right" src="icon-tw-gray.svg"></a> &nbsp;
 
-<div style="margin:1em 2px 1.5em 22px; width:300px; max-width:45%; float:right; clear:both; text-align:center;">
+<div style="margin:3.1em 2px 1.5em 22px; width:300px; max-width:45%; float:right; clear:both; text-align:center;">
    <a href="https://www.patreon.com/networkimprov" title="Support mnm on Patreon" style="border-radius:9999px; padding:0.6em 1em; background-color:#ff424d; color:#fff; text-decoration:none; white-space:nowrap;"><img src="icon-pat-white-1080.png" height="16" style="margin-right:0.4em; vertical-align:-0.2em; height:1.1em">Become a patron</a>
 </div>
 
@@ -85,7 +85,7 @@ At this stage, __TMTP & mnm need your support__ to reach v1.0. That means:
 Please volunteer!
 We have a rare opportunity to make a lasting contribution to the 21st Century Internet.
 
-<div style="float:right">
+<div style="float:right" markdown="1">
 
 Follow mnm on: 
 [Twitter](https://twitter.com/mnmnotmail){:target="_blank"} &ndash; 
@@ -94,31 +94,31 @@ Follow mnm on:
 
 </div>
 
-
+---
 [^cp]: Phishing sites tripled during Q3 2019 to Q3 2020, per the 
-[APWG trends reports](https://apwg.org/trendsreports/){:target="_blank"}.
-Susceptibility to phishing averaged 21% in a 
-[meta-analysis of field experiments](https://docs.apwg.org/ecrimeresearch/2019/Nov15_HenrikKarlzen.pdf){:target="_blank"}.
+    [APWG trends reports](https://apwg.org/trendsreports/){:target="_blank"}.
+    Susceptibility to phishing averaged 21% in a 
+    [meta-analysis of field experiments](https://docs.apwg.org/ecrimeresearch/2019/Nov15_HenrikKarlzen.pdf){:target="_blank"}.
 
 [^sp]: Many warned the IETF that spam, the forefather of phishing, was a serious problem, 
-and should be addressed at the protocol level, even at significant cost.
-Sadly, some IETF participants derided such critics as "anti-spam kooks", 
-and their suggestions as "FUSSPs" (final, ultimate solutions to the spam problem).
-See the [rhyolite.com kooks list](https://www.rhyolite.com/anti-spam/you-might-be.html){:target="_blank"}.
+    and should be addressed at the protocol level, even at significant cost.
+    Sadly, some IETF participants derided such critics as "anti-spam kooks", 
+    and their suggestions as "FUSSPs" (final, ultimate solutions to the spam problem).
+    See the [rhyolite.com kooks list](https://www.rhyolite.com/anti-spam/you-might-be.html){:target="_blank"}.
 
 [^90]: Derived from daily-active-users figures for Slack and MS Teams as of December 2020.
 
 [^ia]: Email cannot be replaced by chatrooms, which can be useful, but also yield negative effects; 
-see the [Media Diet Slack syllabus](https://mediadiet.com/slack.html){:target="_blank"}.
+    see the [Media Diet Slack syllabus](https://mediadiet.com/slack.html){:target="_blank"}.
 
 [^t]: [TMTP protocol draft](https://github.com/networkimprov/mnm/blob/master/Protocol.md){:target="_blank"}
-&ndash; see also [Supplanting SMTP](https://mnmnotmail.org/rationale.html#supplanting-smtp)
+    &ndash; see also [Supplanting SMTP](https://mnmnotmail.org/rationale.html#supplanting-smtp)
 
 [^c]: [mnm client on Github](https://github.com/networkimprov/mnm-hammer){:target="_blank"}
-&ndash; see also the [release history](https://github.com/networkimprov/mnm-hammer/releases){:target="_blank"}
+    &ndash; see also the [release history](https://github.com/networkimprov/mnm-hammer/releases){:target="_blank"}
 
 [^s]: [mnm server on Github](https://github.com/networkimprov/mnm){:target="_blank"}
-&ndash; see also the [release history](https://github.com/networkimprov/mnm/releases){:target="_blank"}
+    &ndash; see also the [release history](https://github.com/networkimprov/mnm/releases){:target="_blank"}
 
-[^ce] I've long been inspired by Mark Weiser's Ubiquitous Computing research at Xerox PARC in the early 90's.
-See [his Wikipedia page](https://en.wikipedia.org/wiki/Mark_Weiser){:target="_blank"}.
+[^ce]: I've long been inspired by Mark Weiser's Ubiquitous Computing research at Xerox PARC in the early 90's.
+    See [his Wikipedia page](https://en.wikipedia.org/wiki/Mark_Weiser){:target="_blank"}.
