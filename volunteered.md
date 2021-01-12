@@ -87,14 +87,14 @@ We have a rare opportunity to make a lasting contribution to the 21st Century In
 
 <div style="float:right" markdown="1">
 
-Follow mnm on: 
+Follow mnm: 
 [Twitter](https://twitter.com/mnmnotmail){:target="_blank"} &ndash; 
 [DEV](https://dev.to/mnmnotmail){:target="_blank"} &ndash; 
 [Facebook](https://facebook.com/mnmnotmail){:target="_blank"}
 
 </div>
+<hr style="clear:both">
 
----
 [^cp]: Phishing sites tripled during Q3 2019 to Q3 2020, per the 
     [APWG trends reports](https://apwg.org/trendsreports/){:target="_blank"}.
     Susceptibility to phishing averaged 21% in a 
