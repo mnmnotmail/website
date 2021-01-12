@@ -15,7 +15,7 @@ SMTP should be blocked on public networks.
 
 Sound crazy? Consider this: Email is now a universal cybercrime portal[^cp].
 Consumers, organizations, governments, and specific individuals are being targeted relentlessly
-by phishing attacks for the purposes of stealing money and confidential data, or planting malware.
+by phishing attacks that result in stolen money and confidential data, or planted malware.
 Email technology offers no effective means to stop phishing[^sp],
 so it's been a runaway success for the attackers, and a disaster for millions of victims.
 Accepting this state of affairs&mdash;now _that's_ crazy.
@@ -24,7 +24,7 @@ Furthermore, a majority of email users are plugged into other messaging services
 discussion sites, and groupware apps.
 At least 90 million[^90] have replaced email where possible with Slack and MS Teams.
 We no longer need an Internet-wide messaging system that makes everyone on it 
-accessible to everyone else without consent or limits.
+accessible by everyone else without consent or limits.
 
 Sunsetting SMTP is clearly necessary and feasible.
 But email is a foundational Internet application[^ia]; 
@@ -62,14 +62,14 @@ In the Spring of 2017, I had a revelation&mdash;I don't recall what triggered it
 _Holy cow, the killer app... It's email!_
 I'd unconciously realized that email could not survive the cybercrime crisis;
 a new protocol would be required, and I'd already prototyped it.
-I also recognized that a for-profit startup probably couldn't convince the world 
+I also recognized that a typical tech startup probably couldn't convince the world 
 to adopt a new email protocol.
-The central concern of a for-profit venture is enriching its owners by satisfying customers.
-My sole motivation would have to be making the Internet safer, while keeping it open.
+The central concern of a for-profit outfit is enriching its owners by satisfying customers.
+My sole motivation has to be making the Internet safer, while keeping it open.
 
 Three months later, I had a working server in Go, a protocol outline, 
 a short essay titled "Why TMTP?" and a modest to-do list.
-I named it "mnm" (mnm is not mail, a self-referential acronym).
+I named it "mnm" (mnm is not mail, a self-referencing acronym).
 I considered announcing the project then, but decided that it would be more credible and appealing 
 given a client application with features missing in today's email.
 So I composed a client to-do list, which quickly ballooned past modesty, and started learning Vue.js.
