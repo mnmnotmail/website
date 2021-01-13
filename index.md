@@ -9,18 +9,19 @@
    <a href="https://www.patreon.com/networkimprov" title="Support mnm on Patreon" style="border-radius:9999px; padding:0.6em 1em; background-color:#ff424d; color:#fff; text-decoration:none; white-space:nowrap;"><img src="icon-pat-white-1080.png" height="16" style="margin-right:0.4em; vertical-align:-0.2em; height:1.1em">Become a patron</a>
 </div>
 
-To those battling cybercrime, __email is a jungle__. 
-It allows anyone, anywhere, claiming any identity to send you any content, any number of times. 
-
-To the rest of us, preoccupied with effective communication and productivity, __email is a desert__.
-
-We've been adopting instant messaging, discussion boards, wikis, and other options for two decades. 
-But email remains ubiquitous, because it's __decentralized__ and rests on __open standards__. 
-
-To all who agree that it's time to retire email, the mnm project is building a legitimate replacement: 
+The mnm project is building a legitimate email replacement: 
 a [client](https://github.com/networkimprov/mnm-hammer),
 a [server](https://github.com/networkimprov/mnm), and 
-a [simple protocol](https://github.com/networkimprov/mnm/blob/master/Protocol.md) between them. 
+a [simple protocol](https://github.com/networkimprov/mnm/blob/master/Protocol.md) between them.
+It's designed for everyone, but especially:
+
+- Organizations and departments where a phishing attack could be catastrophic, 
+and that rely on internal email.
+Examples: manufacturing, public infrastructure, government, finance, research & development, information technology.
+
+- Services and websites whose customers/members exchange email with the site or each other, 
+and dislike the message scanning done by webmail sites.
+Examples: legal affairs, health care, job search, family matters.
 
 mnm has two major goals.
 
