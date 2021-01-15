@@ -68,7 +68,8 @@ To submit a question, observation, feature request, or bug report, please open o
 - [Re the mnm client app](https://github.com/networkimprov/mnm-hammer/issues)
 - [Re the mnm TMTP server](https://github.com/networkimprov/mnm/issues)
 
-The client and server are subject to the terms of the [Mozilla Public License, v2.0](http://mozilla.org/MPL/2.0/){:target="_blank"}.
+The client and server are open source, subject to the terms of the 
+[Mozilla Public License, v2.0](http://mozilla.org/MPL/2.0/){:target="_blank"}.
 
 ---
 ### Quick Start
