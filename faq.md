@@ -15,13 +15,62 @@ _Stuff you wanted to know, and weren't afraid to ask_
 
 1. Why should we replace email?
 
+   It's become a universal cybercrime portal, 
+   because it makes you accessible to everyone else on the Internet, 
+   and its protocols provide no way to prevent phishing.
+   (Most phishing attacks originate at authenticated senders.)
+   The only effective solution is to block SMTP on public networks;
+   to do so, we have to replace email as we know it, ___urgently___.
+   See also [_Why TMTP?_](rationale.html)
+
 1. What is the architecture of TMTP?
+
+   It's a work in progress, but succinctly: client-server, store-and-forward, members-only.
+   If a member registers multiple clients, the server forwards messages to all of them.
+
+   A user is expected to have memberships at numerous sites, as in the real world.
+   At each server, the user has a separate membership identity, and one or more human-readable aliases associated with it.
+   The server constrains aliases, e.g. minimum number of characters, no duplicates.
+
+   TMTP defines no server-to-server aspect.
+   Where a site needs to analyze or archive correspondence by its members with other sites,
+   its server could act as a proxy client (not yet defined in protocol draft).
+
+   See also [_Supplanting SMTP_](rational.html#supplanting-smtp).
+
+1. Does TMTP enable a universal identity, the way email does?
+
+   No. It provides site-specific identities.
+   The issue of universal identity is complex, and should not be defined within a messaging protocol.
+   If a separate universal identity system is widely adopted, 
+   TMTP could accept a universal identity string as a user registration credential.
 
 1. Does TMTP provide end-to-end encryption (E2EE)?
 
+   Not yet, but it's likely. 
+   E2EE wouldn't be the default, as there are legitimate reasons 
+   why a TMTP site would need to analyze or archive traffic among its members.
+   And as mnm is motivated by the cybercrime crisis, 
+   the author is concerned about the benefits of encryption to bad actors.
+
+   E2EE is not as important for TMTP as it is for SMTP.
+   The latter is designed for a network with intermittent backbones.
+   When the Internet was emerging, its constituent networks weren't online continuously, 
+   therefore email between networks had to be stored until the next relay node was accessible.
+   That exposes the message contents to every node in the path, 
+   regardless of any encryption at the transport layer, e.g. SSL/TLS.
+   TMTP simply assumes a robust Internet backbone.
+
 1. Why doesn't TMTP offer federation between servers?
 
-1. Does TMTP enable a universal identity, the way email does?
+   It isn't necessary. 
+   When you receive a message, you need to know _who has control over the sender's alias_ (i.e. stated identity).
+   If it's my company, it's trustworthy. If it's a vendor, it may not be.
+   If it's a semi-public site which verifies real-life identities, do you trust the verification?
+   There are many better ways to let people make contact with folks they've newly, or never, met.
+   Making virtually everyone on the Internet accessible to everyone else is dangerous.
+
+1. How does TMTP support mobile clients with variable-quality Internet connections?
 
 1. How can TMTP grow to replace email, given how entrenched email is?
 
