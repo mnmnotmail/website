@@ -13,7 +13,7 @@
 
 _Stuff you wanted to know, and weren't afraid to ask_
 
-1. Why should we replace email?
+1. __Why should we replace email?__
 
    It's become a universal cybercrime portal, 
    because it makes you accessible to everyone else on the Internet, 
@@ -24,7 +24,7 @@ _Stuff you wanted to know, and weren't afraid to ask_
 
    See also [_Why TMTP?_](rationale.html)
 
-1. What is the architecture of TMTP?
+1. __What is the architecture of TMTP?__
 
    It's a work in progress, but succinctly: client-server, store-and-forward, members-only.
    If a member registers multiple clients, the server forwards messages to all of them.
@@ -39,7 +39,7 @@ _Stuff you wanted to know, and weren't afraid to ask_
 
    See also [_Supplanting SMTP_](rationale.html#supplanting-smtp).
 
-1. Does TMTP enable a universal identity, the way email does?
+1. __Does TMTP enable a universal identity, the way email does?__
 
    No, it provides site-specific identities.
    However, "marketplace" sites which offer membership to large segments of the public 
@@ -51,7 +51,7 @@ _Stuff you wanted to know, and weren't afraid to ask_
    If a separate universal identity system is widely adopted, 
    TMTP servers could accept a universal identity string as a user registration credential.
 
-1. Does TMTP provide end-to-end encryption (E2EE)?
+1. __Does TMTP provide end-to-end encryption (E2EE)?__
 
    Not yet, but it's likely. 
    E2EE wouldn't be the default, as there are legitimate reasons 
@@ -66,7 +66,7 @@ _Stuff you wanted to know, and weren't afraid to ask_
    regardless of any encryption at the transport layer, e.g. SSL/TLS.
    TMTP (like HTTP) simply assumes a robust Internet.
 
-1. Why doesn't TMTP offer federation between servers?
+1. __Why doesn't TMTP offer federation between servers?__
 
    It isn't necessary, and it would open an easily exploited security hole.
    Even federation that requires mutual consent by the two sites' administrators 
@@ -80,24 +80,24 @@ _Stuff you wanted to know, and weren't afraid to ask_
 
    See also #3, re universal identity.
 
-1. How does TMTP support mobile clients with variable-quality Internet connections?
+1. __How does TMTP support mobile clients with variable-quality Internet connections?__
 
-1. How can TMTP grow to replace email, given how entrenched email is?
+1. __How can TMTP grow to replace email, given how entrenched email is?__
 
-1. Why does the [TMTP protocol draft](https://github.com/networkimprov/mnm/blob/master/Protocol.md) 
-define both message delivery and message body formatting?
+1. __Why does the [TMTP protocol draft](https://github.com/networkimprov/mnm/blob/master/Protocol.md) 
+define both message delivery and message body formatting?__
 
-1. Can't you implement all these features on the existing email protocol stack?
+1. __Can't you implement all these features on the existing email protocol stack?__
 
-1. Doesn't another protocol already provide these features, e.g. Matrix or XMPP?
+1. __Doesn't another protocol already provide these features, e.g. Matrix or XMPP?__
 
-1. How much more is there to do for TMTP v1.0?
+1. __How much more is there to do for TMTP v1.0?__
 
-1. Will TMTP be standardized; if so, when?
+1. __Will TMTP be standardized; if so, when?__
 
-1. Is "mnm" really the best name for the project?
+1. __Is "mnm" really the best name for the project?__
 
-1. How did you decide to work on this?
+1. __How did you decide to work on this?__
 
    Thought you'd never ask! Read [_How I volunteered to re-architect Internet email_](volunteered.html).
 
