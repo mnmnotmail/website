@@ -16,13 +16,29 @@ _Stuff you wanted to know, and weren't afraid to ask_
 1. __Why should we replace email?__
 
    It's become a universal cybercrime portal, 
-   because it makes you accessible to everyone else on the Internet, 
-   and its protocols provide no way to prevent phishing.
+   because it makes you accessible to everyone else on the Internet without limits, 
+   and it cannot prevent phishing.
    (Most phishing attacks originate at authenticated senders.)
-   The only effective solution is to block SMTP on public networks;
-   to do so, we have to replace email as we know it, ___urgently___.
+   The only effective solution is to block SMTP on public networks; to do so, we must replace email.
 
    See also [_Why TMTP?_](rationale.html)
+
+1. __How can TMTP grow to replace email, given how entrenched email is?__
+
+   Initially, it can replace internal email 
+   at organizations where a phishing attack could be catastrophic (e.g. 
+   manufacturing, public infrastructure, government, finance, R&D, IT).
+   And it can replace external email for services whose members dislike 
+   the message scanning done by webmail apps for advertising purposes (e.g. 
+   legal affairs, health care, job search, family matters).
+
+   As more sites adopt TMTP for their own reasons, 
+   they'll begin using it to communicate with each other for B2B purposes, in lieu of email.
+   As B2B use grows, those organizations that serve consumers can offer them TMTP accounts.
+
+   Consumers will then start to ask for TMTP accounts everywhere they still need email, including work.
+   Once enough consumers have switched over, 
+   sites can begin requiring TMTP for all external electronic correspondence.
 
 1. __What is the architecture of TMTP?__
 
@@ -69,20 +85,18 @@ _Stuff you wanted to know, and weren't afraid to ask_
 1. __Why doesn't TMTP offer federation between servers?__
 
    It isn't necessary, and it would open an easily exploited security hole.
-   Even federation that requires mutual consent by the two sites' administrators 
+   Even federation that requires mutual consent by the sites' administrators 
    allows members of another site to impersonate members of your site.
 
-   When you receive an invitation to correspond, 
-   you need to know who has control over the sender's alias (i.e. stated identity).
+   When you receive an invitation to correspond or a message, 
+   you need to know who has control over the sender's stated identity.
    If it's my organization, it's trustworthy. 
    If it's a vendor I buy from, it may not be.
    If it's a semi-public service that verifies real-life identities, do you trust its verification?
 
-   See also #3, re universal identity.
+   See also #4, re universal identity.
 
 1. __How does TMTP support mobile clients with variable-quality Internet connections?__
-
-1. __How can TMTP grow to replace email, given how entrenched email is?__
 
 1. __Why does the [TMTP protocol draft](https://github.com/networkimprov/mnm/blob/master/Protocol.md) 
 define both message delivery and message body formatting?__
