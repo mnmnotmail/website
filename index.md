@@ -41,7 +41,7 @@ mnm has two major goals.
 \+ message formatting &amp; layout via Markdown (aka CommonMark)  
 \+ many more features to foster efficiency, creativity, focus, and understanding  
 
-Further reading: [_Why TMTP?_](rationale.html) 
+Further reading: &nbsp; [_Why TMTP?_](rationale.html) &nbsp; &ndash; &nbsp; [_Frequently Asked Q's_](faq.html)
 
 ---
 ### Status
