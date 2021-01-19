@@ -17,7 +17,7 @@ _Stuff you wanted to know, and weren't afraid to ask_
 
    It's become a universal cybercrime portal, 
    because it makes you accessible to everyone else on the Internet without limits, 
-   and it cannot prevent phishing.
+   and thereby facilitates phishing.
    (Most phishing attacks originate at authenticated senders.)
    The only effective solution is to block SMTP on public networks; to do so, we must replace email.
 
@@ -42,8 +42,9 @@ _Stuff you wanted to know, and weren't afraid to ask_
 
 1. __What is the architecture of TMTP?__
 
-   It's a work in progress, but succinctly: client-server, store-and-forward, members-only.
+   Succinctly stated: client-server, store-and-forward, members-only.
    If a member registers multiple clients, the server forwards messages to all of them.
+   The client-server links support both sending and receiving messages.
 
    A user is expected to have memberships at numerous sites, as in the real world.
    At each server, the user has a separate membership identity, and one or more human-readable aliases associated with it.
@@ -90,30 +91,52 @@ _Stuff you wanted to know, and weren't afraid to ask_
 
    When you receive an invitation to correspond or a message, 
    you need to know who has control over the sender's stated identity.
-   If it's my organization, it's trustworthy. 
-   If it's a vendor I buy from, it may not be.
+   If it's your organization, it's trustworthy. 
+   If it's a vendor you buy from, it may not be.
    If it's a semi-public service that verifies real-life identities, do you trust its verification?
 
    See also #4, re universal identity.
 
 1. __How does TMTP support mobile clients with variable-quality Internet connections?__
 
+   The protocol draft needs work in this area.
+   JMAP specifies a client-side listener which the server can ping 
+   to prompt the client to reconnect for pending messages.
+   That could be a template for a TMTP feature.
+
 1. __Why does the [TMTP protocol draft](https://github.com/networkimprov/mnm/blob/master/Protocol.md) 
 define both message delivery and message body formatting?__
 
-1. __Can't you implement all these features on the existing email protocol stack?__
+   The definition of acceptable message formats could be a separate protocol, 
+   but for now, there's one protocol draft.
+
+   The server doesn't enforce the protocol for message formatting 
+   (see protocol op "Post" under ".datahead segment").
+   Special-purpose clients that don't send messages to normal clients 
+   can use whatever message format suits them.
+
+1. __Couldn't one implement all these features on the existing email protocol stack?__
+
+   Goodness, no. Have you read the protocol draft?
 
 1. __Doesn't another protocol already provide these features, e.g. Matrix or XMPP?__
 
-1. __How much more is there to do for TMTP v1.0?__
+   See #9.
 
 1. __Will TMTP be standardized; if so, when?__
 
+   Yes, after we gain real-world experience with the protocol, 
+   and have a community of folks who want to see it codified.
+
 1. __Is "mnm" really the best name for the project?__
 
-1. __How did you decide to work on this?__
+   Good question! I think it rolls off the tongue nicely.
+   And the general public might get a kick out of the self-referencing quirk, which is new to them.
+   Plus you can invent your own names from the acronym; it's _Massive New Mail!_
 
-   Thought you'd never ask! Read [_How I volunteered to re-architect Internet email_](volunteered.html).
+<!--1. __How did you decide to work on this?__
+
+   Thought you'd never ask! Read [_How I volunteered to re-architect Internet email_](volunteered.html).-->
 
 ---
 To pose a question not addressed above, feel free to open or comment on an issue:
