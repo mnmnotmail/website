@@ -46,6 +46,11 @@ Further reading: &nbsp; [_Why TMTP?_](rationale.html) &nbsp; &ndash; &nbsp; [_Fr
 ---
 ### Status
 
+The [client](https://github.com/networkimprov/mnm-hammer) 
+and [server](https://github.com/networkimprov/mnm) 
+are open source, subject to the terms of the 
+[Mozilla Public License, v2.0](http://mozilla.org/MPL/2.0/){:target="_blank"}.
+
 The mnm client app has had nine preview releases since April 2019. 
 It runs on Windows, MacOS, and Linux; ports to Android and iOS are planned. 
 Its UI appears in a web browser, and is tested with Chrome & Firefox. 
@@ -61,15 +66,21 @@ It does not yet support restrictions on who may create accounts.
 See also the [release history](https://github.com/networkimprov/mnm/releases) 
 and [Readme](https://github.com/networkimprov/mnm/blob/master/README.md). 
 
+---
+### Got an issue, idea, insight?
+
 The project is seeking comments, contributors, and patrons. 
 To submit a question, observation, feature request, or bug report, please open or comment on an issue:
 
 - [Re the TMTP protocol](https://github.com/networkimprov/mnm/issues)
 - [Re the mnm client app](https://github.com/networkimprov/mnm-hammer/issues)
-- [Re the mnm TMTP server](https://github.com/networkimprov/mnm/issues)
-
-The client and server are open source, subject to the terms of the 
-[Mozilla Public License, v2.0](http://mozilla.org/MPL/2.0/){:target="_blank"}.
+- [Re the mnm TMTP server](https://github.com/networkimprov/mnm/issues) \
+  &nbsp;
+- [Support mnm on Patreon](https://www.patreon.com/networkimprov)
+- Follow mnm on: 
+[Twitter](https://twitter.com/mnmnotmail) &ndash; 
+[DEV](https://dev.to/mnmnotmail) &ndash; 
+[Facebook](https://facebook.com/mnmnotmail)
 
 ---
 ### Quick Start
