@@ -33,13 +33,13 @@ mnm has two major goals.
 \+ may leave a site and never see traffic from it again  
 
 2. To offer capabilities missing in traditional email, including:  
-\+ forms/surveys whose results are collected into tables  
-\+ data-driven charts via [a JS chart library TBD]  
-\+ slide deck layouts  
-\+ hashtags and private tags  
-\+ hyperlinks to messages &amp; other threads  
 \+ message formatting &amp; layout via Markdown (aka CommonMark)  
-\+ many more features to foster efficiency, creativity, focus, and understanding  
+\+ hyperlinks to messages and other threads  
+\+ hashtags and private tags  
+\+ slide deck layouts  
+\+ data-driven charts &amp; graphs  
+\+ forms/surveys whose results are collected into tables  
+\+ many more features to foster focus, creativity, efficiency, and understanding  
 
 Further reading: &nbsp; [_Why TMTP?_](rationale.html) &nbsp; &ndash; &nbsp; [_Frequently Asked Q's_](faq.html)
 
