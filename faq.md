@@ -54,6 +54,11 @@ _Stuff you wanted to know, and weren't afraid to ask_
    Where a site needs to analyze or archive correspondence by its members with other sites,
    its server could act as a proxy client (not yet defined in protocol draft).
 
+   TMTP relies on a secure stream protocol to carry its traffic.
+   That generally means TCP+TLS, but HTTPS could also work, 
+   given a mechanism whereby the server can alert the client (see #7 re mobile clients).
+   For stronger security, a TMTP server could be configured to require client-side TLS certificates.
+
    See also [_Supplanting SMTP_](rationale.html#supplanting-smtp).
 
 1. __Does TMTP enable a universal identity, the way email does?__
@@ -119,9 +124,12 @@ define both message delivery and message body formatting?__
 
    Goodness, no. Have you read the protocol draft?
 
-1. __Doesn't another protocol already provide these features, e.g. Matrix or XMPP?__
+1. __Doesn't another protocol already provide these features, e.g. Matrix or JMAP?__
 
-   See #9.
+   Matrix & JMAP are synchronization protocols, 
+   wherein both sides maintain a copy of the data objects in question.
+   Matrix is federated (see #6 re federation) and highly complex.
+   JMAP is an extension of the email protocol stack, fitting between user apps and email hosts.
 
 1. __Will TMTP be standardized; if so, when?__
 
