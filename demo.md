@@ -9,6 +9,8 @@
       ><img src="icon-pat-white-1080.png" height="16" style="margin-right:0.4em; vertical-align:-0.2em; height:1.1em">Become a patron</a>
 </div>
 
+<div style="height:100vh" markdown="1">
+
 ### Live Demo
 
 _Try the mnm client, tell us what you think_
@@ -28,5 +30,10 @@ _Try the mnm client, tell us what you think_
 - To report feedback, open or comment on a [Github issue](https://github.com/networkimprov/mnm-hammer/issues).
 
 ---
+<p style="text-align:center" markdown="1">
+
 [__Open demo with tour__](/w/service-demo.html){:target="_blank"} &nbsp;&ndash;&nbsp; 
 [__Open without tour__](/w/service-demo.html?Blue){:target="_blank"}
+
+</p>
+</div>
