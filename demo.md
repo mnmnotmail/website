@@ -29,13 +29,11 @@ __Please Note:__
 
 - To report feedback, open or comment on a [Github issue](https://github.com/networkimprov/mnm-hammer/issues).
 
----
-<p style="text-align:center" markdown="1">
-
-[__Open demo with tour__](/w/service-demo.html){:target="_blank"} &nbsp;&ndash;&nbsp; 
-[__Open without tour__](/w/service-demo.html?Blue){:target="_blank"}
-
+<p style="text-align:center">
+   <style>.demolink { margin:0 1em; border:1px #0366d4 solid; border-radius:6px; padding:0.4em; font-weight:600; }</style>
+   <br>
+   <a href="/w/service-demo.html"      target="_blank" class="demolink">Open demo with tour</a
+  ><a href="/w/service-demo.html?Blue" target="_blank" class="demolink">Open without tour</a>
 </p>
 
----
 </div>
