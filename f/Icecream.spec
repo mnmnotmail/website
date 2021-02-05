@@ -1,0 +1,1 @@
+{"ffn":"mnmnotmail.github.io/registry/test1"}

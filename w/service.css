@@ -1,0 +1,742 @@
+/* Copyright 2018, 2019 Liam Breck
+   Published at https://github.com/networkimprov/mnm-hammer
+
+   This Source Code Form is subject to the terms of the Mozilla Public
+   License, v. 2.0. If a copy of the MPL was not distributed with this
+   file, You can obtain one at http://mozilla.org/MPL/2.0/
+*/
+
+.firefox-minheight-fix { height: 0; }
+
+table { border-spacing: 0; }
+
+.uk-tab {
+   margin-left: 0;
+}
+.uk-tab::before {
+   left: 0;
+}
+.uk-tab > li {
+   padding: 0; /* todo create a nicer tab layout */
+}
+.uk-tab > li > a {
+   cursor: default;
+}
+.uk-dropdown {
+   min-width: unset;
+   color: #505050;
+}
+
+body {
+   background-color: #f0f8f5;
+   color: #505050;
+}
+
+.menu-bg {
+   background-color: mintcream;
+}
+
+.message-bg {
+   background-color: #fff7cf;
+}
+
+.message-edit {
+   background-color: #ffffdc;
+}
+
+.thread-list {
+   background-color: wheat;
+   margin-left: -15px;
+   padding-left: 15px;
+}
+
+.service-panel {
+   background-color: #003333;
+}
+
+#app-quit {
+   position: absolute;
+   top:0; left:0; bottom:0; right:0;
+   z-index: 10000;
+   background-color: rgba(130, 130, 130, 0.2);
+}
+.app-alert {
+   position: absolute;
+   bottom:0; right:0;
+   width: 20vw;
+   border: 3px double #909090;
+   padding: 1em;
+   background-color: pink;
+   color: black;
+   text-align: center;
+}
+
+.vishide { visibility: hidden }
+.overxhide { overflow-x: hidden }
+.width100 { width: 100% }
+.width60v { width: 60vw }
+.height75v { height: 75vh }
+
+.widthmin40 {
+   width:     40vw;
+   min-width: 40em;
+}
+.widthmin33 {
+   width:     33.33vw;
+   min-width: 33.33em;
+}
+.widthmin25 {
+   width:     25vw;
+   min-width: 25em;
+}
+.widthmin20 {
+   width:     20vw;
+   min-width: 20em;
+}
+
+input[type=text],
+textarea {
+   border: 1px solid;
+   border-color: #abadb3 #dbdfe6 #e3e9ef;
+   border-radius: 2px;
+   font-family: "Courier New", monospace;
+   font-size: 82%;
+   box-sizing: border-box;
+}
+textarea {
+   line-height: 1.25;
+}
+input[type=text]:focus,
+textarea:focus,
+.message-list:focus,
+.thread-list:focus {
+   outline: none;
+}
+
+.search-box {
+   height: 100%;
+   font-size: larger !important;
+   color: #1e87f0;
+}
+
+.text-resize {
+   resize: none;
+   overflow-y: hidden;
+}
+
+.btn:enabled:focus,
+.btnx:enabled:focus {
+   outline-width: 0; /* chrome fix */
+   box-shadow: inset 0 0 0 1px #48d8fb;
+}
+
+.btn {
+   vertical-align: middle;
+   border: 1px solid #707070;
+   border-radius: 3px;
+   font-size: inherit;
+   font-family: inherit;
+   line-height: 1;
+}
+.btn:enabled {
+   box-shadow: inset 0 0 0 1px #fafafa;
+   background: linear-gradient(#fcfcfc, #c2c2c2);
+}
+.btn:enabled:active:hover {
+   box-shadow: inset 0 0 0 1px #707070;
+}
+.btn-icon {
+   min-width: 24px; height: 24px;
+   padding: 0;
+}
+.btn-iconred {
+   min-width: 24px; height: 24px;
+   padding: 0;
+}
+.btn-iconred:enabled {
+   color: crimson;
+}
+.btn-icontxt {
+   min-width: 24px; height: 24px;
+   padding: 0 4px;
+}
+.btn-icontxt > span {
+   vertical-align: 0.2em;
+}
+.btn-floatr {
+   display: inline-block;
+   float: right;
+}
+.btn-alignt {
+   vertical-align: top;
+}
+
+.btnx {
+   vertical-align: middle;
+   width: 1.2em; height: 1.2em;
+   border: none;
+   background: none;
+   padding: 0;
+   font-size: inherit;
+   font-family: inherit;
+   line-height: 1;
+}
+.btnx > span {
+   vertical-align: 0.1em;
+}
+.btnx:active:hover {
+   box-shadow: none;
+   background: silver;
+}
+
+.dropdown-icon {
+   cursor: default;
+   position: relative; bottom: -2px;
+}
+.dropdown-scroll {
+   padding: 1em;
+   padding-right: 0;
+}
+.dropdown-scroll-item {
+   margin-right: 1em;
+}
+.dropdown-scroll-list {
+   overflow-y: scroll;
+   max-height: 75vh;
+   padding-right: 1em;
+   margin: 0; /* override uk-list default */
+}
+.dropdown-static {
+   padding: 1em;
+}
+
+.attach-who {
+   width: 15%;
+   display: inline-block;
+   vertical-align: top;
+   overflow-x: hidden;
+   white-space: pre;
+   word-break: keep-all;
+}
+
+.thread {
+   margin: 0 !important; /* override uk-grid */
+   padding: 0.25em 0;
+   cursor: pointer;
+   overflow-x: hidden;
+   white-space: pre;
+   word-break: keep-all;
+}
+.thread-current {
+   background-color: #fff7cf;
+}
+.thread > div:first-child {
+   padding: 0;
+}
+.thread .thread-unread {
+   font-weight: bold;
+}
+.thread .thread-self {
+   text-align: center;
+   font-style: italic;
+}
+.thread .thread-recipient {
+   font-style: italic;
+}
+
+.ohifromto {
+   width: 1em;
+   cursor: default;
+}
+
+.viewer {
+   min-width: 16em;
+}
+.viewer > a {
+   position: absolute;
+}
+.viewer > .viewer-name {
+   float: right;
+   white-space: pre;
+   margin-left: 2em;
+   margin-bottom: 0.3em;
+}
+.viewer > div {
+   clear: right;
+}
+.viewer img, /* todo checkerboard bg? */
+.viewer iframe,
+.viewer .viewer-form {
+   background-color: whitesmoke;
+}
+.viewer img,
+.viewer video,
+.viewer audio {
+   max-width: 25vw;
+   max-height: 25vh;
+   display: block;
+   margin: 0 auto;
+}
+.viewer iframe {
+   width: 25vw;
+   height: 25vh;
+   display: block;
+   margin: 0 auto;
+}
+.viewer .viewer-form {
+   width: 25vw;
+   min-width: 100%;
+   min-height: 2.5em;
+   max-height: 25vh;
+   overflow-y: scroll;
+}
+.viewer tt {
+   margin: 0.5em;
+   font-family: "Courier New", monospace;
+   font-size: 82%;
+   line-height: 1.25;
+}
+
+.cc-new {
+   display: inline-block;
+   margin-right: 0.5em;
+   font-family: "Courier New", monospace;
+   font-size: 82%;
+   color: black;
+}
+
+.tagset-icon {
+   margin-right: 0.5em;
+   cursor: default;
+}
+.tagset {
+   z-index: 3;
+   cursor: default;
+}
+.tagset > div > div > span {
+   border: 1px solid lightgray;
+   border-radius: 4px;
+   background: white;
+}
+
+.message-item {
+   padding: 10px 0.2em 0 0.5em;
+   border-bottom: 1px solid #e5e5e5;
+}
+.message-item:last-child {
+   border-bottom: 4px double lightgray;
+}
+.message-item::after {
+   clear: both; content: ""; display: block;
+}
+
+.message-title {
+   display: inline-block;
+   box-sizing: border-box;
+   min-width: 40%;
+   line-height: 2;
+   padding-right: 0.3em;
+   background-color: wheat;
+   border-radius: 10px 10px 0 0;
+   cursor: pointer;
+}
+.message-title-unread {
+   font-weight: bold;
+}
+
+.message-subhead {
+   margin-bottom: 1em;
+}
+.message-subhead .message-paperclip {
+   cursor: default;
+}
+.message-subhead .message-paperclip-close {
+   margin-right: 0.6em;
+}
+.message-subhead .message-attach {
+   margin-left: 2.5em;
+   width: 21em;
+   min-width: 45%;
+   max-width: calc(100% - 2.5em);
+   line-height: 1.75;
+   overflow-wrap: break-word;
+   border-bottom: 1px solid burlywood;
+}
+.message-subhead .message-attach::after { /*todo add a general-use class for this */
+   clear: right; /* increase height to enclose float-right children */
+   content: "";
+   display: table;
+}
+
+.message {
+   overflow-x: auto;
+   overflow-wrap: break-word;
+   list-style: revert; /* undo uk-grid setting */
+}
+.message img {
+   max-width: 100%;
+   vertical-align: text-top;
+}
+.message pre, .message code {
+   white-space: pre-wrap;
+   word-break: break-all;
+}
+/* some of the following fix odd UIKit settings */
+.message em, .message code,
+.message h1, .message h2, .message h3, .message h4, .message h5, .message h6,
+.message blockquote {
+   color: inherit;
+}
+.message pre {
+   background-color: inherit;
+   border: none;
+   padding: 0 2em;
+}
+.message blockquote {
+   font-style: initial;
+   font-size: inherit;
+   margin-left: 1em;
+   border-left: solid 2px;
+   padding-left: 0.5em;
+}
+.message ul {
+   margin: 0 0 20px 0;
+}
+.message table {
+   margin: 0 0 20px 1.5em;
+}
+.message th, .message td {
+   padding: 0.1em 0.5em;
+}
+.message a > [uk-icon=mail] {
+   margin-left: 3px;
+}
+.message div.md-deck {
+   position: relative;
+}
+.message div.md-deck-ctl {
+   position: absolute;
+   right: 4px;
+   top: -2px;
+   z-index: 3;
+}
+.message div.md-deck-ctl > button {
+   padding: 0 0.2em;
+   font-size: 120%;
+}
+.message div.md-slide {
+   display: none;
+   height: 22.5vw; /* based on 40% panel width */
+   overflow: hidden;
+   border: 1px solid peru;
+   border-radius: 8px;
+   padding: 6px;
+   margin-bottom: 0.5em;
+}
+.message div.md-slide-show { /*todo general purpose .display? */
+   display: block;
+}
+.message div.md-slide img {
+   max-width: 100%;
+   max-height: 22.5vw; /* same as .md-slide */
+}
+
+.draft-recip {
+   font-size: 82%;
+}
+.draft-recip-new {
+   font-family: "Courier New", monospace;
+}
+.draft-minsubject {
+   display: block;
+   margin: 0.4em auto 0.2em;
+   width: 7em;
+   height: 0.6em;
+   cursor: pointer;
+}
+
+.draftpv {
+   padding: 0;
+}
+.draftpv .draftpv-doctab,
+span.draftpv-doctab {
+   position: absolute; top: 0.3em; left: 1em;
+   height: 0.6em;
+   min-width: 6em;
+   box-sizing: border-box;
+   border: 1px solid lightgray;
+   border-bottom-style: none;
+   border-radius: 0.6em 0.6em 0 0;
+   background-color: #ffffdc;
+   cursor: pointer;
+}
+span.draftpv-doctab {
+   position: static;
+   display: inline-block;
+   min-width: 3.5em;
+}
+.draftpv .draftpv-doctab-on {
+   height: 0.9em;
+   background-color: inherit;
+   filter: brightness(99.5%);
+}
+.draftpv .draftpv-scroll {
+   width: 38.75vw; /*todo match to messages panel width */
+   max-height: 75vh;
+   border-width: 1.2em 0 1em;
+   border-color: transparent;
+   border-style: solid;
+   padding: 0 1em;
+   overflow: auto;
+}
+.draftpv .draftpv-head {
+   margin-bottom: 0.5em;
+}
+.draftpv .draftpv-doc {
+   float: left;
+   position: sticky; top: 0;
+   min-height: 23.5em;
+   border: 1px solid lightgray;
+   border-top-style: none;
+   margin-right: 0.5em;
+   background-color: #ffffdc;
+}
+.draftpv .draftpv-docset > div {
+   margin: 0.75em 0.5em;
+   font-family: "Courier New", monospace;
+   font-size: 82%;
+   line-height: 1.25;
+}
+.draftpv .draftpv-docset > div:first-child {
+   margin-top: 0;
+}
+.draftpv .draftpv-docset > div > span {
+   color: #1e87f0;
+}
+
+.vue-form-generator input:disabled {
+   background-color: #ffffdc; /* from .message-edit */
+   pointer-events: none;
+}
+.vue-form-generator label {
+   font-style: inherit !important; /* fix disabled italics */
+}
+
+.ohilink {
+   color: #1e87f0;
+   font-size: 18px;
+   line-height: 1;
+   vertical-align: middle;
+   cursor: pointer;
+   user-select: none;
+}
+
+.paperclip {
+   font-family: "Segoe UI Symbol", sans-serif;
+   font-size: 20px;
+   line-height: 1;
+   vertical-align: -2px;
+   user-select: none;
+}
+.btn > .paperclip {
+   font-size: 19px;
+   vertical-align: 2px;
+   color: #555;
+}
+
+.questionbox {
+   font-size: 26px;
+   line-height: 1;
+   vertical-align: -5px;
+   user-select: none;
+}
+
+.icon-blank {
+   display: inline-block;
+   width: 20px;
+}
+
+.adrsbkinput {
+   display: inline-block;
+}
+.adrsbkmenu {
+   box-sizing: border-box;
+   background-color: gainsboro;
+   padding: 4px;
+   z-index: 3;
+}
+.adrsbkmenu div,
+.adrsbkmenu span {
+   padding: 0 0.2em;
+   white-space: pre;
+   cursor: default;
+}
+.adrsbkmenu-none {
+   text-align: center;
+}
+.adrsbkmenu-select {
+   background-color: white;
+}
+
+.draftmenu {
+   min-width: 4em;
+   float: left;
+   box-sizing: border-box;
+   border-radius: 3px;
+   padding: 0.1em 0.5em 0.25em;
+   cursor: default;
+   background-color: #f5f5f5;
+   color: black;
+   line-height: 1.25;
+   position: relative;
+}
+.draftmenu-text {
+   vertical-align: 0.1em;
+   font-family: "Courier New", monospace;
+   font-size: 82%;
+}
+.draftmenu [uk-icon] {
+   vertical-align: 0.1em;
+}
+.draftmenu .questionbox {
+   vertical-align: -0.1em;
+   font-size: calc(26px * 0.74);
+   line-height: 1;
+}
+.draftmenu-sample {
+   min-width: 0;
+   float: none;
+   border: 1px solid #c8c8c8;
+   padding: 0.35em 0.5em;
+   background-color: #e8e8e8;
+   display: inline-block;
+}
+.draftmenu-shown {
+   border: 1px solid transparent;
+   min-height: 100%;
+   box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+   filter: brightness(102%);
+}
+.draftmenu-hiddn {
+   border: 1px solid #d4d4d4;
+   height: 100%;
+   overflow: hidden;
+}
+.draftmenu-x {
+   float: right;
+   margin-left: 0.50em;
+}
+.draftmenu-v {
+   position: absolute; right: 0.8em; bottom: 0.5em;
+   font-size: 65%;
+}
+.draftmenu-hiddn > div:not(:only-child) > .draftmenu-x {
+   visibility: hidden;
+}
+.draftmenu-shown .draftmenu-v {
+   display: none;
+}
+
+.pane-clip {
+   overflow-x: hidden;
+}
+.pane-slider {
+   position: relative;
+   white-space: nowrap;
+}
+.pane-slider-rhs {
+   right: 100%;
+}
+.pane-scroller {
+   display: inline-block;
+   vertical-align: top;
+   box-sizing: border-box;
+   width: 100%;
+   max-height: 40vh;
+   overflow-y: scroll;
+   padding-right: 2px;
+   white-space: initial;
+}
+
+.notice {
+   padding-right: 0.5em;
+}
+.notice > .notice-hasblurb {
+   cursor: pointer;
+}
+.notice > .notice-seen {
+   margin: 0;
+   padding-top: 10px;
+   background-color: whitesmoke;
+}
+.notice > :not(.notice-seen) + .notice-seen,
+.notice > :first-child.notice-seen {
+   border-top: 4px double lightgray;
+   padding-top: 6px;
+   margin-top: 10px;
+}
+
+.pingtext {
+   resize: vertical;
+   min-height: 4em;
+   max-height: 40vh;
+}
+
+.pingresponse {
+   white-space: nowrap;
+}
+
+.group-admin {
+   font-size: 125%;
+   line-height: 1;
+   cursor: default;
+}
+
+.svccfg tr td {
+   padding: 0.5em 0;
+}
+.svccfg tr td:nth-child(2) {
+   word-break: break-all;
+}
+
+.tour-heading {
+   font-size: 120%;
+   margin-bottom: 1em;
+}
+.tour-slide {
+   white-space: nowrap;
+}
+.tour-slide > div:first-child {
+   margin-bottom: 1em;
+}
+.tour-slide > div:first-child > img {
+   display: block;
+   margin: 0 auto;
+}
+.tour-slide > span {
+   float: left;
+   margin-top: 0.3em;
+   padding: 2px;
+}
+.tour-slide > span:hover {
+   border: 1px solid ;
+   border-radius: 4px;
+   padding: 1px;
+}
+.tour-slide > span + div {
+   margin-left: 2em;
+}
+.tour-slide button {
+   pointer-events: none;
+}
+.tour-inset {
+   float: right;
+   width: 40%;
+}
+.tour-inset > div {
+   margin-top: -1.5em;
+   margin-left: -1em;
+   margin-bottom: 1em;
+   font-size: 120%;
+   font-style: italic;
+}
