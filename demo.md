@@ -17,7 +17,7 @@ _Try the mnm client, tell us what you think_
 
 &nbsp;
 
-## Please Note:
+__Please Note:__
 
 - It may feel unfamiliar at first.
 
@@ -36,4 +36,6 @@ _Try the mnm client, tell us what you think_
 [__Open without tour__](/w/service-demo.html?Blue){:target="_blank"}
 
 </p>
+
+---
 </div>
