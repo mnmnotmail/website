@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<!--
+   Copyright 2018, 2019 Liam Breck
+   Published at https://github.com/networkimprov/mnm-hammer
+
+   This Source Code Form is subject to the terms of the Mozilla Public
+   License, v. 2.0. If a copy of the MPL was not distributed with this
+   file, You can obtain one at http://mozilla.org/MPL/2.0/
+-->
+<html><head>
+   <title>Docs - mnm</title>
+   <link rel="icon" href="/w/img/logo-48nobg-bleed-bright.png"/>
+
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <link  href="/w/uikit-30.min.css" rel="stylesheet"/>
+   <script src="/w/uikit-30.min.js"></script>
+   <script src="/w/uikit-icons-30.min.js"></script>
+
+   <link  href="/w/service.css" rel="stylesheet"/>
+
+   <script>
+      window.onload = function() {
+         var aAbout = {Version: '0.9.0-demo', VersionDate: '2021.02.14'};
+         var aEl = document.getElementById('version');
+         aEl.innerText = aAbout.Version +' '+ aAbout.VersionDate;
+      };
+      var mnm_lastScroll = 0;
+      window.mnm_resetScroll = function() {
+         document.getElementById('main').scrollTop = mnm_lastScroll
+      };
+      document.onclick = function(iEv) {
+         if (iEv.target.href && !iEv.target.target)
+            history.replaceState(null, null, iEv.target.href);
+      };
+   </script>
+</head><body>
+
+<div uk-height-viewport="offset-top:true; offset-bottom:true"
+     class="menu-bg firefox-minheight-fix">
+
+<div uk-grid class="uk-grid-small uk-height-1-1">
+<div class="uk-width-expand uk-overflow-auto uk-height-1-1"
+     onscroll="mnm_lastScroll = this.scrollTop"
+     id="main">
+
+<div style="padding: 0 0.5em 0 0.2em; background-color:whitesmoke">
+
+
+<h3 id="what">1. What's mnm ?
+<a target="_blank" href="https://mnmnotmail.org">
+   <img src="/w/img/logo-400-bleed-dim.png"
+        style="float:right; margin:0 0.5em; width:33.5%"></a>
+</h3>
+
+<p><i>mnm is not mail.</i></p>
+
+<p>The mnm project is building a replacement for email: a 
+<a target="_blank" href="https://github.com/networkimprov/mnm-hammer">client</a> (this app), a 
+<a target="_blank" href="https://github.com/networkimprov/mnm">server</a>, and a 
+<a target="_blank" href="https://github.com/networkimprov/mnm/blob/master/Protocol.md">simple 
+protocol</a> (TMTP) between them. 
+</p>
+
+<p>mnm has two major goals.</p>
+
+<ol><li>To provide a far safer correspondence model, where you:  
+<br>+ choose the organizations/sites that relay your correspondence  
+<br>+ select which members of a site can correspond with you  
+<br>+ always know from which site a message originated  
+<br>+ can block anyone with whom you've made contact  
+<br>+ may leave a site and never see traffic from it again  
+<br>&nbsp;</li>
+
+<li>To offer capabilities missing in traditional email, including:  
+<br>+ forms/surveys whose results are collected into tables  
+<br>+ data-driven charts via [a JS chart library TBD]  
+<br>+ slide deck layouts  
+<br>+ hashtags and private tags  
+<br>+ hyperlinks to messages &amp; other threads  
+<br>+ message formatting &amp; layout via Markdown (aka CommonMark)  
+<br>+ many more features to foster efficiency, creativity, focus, and understanding  
+</li></ol>
+
+<p>Further reading: 
+<a target="_blank" href="https://mnmnotmail.org/rationale.html"><i>Why TMTP?</i></a> 
+</p>
+
+
+<h4 id="cryp">1a. Encryption</h4>
+
+<p>mnm employs TLS (aka SSL) to secure connections between the app and each server it connects to. 
+mnm does not offer end-to-end encryption (where apps en/decrypt messages before/after transmission). 
+</p>
+
+<p>The author encourages organizations that transmit highly sensitive information 
+via electronic messaging to propose enhancements to the mnm software for their needs. 
+</p>
+
+<p>For individuals who desire end-to-end email encryption, 
+the author suggests any of the secure, audited electronic mail offerings on the market. 
+</p>
+
+
+<h3 id="look">2. Look &amp; Feel</h3>
+
+<p><b>Warning!</b> 
+Confirmation dialogs for send, etc. are [not yet implemented]. 
+Undo for edit, delete, etc. are [not yet implemented]. 
+</p>
+
+<p><b>Panels</b>.
+mnm divides its screen into three panels. 
+The message panel is on the left, 
+so its left margin (the most-seen region for left-to-right languages) is free from distractions, 
+helping the reader/writer to concentrate. 
+The accounts panel is on the right, 
+so its frequent activity notifications are far from the normal focus of the user. 
+The thread index panel is between them.
+</p>
+
+<p><b>Colors</b>.
+The color scheme is intended to reduce the glare of black-on-white
+designs, and foster concentration. 
+The accounts panel is dark, to de-emphasize its constant updates. 
+Received and sent messages appear on a background reminiscent 
+of parchment, to imply a sense of permanence. 
+Input fields have a white background for emphasis.
+</p>
+
+<b>Controls</b>.
+<table style="border-spacing:0 0.5em"><tr>
+<td><span uk-icon="bell"></span></td>
+<td>Feature menus are indicated by an icon without a border.</td>
+</tr><tr>
+<td><a onclick="return false">etc<span uk-icon="expand"></span></a><br>
+    <a onclick="return false" title="Description of action"><span uk-icon="mail"></span></a></td>
+<td>Hyperlinks typically open a browser tab or alter a view, 
+    but <a onclick="return false"><span uk-icon="download"></span></a> downloads a file,
+    and <a onclick="return false"><span uk-icon="link"></span></a> copies markdown to the clipboard.
+    They appear as an icon, or text with an icon, in blue.</td>
+</tr><tr>
+<td><a onclick="return false"><span uk-icon="triangle-left"></span>etc</a></td>
+<td>Hyperlinks that pop up a viewer are prefixed with a triangle.</td>
+</tr><tr>
+<td><span style="color:#888; border-bottom:1px solid #1e87f0; font-size:0.875rem; cursor:default"
+          >&nbsp;ETC &times;&nbsp;</span></td>
+<td>Tabs, which alter a panel or sort a list, have a title in all-caps 
+    and display a blue underscore on the current tab.</td>
+</tr><tr>
+<td><button onclick="return false" title="Description of action"
+            class="btn btn-icon"><span uk-icon="forward"></span></button></td>
+<td>Buttons, which change the state of the app, have an icon 
+    and show help text when the mouse hovers on them.</td>
+</tr><tr>
+<td style="padding-right:0.5em">
+    <span class="draftmenu-sample draftmenu-text draftmenu">etc&nbsp;&#x25BD;</span></td>
+<td>Input menus display &#x25BD; when they contain multiple items.
+    When open, an item may be removed by its &times; button.</td>
+</tr><tr>
+<td><input value="etc" type="text" style="width:2.7em"><br>
+    <span class="adrsbkmenu" style="display:inline-block">
+       <span class="adrsbkmenu-select">etc</span></span></td>
+<td><i>To</i> and <i>Group</i> input fields pop up a keyboard-navigable menu 
+    of aliases or groups matching the input text.</td>
+</tr><tr>
+<td><span title="December 31, 2020, 11:59:59 PM EST">12-31</span></td>
+<td>Dates show the full date &amp; time when the mouse hovers on them.</td>
+</tr></table>
+
+<p><b>Browser Tabs</b>.
+When you have multiple mnm accounts, each one is presented in a separate browser tab. 
+Tabs may be closed and re-opened without impacting the app's connection to the TMTP service, 
+as the app runs separately from the browser. 
+</p>
+
+<p>An mnm app optimized for small screens is ... 
+[not yet implemented].
+</p>
+
+
+<h3 id="acct">3. Accounts</h3>
+
+<p>The right-hand panel lists your accounts on TMTP services. 
+The account presented in the current browser tab has a <span uk-icon="settings"></span> menu 
+which displays its configuration. 
+Other accounts have a <span uk-icon="bell"></span> menu that summarizes recent activity therein. 
+</p>
+
+<p>An account's user ID (UID) and password are randomly generated by the service and stored on 
+the client device. Both are equally unguessable. 
+The UID is revealed to other service members only by sending or replying to an invite. 
+The password is dedicated to one client device, and is never entered by hand. 
+</p>
+
+<p>To create an account, open the <span uk-icon="plus-circle"></span> menu and fill in the form. 
+It takes the 
+<i>Site Address</i> of the TMTP service (e.g. <tt>+someplace.net:443</tt>), 
+<!--todo Connections to the service are periodic if <i>(Pd days:hh:mm:ss)</i> is set. -->
+<i>Your Name/Alias</i> by which other service members know you, and the 
+<i>Account Title</i> to display in the accounts panel 
+(e.g. the name of the organization providing the service). 
+The <i>Site Address</i> is prefixed by <tt>+</tt> or <tt>=</tt> to indicate 
+whether the service's TLS certificate can be verified or not. 
+Not all addresses contain a <tt>:number</tt> component. 
+</p>
+
+<p>A service may allow you to create more than one account. 
+A service may require member-specific credentials (e.g. for Radius, Kerberos, or LDAP) 
+[not yet implemented].
+</p>
+
+<p>If you give a name/alias that is in use by another service member, 
+the account will be created, but not usable until you change the alias.
+To do so, open the <span uk-icon="settings"></span> menu on the accounts panel, 
+and use the <i>Alias (taken)</i> field.
+</p>
+
+<p>If the mnm app cannot contact the service (e.g. because it is down, or the site address is incorrect), 
+the account will be created, but not usable until it makes contact. 
+To change the address, <!--todo i>(Pd days:hh:mm:ss),</i --> 
+open the <span uk-icon="settings"></span> menu on the accounts panel, 
+and use the <i>Site</i> field. 
+</p>
+
+<p>To change the <i>Account Title</i>, [not yet implemented]. 
+</p>
+
+
+<h4 id="alis">3a. Aliases</h4>
+
+<p>Aliases are the names by which service members know each other. 
+An alias conveyed verbally or by phone is used in an invite to make initial contact 
+with another service member. 
+Users may create additional aliases after joining a service, corresponding to different roles, etc. 
+</p>
+
+<p>To create an alias, open the <span uk-icon="settings"></span> menu on the accounts panel, 
+and use the <i>+Alias</i> form. 
+[not yet implemented on client]
+</p>
+
+<p>Aliases cannot be transferred to a different account (and therefore cannot be removed), 
+but may be deactivated and reactivated.
+[not yet implemented]
+</p>
+
+
+<h4 id="repl">3b. Replicas</h4>
+
+<p>You can replicate your accounts on other devices running the mnm app. 
+Each copy of an account is known as a replica, and has a unique, server-generated password. 
+All replicas receive every message sent to the account. 
+Replicas provide automatic backup of account data, and access to it from multiple devices. 
+</p>
+
+<p>Private content (e.g. message tags, message seen status, the last-seen notice, ohi-to contacts, 
+pinned tabs, and account configuration) is kept in sync across your replicas. 
+Synchronization updates are distributed every two minutes. 
+Synchronization of message drafts and invite drafts is 
+[not yet implemented].
+Peer-to-peer synchronization between replicas residing on the same local network is 
+[not yet implemented].
+</p>
+
+<p>Replicas of an account are listed in the <span uk-icon="laptop"></span> menu. 
+The <i>first</i> entry represents the original instance of the account. 
+The login status and history for each replica is 
+[not yet implemented].
+</p>
+
+<p>To create a replica, open the <span uk-icon="cog"></span> menu above the accounts panel 
+on the destination device, 
+and click the <span uk-icon="laptop"></span><span uk-icon="arrow-left"></span> button. 
+The menu will display the address and pin required to make a replica. 
+On the origin device, open the <span uk-icon="laptop"></span> menu and fill in the form with the 
+<i>Target Address</i> and <i>Target Pin</i> you've obtained. 
+Also provide a <i>New replica name</i>, and then click the <span uk-icon="laptop"></span> button. 
+</p>
+
+<p>Creating a replica is easy between devices on the same local network. 
+When one of the devices is non-local, the <i>Target Address</i> must give the public IP address 
+of the destination device, and any firewalls between that device and the Internet 
+must be configured to allow incoming traffic on the mnm app's HTTP port (typically 8123).
+After a replica is created, the devices can reside on different networks without special configuration.
+</p>
+
+<p>If a replication cannot be completed immediately, the replica's status will indicate 
+<i>Pending</i> if the account's service is unreachable, or 
+<i>Accepted</i> if the destination device becomes unreachable, or 
+<i>Ready</i> if the origin device crashed after the destination received all the data. 
+To complete a replication, obtain and fill in the <i>Target Address</i> and <i>Target Pin</i> as above, 
+then click the <span uk-icon="laptop"></span> button in the entry for the incomplete replica. 
+A <i>Pending</i> or <i>Accepted</i> replica can be completed on a different destination device. 
+</p>
+
+<p>To rename a replica, open the <span uk-icon="laptop"></span> menu and ...
+[not yet implemented]
+</p>
+
+<p>To deactivate a replica, open the <span uk-icon="laptop"></span> menu and ... 
+[not yet implemented]
+</p>
+
+
+<h3 id="cont">4. Contacts</h3>
+
+<p>The <span uk-icon="users"></span> menu groups features for managing contacts, 
+i.e. other members of the service with whom you can correspond.
+</p>
+
+
+<h4 id="invt">4a. Invitations</h4>
+
+<p>A service member makes initial contact with another member by sending an invite (a.k.a. ping). 
+Invites include the sender's UID &amp; alias, the recipient's alias, 
+an optional group name (GID), and an optional short, plain-text message. 
+The sender is not notified if the recipient's alias is deactivated. 
+</p>
+
+<p>Invites are also generated for any original or subsequent thread recipients 
+with whom the others have not previously made contact. 
+Such invites display the message <i>via [Contact Name]</i> and a response hyperlink to the 
+thread in question. 
+</p>
+
+<p>Receipt of an invite adds the sender's UID &amp; alias to the recipient's address book. 
+The recipient may respond by sending an invite themselves, by starting a thread 
+with the sender, or by joining the group if one is included. 
+Issuing a response is optional. 
+</p>
+
+<p style="margin-bottom:0">Received and generated invites are logged 
+in the <span uk-icon="users"></span> menu under the <i>Invites</i> tab. 
+Sent invites are logged under the <i>Sent</i> tab. 
+Invites for which responses have been sent or received indicate the date of the response 
+and its type: 
+</p>
+
+<table style="margin-left:1em; border-spacing:0.5em 0">
+<tr><td class="btn-alignt"><span uk-icon="rss"></span></td>
+    <td> response via invite </td></tr>
+<tr><td class="btn-alignt"><a onclick="return false"><span uk-icon="mail"></span></a></td>
+    <td> response via thread </td></tr>
+<tr><td class="btn-alignt"><span uk-icon="reply"></span></td>
+    <td> this invite is a response or followup </td></tr>
+<tr><td class="btn-alignt"><span uk-icon="check"></span></td>
+    <td> group invitation accepted </td></tr>
+<tr><td class="btn-alignt"><span uk-icon="plus-circle"></span></td>
+    <td> recipient joined the group </td></tr>
+</table> 
+
+<p>To view the thread &amp; message that delivered an invite response, 
+click the <span uk-icon="mail"></span> hyperlink, 
+which adds a <b>&#x2992;</b>&nbsp;<i>Response</i> tab above the message list.
+(For responses of other types, no hyperlink appears on the invite.)
+</p>
+
+<p>To compose an invite, open the <span uk-icon="users"></span> menu, 
+select the <i>Drafts</i> tab, and enter an alias in the <i>To</i> field. 
+To include a group in the invitation, click the <span uk-icon="world"></span> hyperlink 
+to reveal the <i>Group</i> field and enter a group name (see <a href="#grup">Groups</a>). 
+Click the <span uk-icon="pencil"></span> button to create a draft invite. 
+Add a <i>Message</i> to the draft if desired; its text is automatically saved. 
+The <i>Message</i> is limited to 140 characters, but most emoji count for two characters. 
+A draft's <i>To</i> and <i>Group</i> fields cannot be updated; to change them, 
+delete the draft and create another. 
+</p>
+
+<p>To send an invite, click its <span uk-icon="forward"></span> button. 
+If it cannot be sent immediately, it is queued, which is indicated 
+by the <span uk-icon="bolt"></span> icon on the draft. 
+</p>
+
+<p>To delete a draft unsent, click its <span uk-icon="trash"></span> button. 
+</p>
+
+<p>After receiving an invite or a thread started in response to a sent invite, the recipient 
+may block further communication from the sender (see <a href="#bloc">Blocking</a>). 
+The sender is not notified that the recipient blocked them. 
+[not yet implemented]
+</p>
+
+
+<h4 id="grup">4b. Groups</h4>
+
+<p>A group provides an alias to a set of service members. 
+As currently designed, 
+this feature is suitable for communities of friends or colleagues who trust each other, 
+not for public discussions to which any service member can subscribe. 
+One joins a group by accepting an invite from a current group participant. 
+Existing participants receive a notification when someone joins, leaves, 
+updates their group membership info, or issues an invite. 
+A message delivered via a group does not list the participants who received it. 
+Group membership lists are stored on the TMTP server. 
+</p>
+
+<p>Groups which the user has joined or created are listed in the <span uk-icon="users"></span> 
+menu under the <i>Groups</i> tab. 
+Those created by the user are marked with <span class="group-admin">&#x24b6;</span>. 
+Received and sent invitations are logged in the <span uk-icon="users"></span> menu 
+under the <i>Invites</i> and <i>Sent</i> tabs.
+</p>
+
+<p>To invite someone to join a group, compose an invite including the group name 
+(see <a href="#invt">Invitations</a>). 
+If the group name is unknown and available, it will be created. 
+On the <i>Drafts</i> tab, the <i>Choose group</i> field presents a menu of known groups. 
+To copy a name from the menu into the <i>Group</i> field, press enter after selecting a menu item. 
+Having created a draft, add a <i>Message</i> if desired and send the invite. 
+</p>
+
+<p>To join a group in response to an invite, open the <span uk-icon="users"></span> menu, 
+select the <i>Invites</i> tab, and click the <span uk-icon="forward"></span> button 
+next to the group name. 
+If the acceptance cannot be sent immediately, it is queued, which is indicated
+by the <span uk-icon="bolt"></span> icon on the invite. 
+</p>
+
+<p>To list a group's membership, any current participant may... 
+[not yet implemented]
+</p>
+
+<p>To change one's group membership info, any current participant may... 
+[not yet implemented on client]
+</p>
+
+<p>To drop oneself or another group participant from the group, any current participant may... 
+[not yet implemented on client]
+</p>
+
+
+<h4 id="ohis">4c. Ohis</h4>
+
+<p>A service member may designate contacts to be notified when dis/connecting from/to the service. 
+This presence notification is referred to as an ohi. 
+Service members automatically receive ohis from any contacts who have so designated them. 
+Ohis do not carry a message. 
+</p>
+
+<p>The list of online contacts who have chosen to notify you appears 
+in a floating panel with dark background at the bottom-right corner of the threads panel. 
+Those contacts whom you also notify are flagged with &#x25ce;. 
+To hide or show the floating panel, click the o/ icon next to the <span uk-icon="users"></span> menu. 
+</p>
+
+<p>To add a contact to receive ohis from you, open the <span uk-icon="users"></span> menu, 
+select the <i>Ohi To</i> tab, use the <i>To</i> field to select an alias, press enter, 
+then click the o/ button. 
+</p>
+
+<p>To drop a contact receiving ohis from you, open the <span uk-icon="users"></span> menu,
+select the <i>Ohi To</i> tab, and click the <span uk-icon="trash"></span> button for that contact. 
+</p>
+
+<p>Ohis are not delivered to a recipient who has blocked the sender. 
+</p>
+
+
+<h4 id="bloc">4d. Blocking Other Members</h4>
+
+<p>[Not yet implemented].
+</p>
+
+
+<h3 id="upld">5. Attachable Files</h3>
+
+<p>Files attached to outgoing messages are added to the <span uk-icon="file-text"></span> menu. 
+A file may be safely removed from the menu after it's been attached, 
+but leaving it there doesn't consume any extra storage space. 
+Files may also be uploaded to this menu without attaching them. 
+</p>
+
+<p>To upload a file, open the <span uk-icon="file-text"></span> menu, 
+click the <i>Choose File</i> or <i>Browse</i> button and select a file, 
+amend the upload name as necessary, and click the <span uk-icon="push"></span> button. 
+Uploading by drag-and-drop is [not yet implemented]. 
+</p>
+
+<p>To copy a file attachment from the most-recently selected thread to the 
+<span uk-icon="file-text"></span> menu, open the <span class="paperclip">&#x1f4ce;</span> menu 
+and click the attachment's <span uk-icon="push"></span> button. 
+[not yet implemented]
+</p>
+
+<p>The list of files may be sorted using the <i>Date</i> and <i>Name</i> tabs. 
+</p>
+
+<p>To download a file, click its <span uk-icon="download"></span> hyperlink. 
+(Note: the &#x25a1; character is appended to download filenames which may be reserved by the OS.) 
+To preview a file, click its filename hyperlink. 
+Files that can be previewed display a <span uk-icon="triangle-left"></span> icon. 
+</p>
+
+<p>To delete a file, click its <span uk-icon="trash"></span> button. 
+</p>
+
+
+<h3 id="form">6. Blank Forms</h3>
+
+<p>Users may create forms/surveys, similar to those on web pages, 
+to request specific data from their correspondents. 
+Blank forms are shared as attachments. 
+Filled-form results are returned as attachments, 
+and automatically appended to <a href="#fftb">Filled-Form Tables</a>. 
+</p>
+
+<p>Blank forms are grouped into families. 
+All forms in a family produce results containing the same set of fields (i.e. data type). 
+Form names have the format <tt><i>family.revision</i></tt>. 
+Each revision defines a variation of the form (e.g. for use with different audiences). 
+A family with more than one revision must also have a <tt><i>family.</i>spec</tt> object. 
+A blank form spec defines the data type produced by the family, and is used to validate 
+filled-form results. 
+</p>
+
+<p style="margin-bottom:0">A blank form spec may contain a data type specification, 
+or a filled-form name (FFN) that points into an online repository of specifications. 
+[In this release, any FFN lookup returns the contents of the file <i>formspec</i> in the app directory.]
+A data type specification is a JSON object with an array of field definitions. 
+Each definition has <tt>name</tt>, <tt>status</tt>, and <tt>type</tt> members. 
+An array definition also has an <tt>array</tt> member indicating the number of dimensions. 
+Type <tt>object</tt> fields have a nested <tt>spec</tt> list. 
+This example illustrates all the options: 
+</p>
+
+<pre style="background-color:inherit; border:none; margin:0">{"spec":[
+  {"name":"nr", "status":"required",   "type":"number" },
+  {"name":"so", "status":"optional",   "type":"string" },
+  {"name":"bd", "status":"deprecated", "type":"bool"   },
+  {"name":"or", "status":"required",   "type":"object", "spec":[
+    {"name":"anr", "status":"required", "type":"number", "array":2},
+    {"name":"aso", "status":"optional", "type":"string", "array":1}] }
+]}
+</pre>
+
+<p style="margin-bottom:0">This version of mnm embeds the 
+Vue Form Generator to render blank forms and produce results from user input. 
+See the <a target="_blank" href="https://icebob.gitbooks.io/vueformgenerator/content/schema.html"
+>VFG docs</a> covering form definition objects. 
+This example definition conforms to the above specification: 
+</p>
+
+<pre style="background-color:inherit; border:none; margin:0">{"fields":[
+  {"label":"SO", "model":"so", "type":"input", "inputType":"text"},
+  {"label":"NR", "model":"nr", "type":"input", "inputType":"number"},
+  {"label":"ASR", "model":"or.asr", "type":"checklist", "listBox":true,
+   "values":["a","b"]},
+  {"label":"ANO", "model":"or.ano", "type":"checklist", "listBox":true,
+   "values":[{"name":"12", "value":[1,2]},
+             {"name":"22", "value":[2,2]}] }
+]}
+</pre>
+
+<p>Blank form field names, given by <tt>name</tt> variables in a <tt>spec</tt> list, 
+and <tt>model</tt> variables in a form definition, may not begin with <tt>$</tt> (dollar sign), 
+as mnm uses that symbol internally. 
+</p>
+
+<p>To create a blank form, open the <span class="questionbox">&#x2370;</span> menu, 
+enter a family name and optional revision name (separated by ".") 
+in the <i>New Type</i> field, and click the <span uk-icon="pencil"></span> button. 
+For a blank form spec, use the revision name <tt>.spec</tt>.
+</p>
+
+<p>To edit a new or existing form, open the <span class="questionbox">&#x2370;</span> menu 
+and click its <span uk-icon="triangle-left"></span> hyperlink to open the form editor. 
+Next click the <tt>{...}</tt> hyperlink to switch to code view, and begin editing. 
+Click <tt>{...}</tt> again to preview changes. 
+Edits are automatically saved, except when the code is not valid JSON. 
+Closing the editor or switching to a different form drops the latest invalid changes, if any. 
+</p>
+
+<p>To copy an existing form to a new revision, open the form editor for the source form 
+and enter a revision name (without the family name) 
+in the <span uk-icon="copy"></span> form at the bottom of the editor panel. 
+</p>
+
+<p>To copy a blank form attachment from the most-recently selected thread to the 
+<span class="questionbox">&#x2370;</span> menu, open the <span class="paperclip">&#x1f4ce;</span> menu 
+and click the attachment's <span uk-icon="push"></span> button. 
+[not yet implemented]
+</p>
+
+<p>The list of forms may be sorted using the <i>Date</i> and <i>Name</i> tabs. 
+Families remain grouped when sorted by date. 
+</p>
+
+<p>To delete a form, click its <span uk-icon="trash"></span> button. 
+</p>
+
+
+<h3 id="thrd">7. Thread Lists &amp; Search</h3>
+
+<p>The middle panel presents the service's logo (if available) [not yet implemented] 
+and the account title, followed by a listing from the thread index. 
+</p>
+
+The built-in listing options are:
+<table style="border-spacing:0.5em 0">
+<tr><td><span style="font-size:0.875rem">ALL</span></td>
+    <td>all threads. </td></tr>
+<tr><td><span style="font-size:0.875rem">UNREAD</span></td>
+    <td>threads with any messages that have not been opened. </td></tr>
+<tr><td><span style="font-size:0.875rem">#TODO</span></td>
+    <td>threads with any messages tagged as such. </td></tr>
+</table>
+
+<p>To add a listing of threads containing a specific tag, open the 
+<span uk-icon="hashtag"></span> menu and click the tag's hyperlink (see also <a href="#tags">Tags</a>). 
+</p>
+
+<p>The search box adds a listing of threads that match the entered query. 
+To either require or disallow certain words in every thread of the result set, 
+prefix any words in the query with <tt>+</tt> or <tt>-</tt>.
+To require a phrase in every thread of the result set, 
+append or prepend <tt>=</tt> to the entire query.
+</p>
+
+<p>For documentation of the <span uk-icon="database"></span> menu, see 
+<a href="#fftb">Filled-Form Tables</a>.
+</p>
+
+<p>To sort the thread list by the date of the initial message in each thread, click ... 
+[not yet implemented]. 
+To sort the thread list by the date of the most recent message in each thread, click ... 
+[not yet implemented].
+</p>
+
+<p>Within the thread list, the two right-hand columns give the date of the initial message 
+and either its sender, or its recipients (in <i>italics</i>) when this account is the initial sender.
+</p>
+
+<p>Threads with unopened messages present the date &amp; sender of the most recent message 
+in <b>boldface</b> text. 
+</p>
+
+<p>To display a thread in the left-hand panel, click its line in the list. 
+This adds the thread to the set of recently selected threads (history). 
+</p>
+
+<p>To navigate the thread history, 
+use the <span uk-icon="arrow-left"></span><span uk-icon="arrow-right"></span> hyperlinks. 
+</p>
+
+<p>To start a new thread, click the <span uk-icon="pencil"></span> button. 
+</p>
+
+
+<h4 id="fftb">7a. Filled-Form Tables</h4>
+
+<p>Both received and sent filled-form results are appended to a table for the associated 
+form type (aka FFN).
+The filled-form tables are listed in the <span uk-icon="database"></span> menu, by date of last update. 
+This menu does not appear if no filled-form results have been recorded.
+See also <a href="#form">Blank Forms</a>. 
+</p>
+
+<p>To view a filled-form table in a separate thread panel tab, open the 
+<span uk-icon="database"></span> menu and click the hyperlink for the table. 
+</p>
+
+<p>To view the thread &amp; message that delivered a specific filled-form table entry, 
+click its <span uk-icon="mail"></span> hyperlink,
+which adds a <b>&#x2992;</b>&nbsp;<i>Form result</i> tab above the message list. 
+</p>
+
+<p>Future versions of mnm will provide filled-form table queries, 
+and operations on query results. 
+</p>
+
+
+<h4 id="evtb">7b. Calendar Events</h4>
+
+<p>Event objects attached to received and sent messages are added to the events table. 
+Events may also be uploaded to the table, or downloaded from an iCalender service. 
+[Not yet implemented]
+</p>
+
+
+<h3 id="msgs">8. Messages</h3>
+
+<p>The left-hand panel presents the subject and message list for the most-recently selected thread. 
+If the thread has multiple subjects, the subject field becomes a menu (denoted by &#x25BD;) 
+headed by the subject of the most recent message. 
+</p>
+
+<p>After clicking either a row in the thread list or the 
+<span uk-icon="arrow-left"></span><span uk-icon="arrow-right"></span> hyperlinks,
+the message list may be scrolled with the arrow keys.
+</p>
+
+<p>The message list displays a header for every message in the thread. 
+The tabs above the list control which messages are open (i.e. fully shown). 
+<i>Open</i> shows messages which the user has directly opened (or in the case of sent 
+messages, not yet closed). 
+<i>All</i> shows all messages. 
+</p>
+
+<p>To show all messages containing a specific tag, select the tag name from
+the <span uk-icon="hashtag"></span> menu, which adds a <i>#Tagname</i> tab 
+(see also <a href="#tags">Tags</a>).
+</p>
+
+<p>To show any messages containing a phrase, enter the phrase in the search box and press enter, 
+which adds a tab for the phrase. 
+</p>
+
+<p>Clicking a message hyperlink in a received/sent message or draft preview 
+adds a <b>&#x2992;</b>&nbsp;<i>Linkname</i> tab above the message list showing 
+only the referenced message (see also <a href="#mark">Markdown</a>). 
+If a tab for the referenced message already exists, its title is instead updated to the latest linkname. 
+</p>
+
+<p>To open or close a message, click the message header (contains the date, time, and sender's alias). 
+While a newly-opened message is loading, <span uk-icon="future"></span> is displayed. 
+</p>
+
+<p>All attachments received or sent in messages of the thread (except filled-form results) 
+are listed in the <span class="paperclip">&#x1f4ce;</span> menu. 
+The list may be sorted using the <i>Date</i>, <i>Who</i>, <i>File</i>, and <i>Size</i> tabs. 
+</p>
+
+<p>To view the message that delivered an item in the <span class="paperclip">&#x1f4ce;</span> menu, 
+click the <span uk-icon="mail"></span> hyperlink for the item,
+which adds a <b>&#x2992;</b>&nbsp;<i>Attached</i> tab above the message list.
+</p>
+
+<p>To download a file in the <span class="paperclip">&#x1f4ce;</span> menu, 
+click its <span uk-icon="download"></span> hyperlink. 
+(Note: the &#x25a1; character is appended to download filenames which may be reserved by the OS.) 
+To preview a file or form, click its name hyperlink. 
+Attachments that can be previewed display a <span uk-icon="triangle-left"></span> icon. 
+</p>
+
+
+<h4 id="rcpt">8a. Recipients</h4>
+
+<p>Individuals or groups who have received a copy of the thread are listed 
+in the <span uk-icon="social"></span> menu. 
+Those who have unsubscribed from the thread do not receive new messages, and are 
+indicated by <span style="text-decoration:line-through">&nbsp;Recipient Name&nbsp;</span>. 
+The recipients list may be sorted using the <i>Date</i>, <i>Who</i>, and <i>By</i> tabs. 
+Each list item may include a <i>Note</i> written by the member who added that recipient. 
+To view the <i>Note</i>, mouse over a recipient's name in the list. 
+</p>
+
+<p>To forward a thread to new recipients (or resubscribe unsubscribed recipients), 
+open the <span uk-icon="social"></span> menu, 
+edit the <i>Note</i> field to indicate why you've added this recipient if desired, 
+use the <i>Forward to</i> field to select an alias or group, 
+and click the <span uk-icon="list"></span> button (or press enter); repeat for other recipients. 
+(Recipients won't receive anything unless the thread is forwarded.) 
+To remove a recipient from the forward, click the &times; button for the target item. 
+Click the <span uk-icon="forward"></span> button to forward the thread to the new recipients. 
+</p>
+
+<p>A forwarded thread is delivered without any attachments. 
+These pending attachments are automatically delivered separately by their original senders. 
+This policy prevents the transmission of malware disguised as a benign attachment from a trusted sender. 
+A copy of each message is also automatically delivered by its original sender. 
+Until the copy is received, the sender's name on the message is labeled <i>[unverified]</i>, 
+and the label's hover text gives the identity of the account that forwarded the thread. 
+If the original copy does not match the forwarded version, the sender's name is labeled 
+<i>[possibly forged]</i>.
+</p>
+
+
+<h4 id="recv">8b. Received/Sent Messages</h4>
+
+<p>Heretofore unopened messages present the date &amp; author in bold text in the header. 
+</p>
+
+<p>Open messages display the list of attachments, if any, immediately below the header. 
+To close the list, click the 1<span class="paperclip">&#x1f4ce;</span> icon.
+</p>
+
+<p>To download a file attachment, click its <span uk-icon="download"></span> hyperlink. 
+To preview a file or form, click its name hyperlink. 
+Attachments that can be previewed display a <span uk-icon="triangle-right"></span> icon. 
+To view a filled-form result, click its name hyperlink. 
+Filled-form attachments display a <span uk-icon="file-edit"></span> icon.
+Pending attachments in forwarded threads display a <span uk-icon="bolt"></span> icon.
+</p>
+
+<p>The <i>Subject</i> field appears as <i>Re: etc</i>, if present.
+The <i>Message text</i> displays <span uk-icon="comment"></span> if it's empty. 
+</p>
+
+<p>Both the <i>Subject</i> and <i>Message text</i> may contain Unicode characters, 
+however the typeface in use typically won't include a rendering of every possible character.
+To accommodate commonly written characters that are omitted in many typefaces, 
+the mnm app varies the typeface within a message [not yet implemented].
+Any invalid representations of Unicode that occur are altered by the browser to 
+one or more <tt>&#xfffd;</tt> symbols.
+To explore the Unicode universe, visit 
+<a target="_blank" href="http://www.amp-what.com/">&amp;what;</a>.
+</p>
+
+<p>To change the typeface of a message, [not yet implemented].
+</p>
+
+<p>To reply to a message, click the <span uk-icon="comment"></span> button to the right 
+of the header. 
+</p>
+
+<p>To reply to a message containing a blank form and include a filled-form result in the 
+reply, click the <span uk-icon="commenting"></span> button above the form. 
+Blank forms are fillable only in the preview panel of the draft editor. 
+</p>
+
+
+<h4 id="tags">8c. Tags</h4>
+
+<p>A message may be assigned any number of predefined and user-defined tags, 
+which allow threads and messages to be found via tag searches.
+When a tag is sync'd to account replicas, on any device where that tag name is 
+already in use by an account not replicated locally, 
+the tag's name on that device will be changed to <i>tagname&nbsp;[account<sup>N</sup>]</i> 
+(see also <a href="#repl">Replicas</a>).
+</p>
+
+<p>To set or clear a tag, open the message to be tagged, and use 
+the <span uk-icon="tag"></span> menu that follows the sender's name in the message header.
+</p>
+
+<p>To create a new tag, use the <i>New Tag</i> form in the <span uk-icon="tag"></span> menu.
+</p>
+
+<p>To remove a tag from all messages where it appears... [not yet implemented] 
+To rename a tag... [not yet implemented] 
+</p>
+
+<p>To list all threads containing a specific tag, 
+use the <span uk-icon="hashtag"></span> menu next to the threads panel search box.
+To show all messages within a thread containing a specific tag, 
+use the <span uk-icon="hashtag"></span> menu next to the message panel search box.
+</p>
+
+
+<h4 id="comp">8d. Draft Composition</h4>
+
+<p>Starting a new thread or a reply within an existing thread opens a draft editor. 
+Its input fields are the Attachment list (optional), 
+the <i>Subject</i> (optional for replies), and the <i>Message text</i> (optional). 
+The <i>Subject</i> (a.k.a. <i>Re</i>) is minimized on replies by default; 
+to edit it, click the thin white bar above the <i>Message text</i> field. 
+Edits to all fields are automatically saved; 
+the <i>Subject</i> and <i>Message text</i> are saved periodically during editing. 
+</p>
+
+<p>New draft threads (but not replies) are automatically tagged with <i>Todo</i>, so appear in the 
+<i>#Todo</i> thread listing. 
+You can remove the tag at any time. 
+Automatic tagging can be disabled in the <span uk-icon="cog"></span> menu 
+[not yet implemented]. 
+See also <a href="#tags">Tags</a>. 
+</p>
+
+<p>To preview the <i>Message text</i> as it would look to recipients, press <tt>Ctrl-J</tt>. 
+The preview panel always appears in the same position, even if there are multiple open drafts 
+in the current message list.
+A panel that scrolls with the message list is [not yet implemented].
+To hide the preview panel, press <tt>Ctrl-J</tt> again or click anywhere outside the draft's 
+<i>Message text</i> or <i>Subject</i>. 
+</p>
+
+<p>To preview all slides in a slide deck, click the &Lang;. . .&Rang; hyperlink on the preview panel. 
+To return to normal deck preview, click the hyperlink again. 
+</p>
+
+<p>To name recipients of a new thread, open the <span uk-icon="social"></span> menu, 
+edit the <i>Note</i> field to indicate why you've added this recipient if desired, 
+use the <i>To</i> field to select an alias or group, 
+and click the <span uk-icon="list"></span> button (or press enter); repeat for other recipients. 
+(Recipients won't receive anything unless the draft is sent.) 
+To remove a recipient from the list, click the &times; button for the target item.
+</p>
+
+<p>The draft gives a summary of recipients next to the <span uk-icon="forward"></span> button. 
+If no recipients have been named, the draft indicates <i>[self]</i>.
+</p>
+
+<p>To attach a file or blank form, click the <span uk-icon="file-text"></span> or 
+<span class="questionbox">&#x2370;</span> icon (below the <span uk-icon="trash"></span> button) 
+to open the appropriate menu, 
+then attach an item by clicking its <span class="paperclip">&#x1f4ce;</span> button. 
+To display an image or blank form in the <i>Message text</i>, see <a href="#mark">Markdown</a>. 
+</p>
+
+<p>To drop an entry in the Attachment list, click the list's pop-up menu to reveal its contents, 
+then click the &times; button for the target item. 
+If an entry in the Attachment list is referenced by <a href="#mark">Markdown</a> in 
+the <i>Message text</i>, dropping that list item disables the <span uk-icon="forward"></span> button. 
+</p>
+
+<p>To add/drop a filled-form result to/from the Attachment list, click the 
+<i>attach fill</i> checkbox above the form in the preview panel. 
+If adding a result, also fill in the form fields. 
+(Requires a blank form in the <i>Message text</i>; see <a href="#mark">Markdown</a>.) 
+</p>
+
+<p>To send a draft, click its <span uk-icon="forward"></span> button. 
+If it cannot be sent immediately, it is queued, which is indicated 
+by the <span uk-icon="bolt"></span> icon to the right of the header. 
+</p>
+
+<p>To delete a draft unsent, click its <span uk-icon="trash"></span> button. 
+</p>
+
+
+<h4 id="mark">8e. Markdown</h4>
+
+<p>The <i>Message text</i> supports Markdown, a widely used plain-text shorthand 
+for essential web page features. 
+Markdown avoids the unpredictable behavior of browser WYSIWYG editors. 
+Consult the <a target="_blank" href="http://commonmark.org/help/">CommonMark Reference</a> and 
+<a target="_blank"
+   href="https://docs.github.com/en/github/writing-on-github/organizing-information-with-tables"
+>Github's Markdown Tables</a> for documentation. 
+
+<p>To view a summary of Markdown options in mnm, click the <span class="draftpv-doctab"></span> 
+tab in the top-left corner of the preview panel.
+Alternatively, press <tt>Ctrl-M</tt> while editing a thread draft. 
+Repeating <tt>Ctrl-M</tt> advances to the next frame of options, then closes the summary sidebar.
+</p>
+
+<p>mnm extends and amends Markdown as follows: 
+</p>
+
+<p><b>Images</b> must reference a file in the Attachment list, or one attached to a previous 
+message in the current thread. 
+This prevents the sender from forcing the recipient's browser to contact an Internet site 
+without the recipient's consent. 
+</p>
+
+<p>For a file in the Attachment list, write:          <tt>![<i>alt</i>](this_u:<i>file_name</i>)</tt>
+<br>For a file attached to a previous message, write: <tt>![<i>alt</i>](<i>file_ref</i>)</tt>
+<br>To obtain the code above, open the <span class="paperclip">&#x1f4ce;</span> menu, 
+click the <span uk-icon="link"></span> hyperlink for the target file, then paste the 
+string into your <i>Message text</i>. 
+<tt>alt</tt> is any desired text. 
+</p>
+
+<p><b>Blank Forms</b> must reference a form in the Attachment list, or one attached to a previous 
+message in the current thread. 
+Any blank form with a reference that's already in use is ignored.
+</p>
+
+<p>For a form in the Attachment list, write:          <tt>![?](this_f:<i>form_name</i>)</tt>
+<br>For a form attached to a previous message, write: <tt>![?](<i>form_ref</i>)</tt>
+<br>To obtain the code above, open the <span class="paperclip">&#x1f4ce;</span> menu, 
+click the <span uk-icon="link"></span> hyperlink for the target form, then paste the 
+string into your <i>Message text</i>. 
+</p>
+
+<p><b>Hyperlinks</b> may reference a remote site, or a file attached to a message 
+in the current thread, or a previous message in any thread. 
+References to relative URLs are disallowed. 
+</p>
+
+<p>For a remote site, write:                          <tt>[<i>text</i>](<i>url</i>)</tt>
+<br>For a file in the Attachment list, write:         <tt>[<i>text</i>](this_u:<i>file_name</i>)</tt>
+<br>For a file attached to a previous message, write: <tt>[<i>text</i>](<i>file_ref</i>)</tt>
+<br>For a previous message in any thread, write:      <tt>[<i>text</i>](<i>msg_ref</i>)</tt>
+<br>To obtain the attachment code above, use the <span class="paperclip">&#x1f4ce;</span> menu 
+as previously described. 
+To obtain the message code above, open the target message, click the <span uk-icon="link"></span> hyperlink 
+to the right of the header, then paste the string into your <i>Message text</i>. 
+<tt>text</tt> is any desired text. 
+</p>
+
+<p><b>Charts</b> [not yet implemented]
+</p>
+
+<p><b>Slides</b> let you format a message (or portion thereof) as a deck of slides. 
+Among other benefits, slides can be used to present a lot of information 
+without immediately intimidating the reader. 
+To create a slide deck, write:
+<tt style="display:block; margin:0.1em 2em; line-height:1.2">
+    <i>optional content above deck</i>
+<br>:::
+<br><i>first slide content</i>
+<br>:::
+<br><i>next slide content</i>
+<br>:::&gt;
+<br><i>optional content below deck</i>
+</tt>
+The <tt>:::&gt;</tt> is unnecessary if no content follows the deck. 
+A message can contain any number of separate decks. 
+</p>
+
+
+<h3 id="notc">9. Notices &amp; Errors</h3>
+
+<p>New updates to an account are noted in the <span uk-icon="bell"></span> menu 
+next to the <span uk-icon="users"></span> menu, 
+and in the <span uk-icon="bell"></span> menus provided for each account on the accounts panel. 
+Notices appear for invites, messages, new threads, group membership changes, and [more]. 
+A count of new notices appears to the left of the menu icon. 
+[partially implemented] 
+</p>
+
+<p>If a notice has a blurb, an ellipsis (<i>. . .</i>) appears within it. 
+To show or hide the blurb, click anywhere on the notice. 
+</p>
+
+<p>To show a subset of notices, click the <i>&bull; invites</i> (etc) hyperlinks at the top of the menu. 
+</p>
+
+<p>To mark all new notices as seen and drop any previously seen notices older than one week, click the 
+<span uk-icon="check"></span> button at the top of the menu. 
+The period for which seen notices are retained is configurable [not yet implemented].
+</p>
+
+<p>If mnm encounters an error, a <span style="color:crimson" uk-icon="warning"></span> 
+appears beside the top <span uk-icon="bell"></span> menu, and 
+an error message is posted to the <span uk-icon="warning"></span> section within the menu. 
+That section is shown when you open the menu after an error occurs.
+</p>
+
+
+<h3 id="conf">10. General Configuration</h3>
+
+<p>General configuration for the mnm app is listed in the <span uk-icon="cog"></span> menu. 
+</p>
+
+<p>To accept an account replica from an mnm app running on a different device, 
+click the <span uk-icon="laptop"></span><span uk-icon="arrow-left"></span> button. 
+See <a href="#repl">Replicas</a> for complete instructions. 
+</p>
+
+
+<h3 id="docs">11. Documentation</h3>
+
+<p>Documentation and the product version string are provided in the <span uk-icon="info"></span> menu. 
+</p>
+
+
+<h3 id="cred">12. Credits</h3>
+
+<p>The mnm app and TMTP server are written in 
+<a target="_blank" href="https://golang.org/">Go</a>. 
+The app also depends on 
+<a target="_blank" href="https://github.com/blevesearch/bleve">Couchbase-sponsored Bleve</a>, and
+<a target="_blank" href="https://github.com/gorilla/websocket">Gorilla Websocket</a>. 
+The server also depends on 
+<a target="_blank" href="https://github.com/beevik/ntp">Brett Vickers' NTP client</a>. 
+</p>
+
+<p>The browser-based UI depends on 
+<a target="_blank" href="https://vuejs.org/">Vue.js</a> for HTML templates and components, 
+<a target="_blank" href="https://getuikit.com/">UIkit</a> for stylesheets, 
+<a target="_blank" href="https://github.com/markdown-it/markdown-it">markdown-it</a> 
+for Markdown rendering, 
+<a target="_blank" href="https://github.com/moment/luxon">Luxon</a> for Date/Time formatting, and 
+<a target="_blank" href="https://github.com/vue-generators/vue-form-generator">vue-form-generator</a> 
+for the Blank Forms feature. 
+</p>
+
+<p>mnm is always tested first with 
+<a target="_blank" href="https://www.mozilla.org/">Mozilla Firefox</a>, 
+and the author frequently turns to the 
+<a target="_blank" href="https://developer.mozilla.org/">MDN web docs</a>. 
+Development of mnm is managed with 
+<a target="_blank" href="https://git-scm.com/">Git</a>. 
+</p>
+
+<p>The logo is by 
+<a target="_blank" href="https://david-gilmore.com/portfolio/">David Gilmore</a>.
+</p>
+
+<p>Robin Eng tested the preview releases at length, helping the author validate his concept, 
+and discover a multitude of minor flaws.
+</p>
+
+
+<h3 id="lcns">13. License</h3>
+
+<p> Copyright 2018, 2019 Liam Breck
+<br>Published at <a target="_blank" href="https://github.com/networkimprov/mnm-hammer">
+                    https://github.com/networkimprov/mnm-hammer</a>
+<br>
+<br>This Source Code Form is subject to the terms of the Mozilla Public
+<br>License, v. 2.0. If a copy of the MPL was not distributed with this
+<br>file, You can obtain one at <a target="_blank" href="http://mozilla.org/MPL/2.0/">
+                                   http://mozilla.org/MPL/2.0/</a>
+</p>
+
+
+<img src="/w/img/logo-400-inset-bright.png"
+     style="display:block; margin: 3em auto 1em; border-radius:234px">
+
+
+</div>
+</div>
+<div class="uk-width-1-3 uk-height-1-1" style="overflow-y:scroll">
+
+<div id="version" style="float:right; margin-right:0.5em; font-size:75%">[version missing]</div>
+
+<ol style="margin-bottom: 1em">
+<li><a href="#what">What's mnm?</a>
+<ol type="a">
+<li><a href="#cryp">Encryption</a></li>
+</ol></li>
+<li><a href="#look">Look &amp; Feel</a></li>
+<li><a href="#acct">Accounts</a>
+<ol type="a">
+<li><a href="#alis">Aliases</a></li>
+<li><a href="#repl">Replicas</a></li>
+</ol></li>
+<li><a href="#cont">Contacts</a>
+<ol type="a">
+<li><a href="#invt">Invitations</a></li>
+<li><a href="#grup">Groups</a></li>
+<li><a href="#ohis">Ohis</a></li>
+<li><a href="#bloc">Blocking Other Members</a></li>
+</ol></li>
+<li><a href="#upld">Attachable Files</a></li>
+<li><a href="#form">Blank Forms</a></li>
+<li><a href="#thrd">Thread Lists &amp; Search</a>
+<ol type="a">
+<li><a href="#fftb">Filled-Form Tables</a></li>
+<li><a href="#evtb">Calendar Events</a></li>
+</ol></li>
+<li><a href="#msgs">Messages</a>
+<ol type="a">
+<li><a href="#rcpt">Recipients</a></li>
+<li><a href="#recv">Received/Sent Messages</a></li>
+<li><a href="#tags">Tags</a></li>
+<li><a href="#comp">Draft Composition</a></li>
+<li><a href="#mark">Markdown</a></li>
+</ol></li>
+<li><a href="#notc">Notices &amp; Errors</a></li>
+<li><a href="#conf">General Configuration</a></li>
+<li><a href="#docs">Documentation</a></li>
+<li><a href="#cred">Credits</a></li>
+<li><a href="#lcns">License</a></li>
+</ol>
+
+</div>
+</div>
+</div>
+</body></html>
