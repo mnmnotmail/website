@@ -497,7 +497,7 @@
                      >awaiting link. . .</span>
                <div v-else>
                   <span uk-icon="bell" class="dropdown-icon">{{mnm._data.v[0].NoticeN || '&numsp;'}}</span>
-                  <a :href="'/'+ encodeURIComponent(mnm._data.v[0].Name) +'#tour'"
+                  <a :href="'?'+ encodeURIComponent(mnm._data.v[0].Name) +'#tour'"
                      target="_self"
                      title="Continue tour">{{mnm._data.v[0].Name}}</a>
                </div>

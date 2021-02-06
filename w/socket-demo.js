@@ -166,7 +166,7 @@
       aT.mo[iObj.Id].form_fill = aFormFill;
       aT.mo[iObj.Id].SubHead.Attach = aAttach;
       aT.mo[iObj.Id].SubHead.Subject = iObj.Subject;
-      aT.cl[1] = iObj.Cc && JSON.parse(JSON.stringify(iObj.Cc));
+      aT.cl[1] = JSON.parse(JSON.stringify(iObj.Cc));
       _tlSubject(aT);
       if (aAttach) {
          var aLms = iObj.Id.slice(iObj.Id.length-12);
@@ -472,7 +472,8 @@
          if (i === 'an') {
             var aN = iId.slice(iId.indexOf('_')+1);
             i = aN[0] === 'f' ? '/f' : '/t';
-            aN = encodeURIComponent(aN.slice(2));
+            aN = sSvc.T[sSvc.cs.Thread].al.find(function(c) { return c.Id === iId }) ?
+                 encodeURIComponent(aN.slice(2)) : 'NoSuchFile';
          } else {
             var aN = iId ? encodeURIComponent(iId) : '';
          }
@@ -796,6 +797,10 @@
                        "160a0f4621fc601c":{"Id":"160a0f4621fc601c","Len":10,"Posted":"2020-04-29T19:10:57.529Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi"},"msg_data":"1111111112"},
                        "160a0f4621fc601d":{"Id":"160a0f4621fc601d","Len":4,"Posted":"2020-04-29T19:11:27.119Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi"},"msg_data":"1112"},
                        "1647c7fe052c8e67":{"Id":"1647c7fe052c8e67","Len":16,"Size":16,"Posted":"2020-11-15T20:21:33.085Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi"},"msg_data":"try delayed send"}} ,
+
+                  cl: [[],
+                       [{"Who":"Blue 0528233319","By":"Blue 0528233319","WhoUid":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","ByUid":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Date":"2020-11-15T20:25:17.157Z","Note":"author","Subscribe":true,"Queued":false},
+                        {"Who":"Gold 0528233319","By":"Blue 0528233319","WhoUid":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX","ByUid":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Date":"2020-11-15T20:25:17.157Z","Note":"","Subscribe":true,"Queued":false}] ] ,
 
                   al: [] }
              } },
