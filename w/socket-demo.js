@@ -422,9 +422,7 @@
       aXhr.onload = function() {
          --sXhrPending;
          if (aXhr.status !== 200) {
-            var aTxt = (iId ? iId +' ' : '') +
-                       (aXhr.responseType === 'arraybuffer' ? _decode(aXhr) :
-                        aXhr.responseType === 'blob' ? aXhr.statusText : aXhr.responseText);
+            var aTxt = (iId ? iId +' ' : '') + aXhr.statusText;
             mnm.Log('get '+ i +' '+ aTxt);
             mnm.Err(aTxt);
             return;
@@ -477,6 +475,8 @@
          } else {
             var aN = iId ? encodeURIComponent(iId) : '';
          }
+         if (aN.endsWith('.txt'))
+            aN = aN.slice(0, -2); // github-pages rejects .txt files
          aXhr.open('GET', i.charAt(0) === '/' ? i+'/'+aN : '?'+i+(aN && '='+aN));
       }
       aXhr.send();
