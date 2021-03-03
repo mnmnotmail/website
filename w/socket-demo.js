@@ -241,7 +241,7 @@
          for (var a=0; aT.ml[a].Id !== iId; ++a) {}
          aT.ml[a].Seen = luxon.DateTime.utc().toISO();
          aT.mo[iId] = {Id:iId, Size:23, Posted:'', From:"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX",
-                       msg_data:'A newly opened message.',
+                       msg_data:'OK understood, thanks.',
                        SubHead:{Subject:'', ThreadId:sSvc.cs.Thread, Alias:"Gold 0528233319"}};
          for (var a=0; sSvc.tl[a].Id !== aT.ml[aT.ml.length-1].Id; ++a) {}
          sSvc.tl[a].Unread = false;
