@@ -359,6 +359,8 @@
          sD = mnm.demoData;
       if (mnm.demoId === 'local') {
          _render('/v', '/t', '/f', '/g', '/l');
+      } else if (!(mnm.demoId in sD.S)) {
+         location.search = ''; // reload page
       } else {
          sSvc = sD.S[mnm.demoId];
          sHlist[sHpos = 0] = sSvc.cs.Thread;
@@ -652,13 +654,7 @@
    var sLocalId = 900000000000;
    var sD = {'/v': [], '/t': [], '/f': [], '/g': [], '/l': {"Addr":"","Pin":""}, S: {}};
 
-   if (location.search === '') {
-      mnm.demoId = 'local';
-   } else {
-      mnm.demoId = location.search.slice(1);
-      if (!mnm.demoData || !(mnm.demoId in mnm.demoData.S))
-         location.search = ''; // reload page
-   }
+   mnm.demoId = location.search === '' ? 'local' : location.search.slice(1);
 
 }).call(this);
 
