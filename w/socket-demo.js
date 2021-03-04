@@ -355,6 +355,8 @@
    };
 
    mnm.Connect = function() {
+      if (mnm.demoData)
+         sD = mnm.demoData;
       if (mnm.demoId === 'local') {
          _render('/v', '/t', '/f', '/g', '/l');
       } else {
@@ -838,7 +840,7 @@
       mnm.demoId = 'local';
    } else {
       mnm.demoId = location.search.slice(1);
-      if (!(mnm.demoId in sD.S))
+      if (!mnm.demoData || !(mnm.demoId in mnm.demoData.S))
          location.search = ''; // reload page
    }
 
