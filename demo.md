@@ -32,8 +32,7 @@ __Please Note:__
 <p style="text-align:center">
    <style>.demolink { margin:0 1em; border:1px #0366d4 solid; border-radius:6px; padding:0.4em; font-weight:600; }</style>
    <br>
-   <a href="/w/service-demo.html"      target="_blank" class="demolink">Open demo with tour</a
-  ><a href="/w/service-demo.html?Blue" target="_blank" class="demolink">Open without tour</a>
+   <a href="/w/service-demo.html?Chox%20HQ" target="_blank" class="demolink">Open Demo</a>
 </p>
 
 </div>
