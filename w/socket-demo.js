@@ -654,7 +654,7 @@
    var sLocalId = 900000000000;
    var sD = {'/v': [], '/t': [], '/f': [], '/g': [], '/l': {"Addr":"","Pin":""}, S: {}};
 
-   mnm.demoId = location.search === '' ? 'local' : location.search.slice(1);
+   mnm.demoId = location.search === '' ? 'local' : decodeURIComponent(location.search.slice(1));
 
 }).call(this);
 
