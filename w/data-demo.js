@@ -6,187 +6,196 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
 mnm.demoData = {
-      '/v': [{"Name":"Blue","NoticeN":1,"UnreadN":1},
-             {"Name":"Gold","NoticeN":0,"UnreadN":0}] ,
-
-      '/t': [{"Name":"logo-400-inset-bright.png","Size":70070,"Date":"2019-10-24T21:26:57Z"},
-             {"Name":"logo-400-bleed-dim.png","Size":103533,"Date":"2019-10-24T20:57:53Z"},
-             {"Name":"BlueFile","Size":26,"Date":"2019-05-29T06:33:20Z"},
-             {"Name":"Gold/File","Size":26,"Date":"2019-05-29T06:33:20Z"}] ,
-
-      '/f': [{"Name":"Icecream","Spec":true,"Revs":[
-              {"Id":"1","Date":"2019-10-29T22:39:24Z"},
-              {"Id":"spec","Date":"2019-10-29T04:35:47Z"}] }] ,
-
-      '/g': [{"Id":"2020-05-06T02:56:08Z","Name":"mnm notes"},
-             {"Id":"Todo","Name":"Todo"}] ,
-
-      '/l': {"Addr":"192.168.1.2:8123","Pin":""} ,
-
-      S: {Blue: {
-             A:  [["Gold 0528233319", "Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX"]] ,
-
-             cs: {"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},
-                  "Thread":"1647c7fe052c8e6d",
-                  "ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},
-                  "History":{"Prev":false,"Next":false},
-                  "SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}} ,
-
-             cf: {"Name":"Blue","HistoryLen":88,"LoginPeriod":0,"Addr":"=192.168.1.3:443",
-                  "Verify":false,"Alias":"Blue 0528233319","Uid":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6",
-                  "NodeSet":[{"Name":"first","Status":97,"Local":true}]} ,
-
-             cn: {"Addr":"","Pin":"","Xfer":0} ,
-
-             ps: [] ,
-
-             pt: [{"Type":3,"Date":"2020-04-22T04:53:48.395Z",
-                   "Text":"123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789.",
-                   "Alias":"Gold 0528233319","MyAlias":"Blue 0528233319","Response":{}},
-                  {"Type":3,"Date":"2019-05-29T06:33:35.309Z",
-                   "Alias":"Gold 0528233319","MyAlias":"Blue 0528233319",
-                   "Response":{
-                    "Type":8,"Date":"2019-05-29T06:33:36.063Z","Alias":"Gold 0528233319",
-                    "Uid":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX","MyAlias":"Blue 0528233319",
-                    "MsgId":"15a30e173fa0c452","Gid":"Gold-G 0528233319",
-                    "Qid":"Gold-G 0528233319_016b024b0fd9","Response":{} }}] ,
-
-             pf: [{"Type":4,"Date":"2020-05-31T17:05:36.284Z",
-                   "Text":"test post server filename change",
-                   "Alias":"Gold 0528233319","Uid":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX",
-                   "MyAlias":"Blue 0528233319","MsgId":"16142b12a75ec3b2","Response":{} },
-                  {"Type":8,"Date":"2019-05-29T06:33:36.063Z",
-                   "Alias":"Gold 0528233319","Uid":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX",
-                   "MyAlias":"Blue 0528233319","MsgId":"15a30e173fa0c452","Gid":"Gold-G 0528233319",
-                   "Response":{},"ResponseInvt":{
-                    "Type":9,"Date":"2019-05-29T06:33:36.706Z",
-                    "Gid":"Gold-G 0528233319","Response":{} }}] ,
-
-             gl: [{"Gid":"Gold-G 0528233319","Date":"2019-05-29T06:33:36.706Z","Admin":false}] ,
-
-             ot: [] ,
-
-             of: [{"Date":"2021-01-24T22:27:48Z","Uid":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX",
-                   "Alias":"Gold 0528233319"}] ,
-
-             nl: [{"Type":"i","MsgId":"16142b12a75ec3b2","Date":"2020-05-31T17:08:16Z","Seen":0,"Alias":"Gold 0528233319","Blurb":"test post server filename change"},
-                  {"Type":"i","MsgId":"6","Date":"2019-05-28T06:33:29Z","Seen":4,"Alias":"seen"},
-                  {"Type":"i","MsgId":"5","Date":"2019-05-28T06:33:29Z","Seen":4,"Alias":"seen"}] ,
-
-             fl: [{"Id":"networkimprov.github.io/mnm-registry/first_recv","Date":"2019-05-29T06:33:28Z"},
-                  {"Id":"networkimprov.github.io/mnm-registry/first_sent","Date":"2019-05-29T06:33:23Z"}] ,
-
-             tl: [{"Id":"1647c7fe052c8e6d","Count":2,"Subject":"testing delays","Unread":true,
-                   "OrigCc":["Gold 0528233319"],
-                   "OrigDate":"2020-11-15T20:25:17.157Z","LastDate":"2020-11-15T20:26:58.960Z",
-                   "OrigAuthor":"Blue 0528233319","LastAuthor":"Gold 0528233319"},
-                  {"Id":"15a30e173fa0c457","Count":11,"Subject":"reply ohi","SubjectWas":"ohi",
-                   "OrigCc":["Blue 0528233319"],
-                   "OrigDate":"2019-05-29T06:33:37.006Z","LastDate":"2020-11-15T20:21:33.085Z",
-                   "OrigAuthor":"Blue 0528233319","LastAuthor":"Blue 0528233319"},],
-             tx: [{"Id":"_016b024c7088","Count":0,"Subject":"abc","OrigCc":[],
-                   "OrigDate":"2019-05-29T06:40:00Z","LastDate":"2019-05-29T06:40:00Z",
-                   "OrigAuthor":"Blue 0528233319","LastAuthor":""},
-                  {"Id":"15a30e173fa0c459","Count":2,"Subject":"to forward","OrigCc":[],
-                   "OrigDate":"2019-05-29T06:33:40.076Z","LastDate":"2019-05-29T06:33:41.229Z",
-                   "OrigAuthor":"Gold 0528233319","LastAuthor":"Gold 0528233319"}] ,
-
-             T:  {"1647c7fe052c8e6d": {
-                  ml: [{"Id":"1647c847245648f6","From":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX",
-                        "Alias":"Gold 0528233319","Date":"2020-11-15T20:26:58.960Z",
-                        "Subject":"",
-                        "Seen":"","Queued":false},
-                       {"Id":"1647c847245648f5","From":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX",
-                        "Alias":"Gold 0528233319","Date":"2020-11-15T20:26:58.960Z",
-                        "Subject":"",
-                        "Seen":"2020-11-15T20:27:38Z","Queued":false},
-                       {"Id":"1647c7fe052c8e6d","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6",
-                        "Alias":"Blue 0528233319","Date":"2020-11-15T20:25:17.157Z",
-                        "Subject":"testing delays",
-                        "Seen":".","Tags":["Todo"],"Queued":false}] ,
-
-                  mo: {"1647c7fe052c8e6d":
-                       {"Id":"1647c7fe052c8e6d","Len":5,"Size":5,
-                        "Posted":"2020-11-15T20:25:17.157Z",
-                        "From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6",
-                        "SubHead":{"Alias":"Blue 0528233319","ThreadId":"1647c7fe052c8e6d",
-                                   "Subject":"testing delays"},
-                        "msg_data":"boink"},
-                       "1647c847245648f5":
-                       {"Id":"1647c847245648f5","Len":2,"Size":2,
-                        "Posted":"2020-11-15T20:26:58.960Z",
-                        "From":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX",
-                        "SubHead":{"Alias":"Gold 0528233319","ThreadId":"1647c7fe052c8e6d",
-                                   "Subject":""},
-                        "msg_data":"ok"}} ,
-
-                  cl: [[],
-                       [{"Who":"Blue 0528233319","By":"Blue 0528233319",
-                         "WhoUid":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","ByUid":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6",
-                         "Date":"2020-11-15T20:25:17.157Z","Note":"author","Subscribe":true,"Queued":false},
-                        {"Who":"Gold 0528233319","By":"Blue 0528233319",
-                         "WhoUid":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX","ByUid":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6",
-                         "Date":"2020-11-15T20:25:17.157Z","Note":"","Subscribe":true,"Queued":false}]] ,
-
-                  al: [] },
-
-                  "15a30e173fa0c457": {
-                  ml: [{"Id":"1647c7fe052c8e67","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Alias":"Blue 0528233319","Date":"2020-11-15T20:21:33.085Z","Subject":"reply ohi","Seen":".","Queued":false},
-                       {"Id":"160a0f4621fc601d","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Alias":"Blue 0528233319","Date":"2020-04-29T19:11:27.119Z","Subject":"reply ohi","Seen":".","Queued":false},
-                       {"Id":"160a0f4621fc601c","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Alias":"Blue 0528233319","Date":"2020-04-29T19:10:57.529Z","Subject":"reply ohi","Seen":".","Queued":false},
-                       {"Id":"1609e70e45635abe","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Alias":"Blue 0528233319","Date":"2020-04-28T06:14:32.078Z","Subject":"reply ohi","Seen":".","Tags":["Todo"],"Queued":false},
-                       {"Id":"1609e6cdf061653a","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Alias":"Blue 0528233319","Date":"2020-04-28T06:09:48.343Z","Subject":"reply ohi","Seen":".","Queued":false},
-                       {"Id":"1609e61c58e6f761","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Alias":"Blue 0528233319","Date":"2020-04-28T05:57:03.943Z","Subject":"reply ohi","Seen":".","Queued":false},
-                       {"Id":"1609e4db0a54ee25","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Alias":"Blue 0528233319","Date":"2020-04-28T05:34:17.100Z","Subject":"reply ohi","Seen":".","Queued":false},
-                       {"Id":"1609e42510b0c265","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Alias":"Blue 0528233319","Date":"2020-04-28T05:21:34.931Z","Subject":"reply ohi","Seen":".","Queued":false},
-                       {"Id":"15c7f5aab2710d89","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Alias":"Blue 0528233319","Date":"2019-10-19T22:54:53.408Z","Subject":"reply ohi","Seen":".","Queued":false},
-                       {"Id":"15a30e173fa0c458","From":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX","Alias":"Gold 0528233319","Date":"2019-05-29T06:33:39.296Z","Subject":"","Seen":"2019-05-29T06:34:44Z","Queued":false},
-                       {"Id":"15a30e173fa0c457","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Alias":"Blue 0528233319","Date":"2019-05-29T06:33:37.006Z","Subject":"ohi","Seen":".","Queued":false}] ,
-
-                  mo: {"15a30e173fa0c457":{"Id":"15a30e173fa0c457","Len":0,"Posted":"2019-05-29T06:33:37.006Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"ohi","Attach":[{"Name":"u:BlueFile","Size":26},{"Name":"f:Blue.original","Size":402,"Ffn":"networkimprov.github.io/mnm-registry/first"},{"Name":"r:Blue.original","Size":33,"Ffn":"networkimprov.github.io/mnm-registry/first"}]},"msg_data":""},
-                       "15a30e173fa0c458":{"Id":"15a30e173fa0c458","Len":0,"Posted":"2019-05-29T06:33:39.296Z","From":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX","SubHead":{"Alias":"Gold 0528233319","ThreadId":"15a30e173fa0c457","Subject":"","Attach":[{"Name":"r:Blue.original","Size":33,"Ffn":"networkimprov.github.io/mnm-registry/first"}]},"msg_data":""},
-                       "15c7f5aab2710d89":{"Id":"15c7f5aab2710d89","Len":0,"Posted":"2019-10-19T22:54:53.408Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi"},"msg_data":""},
-                       "1609e42510b0c265":{"Id":"1609e42510b0c265","Len":13,"Posted":"2020-04-28T05:21:34.931Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi","Attach":[{"Name":"u:mnm-attached.png","Size":15992}]},"msg_data":"sendfile test"},
-                       "1609e4db0a54ee25":{"Id":"1609e4db0a54ee25","Len":15,"Posted":"2020-04-28T05:34:17.100Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi","Attach":[{"Name":"u:mnm-attachlist-open.png","Size":8823}]},"msg_data":"sendfile retest"},
-                       "1609e61c58e6f761":{"Id":"1609e61c58e6f761","Len":14,"Posted":"2020-04-28T05:57:03.943Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi","Attach":[{"Name":"u:mnm-attachlist.png","Size":8730}]},"msg_data":"sendfile again"},
-                       "1609e6cdf061653a":{"Id":"1609e6cdf061653a","Len":8,"Posted":"2020-04-28T06:09:48.343Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi"},"msg_data":"yet more"},
-                       "1609e70e45635abe":{"Id":"1609e70e45635abe","Len":13,"Posted":"2020-04-28T06:14:32.078Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi"},"msg_data":"again n again"},
-                       "160a0f4621fc601c":{"Id":"160a0f4621fc601c","Len":10,"Posted":"2020-04-29T19:10:57.529Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi"},"msg_data":"1111111112"},
-                       "160a0f4621fc601d":{"Id":"160a0f4621fc601d","Len":4,"Posted":"2020-04-29T19:11:27.119Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi"},"msg_data":"1112"},
-                       "1647c7fe052c8e67":{"Id":"1647c7fe052c8e67","Len":16,"Size":16,"Posted":"2020-11-15T20:21:33.085Z","From":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","SubHead":{"Alias":"Blue 0528233319","ThreadId":"15a30e173fa0c457","Subject":"reply ohi"},"msg_data":"try delayed send"}} ,
-
-                  cl: [[],
-                       [{"Who":"Blue 0528233319","By":"Blue 0528233319","WhoUid":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","ByUid":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Date":"2020-11-15T20:25:17.157Z","Note":"author","Subscribe":true,"Queued":false},
-                        {"Who":"Gold 0528233319","By":"Blue 0528233319","WhoUid":"Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX","ByUid":"5H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6","Date":"2020-11-15T20:25:17.157Z","Note":"","Subscribe":true,"Queued":false}] ] ,
-
-                  al: [] }
-             } },
-
-          Gold: {
-             A:  [["Gold 0528233319", "Y5Z%3GSZDVKK1BLPK1DHY4TZ128T18DX"]] ,
-
-             cs: {"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},
-                  "Thread":"",
-                  "ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},
-                  "History":{"Prev":false,"Next":false},
-                  "SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}} ,
-
-             cf: {"Name":"Gold","HistoryLen":88,"LoginPeriod":0,"Addr":"=192.168.1.3:443",
-                  "Verify":false,"Alias":"Gold 0528233319","Uid":"4H7QC1XG1+LP++6PLW9RPBY3N%CRCFV6",
-                  "NodeSet":[{"Name":"first","Status":97,"Local":true}]} ,
-
-             cn: {"Addr":"","Pin":"","Xfer":0} ,
-
-             ps: [] ,
-             pt: [] ,
-             pf: [] ,
-             gl: [] ,
-             ot: [] ,
-             of: [] ,
-             nl: [] ,
-             fl: [] ,
-             tl: [] ,
-
-             T:  {
-             } },
-      } };
+   "/v":[{"Name":"B2B Bazaar","NoticeN":0,"UnreadN":0},{"Name":"Btrswt","NoticeN":2,"UnreadN":0},{"Name":"Choc XC","NoticeN":1,"UnreadN":0},{"Name":"Chox HQ","NoticeN":0,"UnreadN":1},{"Name":"Customers","NoticeN":1,"UnreadN":0},{"Name":"NGCC","NoticeN":1,"UnreadN":1}],
+   "/t":[{"Name":"logo-400-bleed-dim.png","Size":103533,"Date":"2021-02-25T23:30:29Z"},{"Name":"logo-400-inset-bright.png","Size":70070,"Date":"2021-02-25T23:30:46Z"},{"Name":"shortfile.txt","Size":59,"Date":"2021-02-26T23:56:09Z"}],
+   "/f":[{"Name":"Icecream","Spec":true,"Revs":[{"Id":"1","Date":"2021-03-02T21:03:13Z"},{"Id":"spec","Date":"2021-02-25T23:32:33Z"}]}],
+   "/g":[{"Id":"2021-02-26T19:37:39Z","Name":"markdown"},{"Id":"Todo","Name":"Todo"}],
+   "/l":{"Addr":"192.168.1.3","Pin":""},
+   "S": {
+      "B2B Bazaar":{
+         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1667170a75f26e33","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":false,"Next":false},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
+         "cf":{"Name":"B2B Bazaar","HistoryLen":128,"LoginPeriod":0,"Addr":"=192.168.1.3:9101","Verify":false,"Alias":"Chox, JWrighter","Uid":"VV2Y%MN9%DWBDDW7CM%+VFH%DQCVR3JM","NodeSet":[{"Name":"first","Status":97,"Local":true}]},
+         "cn":{"Addr":"","Pin":"","Xfer":0},
+         "tl":[{"Id":"1667170a75f26e33","Count":2,"Subject":"Followup from Consumables Packaging Expo","OrigCc":["Chox, JWrighter"],"OrigDate":"2021-03-01T22:03:56.897Z","LastDate":"2021-03-01T22:04:56.712Z","OrigAuthor":"Foilz, Art Rappe","LastAuthor":"Chox, JWrighter"}],
+         "fl":[],
+         "ps":[],
+         "pt":[{"Type":3,"Date":"2021-02-27T17:55:51.784Z","Text":"Inquiry from Chox","Alias":"Foilz, Art Rappe","MyAlias":"Chox, JWrighter","Response":{"Type":6,"Date":"2021-03-01T22:03:56.897Z","Alias":"Foilz, Art Rappe","Uid":"CYT+Q5W6R1QS4HGNX+RXWR94S+%+3XF4","Tid":"1667170a75f26e33","Response":{}}}],
+         "pf":[],
+         "gl":[],
+         "ot":[],
+         "of":[],
+         "T": {
+            "1667170a75f26e33":{
+               "cl":[[],[{"Who":"Chox, JWrighter","By":"Foilz, Art Rappe","WhoUid":"VV2Y%MN9%DWBDDW7CM%+VFH%DQCVR3JM","ByUid":"CYT+Q5W6R1QS4HGNX+RXWR94S+%+3XF4","Date":"2021-03-01T22:03:56.897Z","Note":"","Subscribe":true,"Queued":false},{"Who":"Foilz, Art Rappe","By":"Foilz, Art Rappe","WhoUid":"CYT+Q5W6R1QS4HGNX+RXWR94S+%+3XF4","ByUid":"CYT+Q5W6R1QS4HGNX+RXWR94S+%+3XF4","Date":"2021-03-01T22:03:56.897Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[],
+               "ml":[{"Id":"1667170a75f26e34","From":"VV2Y%MN9%DWBDDW7CM%+VFH%DQCVR3JM","Alias":"Chox, JWrighter","Date":"2021-03-01T22:04:56.712Z","Subject":"","Seen":".","Queued":false},{"Id":"1667170a75f26e33","From":"CYT+Q5W6R1QS4HGNX+RXWR94S+%+3XF4","Alias":"Foilz, Art Rappe","Date":"2021-03-01T22:03:56.897Z","Subject":"Followup from Consumables Packaging Expo","Seen":"2021-03-01T22:04:05Z","Queued":false}],
+               "mo":{"1667170a75f26e33":{"Id":"1667170a75f26e33","Size":417,"Posted":"2021-03-01T22:03:56.897Z","From":"CYT+Q5W6R1QS4HGNX+RXWR94S+%+3XF4","SubHead":{"Alias":"Foilz, Art Rappe","ThreadId":"1667170a75f26e33","Subject":"Followup from Consumables Packaging Expo"},"msg_data":"Hi Jordan,\n\nWe talked when you stopped by the Foilz booth at CPE last month.\n\nIf I recall, you were interested in learning about options for wrapping delicate chocolate confections containing cream and nut-butter centers.\n\nI think we have some great solutions for you, and would love to link up by phone or video conference to hear more about your needs. I'm free most afternoons this & next week.\n\nBest Regards,\n\nArt"},"1667170a75f26e34":{"Id":"1667170a75f26e34","Size":60,"Posted":"2021-03-01T22:04:56.712Z","From":"VV2Y%MN9%DWBDDW7CM%+VFH%DQCVR3JM","SubHead":{"Alias":"Chox, JWrighter","ThreadId":"1667170a75f26e33","Subject":""},"msg_data":"Thanks Art, that would be great. Can we do Wed 2p your time?"}}
+            }
+         }},
+      "Btrswt":{
+         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1667170a75f26e30","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":true,"Next":false},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
+         "cf":{"Name":"Btrswt","HistoryLen":128,"LoginPeriod":0,"Addr":"=192.168.1.3:9101","Verify":false,"Alias":"Ily Btrswt","Uid":"8ZRGBXCPW7NL1ZBT3G1FXJNZCQNRSJ8C","NodeSet":[{"Name":"first","Status":97,"Local":true}]},
+         "cn":{"Addr":"","Pin":"","Xfer":0},
+         "tl":[{"Id":"1667170a75f26e30","Count":2,"Subject":"Btrswt Tour dates, Spring & Summer 2021","OrigCc":["NwSwts Tour"],"OrigDate":"2021-03-01T21:46:44.381Z","LastDate":"2021-03-01T22:42:24.931Z","OrigAuthor":"Shirley Sweete","LastAuthor":"Shirley Sweete"},{"Id":"1667170a75f26e2b","Count":1,"Subject":"Subscribe to tour list","OrigCc":["Shirley Sweete"],"OrigDate":"2021-03-01T21:32:31.266Z","LastDate":"2021-03-01T21:32:31.266Z","OrigAuthor":"Ily Btrswt","LastAuthor":"Ily Btrswt"}],
+         "fl":[],
+         "ps":[],
+         "pt":[],
+         "pf":[{"Type":8,"Date":"2021-03-01T21:33:18.881Z","Text":"Join the NwSwts Tour mailing list!","Alias":"Shirley Sweete","Uid":"%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1","MyAlias":"Ily Btrswt","MsgId":"1667170a75f26e2c","Gid":"NwSwts Tour","Response":{},"ResponseInvt":{"Type":9,"Date":"2021-03-01T21:33:33.244Z","Gid":"NwSwts Tour","Response":{}}},{"Type":4,"Date":"2021-02-27T17:58:11.042Z","Text":"Welcome to Btrswt!","Alias":"Shirley Sweete","Uid":"%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1","MyAlias":"Ily Btrswt","MsgId":"1667170a75f26e2a","Response":{"Type":5,"Date":"2021-03-01T21:32:31.266Z","Uid":"%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1","Tid":"1667170a75f26e2b","Response":{}}}],
+         "gl":[{"Gid":"NwSwts Tour","Date":"2021-03-01T21:33:33.244Z","Admin":false}],
+         "ot":[],
+         "of":[],
+         "T": {
+            "1667170a75f26e30":{
+               "cl":[[],[{"Who":"NwSwts Tour","By":"Shirley Sweete","WhoUid":"NwSwts Tour","ByUid":"%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1","Date":"2021-03-01T21:46:44.381Z","Note":"","Subscribe":true,"Queued":false},{"Who":"Shirley Sweete","By":"Shirley Sweete","WhoUid":"%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1","ByUid":"%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1","Date":"2021-03-01T21:46:44.381Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[],
+               "ml":[{"Id":"1667170a75f26e37","From":"%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1","Alias":"Shirley Sweete","Date":"2021-03-01T22:42:24.931Z","Subject":"","Seen":"2021-03-01T22:42:30Z","Queued":false},{"Id":"1667170a75f26e30","From":"%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1","Alias":"Shirley Sweete","Date":"2021-03-01T21:46:44.381Z","Subject":"Btrswt Tour dates, Spring & Summer 2021","Seen":"2021-03-01T21:46:53Z","Queued":false}],
+               "mo":{"1667170a75f26e30":{"Id":"1667170a75f26e30","Size":458,"Posted":"2021-03-01T21:46:44.381Z","From":"%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1","SubHead":{"Alias":"Shirley Sweete","ThreadId":"1667170a75f26e30","Subject":"Btrswt Tour dates, Spring & Summer 2021"},"msg_data":"Dear Btrswt fans,\n\nHere is the list of dates for the __NwSwts Tour of California__, whereby we bring the latest and the greatest _Btrswt_ delicacies to towns & cities near you!\n\n- March 25-28, San Francisco Pavilion \n- April 1-4, Berkeley Bounce\n- April 8-11, Palo Alto Shopping Plaza\n- May 6-9, Los Angeles City Expo\n- May 20-23, Long Beach Island Paradise\n- June 10-13, San Diego Mercado Maravilloso\n- June 17-20, Fresno Festival\n- July (to be announced!)\n"},"1667170a75f26e37":{"Id":"1667170a75f26e37","Size":77,"Posted":"2021-03-01T22:42:24.931Z","From":"%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1","SubHead":{"Alias":"Shirley Sweete","ThreadId":"1667170a75f26e30","Subject":""},"msg_data":"Hi fans,\n\nWe've added a date in June!\n\n- June 3-6, Anaheim Gourmet Exposition"}}
+            },
+            "1667170a75f26e2b":{
+               "cl":[[],[{"Who":"Ily Btrswt","By":"Ily Btrswt","WhoUid":"8ZRGBXCPW7NL1ZBT3G1FXJNZCQNRSJ8C","ByUid":"8ZRGBXCPW7NL1ZBT3G1FXJNZCQNRSJ8C","Date":"2021-03-01T21:32:31.266Z","Note":"author","Subscribe":true,"Queued":false},{"Who":"Shirley Sweete","By":"Ily Btrswt","WhoUid":"%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1","ByUid":"8ZRGBXCPW7NL1ZBT3G1FXJNZCQNRSJ8C","Date":"2021-03-01T21:32:31.266Z","Note":"","Subscribe":true,"Queued":false}]],
+               "al":[],
+               "ml":[{"Id":"1667170a75f26e2b","From":"8ZRGBXCPW7NL1ZBT3G1FXJNZCQNRSJ8C","Alias":"Ily Btrswt","Date":"2021-03-01T21:32:31.266Z","Subject":"Subscribe to tour list","Seen":".","Queued":false}],
+               "mo":{"1667170a75f26e2b":{"Id":"1667170a75f26e2b","Size":74,"Posted":"2021-03-01T21:32:31.266Z","From":"8ZRGBXCPW7NL1ZBT3G1FXJNZCQNRSJ8C","SubHead":{"Alias":"Ily Btrswt","ThreadId":"1667170a75f26e2b","Subject":"Subscribe to tour list"},"msg_data":"Hi Shirley, can you add me to the Tour mailing list I saw on your website?"}}
+            }
+         }},
+      "Choc XC":{
+         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1666e95d4c606394","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":false,"Next":false},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
+         "cf":{"Name":"Choc XC","HistoryLen":128,"LoginPeriod":0,"Addr":"=192.168.1.3:9103","Verify":false,"Alias":"Jordan Wrighter","Uid":"HJWGGTC1%C5J1XYBY5WP7137RRS3JS4X","NodeSet":[{"Name":"first","Status":97,"Local":true}]},
+         "cn":{"Addr":"","Pin":"","Xfer":0},
+         "tl":[{"Id":"1666e95d4c606394","Count":2,"Subject":"Come to my b-day party!","OrigCc":["Jordan Wrighter"],"OrigDate":"2021-03-01T18:59:22.855Z","LastDate":"2021-03-01T21:24:47.496Z","OrigAuthor":"Morgan Reeder","LastAuthor":"Jordan Wrighter"}],
+         "fl":[{"Id":"mnmnotmail.org/reg/test1_sent","Date":"2021-03-01T21:24:47Z"}],
+         "ps":[],
+         "pt":[{"Type":3,"Date":"2021-02-27T18:01:28.015Z","Text":"Connect on Chocolate XC","Alias":"Morgan Reeder","MyAlias":"Jordan Wrighter","Response":{"Type":4,"Date":"2021-03-01T18:43:22.530Z","Text":"Friends on ChXCh","Alias":"Morgan Reeder","Uid":"QDMY8XZCMJ3++MQSNBDY5V159HN8J+FG","MyAlias":"Jordan Wrighter","MsgId":"1666e95d4c606393","Response":{}}}],
+         "pf":[{"Type":4,"Date":"2021-03-01T18:43:22.530Z","Text":"Friends on ChXCh","Alias":"Morgan Reeder","Uid":"QDMY8XZCMJ3++MQSNBDY5V159HN8J+FG","MyAlias":"Jordan Wrighter","MsgId":"1666e95d4c606393","Response":{}}],
+         "gl":[],
+         "ot":[],
+         "of":[],
+         "T": {
+            "1666e95d4c606394":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Morgan Reeder","WhoUid":"HJWGGTC1%C5J1XYBY5WP7137RRS3JS4X","ByUid":"QDMY8XZCMJ3++MQSNBDY5V159HN8J+FG","Date":"2021-03-01T18:59:22.855Z","Note":"","Subscribe":true,"Queued":false},{"Who":"Morgan Reeder","By":"Morgan Reeder","WhoUid":"QDMY8XZCMJ3++MQSNBDY5V159HN8J+FG","ByUid":"QDMY8XZCMJ3++MQSNBDY5V159HN8J+FG","Date":"2021-03-01T18:59:22.855Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[{"Id":"1666e95d4c606394_f:Icecream.1","File":"Icecream.1","MsgId":"1666e95d4c606394","Date":"2021-03-01T18:59:22Z","Who":"Morgan Reeder","Size":661}],
+               "ml":[{"Id":"1666e95d4c606397","From":"HJWGGTC1%C5J1XYBY5WP7137RRS3JS4X","Alias":"Jordan Wrighter","Date":"2021-03-01T21:24:47.496Z","Subject":"","Seen":".","Tags":["Todo"],"Queued":false},{"Id":"1666e95d4c606394","From":"QDMY8XZCMJ3++MQSNBDY5V159HN8J+FG","Alias":"Morgan Reeder","Date":"2021-03-01T18:59:22.855Z","Subject":"Come to my b-day party!","Seen":"2021-03-01T18:59:40Z","Queued":false}],
+               "mo":{"1666e95d4c606394":{"Id":"1666e95d4c606394","Size":519,"Posted":"2021-03-01T18:59:22.855Z","From":"QDMY8XZCMJ3++MQSNBDY5V159HN8J+FG","SubHead":{"Alias":"Morgan Reeder","ThreadId":"1666e95d4c606394","Subject":"Come to my b-day party!","Attach":[{"Name":"f:Icecream.1","Size":661,"Ffn":"mnmnotmail.org/reg/test1"}]},"msg_data":"Hi Jordan,\n\nI'm having a birthday party on March 21, and would love you to come! (No presents, pls.)\n\nI'm planning to let everyone make ice cream sundaes. To find out what we'll need so that everyone can make their favorite sundae, I've attached the \"Icecream\" survey (which I think you sent out for the company party, lol)\n\nOf course I'll have chips, chunks, sprinkles, and shards from Chox, but feel free to indicate any other brands you like, and I'll try to oblige!\n\n![?](this_f:Icecream.1)\n\nHope to see you there!!"},"1666e95d4c606397":{"Id":"1666e95d4c606397","Size":52,"Posted":"2021-03-01T21:24:47.496Z","From":"HJWGGTC1%C5J1XYBY5WP7137RRS3JS4X","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1666e95d4c606394","Subject":"","Attach":[{"Name":"r:Icecream.1","Size":120,"Ffn":"mnmnotmail.org/reg/test1"}]},"msg_data":"Heya, sounds awesome, see you there! Form filled! <3"}}
+            }
+         }},
+      "Chox HQ":{
+         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1667170a75f26e20","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":false,"Next":true},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
+         "cf":{"Name":"Chox HQ","HistoryLen":128,"LoginPeriod":0,"Addr":"=192.168.1.3:9101","Verify":false,"Alias":"Jordan Wrighter","Uid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","NodeSet":[{"Name":"first","Status":97,"Local":true}]},
+         "cn":{"Addr":"","Pin":"","Xfer":0},
+         "tl":[{"Id":"1667170a75f26e22","Count":2,"Subject":"Demo Overview","OrigCc":[],"OrigDate":"2021-02-27T04:18:49.625Z","LastDate":"2021-03-05T02:10:23.183Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e3d","Count":2,"Subject":"distributor questions","OrigCc":["Morgan Reeder"],"OrigDate":"2021-03-02T23:13:47.433Z","LastDate":"2021-03-02T23:14:59.091Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Morgan Reeder","Unread":true},{"Id":"1667170a75f26e39","Count":2,"Subject":"new products ingredients","OrigCc":["Jordan Wrighter"],"OrigDate":"2021-03-02T07:54:41.175Z","LastDate":"2021-03-02T20:25:54.659Z","OrigAuthor":"Morgan Reeder","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e20","Count":1,"Subject":"Slide decks (formatting)","OrigCc":[],"OrigDate":"2021-02-27T03:36:26.134Z","LastDate":"2021-02-27T03:36:26.134Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e1e","Count":1,"Subject":"Text style (formatting)","OrigCc":[],"OrigDate":"2021-02-27T01:12:54.906Z","LastDate":"2021-02-27T01:12:54.906Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e1c","Count":1,"Subject":"Hyperlinks (formatting)","OrigCc":[],"OrigDate":"2021-02-27T00:51:12.301Z","LastDate":"2021-02-27T00:51:12.301Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e19","Count":2,"Subject":"Lists & Tables (formatting)","OrigCc":[],"OrigDate":"2021-02-26T23:24:28.651Z","LastDate":"2021-02-26T23:49:17.948Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e16","Count":2,"Subject":"Graphics (formatting)","OrigCc":[],"OrigDate":"2021-02-26T20:31:09.308Z","LastDate":"2021-02-26T20:37:44.884Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e14","Count":1,"Subject":"Forms/surveys (formatting)","OrigCc":[],"OrigDate":"2021-02-26T19:57:42.705Z","LastDate":"2021-02-26T19:57:42.705Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"}],
+         "fl":[],
+         "ps":[],
+         "pt":[{"Type":3,"Date":"2021-02-27T11:04:45.380Z","Text":"Welcome to Chox HQ!","Alias":"Morgan Reeder","MyAlias":"Jordan Wrighter","Response":{"Type":6,"Date":"2021-03-02T07:54:41.175Z","Alias":"Morgan Reeder","Uid":"J62NKG4K8DYNCZMM5H7TCRSYV17TGQYK","Tid":"1667170a75f26e39","Response":{}}}],
+         "pf":[],
+         "gl":[],
+         "ot":[],
+         "of":[],
+         "T": {
+            "1667170a75f26e22":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Jordan Wrighter","WhoUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","ByUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Date":"2021-02-27T04:18:49.625Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[],
+               "ml":[{"Id":"1667170a75f26e41","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-03-05T02:10:23.183Z","Subject":"","Seen":".","Queued":false},{"Id":"1667170a75f26e22","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-02-27T04:18:49.625Z","Subject":"Demo Overview","Seen":".","Queued":false}],
+               "mo":{"1667170a75f26e22":{"Id":"1667170a75f26e22","Size":1060,"Posted":"2021-02-27T04:18:49.625Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e22","Subject":"Demo Overview"},"msg_data":"### UI Look & Feel\n\n_See also the docs, under the &#x24d8; menu at top-right._\n\n#### Three Panels\n\nmnm divides its screen into three panels. The message panel is on the left, so its left margin (the most-seen region for left-to-right languages) is free from distractions, helping the reader/writer to concentrate. The accounts panel is on the right, so its frequent activity notifications are far from the normal focus of the user. The thread index panel is between them. \n\n#### Colors\n\nThe color scheme is intended to reduce the glare of black-on-white designs, and foster concentration. The accounts panel is dark, to de-emphasize its constant updates. Received and sent messages appear on a background reminiscent of parchment, to imply a sense of permanence. Input fields have a white background for emphasis. \n\n#### Browser Tabs\n\nWhen you have multiple mnm accounts, each one is presented in a separate browser tab. Tabs may be closed and re-opened without impacting the app's connection to the TMTP service, as the app runs separately from the browser. \n"},"1667170a75f26e41":{"Id":"1667170a75f26e41","Size":1907,"Posted":"2021-03-05T02:10:23.183Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e22","Subject":""},"msg_data":"This demo portrays one \"Jordan Wrighter,\" an employee of Chox Corp, a fictitious gourmet chocolate maker. Jordan has the following accounts:\n\n- Chox HQ, for internal discussions among Chox staff. Only Chox staff are members of the site.\n\n- Customers, for correspondence with Chox customers. Membership is limited to Chox staff & customers, and Chox admins approve all membership requests. Internal company matters are not discussed on the site.\n\n- B2B Bazaar, an imaginary third-party site for buyers and sellers of business products and services. Membership is limited to verified businesses and entails a fee, so most members are who they claim to be. The site is primarily used to establish contacts between companies.\n\n- Choc XC, the Chocolate Exchange, an imaginary third-party site for chocolate lovers and vendors. As membership is open to the public, some members aren't who they claim to be. The site is used for both shopping and socializing.\n\n- Btrswt, Jordan's personal favorite chocolate brand. Membership is open to the public. Jordan uses an alias on the site to avoid being identified as a Chox employee.\n\n- NGCC, the Next Generation Correspondence Conference, a fictitious annual event where users and developers of software like _mnm_ gather. Membership is restricted to conference participants.\n\n__Notes__\n\nEach account contains just a few threads and contacts, enough to convey the purpose of its site.\n\nThreads titled \"... (formatting)\" present message text formatting examples with markdown source.\n\nThe demo doesn’t transmit or store your input (buttons for send, etc give errors).\n\nThe real mnm client runs on your local machine, and its user interface appears in a web browser. It stores all data on your machine.\n\nTo offer feedback, open or comment on a [Github issue](https://github.com/networkimprov/mnm-hammer/issues).\n\nFollow [mnm on Twitter](https://twitter.com/mnmnotmail)."}}
+            },
+            "1667170a75f26e3d":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Jordan Wrighter","WhoUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","ByUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Date":"2021-03-02T23:13:47.433Z","Note":"author","Subscribe":true,"Queued":false},{"Who":"Morgan Reeder","By":"Jordan Wrighter","WhoUid":"J62NKG4K8DYNCZMM5H7TCRSYV17TGQYK","ByUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Date":"2021-03-02T23:13:47.433Z","Note":"","Subscribe":true,"Queued":false}]],
+               "al":[],
+               "ml":[{"Id":"1667170a75f26e3e","From":"J62NKG4K8DYNCZMM5H7TCRSYV17TGQYK","Alias":"Morgan Reeder","Date":"2021-03-02T23:14:59.091Z","Subject":"","Seen":"","Queued":false},{"Id":"1667170a75f26e3d","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-03-02T23:13:47.433Z","Subject":"distributor questions","Seen":".","Tags":["Todo"],"Queued":false}],
+               "mo":{"1667170a75f26e3d":{"Id":"1667170a75f26e3d","Size":688,"Posted":"2021-03-02T23:13:47.433Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e3d","Subject":"distributor questions"},"msg_data":"We've been hearing Q's from some distributors recently, could you compile some answers and hop on the Customers mnm to clarify things for them?\n\nThe ones I'm aware of (check the mnm for more):\n\n1. When are the rumored multi-palette shipment price breaks coming online?\n\n1. When can we begin ordering samples of the new nut-center products?\n\n1. Will any new products require adjusted storage conditions (temp, humidity, palette wrapping, etc)?\n\n1. We are sometimes not notified of a delay until the forecast date of shipment. Can you give at least 5 biz-day notice of shipment delays?\n\n1. If shipment may be sent early, what is the earliest date before forecast which we might receive it?\n"}}
+            },
+            "1667170a75f26e39":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Morgan Reeder","WhoUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","ByUid":"J62NKG4K8DYNCZMM5H7TCRSYV17TGQYK","Date":"2021-03-02T07:54:41.175Z","Note":"","Subscribe":true,"Queued":false},{"Who":"Morgan Reeder","By":"Morgan Reeder","WhoUid":"J62NKG4K8DYNCZMM5H7TCRSYV17TGQYK","ByUid":"J62NKG4K8DYNCZMM5H7TCRSYV17TGQYK","Date":"2021-03-02T07:54:41.175Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[],
+               "ml":[{"Id":"1667170a75f26e3c","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-03-02T20:25:54.659Z","Subject":"","Seen":".","Queued":false},{"Id":"1667170a75f26e39","From":"J62NKG4K8DYNCZMM5H7TCRSYV17TGQYK","Alias":"Morgan Reeder","Date":"2021-03-02T07:54:41.175Z","Subject":"new products ingredients","Seen":"2021-03-02T07:56:23Z","Queued":false}],
+               "mo":{"1667170a75f26e39":{"Id":"1667170a75f26e39","Size":609,"Posted":"2021-03-02T07:54:41.175Z","From":"J62NKG4K8DYNCZMM5H7TCRSYV17TGQYK","SubHead":{"Alias":"Morgan Reeder","ThreadId":"1667170a75f26e39","Subject":"new products ingredients"},"msg_data":"Hi, following up on the staff meeting discussion of new nut-butter centers.\n\nIt looks like oil separation could be an issue with some of the target nut types, and the standard emulsifier options for them could affect the hallmark Chox flavor unless we zealously salt the centers. But that would tend to overshadow the whole candy, and many buyers want low-salt product.\n\nI've sought quotes for specialty emulsifiers which permit low dosage and so can't impact flavor, but that will push down profits at the target price point by 2-3%. Do you think that will fly with mgmt? Do you know of other options?\n\nttys!"},"1667170a75f26e3c":{"Id":"1667170a75f26e3c","Size":327,"Posted":"2021-03-02T20:25:54.659Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e39","Subject":""},"msg_data":"I remember hearing about an emulsifier made with a derivative of coconut which may not affect chocolate flavor. I'll see if I can dig up the info, but you have have at least as much luck via web searching.\n\nOtherwise, I think the modest profit hit is OK, esp as the forecast for the new nut-centered products looks really good."}}
+            },
+            "1667170a75f26e20":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Jordan Wrighter","WhoUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","ByUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Date":"2021-02-27T03:36:26.134Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[{"Id":"1667170a75f26e20_u:logo-400-bleed-dim.png","File":"logo-400-bleed-dim.png","MsgId":"1667170a75f26e20","Date":"2021-02-25T23:30:29Z","Who":"Jordan Wrighter","Size":103533}],
+               "ml":[{"Id":"1667170a75f26e20","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-02-27T03:36:26.134Z","Subject":"Slide decks (formatting)","Seen":".","Tags":["2021-02-26T19:37:39Z"],"Queued":false}],
+               "mo":{"1667170a75f26e20":{"Id":"1667170a75f26e20","Size":505,"Posted":"2021-02-27T03:36:26.134Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e20","Subject":"Slide decks (formatting)","Attach":[{"Name":"u:logo-400-bleed-dim.png","Size":103533}]},"msg_data":"Slides in a deck can contain any formatting (except a slide deck), \nand are limited in height. \n\n:::\n_First_\n\nHere's an image hyperlink:\n\n[![png](this_u:logo-400-bleed-dim.png)](https://mnmnotmail.org/)\n\n:::\n_Middle_\n\n- Somewhat blank\n- But not empty\n\n:::\n_Last_\n\nNot much to see here.\n:::>\n\n__Source:__\n```\n:::\n_First_\n\nHere's an image hyperlink:\n\n[![png](this_u:logo-400-bleed-dim.png)](https://mnmnotmail.org/)\n\n:::\n_Middle_\n\n- Somewhat blank\n- But not empty\n\n:::\n_Last_\n\nNot much to see here.\n:::>\n```"}}
+            },
+            "1667170a75f26e1e":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Jordan Wrighter","WhoUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","ByUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Date":"2021-02-27T01:12:54.906Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[],
+               "ml":[{"Id":"1667170a75f26e1e","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-02-27T01:12:54.906Z","Subject":"Text style (formatting)","Seen":".","Tags":["2021-02-26T19:37:39Z"],"Queued":false}],
+               "mo":{"1667170a75f26e1e":{"Id":"1667170a75f26e1e","Size":377,"Posted":"2021-02-27T01:12:54.906Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e1e","Subject":"Text style (formatting)"},"msg_data":"*Italics*\n\n**Bold**\n\n***Both***\n\n`Code`\n\n~~Strike-through~~\n\n> Quoted paragraph\n\n```\nCode section\n```\n\nSeparate \\\nlines\n\n### Heading\n## Heading\n# Heading\n\n\\*Prevent formatting*\n\n__Source:__\n````\n*Italics*\n\n**Bold**\n\n***Both***\n\n`Code`\n\n~~Strike-through~~\n\n> Quoted paragraph\n\n```\nCode section\n```\n\nSeparate \\\nlines\n\n### Heading\n## Heading\n# Heading\n\n\\*Prevent formatting*\n````\n"}}
+            },
+            "1667170a75f26e1c":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Jordan Wrighter","WhoUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","ByUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Date":"2021-02-27T00:51:12.301Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[{"Id":"1667170a75f26e1c_u:shortfile.txt","File":"shortfile.txt","MsgId":"1667170a75f26e1c","Date":"2021-02-26T23:56:09Z","Who":"Jordan Wrighter","Size":59},{"Id":"1667170a75f26e1c_u:logo-400-bleed-dim.png","File":"logo-400-bleed-dim.png","MsgId":"1667170a75f26e1c","Date":"2021-02-25T23:30:29Z","Who":"Jordan Wrighter","Size":103533}],
+               "ml":[{"Id":"1667170a75f26e1c","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-02-27T00:51:12.301Z","Subject":"Hyperlinks (formatting)","Seen":".","Tags":["2021-02-26T19:37:39Z"],"Queued":false}],
+               "mo":{"1667170a75f26e1c":{"Id":"1667170a75f26e1c","Size":859,"Posted":"2021-02-27T00:51:12.301Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e1c","Subject":"Hyperlinks (formatting)","Attach":[{"Name":"u:logo-400-bleed-dim.png","Size":103533},{"Name":"u:shortfile.txt","Size":59}]},"msg_data":"A message can link to websites, messages, and file attachments. For a message link, the chain-link icons on message headers provide the markdown code. For an attachment link, the chain-link icons in the attachments menu (paperclip icon on top row) provide the markdown code.\n\nA website link:\n\n[mnm is not mail](https://mnmnotmail.org/)\n\nA message link:\n\n[lists & tables](#1667170a75f26e19&1667170a75f26e1b)\n\nAn attachment link:\n\n[shortfile.txt](this_u:shortfile.txt)\n\nAn image website link:\n\n[![png](this_u:logo-400-bleed-dim.png)](https://mnmnotmail.org/)\n\n__Source:__\n```\nA website link:\n\n[mnm is not mail](https://mnmnotmail.org/)\n\nA message link:\n\n[lists & tables](#1667170a75f26e19&1667170a75f26e1b)\n\nAn attachment link:\n\n[shortfile.txt](this_u:shortfile.txt)\n\nAn image website link:\n\n[![png](this_u:logo-400-bleed-dim.png)](https://mnmnotmail.org/)\n```\n"}}
+            },
+            "1667170a75f26e19":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Jordan Wrighter","WhoUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","ByUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Date":"2021-02-26T23:24:28.651Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[],
+               "ml":[{"Id":"1667170a75f26e1b","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-02-26T23:49:17.948Z","Subject":"","Seen":".","Queued":false},{"Id":"1667170a75f26e19","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-02-26T23:24:28.651Z","Subject":"Lists & Tables (formatting)","Seen":".","Tags":["2021-02-26T19:37:39Z"],"Queued":false}],
+               "mo":{"1667170a75f26e19":{"Id":"1667170a75f26e19","Size":1161,"Posted":"2021-02-26T23:24:28.651Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e19","Subject":"Lists & Tables (formatting)"},"msg_data":"Some tables; see also [Github-flavored Markdown tables](https://docs.github.com/en/github/writing-on-github/organizing-information-with-tables).\n\nDefault alignment:\n\n| One | Two | Three\n| --- | --- | -----\n| X | Why | However\n| Y | Wherefore | On the other hand\n\nLeft alignment:\n\n|        | A   | B         |\n| ------ | :-- | :---      |\n| First  | 1st | primary   |\n| Second | 2nd | secondary |\n\nRight alignment:\n\n|      |    X |   Y |    Z |\n| ---  | ---: | --: | ---: |\n| One  | 11   | 110 | 1100 |\n| Two  | 2200 |  22 |  220 |\n\nWithout headings:\n\n|     |      |       |\n| -   | -    | -     |\n| One | Two  | Three |\n| 1   | 2    | 3     |\n\n__Source:__\n```\nDefault alignment:\n\n| One | Two | Three\n| --- | --- | -----\n| X | Why | However\n| Y | Wherefore | On the other hand\n\nLeft alignment:\n\n|        | A   | B         |\n| ------ | :-- | :---      |\n| First  | 1st | primary   |\n| Second | 2nd | secondary |\n\nRight alignment:\n\n|      |    X |   Y |    Z |\n| ---  | ---: | --: | ---: |\n| One  | 11   | 110 | 1100 |\n| Two  | 2200 |  22 |  220 |\n\nWithout headings:\n\n|     |      |       |\n| -   | -    | -     |\n| One | Two  | Three |\n| 1   | 2    | 3     |\n```\n"},"1667170a75f26e1b":{"Id":"1667170a75f26e1b","Size":440,"Posted":"2021-02-26T23:49:17.948Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e19","Subject":""},"msg_data":"Bulleted lists:\n\n- first\n- second\n- third\n\n---\n\n- one\n  - 1.1\n    - 1.1.1\n  - 1.2\n- two\n  - 2.1\n\nNumbered lists:\n\n1. first\n2. second\n3. third\n\n---\n\n0. one\n   1. one A\n   1. one B\n1. two\n   1. two A\n   1. two B\n\n__Source:__\n```\nBulleted lists:\n\n- first\n- second\n- third\n\n---\n\n- one\n  - 1.1\n    - 1.1.1\n  - 1.2\n- two\n  - 2.1\n\nNumbered lists:\n\n1. first\n2. second\n3. third\n\n---\n\n0. one\n   1. one A\n   1. one B\n1. two\n   1. two A\n   1. two B\n```"}}
+            },
+            "1667170a75f26e16":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Jordan Wrighter","WhoUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","ByUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Date":"2021-02-26T20:31:09.308Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[{"Id":"1667170a75f26e16_u:logo-400-inset-bright.png","File":"logo-400-inset-bright.png","MsgId":"1667170a75f26e16","Date":"2021-02-25T23:30:46Z","Who":"Jordan Wrighter","Size":70070}],
+               "ml":[{"Id":"1667170a75f26e18","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-02-26T20:37:44.884Z","Subject":"","Seen":".","Queued":false},{"Id":"1667170a75f26e16","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-02-26T20:31:09.308Z","Subject":"Graphics (formatting)","Seen":".","Tags":["2021-02-26T19:37:39Z"],"Queued":false}],
+               "mo":{"1667170a75f26e16":{"Id":"1667170a75f26e16","Size":254,"Posted":"2021-02-26T20:31:09.308Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e16","Subject":"Graphics (formatting)","Attach":[{"Name":"u:logo-400-inset-bright.png","Size":70070}]},"msg_data":"An image is attached and displayed in the message. The chain-link icon in the attachments menu (paperclip icon on top row) provides the markdown code.\n\n![png](this_u:logo-400-inset-bright.png)\n\n__Source:__\n```\n![png](this_u:logo-400-inset-bright.png)\n```"},"1667170a75f26e18":{"Id":"1667170a75f26e18","Size":101,"Posted":"2021-02-26T20:37:44.884Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e16","Subject":""},"msg_data":"A horizontal line between sections:\n\n_Above_\n\n---\n\n_Below_\n\n__Source:__\n```\n_Above_\n\n---\n\n_Below_\n```"}}
+            },
+            "1667170a75f26e14":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Jordan Wrighter","WhoUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","ByUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Date":"2021-02-26T19:57:42.705Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[{"Id":"1667170a75f26e14_f:Icecream.1","File":"Icecream.1","MsgId":"1667170a75f26e14","Date":"2021-02-25T23:33:20Z","Who":"Jordan Wrighter","Size":661}],
+               "ml":[{"Id":"1667170a75f26e14_0177dacfa598","From":"","Alias":"","Date":"2021-02-26T20:11:27Z","Subject":"","Seen":".","Queued":false},{"Id":"1667170a75f26e14","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Alias":"Jordan Wrighter","Date":"2021-02-26T19:57:42.705Z","Subject":"Forms/surveys (formatting)","Seen":".","Tags":["2021-02-26T19:37:39Z"],"Queued":false}],
+               "mo":{"1667170a75f26e14":{"Id":"1667170a75f26e14","Size":219,"Posted":"2021-02-26T19:57:42.705Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e14","Subject":"Forms/surveys (formatting)","Attach":[{"Name":"f:Icecream.1","Size":661,"Ffn":"mnmnotmail.org/reg/test1"}]},"msg_data":"A form is attached and displayed in the message. The chain-link icon in the attachments menu (paperclip icon on top row) provides the markdown code.\n\n![?](this_f:Icecream.1)\n\n__Source:__\n```\n![?](this_f:Icecream.1)\n```\n"},"1667170a75f26e14_0177dacfa598":{"Id":"1667170a75f26e14_0177dacfa598","Size":249,"Posted":"draft","From":"self","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e14","Subject":"","Attach":[{"Name":"r:Icecream.1","Size":84,"Ffn":"mnmnotmail.org/reg/test1","FfKey":"1667170a75f26e14_f:Icecream.1"}],"Cc":[{"Who":"Jordan Wrighter","By":"Jordan Wrighter","WhoUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","ByUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Date":"2021-02-26T19:57:42.705Z","Note":"author","Subscribe":true}]},"msg_data":"A previously-attached form is filled out, and its results attached. The reply button just above the form in the previous message starts this reply.\n\nPress _Ctrl-J_ to show the message preview with fillable form.\n\n![?](1667170a75f26e14_f:Icecream.1)\n","form_fill":{"1667170a75f26e14_f:Icecream.1":"{\"so1\":\"mint chocolate chip\",\"so2\":\"boysenberry\",\"so3\":\"cashews\",\"bo1\":true,\"no1\":1}"}}}
+            }
+         }},
+      "Customers":{
+         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1666e959b854edb5","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":true,"Next":false},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
+         "cf":{"Name":"Customers","HistoryLen":128,"LoginPeriod":0,"Addr":"=192.168.1.3:9102","Verify":false,"Alias":"Jordan Wrighter","Uid":"+PB46KTSL49%F6PMZ4NTFTSSMM3SJH6%","NodeSet":[{"Name":"first","Status":97,"Local":true}]},
+         "cn":{"Addr":"","Pin":"","Xfer":0},
+         "tl":[{"Id":"1666e959b854edb5","Count":1,"Subject":"New butter & cream centers","OrigCc":["Jordan Wrighter"],"OrigDate":"2021-02-28T06:23:25.105Z","LastDate":"2021-02-28T06:23:25.105Z","OrigAuthor":"Sam Baier","LastAuthor":"Sam Baier"},{"Id":"1666e959b854edb1","Count":2,"Subject":"Thanks for your order!","OrigCc":["Sam Baier"],"OrigDate":"2021-02-28T01:19:26.883Z","LastDate":"2021-02-28T05:36:39.770Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Sam Baier"}],
+         "fl":[],
+         "ps":[],
+         "pt":[{"Type":7,"Date":"2021-03-02T23:18:55.947Z","Text":"Hi Sam, here's an invite to the Distributors group. All messages to the group are sent to all members.","Alias":"Sam Baier","MyAlias":"Jordan Wrighter","Gid":"Distributors","Response":{},"ResponseInvt":{"Type":10,"Date":"2021-03-02T23:19:34.110Z","Alias":"Sam Baier","Gid":"Distributors","Response":{}}}],
+         "pf":[{"Type":4,"Date":"2021-02-27T17:47:48.654Z","Text":"I'm a new customer.","Alias":"Sam Baier","Uid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","MyAlias":"Jordan Wrighter","MsgId":"1666e959b854edaf","Response":{"Type":5,"Date":"2021-02-28T01:19:26.883Z","Uid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","Tid":"1666e959b854edb1","Response":{}}}],
+         "gl":[{"Gid":"Distributors","Date":"2021-03-02T23:18:55.947Z","Admin":true}],
+         "ot":[],
+         "of":[],
+         "T": {
+            "1666e959b854edb5":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Sam Baier","WhoUid":"+PB46KTSL49%F6PMZ4NTFTSSMM3SJH6%","ByUid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","Date":"2021-02-28T06:23:25.105Z","Note":"","Subscribe":true,"Queued":false},{"Who":"Sam Baier","By":"Sam Baier","WhoUid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","ByUid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","Date":"2021-02-28T06:23:25.105Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[],
+               "ml":[{"Id":"1666e959b854edb5","From":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","Alias":"Sam Baier","Date":"2021-02-28T06:23:25.105Z","Subject":"New butter & cream centers","Seen":"2021-02-28T06:23:41Z","Queued":false}],
+               "mo":{"1666e959b854edb5":{"Id":"1666e959b854edb5","Size":611,"Posted":"2021-02-28T06:23:25.105Z","From":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","SubHead":{"Alias":"Sam Baier","ThreadId":"1666e959b854edb5","Subject":"New butter & cream centers"},"msg_data":"Hey Jordan,\n\nWe'd be interested to take 1 case each of of cashew, hazelnut, and peanut nut-butter centers, in 71% (give or take) dark robes. We're thinking a sea-salt dimension to the centers would sell well, if you can stabilize the salt crystals in a nut-butter center.\n\nWe'd also like to try nut-cream centers on a sample basis, if you've got any in development. We think hazelnut and almond nut-creams would be the most appealing to our fans, but anything you've got in the pipeline would be of interest.\n\nBest,\n\nSam\n\nSam Baier \\\nCantGetEnuf Gourmet Foods \\\nProvincetown, Hull, Nantucket, Boston, Cambridge\n"}}
+            },
+            "1666e959b854edb1":{
+               "cl":[[],[{"Who":"Jordan Wrighter","By":"Jordan Wrighter","WhoUid":"+PB46KTSL49%F6PMZ4NTFTSSMM3SJH6%","ByUid":"+PB46KTSL49%F6PMZ4NTFTSSMM3SJH6%","Date":"2021-02-28T01:19:26.883Z","Note":"author","Subscribe":true,"Queued":false},{"Who":"Sam Baier","By":"Jordan Wrighter","WhoUid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","ByUid":"+PB46KTSL49%F6PMZ4NTFTSSMM3SJH6%","Date":"2021-02-28T01:19:26.883Z","Note":"","Subscribe":true,"Queued":false}]],
+               "al":[],
+               "ml":[{"Id":"1666e959b854edb3","From":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","Alias":"Sam Baier","Date":"2021-02-28T05:36:39.770Z","Subject":"","Seen":"2021-02-28T05:37:21Z","Queued":false},{"Id":"1666e959b854edb1","From":"+PB46KTSL49%F6PMZ4NTFTSSMM3SJH6%","Alias":"Jordan Wrighter","Date":"2021-02-28T01:19:26.883Z","Subject":"Thanks for your order!","Seen":".","Queued":false}],
+               "mo":{"1666e959b854edb1":{"Id":"1666e959b854edb1","Size":321,"Posted":"2021-02-28T01:19:26.883Z","From":"+PB46KTSL49%F6PMZ4NTFTSSMM3SJH6%","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1666e959b854edb1","Subject":"Thanks for your order!"},"msg_data":"Dear Sam,\n\nThanks for your recent order from Chox gourmet confectionery. We encourage you to let us know how the product sells to your discerning clients.\n\nWe'd also love to hear what new things your clientele are buying or asking for. We have a feverish product development team!\n\nCheers, \\\nJordan Wrighter \\\nChox Corp.\n"},"1666e959b854edb3":{"Id":"1666e959b854edb3","Size":222,"Posted":"2021-02-28T05:36:39.770Z","From":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","SubHead":{"Alias":"Sam Baier","ThreadId":"1666e959b854edb1","Subject":""},"msg_data":"They're selling great so far; we'll be ordering again soon.\n\nLately we're hearing a lot of interest in cashew and hazelnut butter centers. I'll try to put together likely numbers on that...\n\nThanks again, I'll be in touch."}}
+            }
+         }},
+      "NGCC":{
+         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1666e959b854edb8","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":false,"Next":true},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
+         "cf":{"Name":"NGCC","HistoryLen":128,"LoginPeriod":0,"Addr":"=192.168.1.3:9102","Verify":false,"Alias":"JWrighter","Uid":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","NodeSet":[{"Name":"first","Status":97,"Local":true}]},
+         "cn":{"Addr":"","Pin":"","Xfer":0},
+         "tl":[{"Id":"1666e959b854edbc","Count":2,"Subject":"Pics for NGCC 2021 site","OrigCc":["JWrighter"],"OrigDate":"2021-03-02T20:53:07.484Z","LastDate":"2021-03-02T20:57:32.313Z","OrigAuthor":"Sam Baier","LastAuthor":"JWrighter"},{"Id":"1666e959b854edb8","Count":2,"Subject":"Talk summary: Impact of mnm at Chox","OrigCc":["Sam Baier"],"OrigDate":"2021-03-01T04:23:27.848Z","LastDate":"2021-03-01T04:25:48.884Z","OrigAuthor":"JWrighter","LastAuthor":"Sam Baier","Unread":true}],
+         "fl":[],
+         "ps":[],
+         "pt":[],
+         "pf":[{"Type":4,"Date":"2021-02-27T18:07:43.680Z","Text":"Welcome to NGCC.","Alias":"Sam Baier","Uid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","MyAlias":"JWrighter","MsgId":"1666e959b854edb0","Response":{"Type":5,"Date":"2021-03-01T04:23:27.848Z","Uid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","Tid":"1666e959b854edb8","Response":{}}}],
+         "gl":[],
+         "ot":[],
+         "of":[],
+         "T": {
+            "1666e959b854edbc":{
+               "cl":[[],[{"Who":"JWrighter","By":"Sam Baier","WhoUid":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","ByUid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","Date":"2021-03-02T20:53:07.484Z","Note":"","Subscribe":true,"Queued":false},{"Who":"Sam Baier","By":"Sam Baier","WhoUid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","ByUid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","Date":"2021-03-02T20:53:07.484Z","Note":"author","Subscribe":true,"Queued":false}]],
+               "al":[{"Id":"1666e959b854edbf_u:logo-400-inset-bright.png","File":"logo-400-inset-bright.png","MsgId":"1666e959b854edbf","Date":"2021-02-25T23:30:46Z","Who":"JWrighter","Size":70070}],
+               "ml":[{"Id":"1666e959b854edbf","From":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","Alias":"JWrighter","Date":"2021-03-02T20:57:32.313Z","Subject":"","Seen":".","Queued":false},{"Id":"1666e959b854edbc","From":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","Alias":"Sam Baier","Date":"2021-03-02T20:53:07.484Z","Subject":"Pics for NGCC 2021 site","Seen":"2021-03-02T20:53:27Z","Queued":false}],
+               "mo":{"1666e959b854edbc":{"Id":"1666e959b854edbc","Size":272,"Posted":"2021-03-02T20:53:07.484Z","From":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","SubHead":{"Alias":"Sam Baier","ThreadId":"1666e959b854edbc","Subject":"Pics for NGCC 2021 site"},"msg_data":"Can you send along any images you'd like us to place on the web page about your scheduled talk?\n\nUsually ppl submit the image from the cover slide of their presentation deck. For example, your company logo, and/or logo(s) of the apps/vendors you'll be discussing.\n\nThanks!"},"1666e959b854edbf":{"Id":"1666e959b854edbf","Size":148,"Posted":"2021-03-02T20:57:32.313Z","From":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","SubHead":{"Alias":"JWrighter","ThreadId":"1666e959b854edbc","Subject":"","Attach":[{"Name":"u:logo-400-inset-bright.png","Size":70070}]},"msg_data":"Here you go. This can be cropped in a circle, or dropped onto a black background. Scale down as necessary!\n\n![png](this_u:logo-400-inset-bright.png)"}}
+            },
+            "1666e959b854edb8":{
+               "cl":[[],[{"Who":"JWrighter","By":"JWrighter","WhoUid":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","ByUid":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","Date":"2021-03-01T04:23:27.848Z","Note":"author","Subscribe":true,"Queued":false},{"Who":"Sam Baier","By":"JWrighter","WhoUid":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","ByUid":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","Date":"2021-03-01T04:23:27.848Z","Note":"","Subscribe":true,"Queued":false}]],
+               "al":[],
+               "ml":[{"Id":"1666e959b854edbb","From":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","Alias":"Sam Baier","Date":"2021-03-01T04:25:48.884Z","Subject":"","Seen":"","Queued":false},{"Id":"1666e959b854edb8","From":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","Alias":"JWrighter","Date":"2021-03-01T04:23:27.848Z","Subject":"Talk summary: Impact of mnm at Chox","Seen":".","Tags":["Todo"],"Queued":false}],
+               "mo":{"1666e959b854edb8":{"Id":"1666e959b854edb8","Size":500,"Posted":"2021-03-01T04:23:27.848Z","From":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","SubHead":{"Alias":"JWrighter","ThreadId":"1666e959b854edb8","Subject":"Talk summary: Impact of mnm at Chox"},"msg_data":"Hi Sam,\n\nHere's the outline for my talk at the next NGCC. The talk is about 22 minutes, so there's time for questions.\n\n__TMTP Enhances Chocolate Production__\n\n_Impact of mnm in the Gourmet Foods Business_\n\n1. Damage due to phishing attacks at Chox\n1. Troubles with Slack at Chox\n1. Rolling out mnm for internal comms\n1. Comparison of mnm/Slack/email usage patterns\n1. Offering mnm to Chox customers\n1. Transition from email to TMTP for B2B needs\n1. Future plans for TMTP\n\nThanks for the opportunity!"}}
+            }
+         }}
+   }};
