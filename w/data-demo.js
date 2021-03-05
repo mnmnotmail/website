@@ -33,7 +33,7 @@ mnm.demoData = {
             }
          }},
       "Btrswt":{
-         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1667170a75f26e30","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":true,"Next":false},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
+         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1667170a75f26e30","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":false,"Next":false},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
          "cf":{"Name":"Btrswt","HistoryLen":128,"LoginPeriod":0,"Addr":"=192.168.1.3:9101","Verify":false,"Alias":"Ily Btrswt","Uid":"8ZRGBXCPW7NL1ZBT3G1FXJNZCQNRSJ8C","NodeSet":[{"Name":"first","Status":97,"Local":true}]},
          "cn":{"Addr":"","Pin":"","Xfer":0},
          "tl":[{"Id":"1667170a75f26e30","Count":2,"Subject":"Btrswt Tour dates, Spring & Summer 2021","OrigCc":["NwSwts Tour"],"OrigDate":"2021-03-01T21:46:44.381Z","LastDate":"2021-03-01T22:42:24.931Z","OrigAuthor":"Shirley Sweete","LastAuthor":"Shirley Sweete"},{"Id":"1667170a75f26e2b","Count":1,"Subject":"Subscribe to tour list","OrigCc":["Shirley Sweete"],"OrigDate":"2021-03-01T21:32:31.266Z","LastDate":"2021-03-01T21:32:31.266Z","OrigAuthor":"Ily Btrswt","LastAuthor":"Ily Btrswt"}],
@@ -79,7 +79,7 @@ mnm.demoData = {
             }
          }},
       "Chox HQ":{
-         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1667170a75f26e20","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":false,"Next":true},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
+         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1667170a75f26e22","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":false,"Next":false},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
          "cf":{"Name":"Chox HQ","HistoryLen":128,"LoginPeriod":0,"Addr":"=192.168.1.3:9101","Verify":false,"Alias":"Jordan Wrighter","Uid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","NodeSet":[{"Name":"first","Status":97,"Local":true}]},
          "cn":{"Addr":"","Pin":"","Xfer":0},
          "tl":[{"Id":"1667170a75f26e22","Count":2,"Subject":"Demo Overview","OrigCc":[],"OrigDate":"2021-02-27T04:18:49.625Z","LastDate":"2021-03-05T02:10:23.183Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e3d","Count":2,"Subject":"distributor questions","OrigCc":["Morgan Reeder"],"OrigDate":"2021-03-02T23:13:47.433Z","LastDate":"2021-03-02T23:14:59.091Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Morgan Reeder","Unread":true},{"Id":"1667170a75f26e39","Count":2,"Subject":"new products ingredients","OrigCc":["Jordan Wrighter"],"OrigDate":"2021-03-02T07:54:41.175Z","LastDate":"2021-03-02T20:25:54.659Z","OrigAuthor":"Morgan Reeder","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e20","Count":1,"Subject":"Slide decks (formatting)","OrigCc":[],"OrigDate":"2021-02-27T03:36:26.134Z","LastDate":"2021-02-27T03:36:26.134Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e1e","Count":1,"Subject":"Text style (formatting)","OrigCc":[],"OrigDate":"2021-02-27T01:12:54.906Z","LastDate":"2021-02-27T01:12:54.906Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e1c","Count":1,"Subject":"Hyperlinks (formatting)","OrigCc":[],"OrigDate":"2021-02-27T00:51:12.301Z","LastDate":"2021-02-27T00:51:12.301Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e19","Count":2,"Subject":"Lists & Tables (formatting)","OrigCc":[],"OrigDate":"2021-02-26T23:24:28.651Z","LastDate":"2021-02-26T23:49:17.948Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e16","Count":2,"Subject":"Graphics (formatting)","OrigCc":[],"OrigDate":"2021-02-26T20:31:09.308Z","LastDate":"2021-02-26T20:37:44.884Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"},{"Id":"1667170a75f26e14","Count":1,"Subject":"Forms/surveys (formatting)","OrigCc":[],"OrigDate":"2021-02-26T19:57:42.705Z","LastDate":"2021-02-26T19:57:42.705Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Jordan Wrighter"}],
@@ -147,7 +147,7 @@ mnm.demoData = {
             }
          }},
       "Customers":{
-         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1666e959b854edb5","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":true,"Next":false},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
+         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1666e959b854edb5","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":false,"Next":false},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
          "cf":{"Name":"Customers","HistoryLen":128,"LoginPeriod":0,"Addr":"=192.168.1.3:9102","Verify":false,"Alias":"Jordan Wrighter","Uid":"+PB46KTSL49%F6PMZ4NTFTSSMM3SJH6%","NodeSet":[{"Name":"first","Status":97,"Local":true}]},
          "cn":{"Addr":"","Pin":"","Xfer":0},
          "tl":[{"Id":"1666e959b854edb5","Count":1,"Subject":"New butter & cream centers","OrigCc":["Jordan Wrighter"],"OrigDate":"2021-02-28T06:23:25.105Z","LastDate":"2021-02-28T06:23:25.105Z","OrigAuthor":"Sam Baier","LastAuthor":"Sam Baier"},{"Id":"1666e959b854edb1","Count":2,"Subject":"Thanks for your order!","OrigCc":["Sam Baier"],"OrigDate":"2021-02-28T01:19:26.883Z","LastDate":"2021-02-28T05:36:39.770Z","OrigAuthor":"Jordan Wrighter","LastAuthor":"Sam Baier"}],
@@ -173,7 +173,7 @@ mnm.demoData = {
             }
          }},
       "NGCC":{
-         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1666e959b854edb8","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":false,"Next":true},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
+         "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1666e959b854edb8","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":false,"Next":false},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
          "cf":{"Name":"NGCC","HistoryLen":128,"LoginPeriod":0,"Addr":"=192.168.1.3:9102","Verify":false,"Alias":"JWrighter","Uid":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","NodeSet":[{"Name":"first","Status":97,"Local":true}]},
          "cn":{"Addr":"","Pin":"","Xfer":0},
          "tl":[{"Id":"1666e959b854edbc","Count":2,"Subject":"Pics for NGCC 2021 site","OrigCc":["JWrighter"],"OrigDate":"2021-03-02T20:53:07.484Z","LastDate":"2021-03-02T20:57:32.313Z","OrigAuthor":"Sam Baier","LastAuthor":"JWrighter"},{"Id":"1666e959b854edb8","Count":2,"Subject":"Talk summary: Impact of mnm at Chox","OrigCc":["Sam Baier"],"OrigDate":"2021-03-01T04:23:27.848Z","LastDate":"2021-03-01T04:25:48.884Z","OrigAuthor":"JWrighter","LastAuthor":"Sam Baier","Unread":true}],
