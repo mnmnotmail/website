@@ -480,7 +480,7 @@
             var aN = iId ? encodeURIComponent(iId) : '';
          }
          if (aN.endsWith('.txt'))
-            aN = aN.slice(0, -2); // github-pages rejects .txt files
+            aN = aN.slice(0, -3) +'html'; // github-pages rejects .txt files
          aXhr.open('GET', i.charAt(0) === '/' ? i+'/'+aN : '?'+i+(aN && '='+aN));
       }
       aXhr.send();
