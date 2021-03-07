@@ -90,7 +90,7 @@ mnm.demoData = {
             }
          },
          "F": {
-            "mnmnotmail.org/reg/test1_sent":[{"Id":"1666e95d4c606394","Count":2,"Subject":"Come to my b-day party!","OrigCc":["Jordan Wrighter"],"OrigDate":"2021-03-01T18:59:22.855Z","LastDate":"2021-03-01T21:24:47.496Z","OrigAuthor":"Morgan Reeder","LastAuthor":"Jordan Wrighter"}]
+            "mnmnotmail.org/reg/test1_sent":[{"so1":"Mint choc chip (uncolored)","so2":"strawberry, cashew butter","so3":"dark shards, pine nuts","bo1":true,"no1":2,"$threadid":"1666e95d4c606394","$msgid":"1666e95d4c606397","$name":"r:Icecream.1","$offset":3,"$size":120,"$checksum":2788377381}]
          },
          "A": [["Morgan Reeder","QDMY8XZCMJ3++MQSNBDY5V159HN8J+FG"]]
       },
