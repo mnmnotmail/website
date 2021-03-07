@@ -7,7 +7,7 @@
 
 mnm.demoData = {
    "/v":[{"Name":"B2B Bazaar","NoticeN":0,"UnreadN":0},{"Name":"Btrswt","NoticeN":2,"UnreadN":0},{"Name":"Choc XC","NoticeN":1,"UnreadN":0},{"Name":"Chox HQ","NoticeN":0,"UnreadN":1},{"Name":"Customers","NoticeN":1,"UnreadN":0},{"Name":"NGCC","NoticeN":1,"UnreadN":1}],
-   "/t":[{"Name":"logo-400-bleed-dim.png","Size":103533,"Date":"2021-02-25T23:30:29Z"},{"Name":"logo-400-inset-bright.png","Size":70070,"Date":"2021-02-25T23:30:46Z"},{"Name":"service-demo.html","Size":30,"Date":"2021-03-05T08:39:21Z"},{"Name":"shortfile.txt","Size":59,"Date":"2021-02-26T23:56:09Z"}],
+   "/t":[{"Name":"logo-400-bleed-dim.png","Size":103533,"Date":"2021-02-25T23:30:29Z"},{"Name":"logo-400-inset-bright.png","Size":70070,"Date":"2021-02-25T23:30:46Z"},{"Name":"shortfile.txt","Size":59,"Date":"2021-02-26T23:56:09Z"}],
    "/f":[{"Name":"Icecream","Spec":true,"Revs":[{"Id":"1","Date":"2021-03-02T21:03:13Z"},{"Id":"spec","Date":"2021-02-25T23:32:33Z"}]}],
    "/g":[{"Id":"2021-02-26T19:37:39Z","Name":"markdown"},{"Id":"Todo","Name":"Todo"}],
    "/l":{"Addr":"192.168.1.3","Pin":""},
