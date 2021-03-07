@@ -33,6 +33,8 @@ mnm.demoData = {
                "mo":{"1667170a75f26e33":{"Id":"1667170a75f26e33","Size":417,"Posted":"2021-03-01T22:03:56.897Z","From":"CYT+Q5W6R1QS4HGNX+RXWR94S+%+3XF4","SubHead":{"Alias":"Foilz, Art Rappe","ThreadId":"1667170a75f26e33","Subject":"Followup from Consumables Packaging Expo"},"msg_data":"Hi Jordan,\n\nWe talked when you stopped by the Foilz booth at CPE last month.\n\nIf I recall, you were interested in learning about options for wrapping delicate chocolate confections containing cream and nut-butter centers.\n\nI think we have some great solutions for you, and would love to link up by phone or video conference to hear more about your needs. I'm free most afternoons this & next week.\n\nBest Regards,\n\nArt"},"1667170a75f26e34":{"Id":"1667170a75f26e34","Size":60,"Posted":"2021-03-01T22:04:56.712Z","From":"VV2Y%MN9%DWBDDW7CM%+VFH%DQCVR3JM","SubHead":{"Alias":"Chox, JWrighter","ThreadId":"1667170a75f26e33","Subject":""},"msg_data":"Thanks Art, that would be great. Can we do Wed 2p your time?"}}
             }
          },
+         "F": {
+         },
          "A": [["Foilz, Art Rappe","CYT+Q5W6R1QS4HGNX+RXWR94S+%+3XF4"]]
       },
       "Btrswt":{
@@ -62,6 +64,8 @@ mnm.demoData = {
                "mo":{"1667170a75f26e2b":{"Id":"1667170a75f26e2b","Size":74,"Posted":"2021-03-01T21:32:31.266Z","From":"8ZRGBXCPW7NL1ZBT3G1FXJNZCQNRSJ8C","SubHead":{"Alias":"Ily Btrswt","ThreadId":"1667170a75f26e2b","Subject":"Subscribe to tour list"},"msg_data":"Hi Shirley, can you add me to the Tour mailing list I saw on your website?"}}
             }
          },
+         "F": {
+         },
          "A": [["NwSwts Tour","NwSwts Tour"],["Shirley Sweete","%4B522D3P4K+4KJVLWM8JD2G+8BHM2Y1"]]
       },
       "Choc XC":{
@@ -84,6 +88,9 @@ mnm.demoData = {
                "ml":[{"Id":"1666e95d4c606397","From":"HJWGGTC1%C5J1XYBY5WP7137RRS3JS4X","Alias":"Jordan Wrighter","Date":"2021-03-01T21:24:47.496Z","Subject":"","Seen":".","Tags":["Todo"],"Queued":false},{"Id":"1666e95d4c606394","From":"QDMY8XZCMJ3++MQSNBDY5V159HN8J+FG","Alias":"Morgan Reeder","Date":"2021-03-01T18:59:22.855Z","Subject":"Come to my b-day party!","Seen":"2021-03-01T18:59:40Z","Queued":false}],
                "mo":{"1666e95d4c606394":{"Id":"1666e95d4c606394","Size":519,"Posted":"2021-03-01T18:59:22.855Z","From":"QDMY8XZCMJ3++MQSNBDY5V159HN8J+FG","SubHead":{"Alias":"Morgan Reeder","ThreadId":"1666e95d4c606394","Subject":"Come to my b-day party!","Attach":[{"Name":"f:Icecream.1","Size":661,"Ffn":"mnmnotmail.org/reg/test1"}]},"msg_data":"Hi Jordan,\n\nI'm having a birthday party on March 21, and would love you to come! (No presents, pls.)\n\nI'm planning to let everyone make ice cream sundaes. To find out what we'll need so that everyone can make their favorite sundae, I've attached the \"Icecream\" survey (which I think you sent out for the company party, lol)\n\nOf course I'll have chips, chunks, sprinkles, and shards from Chox, but feel free to indicate any other brands you like, and I'll try to oblige!\n\n![?](this_f:Icecream.1)\n\nHope to see you there!!"},"1666e95d4c606397":{"Id":"1666e95d4c606397","Size":52,"Posted":"2021-03-01T21:24:47.496Z","From":"HJWGGTC1%C5J1XYBY5WP7137RRS3JS4X","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1666e95d4c606394","Subject":"","Attach":[{"Name":"r:Icecream.1","Size":120,"Ffn":"mnmnotmail.org/reg/test1"}]},"msg_data":"Heya, sounds awesome, see you there! Form filled! <3"}}
             }
+         },
+         "F": {
+            "mnmnotmail.org/reg/test1_sent":[{"Id":"1666e95d4c606394","Count":2,"Subject":"Come to my b-day party!","OrigCc":["Jordan Wrighter"],"OrigDate":"2021-03-01T18:59:22.855Z","LastDate":"2021-03-01T21:24:47.496Z","OrigAuthor":"Morgan Reeder","LastAuthor":"Jordan Wrighter"}]
          },
          "A": [["Morgan Reeder","QDMY8XZCMJ3++MQSNBDY5V159HN8J+FG"]]
       },
@@ -156,6 +163,8 @@ mnm.demoData = {
                "mo":{"1667170a75f26e14":{"Id":"1667170a75f26e14","Size":219,"Posted":"2021-02-26T19:57:42.705Z","From":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e14","Subject":"Forms/surveys (formatting)","Attach":[{"Name":"f:Icecream.1","Size":661,"Ffn":"mnmnotmail.org/reg/test1"}]},"msg_data":"A form is attached and displayed in the message. The chain-link icon in the attachments menu (paperclip icon on top row) provides the markdown code.\n\n![?](this_f:Icecream.1)\n\n__Source:__\n```\n![?](this_f:Icecream.1)\n```\n"},"1667170a75f26e14_0177dacfa598":{"Id":"1667170a75f26e14_0177dacfa598","Size":249,"Posted":"draft","From":"self","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1667170a75f26e14","Subject":"","Attach":[{"Name":"r:Icecream.1","Size":84,"Ffn":"mnmnotmail.org/reg/test1","FfKey":"1667170a75f26e14_f:Icecream.1"}],"Cc":[{"Who":"Jordan Wrighter","By":"Jordan Wrighter","WhoUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","ByUid":"N1PL7PBJPKDHHQ46NNWMXZZR6KF7LSQP","Date":"2021-02-26T19:57:42.705Z","Note":"author","Subscribe":true}]},"msg_data":"A previously-attached form is filled out, and its results attached. The reply button just above the form in the previous message starts this reply.\n\nPress _Ctrl-J_ to show the message preview with fillable form.\n\n![?](1667170a75f26e14_f:Icecream.1)\n","form_fill":{"1667170a75f26e14_f:Icecream.1":"{\"so1\":\"mint chocolate chip\",\"so2\":\"boysenberry\",\"so3\":\"cashews\",\"bo1\":true,\"no1\":1}"}}}
             }
          },
+         "F": {
+         },
          "A": [["Morgan Reeder","J62NKG4K8DYNCZMM5H7TCRSYV17TGQYK"]]
       },
       "Customers":{
@@ -185,7 +194,9 @@ mnm.demoData = {
                "mo":{"1666e959b854edb1":{"Id":"1666e959b854edb1","Size":321,"Posted":"2021-02-28T01:19:26.883Z","From":"+PB46KTSL49%F6PMZ4NTFTSSMM3SJH6%","SubHead":{"Alias":"Jordan Wrighter","ThreadId":"1666e959b854edb1","Subject":"Thanks for your order!"},"msg_data":"Dear Sam,\n\nThanks for your recent order from Chox gourmet confectionery. We encourage you to let us know how the product sells to your discerning clients.\n\nWe'd also love to hear what new things your clientele are buying or asking for. We have a feverish product development team!\n\nCheers, \\\nJordan Wrighter \\\nChox Corp.\n"},"1666e959b854edb3":{"Id":"1666e959b854edb3","Size":222,"Posted":"2021-02-28T05:36:39.770Z","From":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","SubHead":{"Alias":"Sam Baier","ThreadId":"1666e959b854edb1","Subject":""},"msg_data":"They're selling great so far; we'll be ordering again soon.\n\nLately we're hearing a lot of interest in cashew and hazelnut butter centers. I'll try to put together likely numbers on that...\n\nThanks again, I'll be in touch."}}
             }
          },
-         "A": [["Sam Baier","1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5"]]
+         "F": {
+         },
+         "A": [["Distributors","Distributors"],["Sam Baier","1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5"]]
       },
       "NGCC":{
          "cs":{"Sort":{"cl":"Who","al":"Date","t":"Date","f":"Date"},"Thread":"1666e959b854edb8","ThreadTabs":{"Pos":0,"PosFor":0,"Terms":[],"Type":0},"History":{"Prev":false,"Next":false},"SvcTabs":{"Pos":0,"PosFor":0,"Terms":[],"Pinned":[],"Type":1}},
@@ -213,6 +224,8 @@ mnm.demoData = {
                "ml":[{"Id":"1666e959b854edbb","From":"1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5","Alias":"Sam Baier","Date":"2021-03-01T04:25:48.884Z","Subject":"","Seen":"","Queued":false},{"Id":"1666e959b854edb8","From":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","Alias":"JWrighter","Date":"2021-03-01T04:23:27.848Z","Subject":"Talk summary: Impact of mnm at Chox","Seen":".","Tags":["Todo"],"Queued":false}],
                "mo":{"1666e959b854edb8":{"Id":"1666e959b854edb8","Size":500,"Posted":"2021-03-01T04:23:27.848Z","From":"N++SM2J31BVY6K7FLFVCBLM18%LH848B","SubHead":{"Alias":"JWrighter","ThreadId":"1666e959b854edb8","Subject":"Talk summary: Impact of mnm at Chox"},"msg_data":"Hi Sam,\n\nHere's the outline for my talk at the next NGCC. The talk is about 22 minutes, so there's time for questions.\n\n__TMTP Enhances Chocolate Production__\n\n_Impact of mnm in the Gourmet Foods Business_\n\n1. Damage due to phishing attacks at Chox\n1. Troubles with Slack at Chox\n1. Rolling out mnm for internal comms\n1. Comparison of mnm/Slack/email usage patterns\n1. Offering mnm to Chox customers\n1. Transition from email to TMTP for B2B needs\n1. Future plans for TMTP\n\nThanks for the opportunity!"}}
             }
+         },
+         "F": {
          },
          "A": [["Sam Baier","1C7J1N146XSTB9YWZ%VPTD+W+D3GS+N5"]]
       }
