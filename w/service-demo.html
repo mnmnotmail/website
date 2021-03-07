@@ -193,7 +193,7 @@
                               <span uk-icon="file-edit"></span> {{aAtc.Name.substr(2)}}</span>
                         </template>
                         <template v-else>
-                           <a :href="'/t/' + encodeURIComponent(mnm._fixTxt(aAtc.Name.slice(2)))" download
+                           <a :href="'/t/' + encodeURIComponent(aAtc.Name.slice(2))" download
                               title="Download attachment">
                               <span uk-icon="download"></span></a>
                            <span v-if="!mnm._viewerType('svc', aMsg.Id +'_'+ aAtc.Name)">
@@ -802,7 +802,7 @@
                     :title="'Copy to '+ (aFile.Id[17] === 'u' ? 'attachable files' : 'blank forms')"
                     class="btn btn-icon"><span uk-icon="push"></span></button>
             &nbsp;-->
-            <a :href="'/t/' + encodeURIComponent(mnm._fixTxt(aFile.File))" download
+            <a :href="'/t/' + encodeURIComponent(aFile.File)" download
                title="Download attachment">
                <span uk-icon="download"></span></a>
             <span v-if="!mnm._viewerType('svc', aFile.Id)">
@@ -1591,7 +1591,7 @@
                     @click="$emit('attach', 'upload/'+aFile.Name)"
                     title="Attach file"
                     class="btn btn-icon"><mnm-paperclip/></button>
-            <a :href="'/t/' + encodeURIComponent(mnm._fixTxt(aFile.Name))" download
+            <a :href="'/t/' + encodeURIComponent(aFile.Name)" download
                title="Download file">
                <span uk-icon="download">&nbsp;</span></a>
             <span v-if="!mnm._viewerType(null, aFile.Name)">
@@ -2510,8 +2510,7 @@
             this.file = iId;
             this.kind = mnm._viewerType(iSvc, iId);
             this.title = (iSvc ? iId.substring(iId.indexOf('_')+3) : iId).toUpperCase();
-            this.url[this.kind] = '/t/'+ encodeURIComponent(mnm._fixTxt(
-                                            iSvc ? iId.slice(iId.indexOf('_')+3) : iId));
+            this.url[this.kind] = '/t/'+ encodeURIComponent(iSvc ? iId.slice(iId.indexOf('_')+3) : iId);
             if (this.kind === 'form') {
                iSvc ? mnm.AttachForm(iId, function(c) { Vue.set(mnm._data.ao, iId, c) }) : undefined;
             } else if (this.kind !== 'page') {
@@ -2693,7 +2692,7 @@
             iEnv.parent.checkAttach(aHref[1].slice('this_'.length));
          var aParam = aHref[1].replace(/^this_/, iEnv.thisVal +'_');
          aHref[1] = mnm._data.al.find(function(c) { return c.Id === aParam }) ?
-                    '/t/'+ encodeURIComponent(mnm._fixTxt(aParam.slice(aParam.indexOf('_')+3))) : '#';
+                    '/t/'+ encodeURIComponent(aParam.slice(aParam.indexOf('_')+3)) : '#';
          iTokens[iIdx].attrs.push(['download', '']);
          //todo add download icon and viewer
       }
@@ -2938,10 +2937,6 @@
       if (iDeltaY > 0)
          return iEl.scrollTop < iEl.scrollHeight - iEl.clientHeight;
       return false;
-   };
-
-   mnm._fixTxt = function(iName) { // github pages rejects .txt files
-      return iName.endsWith('.txt') ? iName.slice(0, -3) +'html' : iName;
    };
 
    mnm.Log = function(i) {
