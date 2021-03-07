@@ -611,16 +611,7 @@
                         aData.push(c);
                   });
                } else if (aTerm.startsWith('ffn:')) {
-                  sSvc.tl.forEach(function(c) {
-                     var cT = sSvc.T[c.Id];
-                     if (cT.ml.find(fHasFfn))
-                        aData.push(c);
-                     function fHasFfn(cM) {
-                        var cAttach = cT.mo[cM.Id] && cT.mo[cM.Id].SubHead.Attach;
-                        return cAttach && cAttach.find(
-                           function(cA) { return cA.Name[0] === 'r' && cA.Ffn === aTerm.slice(4, -5) });
-                     }
-                  });
+                  aData = {Table: sSvc.F[aTerm.slice(4)], Ffn: aTerm.slice(4)};
                } else {
                   aData.push(sSvc.tl[sSvc.tl.length-1]);
                }
