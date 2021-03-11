@@ -57,6 +57,8 @@ and [server](https://github.com/networkimprov/mnm)
 are open source, subject to the terms of the 
 [Mozilla Public License, v2.0](http://mozilla.org/MPL/2.0/){:target="_blank"}.
 
+An [online demo](demo.html) went live in March 2021.
+
 The mnm client app has had nine preview releases since April 2019. 
 It runs on Windows, MacOS, and Linux; ports to Android and iOS are planned. 
 Its UI appears in a web browser, and is tested with Chrome & Firefox. 
