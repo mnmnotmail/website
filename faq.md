@@ -48,6 +48,9 @@ _Stuff you wanted to know, and weren't afraid to ask_
 1. __What is the architecture of TMTP?__
 
    Succinctly stated: client-server, store-and-forward, members-only.
+   All sent and received data is stored on the clients; the server does not retain messages after delivery.
+   The organization that established a TMTP service controls who can register clients with it;
+   only registered clients are allowed to connect.
    If a member registers multiple clients, the server forwards messages to all of them.
    The client-server links support both sending and receiving messages.
 
