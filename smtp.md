@@ -13,22 +13,20 @@
 During the revisions to the email protocol stack around the turn of the century, 
 the IETF evidently failed to recognize the potential for large-scale and targeted phishing attacks by 
 cybercriminals, even though phishing had been practiced by telephone and fax for decades prior.
-Did they imagine that the Internet would usher in an enduring era of ethics worldwide?
-That lack of foresight is a huge contributing factor to the current cybercrime crisis.
-
-Now it's too late to fix SMTP so that it's not a universal cybercrime portal.
-Email infrastructure is dominated by a handful of huge online services, 
-with little capacity for cooperation to improve the safety and user experience of email for everyone.
-
-Moreover, the IETF's prevailing wind is that "spam" (i.e. undesirable email) 
+The IETF's prevailing wind has long been that "spam" (i.e. undesirable email) 
 is an intractable but minor irritation.
+Their lack of foresight is a huge contributing factor to the current cybercrime crisis.
+
 I've not reviewed IETF discussions regarding abuse of SMTP and proposals to prevent it.
-But judging by the list below, a significant number of people have raised the issue,
+But judging by the long list below, a significant number of people have raised the issue,
 with the intention of working on it, only to be dismissed and even mocked.
 Worse, the text reads like an effort to curtail both half-baked concepts and good faith critique.
 Its clear implication is that progress at the protocol level to prevent weaponization 
 of email is impossible.
 
+Now it's too late to fix SMTP so that it's not a universal cybercrime portal.
+Email infrastructure is dominated by a handful of huge online services, 
+with little capacity for cooperation to improve the safety and user experience of email for everyone.
 Therefore if you want an Internet messaging standard that doesn't make you accessible to everyone else 
 on the net without consent or limits, you need to look elsewhere.
 
