@@ -14,7 +14,7 @@ During the revisions to the email protocol stack around the turn of the century,
 the IETF evidently failed to recognize the potential for large-scale and targeted phishing attacks by 
 cybercriminals, even though phishing had been practiced by telephone and fax for decades prior.
 The IETF's prevailing wind has long been that "spam" (i.e. undesirable email) 
-is an intractable but minor irritation.
+is inevitable but manageable, and therefore a minor irritation.
 Their lack of foresight is a huge contributing factor to the current cybercrime crisis.
 
 I've not reviewed IETF discussions regarding abuse of SMTP and proposals to prevent it.
@@ -32,10 +32,10 @@ on the net without consent or limits, you need to look elsewhere.
 
 Feel free to [comment on Twitter](https://twitter.com/mnmnotmail){:target="_blank"}.
 
-Source: [rhyolite.com](https://www.rhyolite.com/anti-spam/you-might-be.html){:target="_blank"}.
-Format altered for clarity.
-
 ---
+
+_Source: [rhyolite.com](https://www.rhyolite.com/anti-spam/you-might-be.html){:target="_blank"}.
+Format altered for clarity._
 
 ### You might be an anti-spam kook if...
 
