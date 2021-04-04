@@ -98,15 +98,17 @@ _Stuff you wanted to know, and weren't afraid to ask_
 
 1. __Why doesn't TMTP offer federation between servers?__
 
-   It isn't necessary, and it would open an easily exploited security hole.
-   Even federation that requires mutual consent by the sites' administrators 
-   allows members of another site to impersonate members of your site.
-
+   It isn't necessary, and it would open an easily exploited social engineering pathway.
    When you receive an invitation to correspond or a message, 
    you need to know who has control over the sender's stated identity.
    If it's your organization, it's trustworthy. 
    If it's a vendor you buy from, it may not be.
    If it's a semi-public service that verifies real-life identities, do you trust its verification?
+
+   Furthermore, your home provider in a federated network can accidentally or intentionally cut off your service, 
+   and record all of the sites you correspond with, 
+   and read or copy all the content you receive or send, 
+   and even impersonate you in messages to anyone.
 
    See also #4, re universal identity.
 
