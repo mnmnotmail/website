@@ -15,18 +15,23 @@
    <a href="https://www.patreon.com/networkimprov" title="Support mnm on Patreon" style="border-radius:9999px; padding:0.6em 1em; background-color:#ff424d; color:#fff; text-decoration:none; white-space:nowrap;"><img src="icon-pat-white-1080.png" height="16" style="margin-right:0.4em; vertical-align:-0.2em; height:1.1em">Become a patron</a>
 </div>
 
-The mnm project is building a legitimate email replacement: 
-a [client](https://github.com/networkimprov/mnm-hammer),
-a [server](https://github.com/networkimprov/mnm), and 
-a [simple protocol](https://github.com/networkimprov/mnm/blob/master/Protocol.md) between them.
+Email has become a __universal cybercrime portal__.
+It allows anyone, claiming any identity, to send you any content, any number of times.
+And it's long been an __obstacle__ to productivity and effective communication.
+Many apps & services have offered to replace it.
+But __email is a network__ of diverse software & sites.
+A network can't be replaced by a product or service.
+
+The mnm project enables a new email network: 
+a [sane, simple protocol](https://github.com/networkimprov/mnm/blob/master/Protocol.md),
+a [client](https://github.com/networkimprov/mnm-hammer), and
+a [server](https://github.com/networkimprov/mnm).
 It's designed for everyone, but especially:
 
-- Organizations and departments where a phishing attack could be catastrophic, 
-and that rely on internal email.
+- Organizations where a phishing attack could be catastrophic.
 Examples: manufacturing, public infrastructure, government, finance, research & development, information technology.
 
-- Services and websites whose customers/members exchange email with the site or each other, 
-and dislike the message scanning done by webmail sites.
+- Services and websites whose clients dislike the message scanning done by webmail providers.
 Examples: legal affairs, health care, job search, family matters.
 
 mnm has two major goals.
