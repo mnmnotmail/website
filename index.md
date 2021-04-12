@@ -23,9 +23,9 @@ But __email is a network__ of diverse software & sites.
 A network can't be replaced by a product or service.
 
 The mnm project enables a new email network: 
-a [sane, simple protocol](https://github.com/networkimprov/mnm/blob/master/Protocol.md),
-a [client](https://github.com/networkimprov/mnm-hammer), and
-a [server](https://github.com/networkimprov/mnm).
+a [server](https://github.com/networkimprov/mnm), 
+a [client](https://github.com/networkimprov/mnm-hammer), and 
+a [sane, simple protocol](https://github.com/networkimprov/mnm/blob/master/Protocol.md) to link them.
 It's designed for everyone, but especially:
 
 - Organizations where a phishing attack could be catastrophic.
