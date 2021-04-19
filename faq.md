@@ -83,17 +83,15 @@ _Stuff you wanted to know, and weren't afraid to ask_
 
 1. __Does TMTP provide end-to-end encryption (E2EE)?__
 
-   Not yet, but it's likely. 
-   E2EE wouldn't be the default, as there are legitimate reasons 
-   why a TMTP site would need to analyze or archive traffic among its members.
-   And as mnm is motivated by the cybercrime crisis, 
-   the author is concerned about the benefits of encryption to bad actors.
+   Not yet, but it's planned. 
+   E2EE wouldn't be the default for all TMTP sites, as there are legitimate reasons 
+   why a site would need to analyze or archive traffic among its members.
 
    E2EE is not as important for TMTP as it is for SMTP.
    When the Internet was emerging, its constituent networks weren't online continuously, 
    therefore email between networks had to be stored at each relay node until the next one was accessible.
    That exposes the message content to every node in the path, 
-   regardless of any encryption at the transport layer, e.g. SSL/TLS.
+   regardless of any encryption at the transport layer.
    TMTP (like HTTP) simply assumes a robust Internet.
 
 1. __Why doesn't TMTP offer federation between servers?__
