@@ -18,22 +18,25 @@
 
 _Stuff you wanted to know, and weren't afraid to ask_
 
-1. __Why should we replace email?__
+1. __Why should we adopt a new email protocol?__
 
-   It's become a universal cybercrime portal, 
+   Email has become a universal cybercrime portal, 
    because it makes you accessible to everyone else on the Internet without limits, 
-   and thereby facilitates phishing.
-   (Most phishing attacks originate at authenticated senders.)
-   The only effective solution is to block SMTP on public networks; to do so, we must replace email.
+   and thereby facilitates phishing and other social engineering attacks.
+   (Most phishing attempts originate at authenticated senders.)
+   The only effective solution is to block SMTP on public networks.
 
    See also [_Why TMTP?_](rationale.html)
 
-1. __How can TMTP grow to replace email, given how entrenched email is?__
+1. __How can TMTP grow to replace SMTP, given how entrenched it is?__
 
-   Initially, it can replace internal email 
+   If SMTP is so deeply entrenched due to "network effects," 
+   why are there so many other successful messaging and discussion apps?
+
+   Initially, TMTP can handle internal correspondence 
    at organizations where a phishing attack could be catastrophic (e.g. 
    manufacturing, public infrastructure, government, finance, R&D, IT).
-   And it can replace external email for services whose members dislike 
+   And it can handle external correspondence for services whose members dislike 
    the message scanning done by webmail apps for advertising purposes (e.g. 
    legal affairs, health care, job search, family matters).
 
