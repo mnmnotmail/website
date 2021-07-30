@@ -1,3 +1,6 @@
+<script src="//gc.zgo.at/count.js" async
+        data-goatcounter="https://mnmnotmail.goatcounter.com/count"></script>
+
 <p style="text-align:center">
    <a href="/"><img align="left" style="visibility:hidden; margin-top:-12px" src="logo-48-bleed-bright.png"></a>
    <a href="https://dev.to/mnmnotmail"      ><img height="36" align="right" src="icon-dev-gray.svg"></a>
