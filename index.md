@@ -18,23 +18,28 @@
    <a href="https://www.patreon.com/networkimprov" title="Support mnm on Patreon" style="border-radius:9999px; padding:0.6em 1em; background-color:#ff424d; color:#fff; text-decoration:none; white-space:nowrap;"><img src="icon-pat-white-1080.png" height="16" style="margin-right:0.4em; vertical-align:-0.2em; height:1.1em">Become a patron</a>
 </div>
 
-Email has become a __universal cybercrime portal__.
-It allows anyone, claiming any identity, to send you any content, any number of times.
-And it's long been an __obstacle__ to productivity and effective communication.
-Many apps & services have offered to replace it.
+In almost all groups & organizations & communities,
+members need to communicate in writing with each other privately, person-to-person(s),
+and need a personal repository for their correspondence. 
+The only widespread, decentralized (i.e. not owned by a single vendor) tool for this has been email.
+
+Today, email is increasingly the vehicle for __constant, vicious cyberattacks,__
+as it allows anyone, claiming any identity, to send you any content, without limits.
+And it's long been an obstacle to productivity and effective communication.
+Many online apps have offered to replace it.
 But __email is a network__ of diverse software & sites.
 A network can't be replaced by a product or service.
 
-The mnm project enables a new email network: 
-a [server](https://github.com/networkimprov/mnm), 
-a [client](https://github.com/networkimprov/mnm-hammer), and 
-a [sane, simple protocol](https://github.com/networkimprov/mnm/blob/master/Protocol.md) to link them.
+The mnm project enables a safer email network, centered on communities & organizations. mnm offers 
+a [simple protocol](https://github.com/networkimprov/mnm/blob/master/Protocol.md) linking 
+a [server](https://github.com/networkimprov/mnm) and 
+a [client](https://github.com/networkimprov/mnm-hammer).
 It's designed for everyone, but especially:
 
-- Organizations where a phishing attack could be catastrophic.
+- Organizations where a phishing attack could be catastrophic. \
 Examples: manufacturing, public infrastructure, government, finance, research & development, information technology.
 
-- Services and websites whose clients dislike the message scanning done by webmail providers.
+- Services and websites whose clients dislike the message scanning done by webmail providers. \
 Examples: legal affairs, health care, job search, family matters.
 
 mnm has two major goals.
