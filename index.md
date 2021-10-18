@@ -11,7 +11,7 @@
    <a href="/demo.html">Demo</a>
 </p>
 
-### mnm is not mail
+### A safer, better, decentralized email network
 
 <img width="300" hspace="2" style="max-width:45%" align="right" src="logo-400-bleed-dim.png">
 <div style="margin:4em 2px 1.5em 22px; width:300px; max-width:45%; float:right; clear:both; text-align:center;">
@@ -30,7 +30,7 @@ Many online apps have offered to replace it.
 But __email is a network__ of diverse software & sites.
 A network can't be replaced by a product or service.
 
-The mnm project enables a safer email network, centered on communities & organizations. mnm offers 
+The __mnm project__ enables a safer email network, centered on communities & organizations. mnm offers 
 a [simple protocol](https://github.com/networkimprov/mnm/blob/master/Protocol.md) linking 
 a [server](https://github.com/networkimprov/mnm) and 
 a [client](https://github.com/networkimprov/mnm-hammer).
