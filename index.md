@@ -43,7 +43,7 @@ Examples: manufacturing, public infrastructure, government, finance, research & 
 - Services and websites whose clients dislike the message scanning done by webmail providers. \
 Examples: legal affairs, health care, job search, family matters.
 
-mnm has two major goals.
+mnm (say _em &bull; eh &bull; __nem___) has two major goals:
 
 1. To provide a far safer correspondence model, where you:  
 \+ choose the organizations/sites that relay your correspondence  
