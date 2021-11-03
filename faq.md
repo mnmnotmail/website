@@ -153,8 +153,8 @@ define both message delivery and message body formatting?__
 
 1. __Is "mnm" really the best name for the project?__
 
-   Good question! I think it rolls off the tongue nicely.
-   And the general public might get a kick out of the self-referencing quirk, which is new to them.
+   Good question! I think it rolls off the tongue nicely (say _em &bull; eh &bull; __nem___).
+   And the general public might get a kick out of the self-referencing quirk&mdash;_Mnm is Not Mail_.
    Plus you can invent your own names from the acronym; it's _Massive New Mail!_
 
 <!--1. __How did you decide to work on this?__
