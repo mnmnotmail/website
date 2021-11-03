@@ -2,8 +2,7 @@
         data-goatcounter="https://mnmnotmail.goatcounter.com/count"></script>
 
 <p style="text-align:center">
-   <a href="/"><img align="left" style="margin-top:-12px" src="logo-48-bleed-bright.png">
-      <div style="float:left; margin-left:-0.75em; font-weight:bold; color:#888">m.n.m</div></a>
+   <a href="/"><img align="left" style="margin-top:-12px" src="logo-48-bleed-bright.png"></a>
    <a href="https://dev.to/mnmnotmail"      ><img height="36" align="right" src="icon-dev-gray.svg"></a>
    <a href="https://facebook.com/mnmnotmail"><img height="36" align="right" src="icon-fb-gray-58.png"></a>
    <a href="https://twitter.com/mnmnotmail" ><img height="36" align="right" src="icon-tw-gray.svg"></a>
