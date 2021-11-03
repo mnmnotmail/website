@@ -1,15 +1,16 @@
 <script src="//gc.zgo.at/count.js" async
         data-goatcounter="https://mnmnotmail.goatcounter.com/count"></script>
 
-<p style="text-align:center">
-   <a href="/"><img align="left" style="visibility:hidden; margin-top:-12px" src="logo-48-bleed-bright.png"></a>
+<div style="text-align:center">
+   <a href="/"><img align="left" style="visibility:hidden; margin-top:-12px" src="logo-48-bleed-bright.png">
+      <div style="visibility:hidden; float:left; margin-left:-0.75em; font-weight:bold; color:#888">m.n.m</div></a>
    <a href="https://dev.to/mnmnotmail"      ><img height="36" align="right" src="icon-dev-gray.svg"></a>
    <a href="https://facebook.com/mnmnotmail"><img height="36" align="right" src="icon-fb-gray-58.png"></a>
    <a href="https://twitter.com/mnmnotmail" ><img height="36" align="right" src="icon-tw-gray.svg"></a>
    <a href="/rationale.html">Why?</a> &bull;
    <a href="/faq.html">FAQ</a> &bull;
    <a href="/demo.html">Demo</a>
-</p>
+</div>
 
 ### A safer, better, decentralized email network
 
