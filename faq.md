@@ -1,15 +1,16 @@
 <script src="//gc.zgo.at/count.js" async
         data-goatcounter="https://mnmnotmail.goatcounter.com/count"></script>
 
-<p style="text-align:center">
-   <a href="/"><img align="left" style="margin-top:-12px" src="logo-48-bleed-bright.png"></a>
+<div style="text-align:center">
+   <a href="/"><img align="left" style="margin-top:-12px" src="logo-48-bleed-bright.png">
+      <div style="float:left; margin-left:-0.75em; font-weight:bold; color:#888">m.n.m</div></a>
    <a href="https://dev.to/mnmnotmail"      ><img height="36" align="right" src="icon-dev-gray.svg"></a>
    <a href="https://facebook.com/mnmnotmail"><img height="36" align="right" src="icon-fb-gray-58.png"></a>
    <a href="https://twitter.com/mnmnotmail" ><img height="36" align="right" src="icon-tw-gray.svg"></a>
    <a href="/rationale.html">Why?</a> &bull;
    <a href="/faq.html">FAQ</a> &bull;
    <a href="/demo.html">Demo</a>
-</p>
+</div>
 
 <div style="margin:3.1em 2px 1.5em 22px; width:300px; max-width:45%; float:right; clear:both; text-align:center;">
    <a href="https://www.patreon.com/networkimprov" title="Support mnm on Patreon"
