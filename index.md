@@ -2,7 +2,8 @@
         data-goatcounter="https://mnmnotmail.goatcounter.com/count"></script>
 
 <p style="text-align:center">
-   <a href="/"><img align="left" style="visibility:hidden; margin-top:-12px" src="logo-48-bleed-bright.png"></a>
+   <a href="/"><img align="left" style="visibility:hidden; margin-top:-12px" src="logo-48-bleed-bright.png">
+      <div style="visibility:hidden; float:left; margin-left:-0.75em; font-weight:bold; color:#888">m.n.m</div></a>
    <a href="https://dev.to/mnmnotmail"      ><img height="36" align="right" src="icon-dev-gray.svg"></a>
    <a href="https://facebook.com/mnmnotmail"><img height="36" align="right" src="icon-fb-gray-58.png"></a>
    <a href="https://twitter.com/mnmnotmail" ><img height="36" align="right" src="icon-tw-gray.svg"></a>
@@ -42,7 +43,7 @@ Examples: manufacturing, public infrastructure, government, finance, research & 
 - Services and websites whose clients dislike the message scanning done by webmail providers. \
 Examples: legal affairs, health care, job search, family matters.
 
-mnm has two major goals.
+mnm (say _em &bull; eh &bull; __nem___) has two major goals.
 
 1. To provide a far safer correspondence model, where you:  
 \+ choose the organizations/sites that relay your correspondence  
