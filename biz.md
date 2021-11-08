@@ -45,12 +45,13 @@ It cannot be adapted for today's crime-infested Internet.
 Second problem: The email user experience has been stagnant for a long time, 
 and doesn't support common forms of communication, e.g.
 - sending a form/survey that the recipient can fill out and return
-- formatting an email as a deck of slides or tabs
-- referencing a different discussion thread or message with a hyperlink
 - including a chart/graph which is drawn from an attached dataset
-- discussion & progressive revision of a document (or set of docs)
-- structured task requests, with a due-date, owner, description, subtasks, etc
-- payments between members, and micro-payments to the site host
+- formatting a message as a deck of slides or tabs
+- referencing a different discussion thread or message with a hyperlink
+- discussing & progressively revising a document (or set of docs)
+- issuing task requests with a due-date, owner, subtasks, etc
+- maintaining a collection of related threads, documents, URLs, and hypertext pages
+- making payments between members, and micro-payments to the site host
 
 ### Solution
 
