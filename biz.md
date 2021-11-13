@@ -14,7 +14,7 @@
 
 ## Business Case
 
-_A venture pitch based on the mnm project. (Draft, 31-Oct-2021)_
+_A venture pitch based on the mnm project. (Draft, 12-Nov-2021)_
 
 ### Market
 
@@ -50,15 +50,15 @@ and doesn't support common forms of communication, e.g.
 - referencing a different discussion thread or message with a hyperlink
 - discussing & progressively revising a document (or set of docs)
 - issuing task requests with a due-date, owner, subtasks, etc
-- maintaining a collection of related threads, documents, URLs, and hypertext pages
-- making payments between members, and micro-payments to the site host
+- compiling a collection of related threads, documents, URLs, and wiki pages
+- making payments between contacts, and micro-payments to a site host
 
 ### Solution
 
 A new email network centered on groups & organizations & communities. 
 Sites in the network are members-only, and allow email only between members of that site. 
 Every knowledge worker will belong to many sites (just as they belong to many real-world communities today). 
-Most sites will verify the identity of their members, especially those sites which carry the most confidential communications.
+Most sites will verify the identity of their members, especially those sites which carry confidential communications.
 
 There is a single client app for managing all your sites, but messages originating at different sites are not intermixed. 
 This is illustrated in the demo. 
