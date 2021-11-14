@@ -14,7 +14,7 @@
 
 ## Business Case
 
-_A venture pitch based on the mnm project. (Draft, 12-Nov-2021)_
+_A venture pitch based on the mnm project. (Draft, 14-Nov-2021)_
 
 ### Market
 
@@ -42,7 +42,8 @@ The possibility that email might be used by over a billion people never occurred
 Email was intended for a specific community, not the global community. 
 It cannot be adapted for today's crime-infested Internet.
 
-Second problem: The email user experience has been stagnant for a long time, 
+Second problem: Electronic correspondence is central to knowledge work, 
+but the email user experience has been stagnant for a long time, 
 and doesn't support common forms of communication, e.g.
 - sending a form/survey that the recipient can fill out and return
 - including a chart/graph which is drawn from an attached dataset
@@ -55,14 +56,14 @@ and doesn't support common forms of communication, e.g.
 
 ### Solution
 
-A new email network centered on groups & organizations & communities. 
-Sites in the network are members-only, and allow email only between members of that site. 
+A decentralized network (via an open protocol) for knowledge work, centered on teams & organizations & associations. 
+Sites in the network are members-only, and allow communications only between members of that site. 
 Every knowledge worker will belong to many sites (just as they belong to many real-world communities today). 
 Most sites will verify the identity of their members, especially those sites which carry confidential communications.
 
-There is a single client app for managing all your sites, but messages originating at different sites are not intermixed. 
-This is illustrated in the demo. 
-This client also advances the email UX in fundamental ways.
+A single client app manages all your sites, but traffic originating at different sites is not intermixed. 
+(This is illustrated in the demo.) 
+This client also advances the electronic correspondence UX in fundamental ways.
 
 It's hard to change people's work habits. 
 Offering knowledge workers a tool that prevents attacks but merely works like email probably can't succeed. 
@@ -75,7 +76,8 @@ Available email alternatives don't address the core benefits of email.
 
 All workplaces have office politics. 
 Web-based intranet discussion boards make written communications visible across the company/dept/team. 
-Office politics requires that people be able to communicate privately, person-to-person(s). 
+Office politics requires that people be able to communicate privately, person-to-person(s), 
+and defer delivery of content to corporate repositories until it has buy-in from concerned stakeholders. 
 This is possible with messaging apps, however...
 
 Instant messaging apps (Slack/etc) don't foster reflection & composition, but promote distraction and pointless chatter. 
