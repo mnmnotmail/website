@@ -72,7 +72,7 @@ demonstrates that people will adopt new tools that empower them in new ways.
 
 ### Competition
 
-Available email alternatives don't address the core benefits of email.
+Available email alternatives don't bestow key benefits of email.
 
 All workplaces have office politics. 
 Web-based intranet discussion boards make written communications visible across the company/dept/team. 
