@@ -49,6 +49,8 @@ and doesn't support common forms of communication, e.g.
 - including a chart/graph which is drawn from an attached dataset
 - formatting a message as a deck of slides or tabs
 - referencing a different discussion thread or message with a hyperlink
+- adding a new recipient to a long-running, multi-party thread
+- dropping out of a thread that's no longer of interest
 - discussing & progressively revising a document (or set of docs)
 - issuing task requests with a due-date, owner, subtasks, etc
 - compiling a collection of related threads, documents, URLs, and wiki pages
