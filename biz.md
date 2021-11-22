@@ -14,7 +14,7 @@
 
 ## Business Case
 
-_A venture pitch based on the mnm project. (Draft, 14-Nov-2021)_
+_A venture pitch based on the mnm project. (Draft, 22-Nov-2021)_
 
 ### Market
 
@@ -53,7 +53,7 @@ and doesn't support common forms of communication, e.g.
 - dropping out of a thread that's no longer of interest
 - discussing & progressively revising a document (or set of docs)
 - issuing task requests with a due-date, owner, subtasks, etc
-- compiling a collection of related threads, documents, URLs, and wiki pages
+- compiling a collection of related threads, tasks, documents, URLs, and wiki pages
 - making payments between contacts, and micro-payments to a site host
 
 ### Solution
