@@ -14,7 +14,7 @@
 
 ## Business Case
 
-_A venture pitch based on the mnm project. (Draft, 22-Nov-2021)_
+_A venture pitch based on the mnm project. (Draft, 23-Nov-2021)_
 
 ### Market
 
@@ -51,6 +51,7 @@ and doesn't support common forms of communication, e.g.
 - referencing a different discussion thread or message with a hyperlink
 - adding a new recipient to a long-running, multi-party thread
 - dropping out of a thread that's no longer of interest
+- notifying contacts of online presence and out-of-office status
 - discussing & progressively revising a document (or set of docs)
 - issuing task requests with a due-date, owner, subtasks, etc
 - compiling a collection of related threads, tasks, documents, URLs, and wiki pages
