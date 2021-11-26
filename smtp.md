@@ -12,27 +12,20 @@
    <a href="/demo.html">Demo</a>
 </div>
 
-### SMTP will not be revised to prevent phishing
+### SMTP will not be fixed
 
-During the revisions to the email protocol stack around the turn of the century, 
-the IETF evidently failed to recognize the potential for large-scale and targeted phishing attacks by 
-cybercriminals, even though phishing had been practiced by telephone and fax for decades prior.
-The IETF's prevailing wind has long been that "spam" (i.e. undesirable email) 
-is inevitable but manageable, and therefore a minor irritation.
-Their lack of foresight is a huge contributing factor to the current cybercrime crisis.
+The IETF initially disregarded&mdash;and later declined to mitigate&mdash;the vulnerability of SMTP 
+to social engineering attacks by cybercriminals, 
+even though phishing had been practiced by telephone and fax for decades prior to the standardization of email.
+The IETF instead committed to the principle that anyone, claiming any identity (i.e. "real name"), 
+must be able to email you any content, without limits.
+Their justification has long been that "spam" is inevitable but manageable, and therefore a minor irritation.
+As a result, email became and will forevermore be a universal cyberattack channel.
 
-I've not reviewed IETF discussions regarding abuse of SMTP and proposals to prevent it.
-But judging by the long list below, a significant number of people have raised the issue,
-with the intention of working on it, only to be dismissed and even mocked.
-Worse, the text reads like an effort to curtail both half-baked concepts and good faith critique.
-Its clear implication is that progress at the protocol level to prevent weaponization 
-of email is impossible.
-
-Now it's too late to fix SMTP so that it's not a universal cybercrime portal.
-Email infrastructure is dominated by a handful of huge online services, 
-with little capacity for cooperation to improve the safety and user experience of email for everyone.
-Therefore if you want an Internet messaging standard that doesn't make you accessible to everyone else 
-on the net without consent or limits, you need to look elsewhere.
+A significant number of people have offered proposals to prevent email abuse,
+with the intention of working on the issue, only to be dismissed and even mocked.
+Indeed, IETF members began circulating the text below in an effort to curtail all critique.
+The clear (but bizarre) implication is that a protocol that prevents weaponization of electronic correspondence is pointless.
 
 Feel free to [comment on Twitter](https://twitter.com/mnmnotmail){:target="_blank"}.
 
@@ -41,18 +34,16 @@ Feel free to [comment on Twitter](https://twitter.com/mnmnotmail){:target="_blan
 _Source: [rhyolite.com](https://www.rhyolite.com/anti-spam/you-might-be.html){:target="_blank"}.
 Format altered for clarity._
 
-### You might be an anti-spam kook if...
+You might be an anti-spam kook if...
 
-<p>Each item in the following list was suggested by the words or actions
+Each item in the following list was suggested by the words or actions
 of people who presented themselves to the IETF or elsewhere as having discovered the FUSSP.
 Some of the items may seem obscure to those who have not dealt with the IETF.
-</p>
 
-<p>Almost all of those who have inspired this list mean well.
+Almost all of those who have inspired this list mean well.
 In many cases, they are not in the habit of thinking
 critically and believe that "Star Trek" accurately depicts the creation
 of hardware, software, and even social or political mechanisms.
-</p>
 
 <table>
 <tr><td><a name="spam-fighter" href="#spam-fighter">spam fighter</a>
