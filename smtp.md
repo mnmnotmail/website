@@ -31,9 +31,12 @@ Feel free to [comment on Twitter](https://twitter.com/mnmnotmail){:target="_blan
 
 ---
 
+<div style="float:right" markdown="1">
 _Source: [rhyolite.com](https://www.rhyolite.com/anti-spam/you-might-be.html){:target="_blank"}.
 Format altered for clarity._
+</div>
 
+ \
 You might be an anti-spam kook if...
 
 Each item in the following list was suggested by the words or actions
@@ -45,6 +48,7 @@ In many cases, they are not in the habit of thinking
 critically and believe that "Star Trek" accurately depicts the creation
 of hardware, software, and even social or political mechanisms.
 
+<style>.markdown-body table tr { background-color: inherit !important; }</style>
 <table>
 <tr><td><a name="spam-fighter" href="#spam-fighter">spam fighter</a>
 </td><td>You have discovered the Final Ultimate Solution to the Spam Problem (FUSSP).
