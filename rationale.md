@@ -18,12 +18,12 @@ _The Internet Crime Wave_
 
 The Internet has facilitated the greatest organized crime wave since Prohibition 
 ([USA, 1920-33](https://en.wikipedia.org/wiki/Prohibition_in_the_United_States){:target="_blank"}). Problematically, 
-most cybercriminals and industrial spies are overseas, beyond the reach of US or Western 
+most cybercriminals and industrial spies are overseas, beyond the reach of 
 law enforcement. Many are quietly supported by their national governments. 
 For the foreseeable future, this crime wave will worsen.
 
 One of the most devastating weapons in the cybercriminal's arsenal is an Internet application 
-which millions of us willingly use every day: **e-mail**. It enables criminals to...
+which millions of us willingly use every day: **email**. It enables criminals to...
 
 1. Send you messages that appear to be from people you trust
 2. Send you any content on first contact, including:  
@@ -44,6 +44,7 @@ SMTP, the protocol at the root of these problems,
 originated at a time when the links between Internet sites were slow and intermittent, 
 and the only people using the Internet were friendly researchers in academia and government. 
 SMTP cannot cope with the 21st Century, and must be phased out.
+See also [_SMTP will not be fixed_](smtp.html).
 
 Sources  
 [https://boingboing.net/2018/05/21/mime-considered-harmful.html](https://boingboing.net/2018/05/21/mime-considered-harmful.html){:target="_blank"}  
