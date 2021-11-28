@@ -16,7 +16,7 @@
 
 The IETF initially disregarded&mdash;and later declined to mitigate&mdash;the vulnerability of SMTP 
 to social engineering attacks by cybercriminals, 
-even though phishing had been practiced by telephone and fax for decades prior to the standardization of email.
+even though similar fraud had been practiced by telephone and fax for decades prior to the standardization of email.
 The IETF instead committed to the principle that anyone, claiming any identity (i.e. "real name"), 
 must be able to email you any content, without limits.
 Their justification has long been that "spam" is inevitable but manageable, and therefore a minor irritation.
@@ -24,7 +24,7 @@ As a result, email became and will forevermore be a universal cyberattack channe
 
 A significant number of people have offered proposals to prevent email abuse,
 with the intention of working on the issue, only to be dismissed and even mocked.
-Indeed, IETF members began circulating the text below in an effort to curtail all critique.
+Indeed, IETF members began circulating the text below in an effort to curtail critique.
 The clear (but bizarre) implication is that a protocol that prevents weaponization of electronic correspondence is pointless.
 
 Feel free to [comment on Twitter](https://twitter.com/mnmnotmail){:target="_blank"}.
