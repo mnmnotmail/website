@@ -27,7 +27,7 @@ with the intention of working on the issue, only to be dismissed and even mocked
 Indeed, IETF members began circulating the text below in an effort to curtail critique.
 The clear (but bizarre) implication is that a protocol that prevents weaponization of electronic correspondence is pointless.
 
-Feel free to [comment on Twitter](https://twitter.com/mnmnotmail){:target="_blank"}.
+Feel free to [comment on Twitter](https://twitter.com/mnmnotmail/status/1471610809138618371){:target="_blank"}.
 
 ---
 
