@@ -14,7 +14,7 @@
 
 ## Business Case
 
-_A venture pitch based on the mnm project. (Draft, 23-Nov-2021)_
+_A venture pitch based on the mnm project. (Draft, 29-Dec-2021)_
 
 ### Market
 
@@ -72,6 +72,8 @@ It's hard to change people's work habits.
 Offering knowledge workers a tool that prevents attacks but merely works like email probably can't succeed. 
 However, the widespread adoption of alternative messaging and discussion apps (used alongside email) 
 demonstrates that people will adopt new tools that empower them in new ways.
+
+(Paul Graham, among many others, has called for [a better email protocol](http://www.paulgraham.com/ambitious.html){:target="_blank"}.)
 
 ### Competition
 
