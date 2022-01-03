@@ -45,17 +45,19 @@ It cannot be adapted for today's crime-infested Internet.
 Second problem: Electronic correspondence is central to knowledge work, 
 but the email user experience has been stagnant for a long time, 
 and doesn't support common forms of communication, e.g.
-- sending a form/survey that the recipient can fill out and return
+- sending a form/survey that the recipient can fill out and return *
 - including a chart/graph which is drawn from an attached dataset
-- formatting a message as a deck of slides or tabs
-- referencing a different discussion thread or message with a hyperlink
-- adding a new recipient to a long-running, multi-party thread
+- formatting a message as a deck of slides or tabs *
+- referencing a different discussion thread or message with a hyperlink *
+- adding a new recipient to a long-running, multi-party thread *
 - dropping out of a thread that's no longer of interest
-- notifying contacts of online presence and out-of-office status
+- notifying contacts of online presence and out-of-office status *
 - discussing & progressively revising a document (or set of docs)
 - issuing task requests with a due-date, owner, subtasks, etc
 - compiling a collection of related threads, tasks, documents, URLs, and wiki pages
 - making payments between contacts, and micro-payments to a site host
+
+(__*__ = Wholly or partly implemented in mnm v0.9)
 
 ### Solution
 
