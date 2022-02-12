@@ -65,10 +65,12 @@ A decentralized network (via an open protocol) for knowledge work, centered on t
 Sites in the network are members-only, and allow communications only between members of that site. 
 Every knowledge worker will belong to many sites (just as they belong to many real-world communities today). 
 Most sites will verify the identity of their members, especially those sites which carry confidential communications.
+A single client app manages all your sites, but traffic originating at different sites is not intermixed 
+(illustrated in the demo).
 
-A single client app manages all your sites, but traffic originating at different sites is not intermixed. 
-(This is illustrated in the demo.) 
-This client also advances the electronic correspondence UX in fundamental ways.
+The client also advances the UX of electronic correspondence in fundamental ways, by offering a fusion of email and the web, 
+and enabling shareable local/private webs.
+(These are "decentralized webs," albeit not in the blockchain sense.)
 
 It's hard to change people's work habits. 
 Offering knowledge workers a tool that prevents attacks but merely works like email probably can't succeed. 
