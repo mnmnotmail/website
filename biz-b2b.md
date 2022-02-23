@@ -108,7 +108,12 @@ However these are very expensive to design/build/operate, and pose security and 
 They're often badly designed, irritating users and limiting usage.
 Many such apps don't store received data locally, so depend on connectivity to the network for any use.
 
-Here are other protocols in development, which have been offered as email replacements.
+Many companies send phone text messages (SMS) containing a website link where the recipient can view the actual message.
+Users can't immediately determine anything about the notice, and may misinterpret it as spam or phishing.
+It entails a customer-specific area (and database) on the website, which is expensive to build & operate, 
+and a cyberattack target.
+
+Below are other protocols in development, which have been offered as email replacements.
 All of these assume that anyone must be able to contact you.
 None attempts to address the numerous common use cases of email via structured message formats.
 In other words, they misunderstand the problems of the vast majority of email users.
