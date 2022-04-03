@@ -12,18 +12,18 @@
    <a href="/demo.html">Demo</a>
 </div>
 
-### Why TMTP?
+### SMTP Delivers Disaster
 
 _The Internet Crime Wave_
 
 The Internet has facilitated the greatest organized crime wave since Prohibition 
-([USA, 1920-33](https://en.wikipedia.org/wiki/Prohibition_in_the_United_States){:target="_blank"}). Problematically, 
-most cybercriminals and industrial spies are overseas, beyond the reach of 
-law enforcement. Many are quietly supported by their national governments. 
+([USA, 1920-33](https://en.wikipedia.org/wiki/Prohibition_in_the_United_States){:target="_blank"}).
+Problematically, most cybercriminals and industrial spies are overseas, beyond the reach of law enforcement.
+Many are quietly supported by their national governments. 
 For the foreseeable future, this crime wave will worsen.
 
-One of the most devastating weapons in the cybercriminal's arsenal is an Internet application 
-which millions of us willingly use every day: **email**. It enables criminals to...
+One of the most devastating weapons in the cybercriminal's arsenal is an application 
+which zillions of us willingly use every day: **email**. It enables criminals to...
 
 1. Send you messages that appear to be from people you trust
 2. Send you any content on first contact, including:  
@@ -31,12 +31,12 @@ which millions of us willingly use every day: **email**. It enables criminals to
    b) executable programs, i.e. malware  
    c) attractively-designed disinformation and scam offers  
 3. Send you unlimited messages without your consent
-4. Steal all your past correspondence by discovering a simple password
+4. Steal all your past correspondence with a phishing attack
 5. Steal all your organization's correspondence by breaking into a single server
 
-These vulnerabilities have forced the adoption of spam filters that inevitably bury legitimate 
-messages, yet fail to block carefully crafted or targeted attacks. Spam filters may even help such 
-attackers, as they create a false sense of security. 
+These vulnerabilities have forced the adoption of spam filters that inevitably bury legitimate messages, 
+yet fail to block carefully crafted or targeted attacks.
+Spam filters may even help such attackers, as they create a false sense of security. 
 In desperation, organizations have turned to proprietary SaaS messaging products, 
 which lock them into a closed network built for the convenience of the vendor, not its customers.
 
@@ -44,6 +44,7 @@ SMTP, the protocol at the root of these problems,
 originated at a time when the links between Internet sites were slow and intermittent, 
 and the only people using the Internet were friendly researchers in academia and government. 
 SMTP cannot cope with the 21st Century, and must be phased out.
+
 See also [_SMTP will not be fixed_](smtp.html).
 
 Sources  
