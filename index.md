@@ -26,11 +26,9 @@ Email (SMTP etc) is insecure & indirect, typically transiting multiple third-par
 Many Internet sites patch this gap by building & maintaining custom phone apps&mdash;at great cost.
 
 Fixing this requires a new Internet protocol combining the best elements of the web and email.
-That's TMTP: a simple, direct, secure messaging & correspondence protocol.
+That's TMTP: a simple, site-specific, secure messaging & correspondence protocol.
 
-The __mnm project__ implements TMTP, a simple protocol linking 
-a [__server__](https://github.com/networkimprov/mnm) and 
-a [__client__](https://github.com/networkimprov/mnm-hammer).
+The __mnm project__ implements TMTP, a lightweight protocol linking a server and a client.
 It's applicable to any site that keeps a users list, but especially:
 
 - Organizations that provide essential services. \
@@ -58,7 +56,7 @@ As well as letting sites reach customers/members directly & securely, TMTP also 
 \+ many more features to foster focus, creativity, efficiency, and clarity  
 
 Further reading: &nbsp; [_Frequently Asked Q's_](faq.html) 
-&nbsp; &bull; &nbsp; [TMTP protocol](https://github.com/networkimprov/mnm/blob/master/Protocol.md)
+&nbsp; &bull; &nbsp; [TMTP Draft Spec](https://github.com/networkimprov/mnm/blob/master/Protocol.md)
 
 ---
 ### Status
