@@ -23,8 +23,7 @@ Internet sites lack a way to directly message their customers/members.
 The web (HTTPS etc) only supports client-initiated communications.
 Email (SMTP etc) traffic is insecure & indirect, typically transiting multiple third-party hosts between sender & recipient.
 (Email also has many other painful, widely-felt problems.)
-Internet sites often work around this gap by 
-sending web links via SMS, or building & maintaining custom phone apps.
+Some Internet sites patch this gap by building & maintaining custom phone apps.
 
 Fixing this requires a new Internet protocol combining the best elements of the web and email.
 That's TMTP: a simple, direct, secure messaging & correspondence protocol.
