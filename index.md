@@ -25,10 +25,10 @@ Email (SMTP etc) is insecure & indirect, typically transiting multiple third-par
 (Email also has many other painful, widely-felt problems.)
 Many Internet sites patch this gap by building & maintaining custom phone apps&mdash;at great cost.
 
-Fixing this requires a new Internet protocol combining the best elements of the web and email.
+Fixing this requires a new Internet protocol combining elements of the web and email.
 That's TMTP: a simple, site-specific, secure messaging & correspondence protocol.
 
-The __mnm project__ implements TMTP, a lightweight protocol linking a server and a client.
+The __mnm project__ implements TMTP, both server and client.
 It's applicable to any site that keeps a users list, but especially:
 
 - Organizations that provide essential services. \
@@ -56,7 +56,7 @@ As well as letting sites reach customers/members directly & securely, TMTP also 
 \+ many more features to foster focus, creativity, efficiency, and clarity  
 
 Further reading: &nbsp; [_Frequently Asked Q's_](faq.html) 
-&nbsp; &bull; &nbsp; [TMTP Draft Spec](https://github.com/networkimprov/mnm/blob/master/Protocol.md)
+&nbsp; &ndash; &nbsp; [TMTP Draft Specification](https://github.com/networkimprov/mnm/blob/master/Protocol.md)
 
 ---
 ### Status
@@ -66,7 +66,7 @@ and [server](https://github.com/networkimprov/mnm)
 are open source, subject to the terms of the 
 [Mozilla Public License, v2.0](http://mozilla.org/MPL/2.0/){:target="_blank"}.
 
-An [online demo](demo.html) went live in March 2021.
+Major portions of this page and [the _FAQ_](faq.html) were rewritten in April 2022.
 
 The mnm client app has had nine preview releases since April 2019. 
 It runs on Windows, MacOS, and Linux; ports to Android and iOS are planned. 
@@ -86,21 +86,21 @@ and [Readme](https://github.com/networkimprov/mnm/blob/master/README.md).
 ---
 ### Got an issue, idea, insight?
 
-The project is seeking comments, contributors, and patrons. 
 To submit a question, observation, feature request, or bug report, please open or comment on an issue:
 
 - [Re the TMTP protocol](https://github.com/networkimprov/mnm/issues)
 - [Re the mnm client app](https://github.com/networkimprov/mnm-hammer/issues)
 - [Re the mnm TMTP server](https://github.com/networkimprov/mnm/issues) \
   &nbsp;
-- [Support mnm on Patreon](https://www.patreon.com/networkimprov)
+- Support [mnm on Patreon](https://www.patreon.com/networkimprov)
 - Follow mnm on: 
 [Twitter](https://twitter.com/mnmnotmail) &ndash; 
 [DEV](https://dev.to/mnmnotmail) &ndash; 
 [Facebook](https://facebook.com/mnmnotmail)
+- Message the author: [@mnmnotmail](https://twitter.com/mnmnotmail) _at_ Twitter &ndash; mnm _at_ networkimprov &bull; net
 
 ---
-### Quick Start
+### Download & Startup
 
 You'll need an invitation to a TMTP service. 
 To run your own service, [set up the mnm TMTP server](https://github.com/networkimprov/mnm/blob/master/README.md#quick-start).
