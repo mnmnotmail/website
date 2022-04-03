@@ -12,56 +12,51 @@
    <a href="/demo.html">Demo</a>
 </div>
 
-### A safer, better, decentralized email network
+### TMTP: site-specific Internet messaging
 
 <img width="300" hspace="2" style="max-width:45%" align="right" src="logo-400-bleed-dim.png">
 <div style="margin:4em 2px 1.5em 22px; width:300px; max-width:45%; float:right; clear:both; text-align:center;">
    <a href="https://www.patreon.com/networkimprov" title="Support mnm on Patreon" style="border-radius:9999px; padding:0.6em 1em; background-color:#ff424d; color:#fff; text-decoration:none; white-space:nowrap;"><img src="icon-pat-white-1080.png" height="16" style="margin-right:0.4em; vertical-align:-0.2em; height:1.1em">Become a patron</a>
 </div>
 
-In almost all groups & organizations & communities,
-members need to communicate in writing with each other privately, person-to-person(s),
-and need a personal repository for their correspondence. 
-The only widespread, decentralized (i.e. not owned by a single vendor) tool for this has been email.
+Internet sites lack a way to directly message their customers/members.
+The web (HTTPS etc) only supports client-initiated communications.
+Email (SMTP etc) is insecure & indirect, typically transiting multiple third-party hosts between sender & recipient.
+(Email also has many other painful problems!)
+Many Internet sites patch this gap by building & maintaining custom phone apps&mdash;at great cost.
 
-Today, email is increasingly the vehicle for __constant, vicious cyberattacks,__
-as it allows anyone, claiming any identity, to send you any content, without limits.
-And it's long been an obstacle to productivity and effective communication.
-Many online apps have offered to replace it.
-But __email is a network__ of diverse software & sites.
-A network can't be replaced by a product or service.
+Fixing this requires a new Internet protocol combining elements of the web and email.
+That's TMTP: a simple, site-specific, secure messaging & correspondence protocol.
 
-The __mnm project__ enables a safer email network, centered on communities & organizations. mnm offers 
-a [simple protocol](https://github.com/networkimprov/mnm/blob/master/Protocol.md) linking 
-a [server](https://github.com/networkimprov/mnm) and 
-a [client](https://github.com/networkimprov/mnm-hammer).
-It's designed for everyone, but especially:
+The __mnm project__ implements TMTP, both server and client.
+It's applicable to any site that keeps a users list, but especially:
 
-- Organizations where a phishing attack could be catastrophic. \
-Examples: manufacturing, public infrastructure, government, finance, research & development, information technology.
+- Organizations that provide essential services. \
+Examples: banking, accounting, IT/SaaS, telecom, shipping, manufacturing, security.
 
-- Services and websites whose clients dislike the message scanning done by webmail providers. \
+- Businesses and professionals whose clients dislike the message scanning done by webmail providers. \
 Examples: legal affairs, health care, job search, family matters.
 
-mnm (say _em &bull; eh &bull; __nem___) has two major goals:
+As well as letting sites reach customers/members directly & securely, TMTP also benefits end users:
 
-1. To provide a far safer correspondence model, where you:  
-\+ choose the organizations/sites that relay your correspondence  
-\+ select which members of a site can correspond with you  
+1. It provides a far safer model than email, where you:  
+\+ choose the sites where you participate  
+\+ select which members of a site can message you  
 \+ always know from which site a message originated  
 \+ can block anyone with whom you've made contact  
 \+ may leave a site and never see traffic from it again  
 
-2. To offer capabilities missing in traditional email, including:  
+2. It offers capabilities missing in email, including:  
 \+ message formatting &amp; layout via Markdown (aka CommonMark)  
 \+ hyperlinks to messages and other threads  
 \+ hashtags and private tags  
 \+ slide deck layouts  
 \+ data-driven charts &amp; graphs  
 \+ forms/surveys whose results are collected into tables  
-\+ many more features to foster focus, creativity, efficiency, and understanding  
+\+ many more features to foster focus, creativity, efficiency, and clarity  
 
-Further reading: &nbsp; [_Why TMTP?_](rationale.html) &nbsp; &ndash; &nbsp; [_Frequently Asked Q's_](faq.html)
+Further reading: &nbsp; [_Frequently Asked Q's_](faq.html) 
+&nbsp; &ndash; &nbsp; [TMTP Draft Specification](https://github.com/networkimprov/mnm/blob/master/Protocol.md)
 
 ---
 ### Status
@@ -71,7 +66,7 @@ and [server](https://github.com/networkimprov/mnm)
 are open source, subject to the terms of the 
 [Mozilla Public License, v2.0](http://mozilla.org/MPL/2.0/){:target="_blank"}.
 
-An [online demo](demo.html) went live in March 2021.
+Major portions of this page and [the _FAQ_](faq.html) were rewritten in April 2022.
 
 The mnm client app has had nine preview releases since April 2019. 
 It runs on Windows, MacOS, and Linux; ports to Android and iOS are planned. 
@@ -91,21 +86,21 @@ and [Readme](https://github.com/networkimprov/mnm/blob/master/README.md).
 ---
 ### Got an issue, idea, insight?
 
-The project is seeking comments, contributors, and patrons. 
 To submit a question, observation, feature request, or bug report, please open or comment on an issue:
 
 - [Re the TMTP protocol](https://github.com/networkimprov/mnm/issues)
 - [Re the mnm client app](https://github.com/networkimprov/mnm-hammer/issues)
 - [Re the mnm TMTP server](https://github.com/networkimprov/mnm/issues) \
   &nbsp;
-- [Support mnm on Patreon](https://www.patreon.com/networkimprov)
+- Support [mnm on Patreon](https://www.patreon.com/networkimprov)
 - Follow mnm on: 
 [Twitter](https://twitter.com/mnmnotmail) &ndash; 
 [DEV](https://dev.to/mnmnotmail) &ndash; 
 [Facebook](https://facebook.com/mnmnotmail)
+- Message the author: [@mnmnotmail](https://twitter.com/mnmnotmail) _at_ Twitter &ndash; mnm _at_ networkimprov &bull; net
 
 ---
-### Quick Start
+### Download & Startup
 
 You'll need an invitation to a TMTP service. 
 To run your own service, [set up the mnm TMTP server](https://github.com/networkimprov/mnm/blob/master/README.md#quick-start).

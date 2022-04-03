@@ -22,35 +22,35 @@
 
 _Stuff you wanted to know, and weren't afraid to ask_
 
-1. __Why should we adopt a new email protocol?__
+1. __Why a site-specific message protocol?__
 
-   Email has become a universal cybercrime portal, 
-   because it makes you accessible to everyone else on the Internet without limits, 
-   and thereby facilitates phishing and other social engineering attacks.
-   (Most phishing attempts originate at authenticated senders.)
-   The only effective solution is to block SMTP on public networks.
+   Messaging protocols like SMTP & Matrix are designed to connect anyone on the Internet with anyone else.
+That entails one or more third party intermediaries to relay messages; 
+such entities incur costs, present external points of failure, and may scan/monetize traffic.
+Given a site-specific messaging protocol, 
+Internet sites can exchange messages with their customers/members directly, without intermediate hosts.
 
-   See also [_Why TMTP?_](rationale.html)
+   A huge variety of Internet sites send time-sensitive and/or private information to their members/customers electronically.
+Those that can afford it do this via custom phone apps, or SMS texts containing website links.
+All the rest are forced to rely on email, which is not suitable for urgent or confidential content.
 
-1. __How can TMTP grow to replace SMTP, given how entrenched it is?__
+1. __Isn't SMTP entrenched? How can TMTP replace it organically?__
 
-   If SMTP is so deeply entrenched due to "network effects," 
-   why are there so many other successful messaging and discussion apps?
+   Today, TMTP offers a better, cheaper solution for sites that have already abandoned SMTP (or that want to) 
+in favor of custom phone apps or SMS texts carrying website links.
+These sites will expose the majority of Internet users to the end-user benefits of TMTP.
 
-   Initially, TMTP can handle internal correspondence 
-   at organizations where a phishing attack could be catastrophic (e.g. 
-   manufacturing, public infrastructure, government, finance, R&D, IT).
-   And it can handle external correspondence for services whose members dislike 
-   the message scanning done by webmail apps for advertising purposes (e.g. 
-   legal affairs, health care, job search, family matters).
+   Over time, departments within orgs will adopt TMTP for internal correspondence.
+Besides the productivity gains versus email, 
+TMTP is especially valuable for environments where an email-borne cyberattack could be catastrophic, 
+e.g. manufacturing, public infrastructure, government, finance, R&D, IT.
+See also [_SMTP Delivers Disaster_](rationale.html).
 
-   As more sites adopt TMTP for their own reasons, 
-   they'll begin using it to communicate with each other for B2B purposes, in lieu of email.
-   As B2B use grows, those organizations that serve consumers can offer them TMTP accounts.
+   Professional associations, and other services which can verify their members' identities, 
+will offer TMTP accounts to facilitate trustworthy introductions and correspondence among individuals and businesses.
 
-   Consumers will then start to ask for TMTP accounts everywhere they still need email, including work.
-   Once enough consumers have switched over, 
-   sites can begin requiring TMTP for all external electronic correspondence.
+   TMTP won't replace all SMTP use cases, nor impact consumers' use of popular messaging services.
+The messaging space will remain a diverse one.
 
 1. __What is the architecture of TMTP?__
 
@@ -79,14 +79,10 @@ _Stuff you wanted to know, and weren't afraid to ask_
 1. __Does TMTP enable a universal identity, the way email does?__
 
    No, it provides site-specific identities.
-   However, "marketplace" sites which offer membership to large segments of the public 
-   may serve as common identity providers; for instance, 
-   a consortium of professional organizations, 
-   or a service that verifies real-world identity and background.
-
-   The issue of universal identity is complex, and should not be defined within a messaging protocol.
-   If a separate universal identity system is widely adopted, 
-   TMTP servers could accept a universal identity string as a user registration credential.
+The issue of universal identity is complex, and should not be defined within a messaging protocol.
+If a separate universal identity system is widely adopted, 
+TMTP servers could accept its tokens as user registration credentials.
+Providers of universal identity would let users receive notifications via a variety of messaging schemes, including TMTP.
 
 1. __Does TMTP provide end-to-end encryption (E2EE)?__
 
@@ -107,8 +103,8 @@ _Stuff you wanted to know, and weren't afraid to ask_
    When you receive an invitation to correspond or a message, 
    you need to know who has control over the sender's stated identity.
    If it's your organization, it's trustworthy. 
-   If it's a vendor you buy from, it may not be.
-   If it's a semi-public service that verifies real-life identities, do you trust its verification?
+   If it's a vendor you buy from infrequently, it may not be.
+   If it's a semi-public service that verifies real-life identities, do you have confidence in its verification?
 
    Furthermore, your home provider in a federated network can accidentally or intentionally cut off your service, 
    and record all of the sites you correspond with, 
