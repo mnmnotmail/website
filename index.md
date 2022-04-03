@@ -22,7 +22,7 @@
 Internet sites lack a way to directly message their customers/members.
 The web (HTTPS etc) only supports client-initiated communications.
 Email (SMTP etc) is insecure & indirect, typically transiting multiple third-party hosts between sender & recipient.
-(Email also has many other painful, widely-felt problems.)
+(Email also has many other painful problems!)
 Many Internet sites patch this gap by building & maintaining custom phone apps&mdash;at great cost.
 
 Fixing this requires a new Internet protocol combining elements of the web and email.
