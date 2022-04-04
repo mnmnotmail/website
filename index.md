@@ -33,7 +33,7 @@ The __mnm project__ implements TMTP, both server and client.
 It's applicable to any site that keeps a users list, but especially:
 
 - Organizations that provide essential services. \
-Examples: banking, accounting, IT/SaaS, telecom, shipping, manufacturing, security.
+Examples: banking, IT/SaaS, telecom, shipping, manufacturing, security.
 
 - Businesses and professionals whose clients dislike the message scanning done by webmail providers. \
 Examples: legal affairs, health care, job search, family matters.
