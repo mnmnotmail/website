@@ -75,16 +75,20 @@ and doesn't support common forms of communication, e.g.
 
 ### Solution
 
+Decentralized, secure messaging, via an open protocol, for comms between businesses 
+(e.g. alerts, status updates, support requests, data transfers, payments).
+
 TMTP, a new network protocol (implemented by an open source server & client), enables a private messaging network at any Internet site.
 TMTP sites are members-only, and allow communications only among members of that site. 
 Most orgs and independent professionals will be members of multiple TMTP sites operated by different business-critical services.
+
 A single client app manages all your TMTP site accounts, but traffic originating at different sites is not intermixed 
 (illustrated in the demo).
 The client retains all data sent and received by the user.
 The client also advances the UX of electronic correspondence in fundamental ways, by offering a fusion of email and the web.
 
-An open protocol is necessary because a single client and server can't satisfy the requirements of every market segment, 
-or even all companies within a segment.
+An open protocol is necessary because a single vendor can't satisfy the requirements of every market segment, 
+or even all buyers within a segment.
 (Paul Graham, among many others, has called for [a better email protocol](http://www.paulgraham.com/ambitious.html){:target="_blank"}.)
 
 Companies that communicate time-sensitive and private information to customers will be motivated to adopt this solution if 
