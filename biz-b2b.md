@@ -91,10 +91,9 @@ An open protocol is necessary because a single vendor can't satisfy the requirem
 or even all buyers within a segment.
 (Paul Graham, among many others, has called for [a better email protocol](http://www.paulgraham.com/ambitious.html){:target="_blank"}.)
 
-Companies that communicate time-sensitive and private information to customers will be motivated to adopt this solution if 
-security considerations require it, or their customers demand it, or it produces meaningful ROI.
-This solution will therefore minimize trial, deployment, and administration overhead, 
-and offer a messaging toolkit that lets a buyer increase customer engagement and reduce customer support costs.
+Companies that communicate time-sensitive and private information to customers will adopt this solution if 
+security & reliability concerns require it, or their customers demand it, or it produces meaningful ROI.
+The software will therefore offer a toolkit that helps a buyer increase their customers' satisfaction.
 
 The widespread adoption of alternative messaging and discussion apps (used alongside email) 
 demonstrates that people will embrace new comms tools that empower them in new ways.
