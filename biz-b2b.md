@@ -15,7 +15,7 @@
 
 ## Business Case: Critical B2B Comms
 
-_A venture pitch based on the mnm project. (Draft, 22-Feb-2022)_
+_A venture pitch based on the mnm project. (Draft, 6-Apr-2022)_
 
 ### Market
 
@@ -31,15 +31,11 @@ Companies that provide essential services to businesses and professionals:
 
 Initial verticals: (TBD)
 
-Orgs benefitting from TMTP protocol for critical comms will have incentives to adopt it for internal communications, 
-especially among their knowledge workforce. 
-There are ~1 billion worldwide knowledge workers. 
-
 ### Problem
 
 Companies that provide vital services need to send time-sensitive and private information to customers, and respond to requests for support.
 Today, such communication is largely mediated by third parties, like email hosts and social media sites.
-Companies only have direct, secure links with customers during browser sessions, which can only be initiated by the customer.
+Companies only have direct, secure links with customers during browser sessions, which can only be initiated by the browser.
 
 In the context of critical comms between businesses, these third parties add negative value.
 
@@ -56,9 +52,10 @@ global organized crime groups constantly exploit them to attack businesses by po
 Businesses' losses to cybercrime (in cash and confidential data) are soaring; 
 loss estimates were ~$1 trillion in 2020 alone.
 
-Second problem: Email is the predominant medium for critical B2B comms, 
-but the email user experience has been stagnant for a long time, 
-and doesn't support common forms of communication, e.g.
+Although email is the predominant medium for critical B2B comms, 
+its user experience has been stagnant for a long time, 
+which has made the custom phone app an appealing alternative for businesses that can afford it (see Competition, below).
+For example, email doesn't support these common forms of communication:
 - making payments between contacts, and micro-payments to a site host
 - issuing task requests with a due-date, owner, subtasks, etc
 - sending a form/survey that the recipient can fill out and return *
@@ -137,3 +134,12 @@ It's a very complex protocol, and has little overlap with TMTP.
 
 [XMTP](https://twitter.com/xmtp_) & [MyMailProtocol](https://twitter.com/MyMailProtocol) are cryptocurrency startups working on toll-road schemes, 
 which probably cannot succeed outside the blockchain community, if at all.
+
+### Mid- to Long-term Opportunities
+
+Use of TMTP will spread into B2C use cases, including order creation, invoicing, and payments.
+TMTP sites will be able to offer client-app UI skins that represent a corporate brand identity.
+
+Employees in orgs using TMTP for critical B2B comms will organically adopt it for internal communications, 
+especially within the knowledge workforce. 
+There are ~1 billion worldwide knowledge workers. 
