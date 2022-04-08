@@ -13,9 +13,9 @@
    <a href="/#got-an-issue-idea-insight">Contact</a>
 </div>
 
-## Business Case: Critical B2B Comms
+## TMTP Messaging for Critical B2B Comms
 
-_A venture pitch based on the mnm project. (Draft, 6-Apr-2022)_
+_A business case based on the "mnm" open source project. (Draft, 8-Apr-2022)_
 
 ### Market
 
