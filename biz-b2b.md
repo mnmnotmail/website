@@ -97,15 +97,8 @@ demonstrates that people will embrace new comms tools that empower them in new w
 
 ### Competition
 
-[WhatsApp](https://developers.facebook.com/products/whatsapp), from Facebook/Meta, 
-offers a toolkit to help businesses connect with customers (especially consumers).
-As a social media site, it has most of the problems listed above.
-
-[PagerDuty](https://pagerduty.com/) provides a phone app to send/receive and respond to notifications.
-However, it's designed for intra-organization incident management, not communications between companies. 
-
-Some large, consumer-facing enterprises like banks offer custom mobile phone apps which present notifications to the user.
-However these are very expensive to design/build/operate, and pose security and privacy risks to the user.
+Some consumer-facing enterprises like banks offer custom mobile phone apps which present notifications to the user.
+However these are very expensive to design/build & operate, and pose security and privacy risks to the user.
 They're often badly designed, irritating users and limiting usage.
 Many such apps don't store received data locally, so depend on connectivity to the network for any use.
 
@@ -113,6 +106,13 @@ Many companies send phone text messages (SMS) containing a website link where th
 Users can't immediately determine anything about the notice, and may misinterpret it as spam or phishing.
 It entails a customer-specific area (and database) on the website, which is expensive to build & operate, 
 and a cyberattack target.
+
+[WhatsApp](https://developers.facebook.com/products/whatsapp), from Facebook/Meta, 
+offers a toolkit to help businesses connect with customers (especially consumers).
+As a social media site, it has most of the problems listed above.
+
+[PagerDuty](https://pagerduty.com/) provides a phone app to send/receive and respond to notifications.
+However, it's designed for intra-organization incident management, not communications between companies. 
 
 Below are other protocols in development, which have been offered as email replacements.
 All of these assume that anyone must be able to contact you.
