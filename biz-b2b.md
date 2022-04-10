@@ -137,8 +137,11 @@ which probably cannot succeed outside the blockchain community, if at all.
 
 ### Mid- to Long-term Opportunities
 
-Use of TMTP will spread into B2C use cases, including order creation, invoicing, and payments.
+TMTP will spread into B2C use cases, including order creation, invoicing, and payments.
 TMTP sites will be able to offer client-app UI skins that represent a corporate brand identity.
+Many businesses feel obligated to maintain custom phone apps to maximize customer engagement,
+even though they lack the resources to execute this well.
+TMTP lets them avoid the costs and pitfalls of a custom app, without compromising the customer experience.
 
 Employees in orgs using TMTP for critical B2B comms will organically adopt it for internal communications, 
 especially within the knowledge workforce. 
