@@ -31,6 +31,8 @@ Companies that provide essential services to businesses and professionals:
 
 Initial verticals: (TBD)
 
+See also the [__Business Questionnaire__](/bizq.html).
+
 ### Problem
 
 Companies that provide vital services need to send time-sensitive and private information to customers, and respond to requests for support.
