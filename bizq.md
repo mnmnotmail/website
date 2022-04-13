@@ -15,7 +15,7 @@
 
 ## Questionnaire re TMTP for Critical B2B Comms
 
-_Questions to pose to businesses that rely on B2B comms. (Draft, 12-Apr-2022)_
+_Questions to pose to businesses in likely target markets. (Draft, 13-Apr-2022)_
 
 Context: I'd like to learn how your firm (_Firm_ below) interacts with customers via email, SMS, and other messaging channels.
 I'm building software for messaging via direct links (i.e. without third party intermediaries), 
@@ -52,11 +52,11 @@ For each channel:
 - Does _Firm_ respond via the same channel?
 - How satisfactory is it to _Firm_, and to customers?
 
-What do you wish each channel did differently/better?
+For each channel, what do you wish it did better?
 - If you could replace it with tech designed for your use cases, how would you rate your interest 1-10?
 
-How many successful phishing (or other social engineering) incidents has _Firm_ handled in past 12 months?
+How has _Firm_ adapted to social engineering attacks via messaging channels; has it been effective?
+- How many successful phishing (or other social engineering) incidents has _Firm_ handled in past 12 months?
 - Which channels did they start on?
 - Proportions posing as customers, employees, trusted service providers, random?
 - How did _Firm_ notify any affected customers?
-- How has _Firm_ adapted to social engineering attacks via messaging channels; has it been effective?
