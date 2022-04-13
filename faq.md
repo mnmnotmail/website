@@ -27,7 +27,7 @@ _Stuff you wanted to know, and weren't afraid to ask_
 
    Messaging protocols like SMTP & Matrix are designed to connect anyone on the Internet with anyone else.
 That entails one or more third party intermediaries to relay messages; 
-such entities incur costs, present external points of failure, and may scan/monetize traffic.
+such entities incur costs, present external points of failure or attack, and may scan/monetize traffic.
 Given a site-specific messaging protocol, 
 Internet sites can exchange messages with their customers/members directly, without intermediate hosts.
 
@@ -134,7 +134,7 @@ define both message delivery and message body formatting?__
 
 1. __Couldn't one implement all these features on the existing email protocol stack?__
 
-   Goodness, no. Have you read the protocol draft?
+   Goodness, no. Have you read the protocol draft or tried the demo?
 
 1. __Doesn't another protocol already provide these features, e.g. Matrix or JMAP?__
 
