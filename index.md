@@ -29,7 +29,7 @@ Many Internet sites patch this gap by building & maintaining custom phone apps&m
 Fixing this requires a new Internet protocol combining elements of the web and email.
 That's TMTP: a simple, site-specific, secure messaging & correspondence protocol.
 
-The __mnm project__ implements TMTP, both server and client.
+The __mnm open source project__ implements TMTP, both server and client.
 It's applicable to any site that keeps a users list, but especially:
 
 - Organizations that provide essential services. \
