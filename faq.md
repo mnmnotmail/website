@@ -134,7 +134,8 @@ define both message delivery and message body formatting?__
 
 1. __Couldn't one implement all these features on the existing email protocol stack?__
 
-   Goodness, no. Have you read the protocol draft or tried the demo?
+   Repurposing SMTP/etc to implement TMTP wouldn't work well, nor help adoption.
+Existing email servers & clients wouldn't understand any of the messages!
 
 1. __Doesn't another protocol already provide these features, e.g. Matrix or JMAP?__
 
