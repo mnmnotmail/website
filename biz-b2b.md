@@ -15,7 +15,7 @@
 
 ## TMTP Messaging for Critical B2B Comms
 
-_A business case based on the "mnm" open source project. (Draft, 8-Apr-2022)_
+_A business case based on the "mnm" open source project. (Draft, 16-Apr-2022)_
 
 ### Market
 
@@ -35,11 +35,12 @@ See also the [__Business Questionnaire__](/bizq.html).
 
 ### Problem
 
-Companies that provide vital services need to send time-sensitive and private information to customers, and respond to requests for support.
+Companies that provide vital services constantly send time-sensitive and private information to customers, and respond to requests for support.
 Today, such communication is largely mediated by third parties, like email hosts and social media sites.
-Companies only have direct, secure links with customers during browser sessions, which can only be initiated by the browser.
+Companies only have direct, secure links with customers during client-initiated browser sessions, 
+and in some cases via custom phone apps.
 
-In the context of critical comms between businesses, these third parties add negative value.
+In the context of critical comms between businesses, third parties add negative value.
 
 Email hosts misinterpret messages as spam, hiding them.
 Email hosts and social media sites suffer outages, and regularly terminate user accounts without notice, often by accident.
@@ -56,10 +57,9 @@ loss estimates were ~$1 trillion in 2020 alone.
 
 Although email is the predominant medium for critical B2B comms, 
 its user experience has been stagnant for a long time, 
-which has made the custom phone app an appealing alternative for businesses that can afford it (see Competition, below).
+which has made the custom phone app an alternative for businesses that can afford it (see Competition, below).
 For example, email doesn't support these common forms of communication:
 - making payments between contacts, and micro-payments to a site host
-- issuing task requests with a due-date, owner, subtasks, etc
 - sending a form/survey that the recipient can fill out and return *
 - including a chart/graph which is drawn from an attached dataset
 - referencing a different discussion thread or message with a hyperlink *
@@ -67,6 +67,7 @@ For example, email doesn't support these common forms of communication:
 - adding a new recipient to a long-running, multi-party thread *
 - dropping out of a thread that's no longer of interest
 - notifying contacts of online presence and out-of-office status *
+- issuing task requests with a due-date, owner, subtasks, etc
 - discussing & progressively revising a document (or set of docs)
 - compiling a collection of related threads, tasks, documents, URLs, and wiki pages
 
@@ -74,8 +75,8 @@ For example, email doesn't support these common forms of communication:
 
 ### Solution
 
-Decentralized, secure messaging, via an open protocol, for comms between businesses 
-(e.g. alerts, status updates, support requests, data transfers, payments).
+Decentralized, secure messaging, via an open protocol, for communication & correspondence between businesses 
+(e.g. alerts, status updates, support requests, data transfers, purchase orders, payments).
 
 TMTP, a new network protocol (implemented by an open source server & client), enables a private messaging network at any Internet site.
 TMTP sites are members-only, and allow communications only among members of that site. 
@@ -99,7 +100,7 @@ demonstrates that people will embrace new comms tools that empower them in new w
 
 ### Competition
 
-Some consumer-facing enterprises like banks offer custom mobile phone apps which present notifications to the user.
+Some enterprises offer custom mobile phone apps which enable direct interactions with the user.
 However these are very expensive to design/build & operate, and pose security and privacy risks to the user.
 They're often badly designed, irritating users and limiting usage.
 Many such apps don't store received data locally, so depend on connectivity to the network for any use.
