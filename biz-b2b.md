@@ -87,6 +87,8 @@ A single client app manages all your TMTP site accounts, but traffic originating
 The client retains all data sent and received by the user.
 The client also advances the UX of electronic correspondence in fundamental ways, by offering a fusion of email and the web.
 
+A TMTP site will optionally forward messages to email accounts to facilitate archiving, and integration with other IT systems, e.g. CRM.
+
 An open protocol is necessary because a single vendor can't satisfy the requirements of every market segment, 
 or even all buyers within a segment.
 (Paul Graham, among many others, has called for [a better email protocol](http://www.paulgraham.com/ambitious.html){:target="_blank"}.)
