@@ -15,7 +15,7 @@
 
 ## TMTP Messaging for Critical B2B Comms
 
-_A business case based on the "mnm" open source project. (Draft, 16-Apr-2022)_
+_A business case based on the "mnm" open source project. (Draft, 19-Apr-2022)_
 
 ### Market
 
@@ -32,6 +32,8 @@ Companies that provide essential services to businesses and professionals:
 Initial verticals: (TBD)
 
 See also the [__Business Questionnaire__](/bizq.html).
+
+The B2B comms market provides a bridge into even larger ones; see [_Mid- to Long-term Opportunities_](#mid--to-long-term-opportunities) below.
 
 ### Problem
 
