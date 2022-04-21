@@ -15,7 +15,7 @@
 
 ## TMTP Messaging for Critical B2B Comms
 
-_A business case based on the "mnm" open source project. (Draft, 19-Apr-2022)_
+_A business case based on the "mnm" open source project. (Draft, 21-Apr-2022)_
 
 ### Market
 
@@ -58,7 +58,7 @@ Businesses' losses to cybercrime (in cash and confidential data) are soaring;
 loss estimates were ~$1 trillion in 2020 alone.
 
 Although email is the predominant medium for critical B2B comms, 
-its user experience has been stagnant for a long time, 
+its content model and user experience have been stagnant for a long time, 
 which has made the custom phone app an alternative for businesses that can afford it (see Competition, below).
 For example, email doesn't support these common forms of communication:
 - making payments between contacts, and micro-payments to a site host
