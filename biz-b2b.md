@@ -140,7 +140,7 @@ Its main competitors are Slack & WhatsApp.
 It's a very complex protocol, and has little overlap with TMTP.
 
 [XMTP](https://twitter.com/xmtp_) & [MyMailProtocol](https://twitter.com/MyMailProtocol) are cryptocurrency startups working on toll-road schemes, 
-which probably cannot succeed outside the blockchain community, if at all.
+which are unlikely to catch on outside the blockchain community.
 
 ### Mid- to Long-term Opportunities
 
