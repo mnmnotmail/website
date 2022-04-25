@@ -52,10 +52,10 @@ Worse, these intermediaries are infamous for scanning all messages flowing acros
 and their employees can gain unauthorized access to stored messages.
 
 Because existing messaging platforms allow anyone on the Internet to contact you, 
-global organized crime groups constantly exploit them to attack businesses by posing as a customer or trusted service provider 
+global organized crime groups exploit them to attack businesses by posing as a customer or trusted service provider 
 (aka phishing and social engineering).
-Businesses' losses to cybercrime (in cash and confidential data) are soaring; 
-loss estimates were ~$1 trillion in 2020 alone.
+Certain kinds of cryptocurrency have made cyberattacks incredibly lucrative.
+Businesses' losses to cybercrime (in cash and confidential data) are soaring; loss estimates were ~$1 trillion in 2020 alone.
 
 Although email is the predominant medium for critical B2B comms, 
 its content model and user experience have been stagnant for a long time, 
