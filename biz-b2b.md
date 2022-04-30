@@ -15,7 +15,7 @@
 
 ## TMTP Messaging for Critical B2B Comms
 
-_A business case based on the "mnm" open source project. (Draft, 21-Apr-2022)_
+_A business case based on the "mnm" open source project. (Draft, 29-Apr-2022)_
 
 ### Market
 
@@ -113,12 +113,13 @@ Many companies send phone text messages (SMS) containing a website link where th
 Users can't immediately determine anything about the notice, and may misinterpret it as spam or phishing.
 It entails a customer-specific area (and database) on the website, which is expensive to build & operate, 
 and a cyberattack target.
+[Twilio](https://twilio.com/){:target="_blank"} is a major service provider for SMS.
 
-[WhatsApp](https://developers.facebook.com/products/whatsapp), from Facebook/Meta, 
+[WhatsApp](https://developers.facebook.com/products/whatsapp){:target="_blank"}, from Facebook/Meta, 
 offers a toolkit to help businesses connect with customers (especially consumers).
 As a social media site, it has most of the problems listed above.
 
-[PagerDuty](https://pagerduty.com/) provides a phone app to send/receive and respond to notifications.
+[PagerDuty](https://pagerduty.com/){:target="_blank"} provides a phone app to send/receive and respond to notifications.
 However, it's designed for intra-organization incident management, not communications between companies. 
 
 Below are other protocols in development, which have been offered as email replacements.
@@ -126,20 +127,21 @@ All of these assume that anyone must be able to contact you.
 None attempts to address the numerous common use cases of email via structured message formats.
 In other words, they misunderstand the problems of the vast majority of email users.
 
-The [Mathematical Mesh](https://mathmesh.com), by Phillip Hallam-Baker, is centered on cryptographic key management, 
+The [Mathematical Mesh](https://mathmesh.com/){:target="_blank"}, by Phillip Hallam-Baker, is centered on cryptographic key management, 
 and implements a message protocol to let ppl share keys.
 The author envisions that as a replacement for email, but his model has almost no overlap with TMTP.
 
-[Ubikom](https://ubikom.cc/), by Leonid Gorkin, is focused on decentralized identity, 
+[Ubikom](https://ubikom.cc/){:target="_blank"}, by Leonid Gorkin, is focused on decentralized identity, 
 and implements a message protocol as an example application.
 The author sees that as a replacement for email, but his model also has almost no overlap with TMTP.
 
-[Matrix](https://matrix.org), from startup New Vector Ltd, is designed for real-time/synchronous comms, 
+[Matrix](https://matrix.org/){:target="_blank"}, from startup New Vector Ltd, is designed for real-time/synchronous comms, 
 and works by synchronizing data among federated servers and between servers & clients.
 Its main competitors are Slack & WhatsApp.
 It's a very complex protocol, and has little overlap with TMTP.
 
-[XMTP](https://twitter.com/xmtp_) & [MyMailProtocol](https://twitter.com/MyMailProtocol) are cryptocurrency startups working on toll-road schemes, 
+[XMTP](https://twitter.com/xmtp_){:target="_blank"} & 
+[MyMailProtocol](https://twitter.com/MyMailProtocol){:target="_blank"} are cryptocurrency startups working on toll-road schemes, 
 which are unlikely to catch on outside the blockchain community.
 
 ### Mid- to Long-term Opportunities
