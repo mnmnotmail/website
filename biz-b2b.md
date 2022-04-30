@@ -91,7 +91,7 @@ The client also advances the UX of electronic correspondence in fundamental ways
 
 A TMTP site will optionally forward messages to email accounts to facilitate archiving, and integration with other IT systems, e.g. CRM.
 
-The result is a better, cheaper messaging system than alternatives like SMS and custom phone apps.
+The result is a better, cheaper B2B messaging system than email or alternatives like SMS and custom phone apps.
 An open protocol isn't an essential selling point, but is necessary for growth of the market; 
 a single vendor can't satisfy the requirements of every market segment, or even all buyers within a segment.
 (Paul Graham, among many others, has called for [a better email protocol](http://www.paulgraham.com/ambitious.html){:target="_blank"}.)
