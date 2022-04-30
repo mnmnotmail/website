@@ -91,13 +91,14 @@ The client also advances the UX of electronic correspondence in fundamental ways
 
 A TMTP site will optionally forward messages to email accounts to facilitate archiving, and integration with other IT systems, e.g. CRM.
 
-An open protocol is necessary because a single vendor can't satisfy the requirements of every market segment, 
-or even all buyers within a segment.
+The result is a better, cheaper messaging system than alternatives like SMS and custom phone apps.
+An open protocol isn't an essential selling point, but is necessary for growth of the market; 
+a single vendor can't satisfy the requirements of every market segment, or even all buyers within a segment.
 (Paul Graham, among many others, has called for [a better email protocol](http://www.paulgraham.com/ambitious.html){:target="_blank"}.)
 
 Companies that communicate time-sensitive and private information to customers will adopt this solution if 
 security & reliability concerns require it, or their customers demand it, or it produces meaningful ROI.
-The software will therefore offer a toolkit that helps a buyer increase their customers' satisfaction.
+The software must therefore offer analytics and tools that help a buyer increase their customers' satisfaction.
 
 The widespread adoption of alternative messaging and discussion apps (used alongside email) 
 demonstrates that people will embrace new comms tools that empower them in new ways.
