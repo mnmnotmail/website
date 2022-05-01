@@ -34,7 +34,7 @@ For each type:
 - How much data is transferred?
 
 For each type, what channel & technology (service, protocol, application, data format, etc) is used?
-- e.g. email, Slack, Teams, social media, SMS, phone app, website
+- e.g. email, SMS, phone app, website, social media, Slack/Teams
 - Is that tech secure, reliable, fast, engaging, auditable?
 - Is that tech vulnerable to social engineering attacks (phishing, attachments)?
 - How can that tech fail, and how often does it?
