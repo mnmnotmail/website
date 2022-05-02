@@ -25,15 +25,18 @@ _Stuff you wanted to know, and weren't afraid to ask_
 
 1. __Why a site-specific message protocol?__
 
-   Messaging protocols like SMTP & Matrix are designed to connect anyone on the Internet with anyone else.
+   Email reliability is falling, its security is nil, and its content model has been stagnant for decades.
+It's no longer acceptable for business communications.
+
+   A huge variety of services & sites send time-sensitive and/or private information to their members/customers electronically.
+Those that can afford it do this via custom phone apps, or SMS texts containing URLs to a customer portal.
+All the rest are forced to rely on email, which is not suitable for urgent or confidential content.
+
+   Potocols like SMTP & Matrix were designed to connect anyone on the Internet with anyone else.
 That entails one or more third party intermediaries to relay messages; 
 such entities incur costs, present external points of failure or attack, and may scan/monetize traffic.
 Given a site-specific messaging protocol, 
 Internet sites can exchange messages with their customers/members directly, without intermediate hosts.
-
-   A huge variety of Internet sites send time-sensitive and/or private information to their members/customers electronically.
-Those that can afford it do this via custom phone apps, or SMS texts containing website links.
-All the rest are forced to rely on email, which is not suitable for urgent or confidential content.
 
 1. __Isn't SMTP entrenched? How can TMTP replace it organically?__
 
