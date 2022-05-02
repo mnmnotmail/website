@@ -15,7 +15,7 @@
 
 ## TMTP Messaging for Critical B2B Comms
 
-_A business case based on the "mnm" open source project. (Draft, 29-Apr-2022)_
+_A business case based on the "mnm" open source project. (Draft, 2-May-2022)_
 
 ### Market
 
@@ -100,7 +100,9 @@ Companies that communicate time-sensitive and private information to customers w
 security & reliability concerns require it, or their customers demand it, or it produces meaningful ROI.
 The software must therefore offer analytics and tools that help a buyer increase their customers' satisfaction.
 
-The widespread adoption of alternative messaging and discussion apps (used alongside email) 
+The TMTP server can be provisioned via a SaaS offering, or by installation on the infrastructure of an existing customer portal.
+
+The widespread adoption of messaging and discussion apps (used alongside email) 
 demonstrates that people will embrace new comms tools that empower them in new ways.
 
 ### Competition
