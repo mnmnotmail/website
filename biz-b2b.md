@@ -100,7 +100,7 @@ Companies that communicate time-sensitive and private information to customers w
 security & reliability concerns require it, or their customers demand it, or it produces meaningful ROI.
 The software must therefore offer analytics and tools that help a buyer increase their customers' satisfaction.
 
-The TMTP server can be provisioned via a SaaS offering, or by installation on the infrastructure of an existing customer portal.
+A TMTP site can be provisioned via a SaaS offering, or by software installation at an existing online customer portal.
 
 The widespread adoption of messaging and discussion apps (used alongside email) 
 demonstrates that people will embrace new comms tools that empower them in new ways.
