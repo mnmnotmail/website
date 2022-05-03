@@ -32,11 +32,11 @@ It's no longer acceptable for business communications.
 Those that can afford it do this via custom phone apps, or SMS texts containing URLs to a customer portal.
 All the rest are forced to rely on email, which is not suitable for urgent or confidential content.
 
-   Potocols like SMTP & Matrix were designed to connect anyone on the Internet with anyone else.
+   Protocols like SMTP & Matrix were designed to connect anyone on the Internet with anyone else.
 That entails one or more third party intermediaries to relay messages; 
 such entities incur costs, present external points of failure or attack, and may scan/monetize traffic.
 Given a site-specific messaging protocol, 
-Internet sites can exchange messages with their customers/members directly, without intermediate hosts.
+organizations can exchange messages with their customers/members directly, without intermediate hosts.
 
 1. __Isn't SMTP entrenched? How can TMTP replace it organically?__
 
