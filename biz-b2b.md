@@ -15,7 +15,7 @@
 
 ## TMTP Messaging for Critical B2B Comms
 
-_A business case based on the "mnm" open source project. (Draft, 2-May-2022)_
+_A business case based on the "mnm" open source project. (Draft, 7-May-2022)_
 
 ### Market
 
@@ -112,11 +112,14 @@ However these are very expensive to design/build & operate, and pose security an
 They're often badly designed, irritating users and limiting usage.
 Many such apps don't store received data locally, so depend on connectivity to the network for any use.
 
-Many companies send phone text messages (SMS) containing a website link where the recipient can view the actual message.
-Users can't immediately determine anything about the notice, and may misinterpret it as spam or phishing.
-It entails a customer-specific area (and database) on the website, which is expensive to build & operate, 
-and a cyberattack target.
-[Twilio](https://twilio.com/){:target="_blank"} is a major service provider for SMS.
+Many companies operate a customer portal website, and some have added messaging there.
+To notify customers of new messages on the portal, it sends email or text messages (SMS) containing a URL where the recipient can read them.
+Users can't immediately determine anything about a message from the notice, and may misinterpret it as spam or phishing.
+When emailed, such notices face the same problems described above.
+A customer portal is expensive to build & operate, and a cyberattack target, so isn't a good option for companies not already running one.
+
+[Twilio](https://twilio.com/){:target="_blank"} is a major service provider for SMS & email,
+but doesn't currently offer anything like TMTP.
 
 [WhatsApp](https://developers.facebook.com/products/whatsapp){:target="_blank"}, from Facebook/Meta, 
 offers a toolkit to help businesses connect with customers (especially consumers).
