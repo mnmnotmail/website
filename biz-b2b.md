@@ -115,7 +115,7 @@ Many such apps don't store received data locally, so depend on connectivity to t
 Many companies operate a customer portal website, and some have added messaging there.
 To notify customers of new messages on the portal, it sends email or text messages (SMS) containing a URL where the recipient can read them.
 Users can't immediately determine anything about a message from the notice, and may misinterpret it as spam or phishing.
-When emailed, such notices face the same problems described above.
+SMS is costly, but if emailed, such notices face the same problems described above.
 A customer portal is expensive to build & operate, and a cyberattack target, so isn't a good option for companies not already running one.
 
 [Twilio](https://twilio.com/){:target="_blank"} is a major service provider for SMS & email,
