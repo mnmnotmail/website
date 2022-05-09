@@ -44,6 +44,9 @@ and in some cases via custom phone apps.
 
 In the context of critical comms between businesses, third parties add negative value.
 
+<div style="float:right; max-width:50%; margin:0 0 1em 1em;">
+   <img src="/img-smtp.png">
+   <div style="margin-top:-0.4em; text-align:center; font-style:italic">Fig 1. Email is indirect.</div></div>
 Email hosts misinterpret messages as spam, hiding them.
 Email hosts and social media sites suffer outages, and regularly terminate user accounts without notice, often by accident.
 Email and social media accounts are frequently stolen in cyberattacks.
@@ -80,6 +83,9 @@ For example, email doesn't support these common forms of communication:
 Decentralized, secure messaging, via an open protocol, for communication & correspondence between businesses 
 (e.g. alerts, status updates, support requests, data transfers, purchase orders, payments).
 
+<div style="float:right; max-width:50%; margin:0 0 1em 1em;">
+   <img src="/img-tmtp.png">
+   <div style="margin-top:-0.4em; text-align:center; font-style:italic">Fig 2. TMTP is direct.</div></div>
 TMTP, a new network protocol (implemented by an open source server & client), enables a private messaging network at any Internet site.
 TMTP sites are members-only, and allow communications only among members of that site. 
 Most orgs and independent professionals will be members of multiple TMTP sites operated by different business-critical services.
