@@ -13,9 +13,9 @@
    <a href="/#got-an-issue-idea-insight">Contact</a>
 </div>
 
-## TMTP Messaging for Critical B2B Comms
+## TMTP Networks for Critical B2B Comms
 
-_A business case based on the "mnm" open source project. (Draft, 7-May-2022)_
+_A business case based on the ["mnm"](/) open source project. (Draft, 11-May-2022)_
 
 ### Market
 
@@ -80,7 +80,7 @@ For example, email doesn't support these common forms of communication:
 
 ### Solution
 
-Decentralized, secure messaging, via an open protocol, for communication & correspondence between businesses 
+Decentralized, secure links, via an open protocol, for communication & correspondence between businesses 
 (e.g. alerts, status updates, support requests, data transfers, purchase orders, payments).
 
 <div style="float:right; max-width:50%; margin:0 0 1em 1em;">
