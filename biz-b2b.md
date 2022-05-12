@@ -154,7 +154,6 @@ The author sees that as a replacement for email, but his model also has almost n
 
 [Matrix](https://matrix.org/){:target="_blank"}, from startup New Vector Ltd, is designed for real-time/synchronous comms, 
 and works by synchronizing data among federated servers and between servers & clients.
-Its main competitors are Slack & WhatsApp.
 It's a very complex protocol, and has little overlap with TMTP.
 
 [XMTP](https://twitter.com/xmtp_){:target="_blank"} & 
