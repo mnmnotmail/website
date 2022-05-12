@@ -118,6 +118,11 @@ However these are very expensive to design/build & operate, and pose security an
 They're often badly designed, irritating users and limiting usage.
 Many such apps don't store received data locally, so depend on connectivity to the network for any use.
 
+[Rocket Chat](https://rocket.chat/){:target="_blank"} & [Sendbird](https://sendbird.com/){:target="_blank"} 
+offer a toolkit to let developers embed intant messaging features within a custom phone app.
+That can ease the burden of building the app (though not of operating it), 
+at the cost of being locked into a messaging model not suited to B2B use cases.
+
 Many companies operate a customer portal website, and some have added messaging there.
 To notify customers of new messages on the portal, it sends email or text messages (SMS) containing a URL where the recipient can read them.
 Users can't immediately determine anything about a message from the notice, and may misinterpret it as spam or phishing.
