@@ -129,8 +129,7 @@ Users can't immediately determine anything about a message from the notice, and 
 SMS is costly, but if emailed, such notices face the same problems described above.
 A customer portal is expensive to build & operate, and a cyberattack target, so isn't a good option for companies not already running one.
 
-A vast array of vendors offer messaging and discussion services for company-internal and consumer use cases.
-As these are all third party intermediaries, they are omitted here.
+A vast array of vendors offer messaging and discussion services for company-internal and consumer use cases; they are omitted here.
 Below are services that offer solutions for B2C & B2B scenarios.
 
 [Twilio](https://twilio.com/){:target="_blank"} is a major service provider for SMS & email,
