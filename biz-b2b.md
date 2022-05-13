@@ -15,7 +15,7 @@
 
 ## TMTP Networks for Critical B2B Comms
 
-_A business case based on the ["mnm"](/) open source project. (Draft, 11-May-2022)_
+_A business case based on the ["mnm"](/) open source project. (Draft, 12-May-2022)_
 
 ### Market
 
@@ -129,6 +129,10 @@ Users can't immediately determine anything about a message from the notice, and 
 SMS is costly, but if emailed, such notices face the same problems described above.
 A customer portal is expensive to build & operate, and a cyberattack target, so isn't a good option for companies not already running one.
 
+A vast array of vendors offer messaging and discussion services for company-internal and consumer use cases.
+As these are all third party intermediaries, they are omitted here.
+Below are services that offer solutions for B2C & B2B scenarios.
+
 [Twilio](https://twilio.com/){:target="_blank"} is a major service provider for SMS & email,
 but doesn't currently offer anything like TMTP.
 
@@ -137,7 +141,7 @@ offers a toolkit to help businesses connect with customers (especially consumers
 As a social media site, it has most of the problems listed above.
 
 [PagerDuty](https://pagerduty.com/){:target="_blank"} provides a phone app to send/receive and respond to notifications.
-However, it's designed for intra-organization incident management, not communications between companies. 
+It's designed for intra-organization incident management, not communications between companies, but a B2B solution could be on the horizon. 
 
 Below are other protocols in development, which have been offered as email replacements.
 All of these assume that anyone must be able to contact you.
