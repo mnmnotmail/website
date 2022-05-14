@@ -142,6 +142,9 @@ As a social media site, it has most of the problems listed above.
 [PagerDuty](https://pagerduty.com/){:target="_blank"} provides a phone app to send/receive and respond to notifications.
 It's designed for intra-organization incident management, not communications between companies, but a B2B solution could be on the horizon. 
 
+[Dropbox](https://dropbox.com/){:target="_blank"} & [Citrix ShareFile](https://www.sharefile.com/){:target="_blank"}, among others, 
+are often used in B2B scenarios where large file transfers with cloud storage are required, and they offer mobile phone apps.
+
 Below are other protocols in development, which have been offered as email replacements.
 All of these assume that anyone must be able to contact you.
 None attempts to address the numerous common use cases of email via structured message formats.
