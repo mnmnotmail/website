@@ -15,7 +15,7 @@
 
 ## TMTP Networks for Critical B2B Comms
 
-_A business case based on the ["mnm"](/) open source project. (Draft, 12-May-2022)_
+_A business case based on the ["mnm"](/) open source project. (Draft, 27-May-2022)_
 
 ### Market
 
@@ -144,6 +144,9 @@ It's designed for intra-organization incident management, not communications bet
 
 [Dropbox](https://dropbox.com/){:target="_blank"} & [Citrix ShareFile](https://www.sharefile.com/){:target="_blank"}, among others, 
 are often used in B2B scenarios where large file transfers with cloud storage are required, and they offer mobile phone apps.
+
+There are myriad ways to provide chat features on a website, and these are widely deployed.
+However they only function when the user is active on the website, so can't be used to initiate communication with users.
 
 Below are other protocols in development, which have been offered as email replacements.
 All of these assume that anyone must be able to contact you.
