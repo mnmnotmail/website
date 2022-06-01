@@ -25,7 +25,7 @@ Companies that provide essential services to businesses and professionals:
 - Legal, Accounting, Insurance
 - Web hosting, IT, SaaS
 - Telecom, Utilities
-- Shipping, Order fulfillment
+- Logistics, Shipping, Order fulfillment
 - Contract manufacturing
 - Premises security
 
