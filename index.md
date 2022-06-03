@@ -23,13 +23,13 @@
 </div-->
 
 Internet sites lack a way to directly message their customers/members.
-Email (SMTP etc) is insecure & indirect, typically transiting multiple third-party hosts between sender & recipient.
+Email (SMTP etc) is insecure, and typically transits multiple third-party hosts between sender & recipient.
 (Email also has other painful problems!)
 Text messaging (SMS) is expensive.
-Many Internet sites patch this gap by building & maintaining custom phone apps&mdash;at great cost.
+Some online services patch this gap by building & maintaining custom phone apps&mdash;at great cost.
 
 Fixing this requires a new Internet protocol combining elements of the web and email.
-That's TMTP: a simple, site-specific, secure messaging & correspondence protocol.
+That's TMTP: a simple, reliable, free, secure, direct messaging & correspondence protocol.
 
 The __mnm open source project__ implements TMTP, both server and client.
 It's applicable to any site that keeps a users list, but especially:
