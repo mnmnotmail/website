@@ -29,20 +29,20 @@ _Try the mnm client, tell us what you think_
 
 __Please Note:__
 
-- It may feel unfamiliar at first.
+<div style="float:right; width:50%; margin-left:0.25em; border-radius:6px; border: solid 1px #ccc; background-color:#eee; padding:0.5em">
+<a href="/w/service-demo.html?Chox%20HQ" target="_blank">
+   <img src="/img-demo.png">
+   <div style="text-align:center; font-weight:600">Click to open demo</div>
+</a></div>
 
-- It's a work in progress (the icons need work; more features are planned).
+- It may feel unfamiliar at first.
 
 - Use the docs! See &#x24d8; menu at top-right.
 
-- The demo doesn't transmit or store your input (the send buttons give errors).
+- It's a work in progress (the icons need work; further features are planned).
+
+- The demo doesn't transmit or store your input (buttons for _send_ give errors).
 
 - To report feedback, open or comment on a [Github issue](https://github.com/networkimprov/mnm-hammer/issues).
-
-<p style="text-align:center">
-   <style>.demolink { margin:0 1em; border:1px #0366d4 solid; border-radius:6px; padding:0.4em; font-weight:600; }</style>
-   <br>
-   <a href="/w/service-demo.html?Chox%20HQ" target="_blank" class="demolink">Open Demo</a>
-</p>
 
 </div>
