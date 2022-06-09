@@ -58,11 +58,12 @@ The messaging space will remain a diverse one.
 
 1. __What is the architecture of TMTP?__
 
-<div style="float:right; max-width:50%; margin:0 0 1em 1em;">
-   <img src="/img-smtp.png">
-   <div style="height:0.75em"></div>
-   <img src="/img-tmtp.png">
-   <div style="margin-top:0.5em; text-align:center; font-style:italic">Email vs. TMTP Networking</div></div>
+   <div style="float:right; max-width:50%; margin:0 0 1em 1em;">
+      <img src="/img-smtp.png">
+      <div style="height:0.75em"></div>
+      <img src="/img-tmtp.png">
+      <div style="margin-top:0.5em; text-align:center; font-style:italic">Email vs. TMTP Networking</div>
+   </div>
    Succinctly stated: client-server, store-and-forward, members-only.
    All sent and received data is stored on the clients; the server does not retain messages after delivery.
    The organization that established a TMTP service controls who can register clients with it;
