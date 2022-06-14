@@ -23,7 +23,7 @@
 </div-->
 
 TMTP is a new Internet protocol combining elements of the web and email.
-TMTP is a simple, reliable, free, secure, direct messaging & correspondence method.
+TMTP offers a simple, reliable, free, secure, decentralized messaging/correspondence method.
 
 Online services lack a way to directly message their customers/members.
 Email (SMTP etc) is unreliable, insecure, and typically transits multiple third-party hosts between sender & recipient.
