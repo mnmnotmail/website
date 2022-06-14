@@ -23,7 +23,7 @@
 
 _Stuff you wanted to know, and weren't afraid to ask_
 
-1. __Why a site-specific message protocol?__
+1. __Why a new message protocol?__
 
    Email reliability is falling, its security is nil, and its content model has been stagnant for decades.
 It's no longer acceptable for business communications.
@@ -35,8 +35,7 @@ All the rest are forced to rely on email, which is not suitable for urgent or co
    Protocols like SMTP & Matrix were designed to connect anyone on the Internet with anyone else.
 That entails one or more third party intermediaries to relay messages; 
 such entities incur costs, present external points of failure or attack, and may scan/monetize traffic.
-Given a site-specific messaging protocol, 
-organizations can exchange messages with their customers/members directly, without intermediate hosts.
+Using TMTP, organizations can exchange messages with their customers/members directly, without intermediate hosts.
 
 1. __Isn't SMTP entrenched? How can TMTP replace it organically?__
 
