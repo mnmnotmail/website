@@ -22,14 +22,14 @@
       ><img src="icon-pat-white-1080.png" height="16" style="margin-right:0.4em; vertical-align:-0.2em; height:1.1em">Become a patron</a>
 </div-->
 
-Internet sites lack a way to directly message their customers/members.
-Email (SMTP etc) is insecure, and typically transits multiple third-party hosts between sender & recipient.
+TMTP is a new Internet protocol combining elements of the web and email.
+TMTP is a simple, reliable, free, secure, direct messaging & correspondence method.
+
+Online services lack a way to directly message their customers/members.
+Email (SMTP etc) is unreliable, insecure, and typically transits multiple third-party hosts between sender & recipient.
 (Email also has other painful problems!)
 Text messaging (SMS) is expensive.
-Some online services patch this gap by building & maintaining custom phone apps&mdash;at great cost.
-
-Fixing this requires a new Internet protocol combining elements of the web and email.
-That's TMTP: a simple, reliable, free, secure, direct messaging & correspondence protocol.
+Some sites patch this gap by building & maintaining custom phone apps&mdash;at great cost.
 
 The __mnm open source project__ implements TMTP, both server and client.
 It's applicable to any site that keeps a users list, but especially:
