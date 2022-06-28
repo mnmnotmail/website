@@ -23,7 +23,7 @@
 
 _Stuff you wanted to know, and weren't afraid to ask_
 
-0. __Are there video presentations on TMTP?__
+- __Are there video presentations on TMTP?__
 
    <div style="max-width:100%; width:720px; height:405px; margin:0 auto">
       <iframe src="https://www.youtube.com/embed/pBKrb12AjrY" title="YouTube video player"
