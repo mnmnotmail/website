@@ -22,8 +22,8 @@
       ><img src="icon-pat-white-1080.png" height="16" style="margin-right:0.4em; vertical-align:-0.2em; height:1.1em">Become a patron</a>
 </div-->
 
-TMTP is a new Internet protocol combining elements of the web and email.
-TMTP offers a simple, reliable, free, secure, decentralized messaging/correspondence method.
+TMTP is a new Internet protocol combining elements of email and the web.
+TMTP offers a simple, reliable, free, secure, decentralized method for messaging & correspondence & notification.
 
 Online services lack a way to directly message their customers/members.
 Email (SMTP etc) is unreliable, insecure, and typically transits multiple third-party hosts between sender & recipient.
