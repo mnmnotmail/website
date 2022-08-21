@@ -38,7 +38,7 @@ The B2B comms market provides a bridge into even larger ones; see [_Mid- to Long
 ### Problem
 
 Companies that provide vital services constantly send time-sensitive and private information to customers, and respond to requests for support.
-Today, such communication is largely mediated by third parties, like email hosts and social media sites.
+Today, such communication is largely mediated by third parties, like email hosts and messaging services.
 Companies only have direct, secure links with customers during client-initiated browser sessions, 
 and in some cases via custom phone apps.
 
@@ -48,8 +48,8 @@ In the context of critical comms between businesses, third parties add negative 
    <img src="/img-smtp.png">
    <div style="margin-top:-0.4em; text-align:center; font-style:italic">Fig 1. Email is indirect.</div></div>
 Email hosts misinterpret messages as spam, hiding them.
-Email hosts and social media sites suffer outages, and regularly terminate user accounts without notice, often by accident.
-Email and social media accounts are frequently stolen in cyberattacks.
+Email hosts and messaging services suffer outages, and regularly terminate user accounts without notice, often by accident.
+Email and messaging accounts are frequently stolen in cyberattacks.
 Data sent via such services is typically stored online, so ceases to be accessible if you're unable to access the site/account.
 Worse, these intermediaries are infamous for scanning all messages flowing across their systems, 
 and their employees can gain unauthorized access to stored messages.
@@ -137,7 +137,7 @@ but doesn't currently offer anything like TMTP.
 
 [WhatsApp](https://developers.facebook.com/products/whatsapp){:target="_blank"}, from Facebook/Meta, 
 offers a toolkit to help businesses connect with customers (especially consumers).
-As a social media site, it has most of the problems listed above.
+As a messaging service, it has most of the problems listed above.
 
 [PagerDuty](https://pagerduty.com/){:target="_blank"} provides a phone app to send/receive and respond to notifications.
 It's designed for intra-organization incident management, not communications between companies, but a B2B solution could be on the horizon. 
