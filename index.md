@@ -13,7 +13,7 @@
    <a href="/#got-an-issue-idea-insight">Contact</a>
 </div>
 
-### TMTP: site-specific Internet messaging
+### TMTP: site-centric Internet messaging
 
 <img width="300" hspace="2" style="max-width:45%" align="right" src="logo-400-bleed-dim.png">
 <!--div style="margin:4em 2px 1.5em 22px; width:300px; max-width:45%; float:right; clear:both; text-align:center;">
