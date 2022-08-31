@@ -18,8 +18,7 @@
 _Questions to pose to businesses in likely target markets. (Draft, 13-Apr-2022)_
 
 Context: I'd like to learn how your firm (_Firm_ below) interacts with customers via email, SMS, and other messaging channels.
-I'm building software for messaging via direct links (i.e. without third party intermediaries), 
-which is better & cheaper than existing solutions.
+I'm building client-server software for messaging via direct, secure links (i.e. without third party intermediaries).
 
 What are the types of messages or data transfers by _Firm_ to customers? For example:
 - anomalies or incidents, i.e. urgent
