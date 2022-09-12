@@ -17,24 +17,6 @@
 
 _A business case based on the ["mnm"](/) open source project. (Draft, 27-May-2022)_
 
-### Market
-
-Companies that provide essential services to businesses and professionals:
-
-- Banking, Payment processing
-- Legal, Accounting, Insurance
-- Web hosting, IT, SaaS
-- Telecom, Utilities
-- Logistics, Shipping, Order fulfillment
-- Contract manufacturing
-- Premises security
-
-Initial verticals: (TBD)
-
-See also the [__Business Questionnaire__](/bizq.html).
-
-The B2B comms market provides a bridge into even larger ones; see [_Mid- to Long-term Opportunities_](#mid--to-long-term-opportunities) below.
-
 ### Problem
 
 Companies that provide vital services constantly send time-sensitive and private information to customers, and respond to requests for support.
@@ -77,6 +59,24 @@ For example, email doesn't support these common forms of communication:
 - compiling a collection of related threads, tasks, documents, URLs, and wiki pages
 
 (__*__ = Wholly or partly implemented in mnm v0.9)
+
+### Market
+
+Companies that provide essential services to businesses and professionals:
+
+- Banking, Payment processing
+- Legal, Accounting, Insurance
+- Web hosting, IT, SaaS
+- Telecom, Utilities
+- Logistics, Shipping, Order fulfillment
+- Contract manufacturing
+- Premises security
+
+Initial verticals: (TBD)
+
+See also the [__Business Questionnaire__](/bizq.html).
+
+The B2B comms market provides a bridge into even larger ones; see [_Mid- to Long-term Opportunities_](#mid--to-long-term-opportunities) below.
 
 ### Solution
 
