@@ -198,7 +198,7 @@
       </button>
       <div v-show="editOpen"
            class="edit">
-         <div class="editbar1">
+         <div :class="['editbar1', {'editbar1-lg': bgrcfg.hasTargetId}]">
             at site:
             <span v-if="page[item].resultDate === kLocalResult"
                   >{{kLocalResult}}</span>
@@ -209,7 +209,7 @@
                     :value="pageSite">
                <option v-for="(aV, aK) in bgrcfg.targets"
                        :value="aK"
-                       >{{aK}}</option></select>
+                       >{{bgrcfg.hasTargetId ? aK : aV}}</option></select>
          </div>
          <div class="editbar2">
             <button @click="exec(), docs = false"
@@ -233,12 +233,15 @@
 </script><script type="module">
    import bgrcfg from "./brangr-config.js"
    import * as Vue from "./vue.esm-browser.min-3.2.x.js"
+
    const kLocalResult = 'local test data';
    const kUrlTag = 'url:';
+   const kAgent = 'Brangr/0.2'+ navigator.userAgent.substring(navigator.userAgent.indexOf(' '));
 
    if (typeof bgrcfg.title === 'string')
       document.title = bgrcfg.title +' via '+ document.title;
-   bgrcfg.hasTargetId = bgrcfg.targets !== null && typeof bgrcfg.targets === 'object';
+   bgrcfg.hasTargetId = bgrcfg.targets !== null && typeof bgrcfg.targets === 'object' &&
+                        !Array.isArray(bgrcfg.targets);
    if (typeof bgrcfg.targets === 'string') {
       bgrcfg.targets = {'0': bgrcfg.targets};
    } else if (Array.isArray(bgrcfg.targets)) {
@@ -370,8 +373,8 @@
             }
             this.schema = this.typemap = null;
             var aSq = bgrcfg.schemaQ;
-            //todo demo use only
-            if (this.pageSite !== 'swapi') aSq = aSq.replaceAll('##', '  ');
+            if (!bgrcfg.test || this.pageSite !== 'swapi')
+               aSq = aSq.replaceAll('##', '  ');
             postRequest(bgrcfg.targets[this.pageSite], aSq, cResult => {
                if (cResult.errors)
                   cResult.errors.forEach(c => this.$root.log(c.message));
@@ -413,6 +416,7 @@
       var aXhr = new XMLHttpRequest();
       aXhr.responseType = 'json';
       aXhr.open('POST', iTarget);
+      aXhr.setRequestHeader('User-Agent', kAgent);
       aXhr.setRequestHeader('Content-Type', 'application/json');
       aXhr.setRequestHeader('Accept', 'application/json');
       aXhr.onload = c => {
@@ -1061,6 +1065,7 @@
 
 <script type="module">
    import * as gql from "./graphql-16.6.x.js";
+
    const kListArg = {type: {value: 'list'}}; // default for scalar fields
    var sDoc, sPath, sName;
 
