@@ -69,7 +69,7 @@
                 "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.page code { font-family: var(--mono) }
+.page code, .docs code { font-family: var(--mono) }
 
 .stat {
    padding: 1em;
@@ -207,15 +207,11 @@ a.uilnk { color: revert; cursor: revert; }
 .editbar2 { margin: 0 0.25em }
 .editbar2 > * > em { margin-right: 1em }
 
-.editbar1 > span {
+.editbar1 > * {
    font-size: 13px;
    font-family: var(--mono);
 }
-
-.edit select {
-   font-size: 16px;
-   font-family: var(--mono);
-}
+.editbar1.editbar1-lg > * { font-size: 16px }
 
 .edit textarea {
    margin: 2px 1px 1px;
