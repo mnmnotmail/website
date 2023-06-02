@@ -21,8 +21,8 @@
    <link rel="stylesheet" href="brangr-local.css"/>
    <!--script type="importmap">
    { "imports": { 
-      "vue":     "./vue.esm-browser.min-3.2.x.js",
-      "graphql": "./graphql-16.6.x.js",
+      "vue":     "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js",
+      "graphql": "https://cdn.jsdelivr.net/npm/graphql@16.6.0/+esm",
       "bgrcfg":  "./brangr-config.js"
    }}
    </script-->
@@ -71,7 +71,7 @@
       };
 </script>
 
-<div id="bgr-app"><div style="color:tan">
+<div id="bgr-app"><div style="text-align:center; color:tan">
    <h3>Brangr - Browse Any Graph</h3>
    <a style="color:inherit" href="https://github.com/networkimprov/brangr">Brangr on Github</a>
    <p>Brangr is a simple, unique tool that any website can host to provide 
@@ -90,7 +90,7 @@
    </div>
    <input ref="clipboard" style="display:none"/>
 </script><script type="module">
-   import * as Vue from "./vue.esm-browser.min-3.2.x.js"
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
    bgr.app = Vue.createApp({
       template: '#bgr-main',
@@ -232,7 +232,7 @@
    </div>
 </script><script type="module">
    import bgrcfg from "./brangr-config.js"
-   import * as Vue from "./vue.esm-browser.min-3.2.x.js"
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
    const kLocalResult = 'local test data';
    const kUrlTag = 'url:';
@@ -512,7 +512,7 @@
       </p>
       Optional <code>_layout</code> argument field:
       <table><tr>
-         <td><code>rows</code></td> <td><code>[Integer]</code></td>
+         <td><code>rows</code></td> <td>[&nbsp;Int&nbsp;]</td>
          <td>The number of fields in each row. If unspecified, the series has a single row.</td>
       </tr></table>
 
@@ -529,7 +529,7 @@
       </p>
       Optional <code>_layout</code> argument field:
       <table><tr>
-         <td><code>sort</code></td> <td><code>String</code></td>
+         <td><code>sort</code></td> <td>String</td>
          <td>The sort order, <code>":a"</code> for ascending or <code>":d"</code> for descending.</td>
       </tr></table>
 
@@ -546,10 +546,10 @@
       </p>
       Optional <code>_layout</code> argument fields:
       <table><tr>
-         <td><code>cols</code></td> <td><code>Integer</code></td>
+         <td><code>cols</code></td> <td>Int</td>
          <td>The number of cells in each grid row. If unspecified, the grid has a single row.</td>
       </tr><tr>
-         <td><code>delim</code></td> <td><code>String</code></td>
+         <td><code>delim</code></td> <td>String</td>
          <td>The string to display between values within a cell.
              If unspecified, the delimiter is comma+space.</td>
       </tr></table>
@@ -564,10 +564,10 @@
       </p>
       Optional <code>_layout</code> argument fields:
       <table><tr>
-         <td><code>cols</code></td> <td><code>Integer</code></td>
+         <td><code>cols</code></td> <td>Int</td>
          <td>The number of array values in each row. If unspecified, the list has a single row.</td>
       </tr><tr>
-         <td><code>delim</code></td> <td><code>String</code></td>
+         <td><code>delim</code></td> <td>String</td>
          <td>The string to display between array values. If unspecified, the delimiter is comma+space.</td>
       </tr></table>
 
@@ -592,10 +592,10 @@
       </p>
       Optional <code>_layout</code> argument fields:
       <table><tr>
-         <td><code>minh</code></td> <td><code>String</code></td>
+         <td><code>minh</code></td> <td>String</td>
          <td>The minimum height of the container displaying the array.</td>
       </tr><tr>
-         <td><code>maxh</code></td> <td><code>String</code></td>
+         <td><code>maxh</code></td> <td>String</td>
          <td>The maximum height of the container displaying the array.
              The container provides a scrollbar when needed.
              When <code>"0"</code> the array contents are hidden, 
@@ -627,7 +627,7 @@
       </p>
    </div>
 </script><script type="module">
-   import * as Vue from "./vue.esm-browser.min-3.2.x.js"
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
    bgr.app.component('docs', {
       template: '#bgr-docs',
@@ -758,7 +758,7 @@
    <div v-else
         class="lu">layout not known: "{{argType}}"</div>
 </script><script type="module">
-   import * as Vue from "./vue.esm-browser.min-3.2.x.js"
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
    bgr.app.component('layout', {
       template: '#bgr-layout',
@@ -867,7 +867,7 @@
       </div>
    </div>
 </script><script type="module">
-   import * as Vue from "./vue.esm-browser.min-3.2.x.js"
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
    bgr.app.component('schema', {
       template: '#bgr-schema',
@@ -918,7 +918,7 @@
            >{{src.description}}</div>
    </div>
 </script><script type="module">
-   import * as Vue from "./vue.esm-browser.min-3.2.x.js"
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
    bgr.app.component('directive', {
       template: '#bgr-directive',
@@ -1002,7 +1002,7 @@
                   :title="aV.description"/>
    </div>
 </script><script type="module">
-   import * as Vue from "./vue.esm-browser.min-3.2.x.js"
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
    bgr.app.component('schematype', {
       template: '#bgr-schematype',
@@ -1064,7 +1064,7 @@
 </script>
 
 <script type="module">
-   import * as gql from "./graphql-16.6.x.js";
+   import * as gql from "https://cdn.jsdelivr.net/npm/graphql@16.6.0/+esm";
 
    const kListArg = {type: {value: 'list'}}; // default for scalar fields
    var sDoc, sPath, sName;
