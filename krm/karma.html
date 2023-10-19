@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--
+   Copyright 2023 Liam Breck
+   Published at https://github.com/networkimprov/brangr
+
+   This Source Code Form is subject to the terms of the Mozilla Public
+   License, v. 2.0. If a copy of the MPL was not distributed with this
+   file, You can obtain one at http://mozilla.org/MPL/2.0/
+-->
+<html><head>
+   <title>Karma</title>
+
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <link rel="stylesheet" href="karma.css"/>
+   <!--script type="importmap">
+   { "imports": { 
+      "vue":     "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+   }}
+   </script-->
+</head><body>
+<base target="_blank">
+
+<script>
+   var krm = {
+      app: null,
+      appRoot: null,
+   };
+   window.onload = () => {
+      krm.appRoot = krm.app.mount('#krm-app');
+   };
+   if (!Array.prototype.findLast) // missing in prior Safari
+      Array.prototype.findLast = function(iFn) {
+         for (var a = this.length-1; a >= 0; --a)
+            if (iFn(this[a]))
+               return this[a];
+         return null;
+      };
+</script>
+
+<div id="krm-app"><div style="text-align:center; color:tan">
+   <h3>Karma - Audio Wonders</h3>
+   <a style="color:inherit" href="https://github.com/networkimprov/karma">Karma on Github</a>
+   <p>Karma is an audio service to uplift and expand all listeners.</p>
+</div></div>
+
+<script type="text/x-template" id="krm-main">
+   <finder/>
+   <div style="margin-top:3em; border-top:1px solid gray; padding-left:0.5em;
+               font-family:monospace; white-space:pre-wrap;">
+      <a @click.prevent="debug = !debug"
+         style="text-decoration:none"
+         href="#debug">Debug</a>
+      <div v-show="debug">{{logtxt}}</div>
+   </div>
+   <input ref="clipboard" style="display:none"/>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+
+   krm.app = Vue.createApp({
+      template: '#krm-main',
+      data() { return { debug: false, logtxt: '', scrollPos: {}, scrollKey: null } },
+      computed: {
+      },
+      methods: {
+         log(i) { this.logtxt += '\n'+ i },
+         setScroll() {
+            this.scrollPos[this.scrollKey] = document.scrollingElement.scrollTop;
+         },
+         scrollFor(iKey) {
+            iKey += '';
+            document.scrollingElement.scrollTop = this.scrollPos[iKey] || 0;
+            this.scrollKey = iKey;
+         },
+         copy(iTxt) {
+            var aEl = this.$refs.clipboard;
+            aEl.value = iTxt;
+            aEl.style.display = 'inline';
+            aEl.select();
+            document.execCommand('copy');
+            aEl.style.display = 'none';
+         },
+      },
+   });
+</script>
+
+<script type="text/x-template" id="krm-finder">
+   <div>
+      <h3>
+         <button @click="toggle()"
+                 style="width:2em; float:right; margin-right:2em">
+            <span v-show="state === 'run'">&#x2225;</span>
+            <span v-show="state !== 'run'">&#x25b6;</span>
+         </button>
+         <button @click="skip()"
+                 :disabled="state !== 'run'"
+                 style="width:2em; float:right; margin-right:1em"
+                 >&#x276f;&#x276f;</button>
+         Feed {{feedId}}
+      </h3>
+      <ol>
+         <li v-for="(a, aI) in feed"
+             :style="{border: aI === feedN ? '1px solid black' : null}"
+             >{{a.name}}</li>
+      </ol>
+   </div>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+
+   krm.app.component('finder', {
+      template: '#krm-finder',
+      data() { return { audCtx: new AudioContext(), audSrc: null, state: 'off',
+                        feed: null, feedN: 0 } },
+      computed: {
+         feedId() { return 'F11' },
+      },
+      mounted() {
+         var aXhr = new XMLHttpRequest();
+         aXhr.responseType = 'json';
+         aXhr.open('GET', this.feedId);
+         aXhr.onload = c => {
+            if (aXhr.status !== 200) {
+               this.$root.log('audio feed not found: '+ this.feedId);
+               return;
+            }
+            this.feed = aXhr.response;
+         };
+         aXhr.onerror = c => { this.$root.log('audio feed error: '+ c.message) };
+         aXhr.send();
+      },
+      methods: {
+         toggle() {
+            switch (this.state) {
+            case 'off': this.load();           this.state = 'run'; break;
+            case 'run': this.audCtx.suspend(); this.state = 'sus'; break;
+            case 'sus': this.audCtx.resume();  this.state = 'run'; break;
+            }
+         },
+         skip() {
+            if (this.state === 'off') {
+               this.$root.log('cannot skip when not started');
+               return;
+            }
+            this.audSrc.stop(0);
+         },
+         load() {
+            let aFile = this.feed[this.feedN].file;
+            let aXhr = new XMLHttpRequest;
+            aXhr.responseType = 'arraybuffer';
+            aXhr.open('GET', aFile);
+            aXhr.onload = c => {
+               if (aXhr.status !== 200) {
+                  this.$root.log('audio source not found: '+ aFile);
+                  return;
+               }
+               this.audCtx.decodeAudioData(aXhr.response, cBuf => {
+                  this.audSrc = this.audCtx.createBufferSource();
+                  this.audSrc.buffer = cBuf;
+                  this.audSrc.connect(this.audCtx.destination);
+                  this.audSrc.onended = c => {
+                     if (++this.feedN === this.feed.length)
+                        this.feedN = 0;
+                     this.load();
+                  };
+                  this.audSrc.start(0);
+               });
+            };
+            aXhr.onerror = c => { this.$root.log('audio source error: '+ c.message) };
+            aXhr.send();
+         },
+      },
+   });
+</script>
+
+
+</body></html>
