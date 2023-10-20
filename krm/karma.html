@@ -81,11 +81,57 @@
             document.execCommand('copy');
             aEl.style.display = 'none';
          },
+         xhrGet(iUrl, iFmt, iLog, iCb) {
+            var aXhr = new XMLHttpRequest();
+            aXhr.responseType = iFmt;
+            aXhr.open('GET', iUrl);
+            aXhr.onload = c => {
+               if (aXhr.status !== 200) {
+                  this.log(iLog +' not found: '+ iUrl);
+                  return;
+               }
+               iCb(aXhr.response);
+            };
+            aXhr.onerror = c => { this.log(iLog +' "'+ iUrl +'" error: '+ c.message) };
+            aXhr.send();
+         },
       },
    });
 </script>
 
 <script type="text/x-template" id="krm-finder">
+   <div style="padding-bottom: 0.5em; border-bottom: 1px solid gray; margin-bottom: 0.5em">
+      <span @click="screen = 'fe'"
+            >Feed</span> &nbsp;
+      <span @click="screen = 're'"
+            >Recent</span> &nbsp;
+      <span @click="screen = 'ca'"
+            >Categories</span>
+   </div>
+   <feed v-show="screen === 'fe'"/>
+   <ol v-show="screen === 're'">
+      <li v-for="a in recent"
+          @click="screen = 'fe'"
+          >{{a.name}}</li>
+   </ol>
+   <ul v-show="screen === 'ca'">
+      <li v-for="a in cats"
+          >{{a.name}}</li>
+   </ul>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+
+   krm.app.component('finder', {
+      template: '#krm-finder',
+      data() { return { screen: 'fe', recent: null, cats: null } },
+      created() {
+         this.$root.xhrGet('Rec', 'json', 'recent list', c => { this.recent = c });
+         this.$root.xhrGet('Cat', 'json', 'categories', c => { this.cats = c });
+      },
+   });
+</script>
+
+<script type="text/x-template" id="krm-feed">
    <div>
       <h3>
          <button @click="toggle()"
@@ -108,26 +154,15 @@
 </script><script type="module">
    import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
-   krm.app.component('finder', {
-      template: '#krm-finder',
+   krm.app.component('feed', {
+      template: '#krm-feed',
       data() { return { audCtx: new AudioContext(), audSrc: null, state: 'off',
                         feed: null, feedN: 0 } },
       computed: {
          feedId() { return 'F11' },
       },
       mounted() {
-         var aXhr = new XMLHttpRequest();
-         aXhr.responseType = 'json';
-         aXhr.open('GET', this.feedId);
-         aXhr.onload = c => {
-            if (aXhr.status !== 200) {
-               this.$root.log('audio feed not found: '+ this.feedId);
-               return;
-            }
-            this.feed = aXhr.response;
-         };
-         aXhr.onerror = c => { this.$root.log('audio feed error: '+ c.message) };
-         aXhr.send();
+         this.$root.xhrGet(this.feedId, 'json', 'audio feed', c => { this.feed = c });
       },
       methods: {
          toggle() {
@@ -146,15 +181,8 @@
          },
          load() {
             let aFile = this.feed[this.feedN].file;
-            let aXhr = new XMLHttpRequest;
-            aXhr.responseType = 'arraybuffer';
-            aXhr.open('GET', aFile);
-            aXhr.onload = c => {
-               if (aXhr.status !== 200) {
-                  this.$root.log('audio source not found: '+ aFile);
-                  return;
-               }
-               this.audCtx.decodeAudioData(aXhr.response, cBuf => {
+            this.$root.xhrGet(aFile, 'arraybuffer', 'audio source', cResp => {
+               this.audCtx.decodeAudioData(cResp, cBuf => {
                   this.audSrc = this.audCtx.createBufferSource();
                   this.audSrc.buffer = cBuf;
                   this.audSrc.connect(this.audCtx.destination);
@@ -165,9 +193,7 @@
                   };
                   this.audSrc.start(0);
                });
-            };
-            aXhr.onerror = c => { this.$root.log('audio source error: '+ c.message) };
-            aXhr.send();
+            });
          },
       },
    });
