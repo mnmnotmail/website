@@ -108,10 +108,11 @@
       <span @click="screen = 'ca'"
             >Categories</span>
    </div>
-   <feed v-show="screen === 'fe'"/>
+   <feed v-show="screen === 'fe'"
+         :id="feed && feed.file" :name="feed && feed.name"/>
    <ol v-show="screen === 're'">
-      <li v-for="a in recent"
-          @click="screen = 'fe'"
+      <li v-for="(a, aI) in recent"
+          @click="recN = aI, screen = 'fe'"
           >{{a.name}}</li>
    </ol>
    <ul v-show="screen === 'ca'">
@@ -123,7 +124,10 @@
 
    krm.app.component('finder', {
       template: '#krm-finder',
-      data() { return { screen: 'fe', recent: null, cats: null } },
+      data() { return { screen: 'fe', recent: null, recN: 0, cats: null } },
+      computed: {
+         feed() { return this.recent && this.recent[this.recN] },
+      },
       created() {
          this.$root.xhrGet('Rec', 'json', 'recent list', c => { this.recent = c });
          this.$root.xhrGet('Cat', 'json', 'categories', c => { this.cats = c });
@@ -135,6 +139,7 @@
    <div>
       <h3>
          <button @click="toggle()"
+                 :disabled="state === 'off' && !nextBuf"
                  style="width:2em; float:right; margin-right:2em">
             <span v-show="state === 'run'">&#x2225;</span>
             <span v-show="state !== 'run'">&#x25b6;</span>
@@ -143,7 +148,11 @@
                  :disabled="state !== 'run'"
                  style="width:2em; float:right; margin-right:1em"
                  >&#x276f;&#x276f;</button>
-         Feed {{feedId}}
+         <div v-show="!nextBuf"
+              style="float:right; margin-right:1em; padding:0 0.5em; background-color:lightgray"
+              title="Loading clip"
+              >&#x2913;</div>
+         Feed {{name}} ({{id}})
       </h3>
       <ol>
          <li v-for="(a, aI) in feed"
@@ -156,42 +165,54 @@
 
    krm.app.component('feed', {
       template: '#krm-feed',
-      data() { return { audCtx: new AudioContext(), audSrc: null, state: 'off',
-                        feed: null, feedN: 0 } },
-      computed: {
-         feedId() { return 'F11' },
-      },
-      mounted() {
-         this.$root.xhrGet(this.feedId, 'json', 'audio feed', c => { this.feed = c });
+      props: { id: String, name: String },
+      data() { return { audCtx: new AudioContext(), audSrc: true, state: 'off',
+                        feed: null, feedN: 0, nextBuf: null } },
+      watch: {
+         id() {
+            this.$root.xhrGet(this.id, 'json', 'audio feed', c => {
+               this.feed = c;
+               this.load(this.feedN-1);
+            });
+         },
       },
       methods: {
          toggle() {
             switch (this.state) {
-            case 'off': this.load();           this.state = 'run'; break;
+            case 'off': this.start();          this.state = 'run'; break;
             case 'run': this.audCtx.suspend(); this.state = 'sus'; break;
             case 'sus': this.audCtx.resume();  this.state = 'run'; break;
             }
          },
          skip() {
-            if (this.state === 'off') {
+            if (this.state === 'off' || !this.audSrc) {
                this.$root.log('cannot skip when not started');
                return;
             }
             this.audSrc.stop(0);
          },
-         load() {
-            let aFile = this.feed[this.feedN].file;
-            this.$root.xhrGet(aFile, 'arraybuffer', 'audio source', cResp => {
+         start() {
+            this.audSrc = this.audCtx.createBufferSource();
+            this.audSrc.buffer = this.nextBuf;
+            this.audSrc.connect(this.audCtx.destination);
+            this.audSrc.onended = c => {
+               this.audSrc = null;
+               if (++this.feedN === this.feed.length)
+                  this.feedN = 0;
+               if (this.nextBuf)
+                  this.start();
+            };
+            this.nextBuf = null;
+            this.audSrc.start(0);
+            this.load(this.feedN);
+         },
+         load(iN) {
+            iN = iN+1 === this.feed.length ? 0 : iN+1;
+            this.$root.xhrGet(this.feed[iN].file, 'arraybuffer', 'audio source', cResp => {
                this.audCtx.decodeAudioData(cResp, cBuf => {
-                  this.audSrc = this.audCtx.createBufferSource();
-                  this.audSrc.buffer = cBuf;
-                  this.audSrc.connect(this.audCtx.destination);
-                  this.audSrc.onended = c => {
-                     if (++this.feedN === this.feed.length)
-                        this.feedN = 0;
-                     this.load();
-                  };
-                  this.audSrc.start(0);
+                  this.nextBuf = cBuf;
+                  if (!this.audSrc)
+                     this.start();
                });
             });
          },
