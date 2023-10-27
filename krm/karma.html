@@ -105,7 +105,7 @@
             >Feed</span> &nbsp;
       <span @click="screen = sc.re"
             >Recent</span> &nbsp;
-      <span @click="screen = sc.br"
+      <span @click="screen = found ? sc.fo : sc.br"
             >Browse</span> &nbsp;
       <span @click="screen = sc.ci"
             >Circles</span>
@@ -125,20 +125,30 @@
           >{{a.name}}</li>
    </ol>
    <button v-show="screen === sc.br"
-           @click="screen = sc.fo"
+           @click="screen = sc.fo, browse()"
            style="float:right; margin-right:2em"
            >Search</button>
-   <table v-show="screen === sc.br" v-if="cats"><tr>
+   <table v-show="screen === sc.br"><tr>
       <td v-for="aCol in cats">
          <div v-for="a in aCol">
             <label><input type="checkbox" :name="a.name"/>{{a.name}}</label>
          </div></td></tr></table>
    <button v-show="screen === sc.fo"
-           @click="screen = sc.br"
+           @click="screen = sc.br, found = null"
            style="float:right; margin-right:2em; width:2em"
            >&times;</button>
    <div v-show="screen === sc.fo">
-      Browsing not yet available.
+      <div v-show="!found"
+           >Searching...</div>
+      <table v-show="found"
+             style="border-spacing:1em 0">
+         <tr><th>DJ</th><th>Last Program</th><th>Clips</th><th>Run time</th></tr>
+         <tr v-for="a in found">
+            <td>{{a.name}}</td>
+            <td>{{a.last}}</td>
+            <td>{{a.count}}</td>
+            <td>{{a.dur}}</td>
+         </tr></table>
    </div>
    <div v-show="screen === sc.ci" v-if="circ"
         style="margin-right:2em">
@@ -160,7 +170,8 @@
 
    krm.app.component('finder', {
       template: '#krm-finder',
-      data() { return { screen: 0, recent: null, recN: 0, recSaved: false, cats: null, circ: null } },
+      data() { return { screen: 0, recent: null, recN: 0, recSaved: false, circ: null,
+                        cats: null, found: null } },
       computed: {
          feed() { return this.recent && this.recent[this.recN] },
          sc() { return {fe:0, re:1, br:2, fo:3, ci:4} },
@@ -176,6 +187,7 @@
             i.forEach(c => { a += c.name +'\n' });
             return a;
          },
+         browse() { this.$root.xhrGet('Fnd', 'json', 'found', c => { this.found = c }) },
          circName(i) {
             var aC = this.circ.circles.find(c => c.id === i);
             if (!aC)
