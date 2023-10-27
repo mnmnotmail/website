@@ -1,4 +1,7 @@
-[
+[[
   { "name": "Outdoor", "file": "C11" },
   { "name": "New age", "file": "C11" }
-]
+ ],[
+  { "name": "Music",   "file": "C11" },
+  { "name": "Stories", "file": "C11" }
+]]

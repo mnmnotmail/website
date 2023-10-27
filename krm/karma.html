@@ -101,42 +101,100 @@
 
 <script type="text/x-template" id="krm-finder">
    <div style="padding-bottom: 0.5em; border-bottom: 1px solid gray; margin-bottom: 0.5em">
-      <span @click="screen = 'fe'"
+      <span @click="screen = sc.fe"
             >Feed</span> &nbsp;
-      <span @click="screen = 're'"
+      <span @click="screen = sc.re"
             >Recent</span> &nbsp;
-      <span @click="screen = 'ca'"
-            >Categories</span>
+      <span @click="screen = sc.br"
+            >Browse</span> &nbsp;
+      <span @click="screen = sc.ci"
+            >Circles</span>
    </div>
-   <feed v-show="screen === 'fe'"
+   <feed v-show="screen === sc.fe"
          :id="feed && feed.file" :name="feed && feed.name"/>
-   <ol v-show="screen === 're'">
-      <li v-for="(a, aI) in recent"
-          @click="recN = aI, screen = 'fe'"
+   <div v-show="screen === sc.re"
+        style="width:5em; padding:0 0 0.5em 3em; border-bottom:1px solid gray; margin-bottom:0.5em">
+      <span @click="recSaved = false"
+            >All</span> &nbsp;
+      <span @click="recSaved = true"
+            >Saved</span>
+   </div>
+   <ol v-show="screen === sc.re" v-if="recent">
+      <li v-for="(a, aI) in (recSaved ? recent.filter(c => c.saved === true) : recent)"
+          @click="recN = aI, screen = sc.fe"
           >{{a.name}}</li>
    </ol>
-   <ul v-show="screen === 'ca'">
-      <li v-for="a in cats"
-          >{{a.name}}</li>
-   </ul>
+   <button v-show="screen === sc.br"
+           @click="screen = sc.fo"
+           style="float:right; margin-right:2em"
+           >Search</button>
+   <table v-show="screen === sc.br" v-if="cats"><tr>
+      <td v-for="aCol in cats">
+         <div v-for="a in aCol">
+            <label><input type="checkbox" :name="a.name"/>{{a.name}}</label>
+         </div></td></tr></table>
+   <button v-show="screen === sc.fo"
+           @click="screen = sc.br"
+           style="float:right; margin-right:2em; width:2em"
+           >&times;</button>
+   <div v-show="screen === sc.fo">
+      Browsing not yet available.
+   </div>
+   <div v-show="screen === sc.ci" v-if="circ"
+        style="margin-right:2em">
+      <span v-for="a in circ.circles"
+            style="margin-right:0.5em; padding:0.25em; background-color:lightgray"
+            :title="memlist(a.members)"
+            >{{a.name}} ({{a.members.length}})</span>
+      <table style="margin-top:1em; border-spacing:1em 0.25em">
+         <tr v-for="a in circ.threads">
+            <td>{{a.isNew ? '\u2600' : ' '}}</td>
+            <td>{{a.date}}</td>
+            <td>{{circName(a.circle)}}</td>
+            <td>{{a.count}}</td>
+            <td>{{a.topic}}</td>
+         </tr></table>
+   </div>
 </script><script type="module">
    import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
    krm.app.component('finder', {
       template: '#krm-finder',
-      data() { return { screen: 'fe', recent: null, recN: 0, cats: null } },
+      data() { return { screen: 0, recent: null, recN: 0, recSaved: false, cats: null, circ: null } },
       computed: {
          feed() { return this.recent && this.recent[this.recN] },
+         sc() { return {fe:0, re:1, br:2, fo:3, ci:4} },
       },
       created() {
          this.$root.xhrGet('Rec', 'json', 'recent list', c => { this.recent = c });
-         this.$root.xhrGet('Cat', 'json', 'categories', c => { this.cats = c });
+         this.$root.xhrGet('Cat', 'json', 'categories',  c => { this.cats = c });
+         this.$root.xhrGet('Cir', 'json', 'circles',     c => { this.circ = c });
+      },
+      methods: {
+         memlist(i) {
+            var a = '';
+            i.forEach(c => { a += c.name +'\n' });
+            return a;
+         },
+         circName(i) {
+            var aC = this.circ.circles.find(c => c.id === i);
+            if (!aC)
+               this.$root.log('circle id missing: '+ i);
+            return aC ? aC.name : '??';
+         },
       },
    });
 </script>
 
 <script type="text/x-template" id="krm-feed">
    <div>
+      <div v-if="feed"
+           style="margin:0 2em 1em 0">
+         DJs
+         <span v-for="a in feed.curators"
+               style="margin-right:0.5em; padding:0.25em; background-color:lightgray"
+               >{{a.name}}</span>
+      </div>
       <h3>
          <button @click="toggle()"
                  :disabled="state === 'off' && !nextBuf"
@@ -152,11 +210,11 @@
               style="float:right; margin-right:1em; padding:0 0.5em; background-color:lightgray"
               title="Loading clip"
               >&#x2913;</div>
-         Feed {{name}} ({{id}})
+         {{name}} ({{id}})
       </h3>
-      <ol>
-         <li v-for="(a, aI) in feed"
-             :style="{border: aI === feedN ? '1px solid black' : null}"
+      <ol v-if="feed">
+         <li v-for="(a, aI) in feed.clips"
+             :style="{border: aI === clipsN ? '1px solid black' : null}"
              >{{a.name}}</li>
       </ol>
    </div>
@@ -167,12 +225,12 @@
       template: '#krm-feed',
       props: { id: String, name: String },
       data() { return { audCtx: new AudioContext(), audSrc: true, state: 'off',
-                        feed: null, feedN: 0, nextBuf: null } },
+                        feed: null, clipsN: 0, nextBuf: null } },
       watch: {
          id() {
             this.$root.xhrGet(this.id, 'json', 'audio feed', c => {
                this.feed = c;
-               this.load(this.feedN-1);
+               this.load(this.clipsN-1);
             });
          },
       },
@@ -197,18 +255,18 @@
             this.audSrc.connect(this.audCtx.destination);
             this.audSrc.onended = c => {
                this.audSrc = null;
-               if (++this.feedN === this.feed.length)
-                  this.feedN = 0;
+               if (++this.clipsN === this.feed.clips.length)
+                  this.clipsN = 0;
                if (this.nextBuf)
                   this.start();
             };
             this.nextBuf = null;
             this.audSrc.start(0);
-            this.load(this.feedN);
+            this.load(this.clipsN);
          },
          load(iN) {
-            iN = iN+1 === this.feed.length ? 0 : iN+1;
-            this.$root.xhrGet(this.feed[iN].file, 'arraybuffer', 'audio source', cResp => {
+            iN = iN+1 === this.feed.clips.length ? 0 : iN+1;
+            this.$root.xhrGet(this.feed.clips[iN].file, 'arraybuffer', 'audio source', cResp => {
                this.audCtx.decodeAudioData(cResp, cBuf => {
                   this.nextBuf = cBuf;
                   if (!this.audSrc)
