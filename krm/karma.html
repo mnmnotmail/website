@@ -26,6 +26,8 @@
    var krm = {
       app: null,
       appRoot: null,
+      s: { feedRef: {}, screen: -1 },
+      kSc: {fe:0, jo:1, re:1, br:2, fo:3, ci:4},
    };
    window.onload = () => {
       krm.appRoot = krm.app.mount('#krm-app');
@@ -40,13 +42,19 @@
 </script>
 
 <div id="krm-app"><div style="text-align:center; color:tan">
-   <h3>Karma - Audio Wonders</h3>
+   <h3>Karma Audio Worlds</h3>
    <a style="color:inherit" href="https://github.com/networkimprov/karma">Karma on Github</a>
    <p>Karma is an audio service to uplift and expand all listeners.</p>
 </div></div>
 
 <script type="text/x-template" id="krm-main">
-   <finder/>
+   <div style="margin-top:3em"></div>
+   <feed v-show="krm.s.screen === krm.kSc.fe"
+         :id="krm.s.feedRef.file" :name="krm.s.feedRef.name"
+         :go="firstStart"/>
+   <start v-if="firstStart"
+          @ok="firstStart = false"/>
+   <finder v-else/>
    <div style="margin-top:3em; border-top:1px solid gray; padding-left:0.5em;
                font-family:monospace; white-space:pre-wrap;">
       <a @click.prevent="debug = !debug"
@@ -58,10 +66,14 @@
 </script><script type="module">
    import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
+   krm.s = Vue.reactive(krm.s);
+
    krm.app = Vue.createApp({
       template: '#krm-main',
-      data() { return { debug: false, logtxt: '', scrollPos: {}, scrollKey: null } },
+      data() { return { debug: false, logtxt: '', scrollPos: {}, scrollKey: null,
+                        firstStart: location.search === '?start' } },
       computed: {
+         krm() { return krm },
       },
       methods: {
          log(i) { this.logtxt += '\n'+ i },
@@ -99,47 +111,100 @@
    });
 </script>
 
+<script type="text/x-template" id="krm-start">
+   <div style="position:fixed; left:0.5em; right:0.5em; top:0;
+               padding: 0.5em 0; border-bottom: 1px solid gray; background-color:#fff">
+      <span v-if="krm.s.screen < 0"
+            style="font-weight:bold"
+            >Karma Audio Worlds - Welcome!</span>
+      <template v-else>
+         <span @click="krm.s.screen = krm.kSc.fe"
+               >Feed</span> &nbsp;
+         <span @click="krm.s.screen = krm.kSc.jo"
+               style="font-weight:bold"
+               >Join Karma!</span>
+      </template>
+   </div>
+   <template v-if="krm.s.screen < 0">
+      <div style="margin-bottom:1em"
+           >Select some topics of interest for your first feed<br/>
+            (You can add or amend feeds anytime.)
+      </div>
+      <button @click="krm.s.screen = krm.kSc.fe, getMix()"
+              style="float:right; margin-right:2em"
+              >&#x25b6; Listen</button>
+      <table><tr>
+         <td v-for="aCol in cats">
+            <div v-for="a in aCol">
+               <label><input type="checkbox" :name="a.name"/>{{a.name}}</label>
+            </div></td></tr></table>
+   </template>
+   <div v-show="krm.s.screen === krm.kSc.jo"
+        style="text-align:center">
+      Full name or alias<br/>
+      <input type="text" style="width:15em"/><br/>
+      <button @click="$emit('ok')"
+              >Sign Up</button>
+   </div>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+
+   krm.app.component('start', {
+      template: '#krm-start',
+      emits: ['ok'],
+      data() { return { cats: null } },
+      computed: {
+         krm() { return krm },
+      },
+      created() {
+         this.$root.xhrGet('Cat', 'json', 'categories',  c => { this.cats = c });
+      },
+      methods: {
+         getMix() { this.$root.xhrGet('Mix', 'json', 'audio feed', c => { krm.s.feedRef = c }) },
+      },
+   });
+</script>
+
 <script type="text/x-template" id="krm-finder">
-   <div style="padding-bottom: 0.5em; border-bottom: 1px solid gray; margin-bottom: 0.5em">
-      <span @click="screen = sc.fe"
+   <div style="position:fixed; left:0.5em; right:0.5em; top:0;
+               padding: 0.5em 0; border-bottom: 1px solid gray; background-color:#fff">
+      <span @click="krm.s.screen = krm.kSc.fe"
             >Feed</span> &nbsp;
-      <span @click="screen = sc.re"
+      <span @click="krm.s.screen = krm.kSc.re"
             >Recent</span> &nbsp;
-      <span @click="screen = found ? sc.fo : sc.br"
+      <span @click="krm.s.screen = found ? krm.kSc.fo : krm.kSc.br"
             >Browse</span> &nbsp;
-      <span @click="screen = sc.ci"
+      <span @click="krm.s.screen = krm.kSc.ci"
             >Circles</span>
    </div>
-   <feed v-show="screen === sc.fe"
-         :id="feed && feed.file" :name="feed && feed.name"/>
-   <div v-show="screen === sc.re"
+   <div v-show="krm.s.screen === krm.kSc.re"
         style="width:5em; padding:0 0 0.5em 3em; border-bottom:1px solid gray; margin-bottom:0.5em">
       <span @click="recSaved = false"
             >All</span> &nbsp;
       <span @click="recSaved = true"
             >Saved</span>
    </div>
-   <ol v-show="screen === sc.re" v-if="recent">
+   <ol v-show="krm.s.screen === krm.kSc.re" v-if="recent">
       <li v-for="(a, aI) in (recSaved ? recent.filter(c => c.saved === true) : recent)"
-          @click="recN = aI, screen = sc.fe"
+          @click="recN = aI, krm.s.screen = krm.kSc.fe"
           >{{a.name}}</li>
    </ol>
-   <button v-show="screen === sc.br"
-           @click="screen = sc.fo, browse()"
+   <button v-show="krm.s.screen === krm.kSc.br"
+           @click="krm.s.screen = krm.kSc.fo, browse()"
            style="float:right; margin-right:2em"
-           >Search</button>
-   <table v-show="screen === sc.br"><tr>
+           >Find DJs</button>
+   <table v-show="krm.s.screen === krm.kSc.br"><tr>
       <td v-for="aCol in cats">
          <div v-for="a in aCol">
             <label><input type="checkbox" :name="a.name"/>{{a.name}}</label>
          </div></td></tr></table>
-   <button v-show="screen === sc.fo"
-           @click="screen = sc.br, found = null"
+   <button v-show="krm.s.screen === krm.kSc.fo"
+           @click="krm.s.screen = krm.kSc.br, found = null"
            style="float:right; margin-right:2em; width:2em"
            >&times;</button>
-   <div v-show="screen === sc.fo">
+   <div v-show="krm.s.screen === krm.kSc.fo">
       <div v-show="!found"
-           >Searching...</div>
+           >Looking...</div>
       <table v-show="found"
              style="border-spacing:1em 0">
          <tr><th>DJ</th><th>Last Program</th><th>Clips</th><th>Run time</th></tr>
@@ -150,7 +215,7 @@
             <td>{{a.dur}}</td>
          </tr></table>
    </div>
-   <div v-show="screen === sc.ci" v-if="circ"
+   <div v-show="krm.s.screen === krm.kSc.ci" v-if="circ"
         style="margin-right:2em">
       <span v-for="a in circ.circles"
             style="margin-right:0.5em; padding:0.25em; background-color:lightgray"
@@ -170,18 +235,23 @@
 
    krm.app.component('finder', {
       template: '#krm-finder',
-      data() { return { screen: 0, recent: null, recN: 0, recSaved: false, circ: null,
+      data() { return { recent: null, recN: 0, recSaved: false, circ: null,
                         cats: null, found: null } },
       computed: {
-         feed() { return this.recent && this.recent[this.recN] },
-         sc() { return {fe:0, re:1, br:2, fo:3, ci:4} },
+         krm() { return krm },
       },
       created() {
+         krm.s.screen = krm.kSc.fe;
          this.$root.xhrGet('Rec', 'json', 'recent list', c => { this.recent = c });
          this.$root.xhrGet('Cat', 'json', 'categories',  c => { this.cats = c });
          this.$root.xhrGet('Cir', 'json', 'circles',     c => { this.circ = c });
       },
+      watch: {
+         recent: 'setFeed',
+         recN:   'setFeed',
+      },
       methods: {
+         setFeed() { krm.s.feedRef = this.recent[this.recN] },
          memlist(i) {
             var a = '';
             i.forEach(c => { a += c.name +'\n' });
@@ -235,9 +305,15 @@
 
    krm.app.component('feed', {
       template: '#krm-feed',
-      props: { id: String, name: String },
-      data() { return { audCtx: new AudioContext(), audSrc: true, state: 'off',
+      props: { id: String, name: String, go: Boolean },
+      data() { return { audCtx: new AudioContext(), audSrc: null, state: 'run',
                         feed: null, clipsN: 0, nextBuf: null } },
+      created() {
+         if (!this.go) {
+            this.audSrc = true;
+            this.state = 'off';
+         }
+      },
       watch: {
          id() {
             this.$root.xhrGet(this.id, 'json', 'audio feed', c => {
