@@ -1,0 +1,17 @@
+[{
+  "name": "Seamus", "id": "Cur1",
+  "title": "A wondering wandering soul with an ear to the world",
+  "img": "/logo-400-bleed-dim.png",
+  "file": "greeting",
+  "progs": [
+    { "name": "Celtic Muse", "date": "2023-10-14", "count": 16, "dur": 1800, "file": "abc" }
+  ]
+},{
+  "name": "Fiona",  "id": "Cur2",
+  "title": "Insights from the borderlands",
+  "img": "/logo-400-bleed-dim.png",
+  "file": "greeting",
+  "progs": [
+    { "name": "Watching the Road", "date": "2023-09-06", "count": 24, "dur": 1900, "file": "xyz" }
+  ]
+}]
