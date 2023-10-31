@@ -127,8 +127,8 @@
       <div style="position:absolute; right:0; top:0.5em">
          <span v-if="!select"
                @click="krm.s.screen = krm.kSc.jo"
-               class="uipoint" style="font-weight:bold"
-               >Join Karma</span> &nbsp;
+               class="uipoint tabmargr" style="font-weight:bold"
+               >Join Karma</span>
          <span @click="krm.s.screen = krm.kSc.si"
                class="uipoint"
                >Sign In</span>
@@ -192,29 +192,29 @@
    <div style="position:fixed; left:0.5em; right:0.5em; top:0;
                padding: 0.5em 0; border-bottom: 1px solid gray; background-color:#fff">
       <span @click="krm.s.screen = krm.kSc.fe"
-            class="uipoint"
-            >Feed</span> &nbsp;
+            class="uipoint tabmargr"
+            >Feed</span>
       <span @click="krm.s.screen = krm.kSc.re"
-            class="uipoint"
-            >Recent</span> &nbsp;
+            class="uipoint tabmargr"
+            >Recent</span>
       <span @click="krm.s.screen = found ? krm.kSc.fo : krm.kSc.br"
-            class="uipoint"
-            >Browse</span> &nbsp;
+            class="uipoint tabmargr"
+            >Browse</span>
       <span @click="krm.s.screen = krm.kSc.ci"
-            class="uipoint"
-            >Circles</span> &nbsp;
+            class="uipoint tabmargr"
+            >Circles</span>
       <span v-show="!!djs"
             @click="krm.s.screen = krm.kSc.dj"
-            class="uipoint"
+            class="uipoint tabmargr"
             >DJs</span>
    </div>
    <div v-show="krm.s.screen === krm.kSc.re"
         style="width:5em; padding:0 0 0.5em 3em; border-bottom:1px solid gray; margin-bottom:0.5em">
       <span @click="recSaved = false"
-            class="uipoint"
-            >All</span> &nbsp;
+            class="uipoint tabmargr"
+            >All</span>
       <span @click="recSaved = true"
-            class="uipoint"
+            class="uipoint tabmargr"
             >Saved</span>
    </div>
    <ol v-show="krm.s.screen === krm.kSc.re" v-if="recent">
@@ -225,7 +225,7 @@
    </ol>
    <button v-show="krm.s.screen === krm.kSc.br"
            @click="krm.s.screen = krm.kSc.fo, browse()"
-           style="float:right; margin-right:2em"
+           style="float:right; margin-right:1em"
            >Find DJs</button>
    <table v-show="krm.s.screen === krm.kSc.br"><tr>
       <td v-for="aCol in cats">
@@ -250,7 +250,7 @@
          </tr></table>
    </div>
    <div v-show="krm.s.screen === krm.kSc.ci" v-if="circ"
-        style="margin-right:2em">
+        style="margin-right:0.5em">
       <span v-for="a in circ.circles"
             style="margin-right:0.5em; padding:0.25em; background-color:lightgray"
             :title="memlist(a.members)"
@@ -265,17 +265,17 @@
          </tr></table>
    </div>
    <div v-show="krm.s.screen === krm.kSc.dj"
-        style="margin-right:2em">
+        style="margin-right:0.5em">
       <div style="display:inline-block; padding:0 0 0.5em 1em; border-bottom:1px solid gray; margin-bottom:0.5em">
          <span v-for="(a, aI) in djs"
                @click="djN = aI"
-               class="uipoint"
-               >{{a.name}} &nbsp; </span>
+               class="uipoint tabmargr"
+               >{{a.name}}</span>
       </div>
       <div v-for="(a, aI) in djs"
            v-show="aI === djN">
          <img :src="a.img"
-              style="float:right; max-width:25%"/>
+              style="float:right; margin-left:0.5em; max-width:25%"/>
          <h3>{{a.name}}</h3>
          <div style="margin-bottom:0.5em; font-style:italic"
               >{{a.title}}</div>
@@ -343,7 +343,7 @@
 <script type="text/x-template" id="krm-feed">
    <div>
       <div v-if="feed"
-           style="margin:0 2em 1em 0">
+           style="margin:0 0.5em 1em 0">
          DJs
          <span v-for="a in feed.curators"
                @click="$emit('godj', a.id)" k--="todo: popup dj profile card on firstStart"
@@ -367,7 +367,8 @@
               >&#x2913;</div>
          {{name}} ({{id}})
       </h3>
-      <ol v-if="feed">
+      <ol v-if="feed"
+          style="margin-right:0.5em">
          <li v-for="(a, aI) in feed.clips"
              :style="{border: aI === clipsN ? '1px solid black' : null}"
              >{{a.name}}</li>
