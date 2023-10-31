@@ -27,7 +27,7 @@
       app: null,
       appRoot: null,
       s: { feedRef: {}, screen: -1 },
-      kSc: {fe:0, jo:1, re:1, br:2, fo:3, ci:4},
+      kSc: {fe:0, st:1, jo:2, si:3, re:1, br:2, fo:3, ci:4},
    };
    window.onload = () => {
       krm.appRoot = krm.app.mount('#krm-app');
@@ -114,23 +114,30 @@
 <script type="text/x-template" id="krm-start">
    <div style="position:fixed; left:0.5em; right:0.5em; top:0;
                padding: 0.5em 0; border-bottom: 1px solid gray; background-color:#fff">
-      <span v-if="krm.s.screen < 0"
+      <span v-if="select"
+            @click="krm.s.screen = krm.kSc.st"
             style="font-weight:bold"
-            >Karma Audio Worlds - Welcome!</span>
-      <template v-else>
-         <span @click="krm.s.screen = krm.kSc.fe"
-               >Feed</span> &nbsp;
-         <span @click="krm.s.screen = krm.kSc.jo"
+            >Karma Audio - Sampler</span>
+      <span v-else
+            @click="krm.s.screen = krm.kSc.fe"
+            style="font-weight:bold"
+            >Karma Audio - Welcome!</span>
+      <div style="position:absolute; right:0; top:0.5em">
+         <span v-if="!select"
+               @click="krm.s.screen = krm.kSc.jo"
                style="font-weight:bold"
-               >Join Karma!</span>
-      </template>
+               >Join Karma</span> &nbsp;
+         <span @click="krm.s.screen = krm.kSc.si"
+               >Sign In</span>
+      </div>
    </div>
-   <template v-if="krm.s.screen < 0">
+   <div v-if="select"
+        v-show="krm.s.screen === krm.kSc.st">
       <div style="margin-bottom:1em"
            >Select some topics of interest for your first feed<br/>
             (You can add or amend feeds anytime.)
       </div>
-      <button @click="krm.s.screen = krm.kSc.fe, getMix()"
+      <button @click="krm.s.screen = krm.kSc.fe, select = false, getMix()"
               style="float:right; margin-right:2em"
               >&#x25b6; Listen</button>
       <table><tr>
@@ -138,13 +145,25 @@
             <div v-for="a in aCol">
                <label><input type="checkbox" :name="a.name"/>{{a.name}}</label>
             </div></td></tr></table>
-   </template>
-   <div v-show="krm.s.screen === krm.kSc.jo"
-        style="text-align:center">
+   </div>
+   <div v-show="krm.s.screen === krm.kSc.jo">
       Full name or alias<br/>
-      <input type="text" style="width:15em"/><br/>
+      <input type="text" style="width:12em"/><br/>
       <button @click="$emit('ok')"
               >Sign Up</button>
+   </div>
+   <div v-show="krm.s.screen === krm.kSc.si">
+      <table><tr>
+         <td>Account</td>
+         <td><input type="text" value="longUserId"
+                    style="width:12em"/></td>
+      </tr><tr>
+         <td>Key</td>
+         <td><input type="text" value="randomKey"
+                    style="width:12em"/></td>
+      </tr></table>
+      <button @click="$emit('ok')"
+              >Sign In</button>
    </div>
 </script><script type="module">
    import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
@@ -152,11 +171,12 @@
    krm.app.component('start', {
       template: '#krm-start',
       emits: ['ok'],
-      data() { return { cats: null } },
+      data() { return { select: true, cats: null } },
       computed: {
          krm() { return krm },
       },
       created() {
+         krm.s.screen = krm.kSc.st;
          this.$root.xhrGet('Cat', 'json', 'categories',  c => { this.cats = c });
       },
       methods: {
