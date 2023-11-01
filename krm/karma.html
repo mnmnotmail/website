@@ -118,19 +118,19 @@
                padding: 0.5em 0; border-bottom: 1px solid gray; background-color:#fff">
       <span v-if="select"
             @click="krm.s.screen = krm.kSc.st"
-            class="uipoint" style="font-weight:bold"
+            class="uipoint uibold"
             >Karma Audio - Sampler</span>
       <span v-else
             @click="krm.s.screen = krm.kSc.fe"
-            class="uipoint" style="font-weight:bold"
+            class="uipoint uibold"
             >Karma Audio - Welcome!</span>
       <div style="position:absolute; right:0; top:0.5em">
          <span v-if="!select"
                @click="krm.s.screen = krm.kSc.jo"
-               class="uipoint tabmargr" style="font-weight:bold"
+               class="uipoint tabmargr uibold" :class="{tabshow: krm.s.screen === krm.kSc.jo}"
                >Join Karma</span>
          <span @click="krm.s.screen = krm.kSc.si"
-               class="uipoint"
+               class="uipoint" :class="{tabshow: krm.s.screen === krm.kSc.si}"
                >Sign In</span>
       </div>
    </div>
@@ -192,29 +192,29 @@
    <div style="position:fixed; left:0.5em; right:0.5em; top:0;
                padding: 0.5em 0; border-bottom: 1px solid gray; background-color:#fff">
       <span @click="krm.s.screen = krm.kSc.fe"
-            class="uipoint tabmargr"
+            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.fe}"
             >Feed</span>
       <span @click="krm.s.screen = krm.kSc.re"
-            class="uipoint tabmargr"
+            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.re}"
             >Recent</span>
       <span @click="krm.s.screen = found ? krm.kSc.fo : krm.kSc.br"
-            class="uipoint tabmargr"
+            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === (found ? krm.kSc.fo : krm.kSc.br)}"
             >Browse</span>
       <span @click="krm.s.screen = krm.kSc.ci"
-            class="uipoint tabmargr"
+            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.ci}"
             >Circles</span>
       <span v-show="!!djs"
             @click="krm.s.screen = krm.kSc.dj"
-            class="uipoint tabmargr"
+            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.dj}"
             >DJs</span>
    </div>
    <div v-show="krm.s.screen === krm.kSc.re"
         style="width:5em; padding:0 0 0.5em 3em; border-bottom:1px solid gray; margin-bottom:0.5em">
       <span @click="recSaved = false"
-            class="uipoint tabmargr"
+            class="uipoint tabmargr" :class="{tabshow: !recSaved}"
             >All</span>
       <span @click="recSaved = true"
-            class="uipoint tabmargr"
+            class="uipoint tabmargr" :class="{tabshow: recSaved}"
             >Saved</span>
    </div>
    <ol v-show="krm.s.screen === krm.kSc.re" v-if="recent">
@@ -269,7 +269,7 @@
       <div style="display:inline-block; padding:0 0 0.5em 1em; border-bottom:1px solid gray; margin-bottom:0.5em">
          <span v-for="(a, aI) in djs"
                @click="djN = aI"
-               class="uipoint tabmargr"
+               class="uipoint tabmargr" :class="{tabshow: djN === aI}"
                >{{a.name}}</span>
       </div>
       <div v-for="(a, aI) in djs"

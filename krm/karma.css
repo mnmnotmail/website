@@ -9,4 +9,11 @@ body {
 
 .uipoint { cursor: pointer }
 
+.uibold { font-weight: bold }
+
 .tabmargr { margin-right: 1em }
+
+.tabshow {
+   border-top: 2px solid lightblue;
+   cursor: default;
+}
