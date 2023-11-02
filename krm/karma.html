@@ -255,13 +255,37 @@
             style="margin-right:0.5em; padding:0.25em; background-color:lightgray"
             :title="memlist(a.members)"
             >{{a.name}} ({{a.members.length}})</span>
-      <table style="margin-top:1em; border-spacing:1em 0.25em">
+      <table v-show="!thread"
+             style="margin-top:1em; border-spacing:1em 0.25em">
          <tr v-for="a in circ.threads">
             <td>{{a.isNew ? '\u2600' : ' '}}</td>
             <td>{{a.date}}</td>
             <td>{{circName(a.circle)}}</td>
             <td>{{a.count}}</td>
-            <td>{{a.topic}}</td>
+            <td><span @click="goThread(a)"
+                      class="uipoint uibold"
+                      >{{a.topic}}</span></td>
+         </tr></table>
+      <div v-show="thread"
+           style="margin:1em 0 0.5em">
+         <span @click="thread = null"
+               class="uipoint uibold" style="margin-right:0.25em; padding:0 0.5em"
+               >&#x276e;</span>
+         <span class="uibold tabmargr"
+               >{{thread && thread.topic}}</span>
+         <span >({{thread && thread.count}})</span>
+      </div>
+      <table v-show="thread"
+             style="border-spacing:1em 0.2em">
+         <tr v-for="a in (thread && msgMap[thread.id])">
+            <td>{{a.date}}</td>
+            <td>{{a.alias}}</td>
+            <td><span v-for="aTg in a.tags"
+                      style="margin-right:0.25em; padding:2px; background-color:#f8f8aa"
+                      >{{aTg}}</span></td>
+            <td>{{a.runtime}}</td>
+            <td><button @click=""
+                        >&#x25b6;</button></td>
          </tr></table>
    </div>
    <div v-show="krm.s.screen === krm.kSc.dj"
@@ -294,8 +318,10 @@
 
    krm.app.component('finder', {
       template: '#krm-finder',
-      data() { return { recent: null, recN: 0, recSaved: false, circ: null,
-                        cats: null, found: null, djs: null, djN: 0 } },
+      data() { return { recent: null, recN: 0, recSaved: false,
+                        circ: null, msgMap: {}, thread: null,
+                        cats: null, found: null,
+                        djs: null, djN: 0 } },
       computed: {
          krm() { return krm },
       },
@@ -310,6 +336,15 @@
          recN:   'setFeed',
       },
       methods: {
+         goThread(iRef) {
+            if (iRef.id in this.msgMap)
+               this.thread = iRef;
+            else
+               this.$root.xhrGet(iRef.id, 'json', 'thread', c => {
+                  this.msgMap[iRef.id] = c;
+                  this.thread = iRef;
+               });
+         },
          goDj(iId) {
             const fGo = () => {
                this.djN = this.djs.findIndex(c => c.id === iId);
