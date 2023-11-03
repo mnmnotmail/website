@@ -241,9 +241,11 @@
            >Looking...</div>
       <table v-show="found"
              style="border-spacing:1em 0">
-         <tr><th>DJ</th><th>Last Program</th><th>Clips</th><th>Run time</th></tr>
+         <tr><th></th><th>Last Program</th><th>Clips</th><th>Run time</th></tr>
          <tr v-for="a in found">
-            <td>{{a.name}}</td>
+            <td><span @click="goDj(a.id)"
+                      class="uipoint uibold"
+                      >{{a.name}}</span></td>
             <td>{{a.last}}</td>
             <td>{{a.count}}</td>
             <td>{{a.dur}}</td>
@@ -252,6 +254,7 @@
    <div v-show="krm.s.screen === krm.kSc.ci" v-if="circ"
         style="margin-right:0.5em">
       <span v-for="a in circ.circles"
+            v-show="!thread || a.id === thread.circle"
             style="margin-right:0.5em; padding:0.25em; background-color:lightgray"
             :title="memlist(a.members)"
             >{{a.name}} ({{a.members.length}})</span>
