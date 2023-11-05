@@ -119,7 +119,7 @@
       <span v-if="select"
             @click="krm.s.screen = krm.kSc.st"
             class="uipoint uibold"
-            >Karma Audio - Sampler</span>
+            >Karma Audio {{select === 2 ? '- Sampler' : ''}}</span>
       <span v-else
             @click="krm.s.screen = krm.kSc.fe"
             class="uipoint uibold"
@@ -136,18 +136,31 @@
    </div>
    <div v-if="select"
         v-show="krm.s.screen === krm.kSc.st">
-      <div style="margin-bottom:1em"
-           >Select some topics of interest for your first feed<br/>
-            (You can add or amend feeds anytime.)
-      </div>
-      <button @click="krm.s.screen = krm.kSc.fe, select = false, getMix()"
-              style="float:right; margin-right:2em"
-              >&#x25b6; Listen</button>
-      <table><tr>
-         <td v-for="aCol in cats">
-            <div v-for="a in aCol">
-               <label><input type="checkbox" :name="a.name"/>{{a.name}}</label>
-            </div></td></tr></table>
+      <template v-if="select === 1">
+         <div style="float:left; margin-right:0.5em; height:64px;
+                     border:2px solid lightgray; border-radius:50%; background-color:#2020aa;
+                     padding:8px; font-size:32px; color:white">
+            <span style="vertical-align:middle">KmA</span></div>
+         <div style="padding-top:1em; font-style:italic"
+              >Where the World Hears Wonders &amp; Wisdom</div>
+         <span @click="select = 2"
+               class="uipoint uibold"
+               >Try It!</span>
+      </template>
+      <template v-else>
+         <div style="margin-bottom:1em"
+              >Select some topics of interest for your first feed<br/>
+               (You can add or amend feeds anytime.)
+         </div>
+         <button @click="krm.s.screen = krm.kSc.fe, select = 0, getMix()"
+                 style="float:right; margin-right:2em"
+                 >&#x25b6; Listen</button>
+         <table><tr>
+            <td v-for="aCol in cats">
+               <div v-for="a in aCol">
+                  <label><input type="checkbox" :name="a.name"/>{{a.name}}</label>
+               </div></td></tr></table>
+      </template>
    </div>
    <div v-show="krm.s.screen === krm.kSc.jo">
       Full name or alias<br/>
@@ -174,7 +187,7 @@
    krm.app.component('start', {
       template: '#krm-start',
       emits: ['ok'],
-      data() { return { select: true, cats: null } },
+      data() { return { select: 1, cats: null } },
       computed: {
          krm() { return krm },
       },
