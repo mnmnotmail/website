@@ -7,13 +7,29 @@ body {
                 "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+th { text-align: left }
+
 .uipoint { cursor: pointer }
 
 .uibold { font-weight: bold }
+
+.uialignr { text-align: right }
+
+.tabset2 {
+   display: inline-block;
+   margin-bottom: 0.5em;
+   border-bottom: 1px solid gray;
+   padding: 0 0 0.5em 1em;
+}
+.tabset2 > span {
+   display: inline-block;
+   margin-right: 1em;
+   cursor: pointer;
+}
 
 .tabmargr { margin-right: 1em }
 
 .tabshow {
    border-top: 2px solid lightblue;
-   cursor: default;
+   cursor: default !important;
 }

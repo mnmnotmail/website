@@ -1,0 +1,30 @@
+{
+  "name": "Seamus", "id": "Cur1",
+  "title": "A wondering wandering soul with an ear to the world",
+  "img": "/logo-400-bleed-dim.png",
+  "file": "greeting",
+  "progs": [{
+    "name": "main", "date": "2023-11-10", "draft": true,
+    "count": 0, "dur": 0,
+    "clips": null
+  },{
+    "name": "Celtic Muse", "date": "2023-10-14", "draft": false,
+    "count": 16, "dur": 1800,
+    "clips": ["Clp1", "Clp2", "Clp3"]
+  },{
+    "name": "Mountain Walk", "date": "2023-10-01", "draft": true,
+    "count": 3, "dur": 180,
+    "clips": ["Clp1", "Clp3", "Clp4"]
+  }],
+
+  "clips": {
+    "Clp1": { "name": "Ho-hum", "artist": "self", "date": "2022-09-04", "dur": 60,
+              "file": "abc" },
+    "Clp2": { "name": "Wonder", "artist": "self", "date": "2022-08-02", "dur": 60,
+              "file": "def" },
+    "Clp3": { "name": "Runner", "artist": "self", "date": "2023-07-21", "dur": 120,
+              "file": "ghi" },
+    "Clp4": { "name": "Sing",   "artist": "self", "date": "2022-12-24", "dur": 23,
+              "file": "jkl" }
+  }
+}
