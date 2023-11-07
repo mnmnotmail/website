@@ -27,7 +27,7 @@
       app: null,
       appRoot: null,
       s: { feedRef: {}, screen: -1 },
-      kSc: {fe:0, st:1, jo:2, si:3, re:1, br:2, fo:3, ci:4, dj:5},
+      kSc: {fe:0, st:1, jo:2, si:3, re:1, br:2, fo:3, ci:4, dj:5, cu:6},
    };
    window.onload = () => {
       krm.appRoot = krm.app.mount('#krm-app');
@@ -220,6 +220,12 @@
             @click="krm.s.screen = krm.kSc.dj"
             class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.dj}"
             >DJs</span>
+      <div style="position:absolute; right:0; top:0.5em">
+         <span v-if="act && act.curate" k--="todo: menu if multiple curators"
+               @click="krm.s.screen = krm.kSc.cu, goCurate(act.curate[0])"
+               class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.cu}"
+               >Curate</span>
+      </div>
    </div>
    <div v-show="krm.s.screen === krm.kSc.re"
         style="width:5em; padding:0 0 0.5em 3em; border-bottom:1px solid gray; margin-bottom:0.5em">
@@ -329,21 +335,105 @@
             </tr></table>
       </div>
    </div>
+   <div v-if="curId in curate"
+        v-show="krm.s.screen === krm.kSc.cu"
+        style="margin-right:0.5em">
+      <div class="tabset2">
+         <span @click="progN = -2"
+               :class="{tabshow: progN === -2}"
+               >Home</span>
+         <span @click="progN = -1"
+               :class="{tabshow: progN === -1}"
+               >Library</span>
+         <span v-for="(a, aI) in curate[curId].progs"
+               @click="progN = aI"
+               :class="{tabshow: progN === aI}"
+               >{{a.name}}</span>
+      </div>
+      <div v-show="progN === -2">
+         <img :src="curate[curId].img"
+              style="float:right; margin-left:0.5em; max-width:25%"/>
+         <h3>{{curate[curId].name}} ({{curate[curId].id}})</h3>
+         <div style="margin-bottom:1em; font-style:italic"
+              >{{curate[curId].title}}</div>
+         <table style="margin-bottom:1em; border-spacing:1em 0">
+            <tr><th></th><th>Date</th><th>Count</th><th>Runtime</th><th>Draft</th></tr>
+            <tr v-for="(a, aI) in curate[curId].progs">
+               <td><span @click="progN = aI"
+                         class="uipoint uibold"
+                         >{{a.name}}</span></td>
+               <td>{{a.date}}</td>
+               <td class="uialignr"
+                   >{{a.count}}</td>
+               <td class="uialignr"
+                   >{{a.dur}}</td>
+               <td>{{a.draft ? '*' : ''}}</td>
+            </tr>
+            <tr><td><button @click="addProg()"
+                            >&#x2795;</button></td></tr>
+         </table>
+      </div>
+      <div v-show="progN === -1">
+         <table style="border-spacing:1em 0">
+            <tr><th>Library</th><th>Artist</th><th>Date</th><th>Runtime</th></tr>
+            <tr v-for="a in curate[curId].clips">
+               <td>{{a.name}}</td>
+               <td>{{a.artist}}</td>
+               <td>{{a.date}}</td>
+               <td class="uialignr"
+                   >{{a.dur}}</td>
+               <td><button @click=""
+                           >&#x25b6;</button></td>
+            </tr>
+            <tr><td><button @click="addClip()"
+                            >&#x2795;</button></td></tr>
+         </table>
+      </div>
+      <div v-for="(aP, aPi) in curate[curId].progs" k--="todo: iterate over open progs"
+           v-show="progN === aPi">
+         <table style="border-spacing:1em 0">
+            <tr v-if="aP.clips">
+               <th>Title</th><th>Artist</th><th>Released</th><th>Runtime</th></tr>
+            <tr v-else>
+               <th>(No clips)</th></tr>
+            <tr v-for="a in aP.clips">
+               <td>{{curate[curId].clips[a].name}}</td>
+               <td>{{curate[curId].clips[a].artist}}</td>
+               <td>{{curate[curId].clips[a].date}}</td>
+               <td class="uialignr"
+                   >{{curate[curId].clips[a].dur}}</td>
+               <td><button @click=""
+                           >&#x25b6;</button></td>
+            </tr>
+            <tr>
+               <td colspan="5">
+                  <select @change="addProgClip(aP, $event.target.value), $event.target.value = ''">
+                     <option value="">&#x2795; Clip...</option>
+                     <option v-for="(aV, aK) in curate[curId].clips"
+                             :value="aK"
+                             >{{aV.name}}, {{aV.artist}}</option>
+                  </select></td></tr>
+         </table>
+      </div>
+   </div>
 </script><script type="module">
    import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
    krm.app.component('finder', {
       template: '#krm-finder',
-      data() { return { recent: null, recN: 0, recSaved: false,
+      data() { return { act: null,
+                        recent: null, recN: 0, recSaved: false,
                         circ: null, msgMap: {}, thread: null,
                         cats: null, found: null,
-                        djs: null, djN: 0 } },
+                        djs: null, djN: 0,
+                        curate: {}, curId: '', progN: -2 } },
       computed: {
          krm() { return krm },
       },
       created() {
          krm.s.screen = krm.kSc.fe;
-         this.$root.xhrGet('Rec', 'json', 'recent list', c => { this.recent = c });
+         this.$root.xhrGet('Act', 'json', 'account',     c => { this.act = c;
+                                                                this.recent = c.recent });
          this.$root.xhrGet('Cat', 'json', 'categories',  c => { this.cats = c });
          this.$root.xhrGet('Cir', 'json', 'circles',     c => { this.circ = c });
       },
@@ -366,13 +456,22 @@
                this.djN = this.djs.findIndex(c => c.id === iId);
                krm.s.screen = krm.kSc.dj;
             };
-            if (!this.djs)
+            if (this.djs)
+               fGo();
+            else
                this.$root.xhrGet('Djs', 'json', 'djs', c => {
                   this.djs = c;
                   fGo();
                });
+         },
+         goCurate(iId) {
+            if (iId in this.curate)
+               this.curId = iId;
             else
-               fGo();
+               this.$root.xhrGet(iId, 'json', 'curator', c => {
+                  this.curate[iId] = c;
+                  this.curId = iId;
+               });
          },
          setFeed() { krm.s.feedRef = this.recent[this.recN] },
          memlist(i) {
@@ -386,6 +485,21 @@
             if (!aC)
                this.$root.log('circle id missing: '+ i);
             return aC ? aC.name : '??';
+         },
+         addProg() {
+            this.curate[this.curId].progs.push(
+               {name: 'Untitled', date: 'Today', draft: true, count: 0, dur: 0, clips: null});
+         },
+         addClip() {
+            this.curate[this.curId].clips['Clu'+ Object.values(this.curate[this.curId].clips).length] =
+               {name: 'Unknown', artist: 'self', date: 'Today', dur: 0, file: ''};
+         },
+         addProgClip(iP, iC) {
+            if (!iC)
+               return;
+            if (!iP.clips)
+               iP.clips = [];
+            iP.clips.push(iC);
          },
       },
    });
