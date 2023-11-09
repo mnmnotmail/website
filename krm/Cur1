@@ -25,6 +25,12 @@
     "Clp3": { "name": "Runner", "artist": "self", "date": "2023-07-21", "dur": 120,
               "file": "ghi" },
     "Clp4": { "name": "Sing",   "artist": "self", "date": "2022-12-24", "dur": 23,
-              "file": "jkl" }
+              "file": "jkl" },
+    "Set1": { "name": "Album",  "artist": "self", "date": "2021-11-21", "dur": 240,
+              "set": [
+                { "name": "First",  "dur": 120, "file": "xyz" },
+                { "name": "Second", "dur": 60,  "file": "uvw" },
+                { "name": "Third",  "dur": 60,  "file": "rst" }
+              ]}
   }
 }

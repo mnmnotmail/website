@@ -375,16 +375,26 @@
       </div>
       <div v-show="progN === -1">
          <table style="border-spacing:1em 0">
-            <tr><th>Library</th><th>Artist</th><th>Date</th><th>Runtime</th></tr>
-            <tr v-for="a in curate[curId].clips">
-               <td>{{a.name}}</td>
-               <td>{{a.artist}}</td>
-               <td>{{a.date}}</td>
-               <td class="uialignr"
-                   >{{a.dur}}</td>
-               <td><button @click=""
-                           >&#x25b6;</button></td>
-            </tr>
+            <tr><th></th><th>Artist</th><th>Released</th><th>Runtime</th></tr>
+            <template v-for="aC in curate[curId].clips">
+               <tr>
+                  <td>{{aC.name}}</td>
+                  <td>{{aC.artist}}</td>
+                  <td>{{aC.date}}</td>
+                  <td class="uialignr"
+                      >{{aC.dur}}</td>
+                  <td><button @click=""
+                              >&#x25b6;</button></td>
+               </tr>
+               <tr v-for="(aSub, aSubi) in aC.set">
+                  <td colspan="3"
+                      >&nbsp; {{aSubi+1}}. <em>{{aSub.name}}</em></td>
+                  <td class="uialignr"
+                      >{{aSub.dur}}</td>
+                  <td><button @click=""
+                              >&#x25b6;</button></td>
+               </tr>
+            </template>
             <tr><td><button @click="addClip()"
                             >&#x2795;</button></td></tr>
          </table>
@@ -396,12 +406,12 @@
                <th>Title</th><th>Artist</th><th>Released</th><th>Runtime</th></tr>
             <tr v-else>
                <th>(No clips)</th></tr>
-            <tr v-for="a in aP.clips">
-               <td>{{curate[curId].clips[a].name}}</td>
-               <td>{{curate[curId].clips[a].artist}}</td>
-               <td>{{curate[curId].clips[a].date}}</td>
+            <tr v-for="a in (aP.clips && aP.clips.map(getClip))">
+               <td>{{a.name}}</td>
+               <td>{{a.artist}}</td>
+               <td>{{a.date}}</td>
                <td class="uialignr"
-                   >{{curate[curId].clips[a].dur}}</td>
+                   >{{a.dur}}</td>
                <td><button @click=""
                            >&#x25b6;</button></td>
             </tr>
@@ -409,9 +419,13 @@
                <td colspan="5">
                   <select @change="addProgClip(aP, $event.target.value), $event.target.value = ''">
                      <option value="">&#x2795; Clip...</option>
-                     <option v-for="(aV, aK) in curate[curId].clips"
-                             :value="aK"
-                             >{{aV.name}}, {{aV.artist}}</option>
+                     <template v-for="(aV, aK) in curate[curId].clips">
+                        <option :value="aK"
+                                >{{aV.name}}, {{aV.artist}}</option>
+                        <option v-for="(aSub, aSubi) in aV.set"
+                                :value="aK +'.'+ aSubi"
+                                >&nbsp; {{aSubi+1}}. <em>{{aSub.name}}</em></option>
+                     </template>
                   </select></td></tr>
          </table>
       </div>
@@ -500,6 +514,14 @@
             if (!iP.clips)
                iP.clips = [];
             iP.clips.push(iC);
+         },
+         getClip(iId) {
+            var aDot = iId.indexOf('.');
+            if (aDot < 0)
+               return this.curate[this.curId].clips[iId];
+            var aPkg = this.curate[this.curId].clips[iId.substring(0, aDot)];
+            var aSub = aPkg.set[iId.substring(aDot+1)*1];
+            return {name: aSub.name, artist: aPkg.artist, date: aPkg.date, dur: aSub.dur, file: aSub.file};
          },
       },
    });
