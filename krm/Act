@@ -1,9 +1,13 @@
 {
   "alias": "Liam", "id": "Act1",
   "curate": ["Cur1"],
-  "recent": [
-    { "name": "Songs",      "saved": true,  "file": "F11" },
-    { "name": "Soundscape", "saved": true,  "file": "F11" },
-    { "name": "Fiona",      "saved": false, "file": "F12" }
+  "played": [
+    { "name": "Songs",      "saved": true,  "id": "F11" },
+    { "name": "Soundscape", "saved": true,  "id": "F12" },
+    { "name": "Fiona",      "saved": false, "id": "F13" }
+  ],
+  "saved": [
+    { "name": "Songs",      "saved": true, "id": "F11" },
+    { "name": "Soundscape", "saved": true, "id": "F12" }
   ]
 }

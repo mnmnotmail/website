@@ -14,4 +14,12 @@
   "progs": [
     { "name": "Watching the Road", "date": "2023-09-06", "count": 24, "dur": 1900, "file": "xyz" }
   ]
+},{
+  "name": "Tharu", "id": "Cur3",
+  "title": "Awakening consciousness",
+  "img": "/logo-400-bleed-dim.png",
+  "file": "greeting",
+  "progs": [
+    { "name": "main", "date": "2023-11-10", "count": 42, "dur": 3600, "file": "opq" }
+  ]
 }]

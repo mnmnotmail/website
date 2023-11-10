@@ -51,11 +51,13 @@
    <div style="margin-top:3em"></div>
    <feed v-show="krm.s.screen === krm.kSc.fe"
          @godj="function(c) { if ($refs.finder) $refs.finder.goDj(c) }"
-         :id="krm.s.feedRef.file" :name="krm.s.feedRef.name"
-         :go="firstStart"/>
+         :id="krm.s.feedRef.id" :name="krm.s.feedRef.name"
+         :go="firstStart"
+         ref="feed"/>
    <start v-if="firstStart"
           @ok="firstStart = false"/>
    <finder v-else
+           @djadd="function(c) { $refs.feed.addDj(c) }"
            ref="finder"/>
    <div style="margin-top:3em; border-top:1px solid gray; padding-left:0.5em;
                font-family:monospace; white-space:pre-wrap;">
@@ -228,17 +230,17 @@
       </div>
    </div>
    <div v-show="krm.s.screen === krm.kSc.re"
-        style="width:5em; padding:0 0 0.5em 3em; border-bottom:1px solid gray; margin-bottom:0.5em">
+        class="tabset2">
       <span @click="recSaved = false"
-            class="uipoint tabmargr" :class="{tabshow: !recSaved}"
-            >All</span>
+            :class="{tabshow: !recSaved}"
+            >Played</span>
       <span @click="recSaved = true"
-            class="uipoint tabmargr" :class="{tabshow: recSaved}"
+            :class="{tabshow: recSaved}"
             >Saved</span>
    </div>
-   <ol v-show="krm.s.screen === krm.kSc.re" v-if="recent">
-      <li v-for="(a, aI) in (recSaved ? recent.filter(c => c.saved === true) : recent)"
-          @click="recN = aI, krm.s.screen = krm.kSc.fe"
+   <ol v-show="krm.s.screen === krm.kSc.re" v-if="act">
+      <li v-for="a in (recSaved ? act.saved : act.played)" :key="a.id"
+          @click="setPlayed(a), krm.s.screen = krm.kSc.fe"
           class="uipoint"
           >{{a.name}}</li>
    </ol>
@@ -312,16 +314,26 @@
    </div>
    <div v-show="krm.s.screen === krm.kSc.dj"
         style="margin-right:0.5em">
-      <div style="display:inline-block; padding:0 0 0.5em 1em; border-bottom:1px solid gray; margin-bottom:0.5em">
+      <div class="tabset2">
          <span v-for="(a, aI) in djs"
                @click="djN = aI"
-               class="uipoint tabmargr" :class="{tabshow: djN === aI}"
+               :class="{tabshow: djN === aI}"
                >{{a.name}}</span>
       </div>
       <div v-for="(a, aI) in djs"
            v-show="aI === djN">
          <img :src="a.img"
-              style="float:right; margin-left:0.5em; max-width:25%"/>
+              style="float:right; margin:0 0 0.5em 0.5em; max-width:25%"/>
+         <select @change="addFeedDj($event.target.value, a), $event.target.value = ''"
+                 style="float:right; clear:right">
+            <option value=""
+                    >&#x2795; to Feed...</option>
+            <option value="new"
+                    >New Feed</option>
+            <option v-for="aF in act.saved"
+                    :value="aF.id"
+                    >{{aF.name}}</option>
+         </select>
          <h3>{{a.name}}</h3>
          <div style="margin-bottom:0.5em; font-style:italic"
               >{{a.title}}</div>
@@ -435,8 +447,8 @@
 
    krm.app.component('finder', {
       template: '#krm-finder',
-      data() { return { act: null,
-                        recent: null, recN: 0, recSaved: false,
+      emits: [ 'djadd' ],
+      data() { return { act: null, recSaved: false,
                         circ: null, msgMap: {}, thread: null,
                         cats: null, found: null,
                         djs: null, djN: 0,
@@ -446,16 +458,35 @@
       },
       created() {
          krm.s.screen = krm.kSc.fe;
-         this.$root.xhrGet('Act', 'json', 'account',     c => { this.act = c;
-                                                                this.recent = c.recent });
+         this.$root.xhrGet('Act', 'json', 'account',     c => { this.act = c });
          this.$root.xhrGet('Cat', 'json', 'categories',  c => { this.cats = c });
          this.$root.xhrGet('Cir', 'json', 'circles',     c => { this.circ = c });
       },
       watch: {
-         recent: 'setFeed',
-         recN:   'setFeed',
+         'act.played': {
+            deep: true,
+            handler() { krm.s.feedRef = this.act.played[0] }
+         },
       },
       methods: {
+         setPlayed(iFeed) {
+            var aPos = this.act.played.findIndex(c => c.id === iFeed.id);
+            if (aPos === 0)
+               return;
+            if (aPos > 0)
+               this.act.played.splice(aPos, 1);
+            this.act.played.unshift(iFeed);
+         },
+         addFeedDj(iFeed, iDj) {
+            if (!iFeed)
+               return;
+            if (iFeed === 'new')
+               this.act.saved.unshift({name: 'Untitled', id: 'Fxx', saved: true});
+            else if (iFeed === krm.s.feedRef.id)
+               this.$emit('djadd', {name: iDj.name, id: iDj.id});
+            else
+               ; //todo: update feed
+         },
          goThread(iRef) {
             if (iRef.id in this.msgMap)
                this.thread = iRef;
@@ -487,7 +518,6 @@
                   this.curId = iId;
                });
          },
-         setFeed() { krm.s.feedRef = this.recent[this.recN] },
          memlist(i) {
             var a = '';
             i.forEach(c => { a += c.name +'\n' });
@@ -623,6 +653,11 @@
                      this.start();
                });
             });
+         },
+         addDj(i) {
+            if (this.feed.curators.find(c => c.id === i.id))
+               return;
+            this.feed.curators.push(i);
          },
       },
    });

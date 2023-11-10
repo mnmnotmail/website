@@ -1,0 +1,8 @@
+{
+  "curators": [
+    { "name": "Fiona",  "id": "Cur2" }
+  ],
+  "clips": [
+    { "name": "Two", "file": "https://jplayer.org/audio/mp3/RioMez-01-Sleep_together.mp3" }
+  ]
+}
