@@ -369,6 +369,8 @@
          <div style="margin-bottom:1em; font-style:italic"
               >{{curate[curId].title}}</div>
          <table style="margin-bottom:1em; border-spacing:1em 0">
+            <tr><td><button @click="addProg()"
+                            >&#x2795;</button></td></tr>
             <tr><th></th><th>Date</th><th>Count</th><th>Runtime</th><th>Draft</th></tr>
             <tr v-for="(a, aI) in curate[curId].progs">
                <td><span @click="progN = aI"
@@ -381,14 +383,14 @@
                    >{{a.dur}}</td>
                <td>{{a.draft ? '*' : ''}}</td>
             </tr>
-            <tr><td><button @click="addProg()"
-                            >&#x2795;</button></td></tr>
          </table>
       </div>
       <div v-show="progN === -1">
          <table style="border-spacing:1em 0">
+            <tr><td><button @click="addClip()"
+                            >&#x2795;</button></td></tr>
             <tr><th></th><th>Artist</th><th>Released</th><th>Runtime</th></tr>
-            <template v-for="aC in curate[curId].clips">
+            <template v-for="aC in curLibSort">
                <tr>
                   <td>{{aC.name}}</td>
                   <td>{{aC.artist}}</td>
@@ -407,13 +409,23 @@
                               >&#x25b6;</button></td>
                </tr>
             </template>
-            <tr><td><button @click="addClip()"
-                            >&#x2795;</button></td></tr>
          </table>
       </div>
       <div v-for="(aP, aPi) in curate[curId].progs" k--="todo: iterate over open progs"
            v-show="progN === aPi">
          <table style="border-spacing:1em 0">
+            <tr>
+               <td colspan="5">
+                  <select @change="addProgClip(aP, $event.target.value), $event.target.value = ''">
+                     <option value="">&#x2795; Clip...</option>
+                     <template v-for="(aV, aK) in curate[curId].clips">
+                        <option :value="aK"
+                                >{{aV.name}}, {{aV.artist}}</option>
+                        <option v-for="(aSub, aSubi) in aV.set"
+                                :value="aK +'.'+ aSubi"
+                                >&nbsp; {{aSubi+1}}. <em>{{aSub.name}}</em></option>
+                     </template>
+                  </select></td></tr>
             <tr v-if="aP.clips">
                <th>Title</th><th>Artist</th><th>Released</th><th>Runtime</th></tr>
             <tr v-else>
@@ -427,18 +439,6 @@
                <td><button @click=""
                            >&#x25b6;</button></td>
             </tr>
-            <tr>
-               <td colspan="5">
-                  <select @change="addProgClip(aP, $event.target.value), $event.target.value = ''">
-                     <option value="">&#x2795; Clip...</option>
-                     <template v-for="(aV, aK) in curate[curId].clips">
-                        <option :value="aK"
-                                >{{aV.name}}, {{aV.artist}}</option>
-                        <option v-for="(aSub, aSubi) in aV.set"
-                                :value="aK +'.'+ aSubi"
-                                >&nbsp; {{aSubi+1}}. <em>{{aSub.name}}</em></option>
-                     </template>
-                  </select></td></tr>
          </table>
       </div>
    </div>
@@ -454,6 +454,11 @@
                         djs: null, djN: 0,
                         curate: {}, curId: '', progN: -2 } },
       computed: {
+         curLibSort() {
+            return Object.values(this.curate[this.curId].clips).sort(
+               (cA, cB) => cA.date > cB.date ? -1 : cA.date < cB.date ? 1 : 0
+            );
+         },
          krm() { return krm },
       },
       created() {
@@ -531,7 +536,7 @@
             return aC ? aC.name : '??';
          },
          addProg() {
-            this.curate[this.curId].progs.push(
+            this.curate[this.curId].progs.unshift(
                {name: 'Untitled', date: 'Today', draft: true, count: 0, dur: 0, clips: null});
          },
          addClip() {
@@ -543,7 +548,7 @@
                return;
             if (!iP.clips)
                iP.clips = [];
-            iP.clips.push(iC);
+            iP.clips.unshift(iC);
          },
          getClip(iId) {
             var aDot = iId.indexOf('.');
