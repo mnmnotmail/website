@@ -110,6 +110,7 @@
             };
             aXhr.onerror = c => { this.log(iLog +' "'+ iUrl +'" error: '+ c.message) };
             aXhr.send();
+            return aXhr;
          },
       },
    });
@@ -604,7 +605,8 @@
       emits: [ 'godj' ],
       props: { id: String, name: String, go: Boolean },
       data() { return { audCtx: new AudioContext(), audSrc: null, state: 'run',
-                        feed: null, clipsN: 0, nextBuf: null } },
+                        feed: null, clipsN: 0,
+                        xhr: null, nextBuf: null } },
       created() {
          if (!this.go) {
             this.audSrc = true;
@@ -613,10 +615,32 @@
       },
       watch: {
          id() {
-            this.$root.xhrGet(this.id, 'json', 'audio feed', c => {
-               this.feed = c;
-               this.load(this.clipsN-1);
-            });
+            const fGet = () => {
+               this.xhr = this.$root.xhrGet(this.id, 'json', 'audio feed', c => {
+                  this.xhr = null;
+                  this.feed = c;
+                  this.load(this.clipsN-1);
+               });
+            };
+            if (this.xhr) {
+               this.xhr.abort();
+               this.xhr = null;
+            }
+            this.nextBuf = null;
+            if (!this.feed || this.state === 'off') {
+               fGet();
+            } else {
+               if (this.audSrc)
+                  this.audSrc.stop();
+               if (this.state === 'sus')
+                  this.audCtx.resume();
+               this.state = 'off';
+               setTimeout(() => { // wait for audSrc.onended to run
+                  this.clipsN = 0;
+                  this.audSrc = true;
+                  fGet();
+               }, 300);
+            }
          },
       },
       methods: {
@@ -651,7 +675,8 @@
          },
          load(iN) {
             iN = iN+1 === this.feed.clips.length ? 0 : iN+1;
-            this.$root.xhrGet(this.feed.clips[iN].file, 'arraybuffer', 'audio source', cResp => {
+            this.xhr = this.$root.xhrGet(this.feed.clips[iN].file, 'arraybuffer', 'audio source', cResp => {
+               this.xhr = null;
                this.audCtx.decodeAudioData(cResp, cBuf => {
                   this.nextBuf = cBuf;
                   if (!this.audSrc)
