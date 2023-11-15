@@ -590,12 +590,19 @@
               >&#x2913;</div>
          {{name}} ({{id}})
       </h3>
-      <ol v-if="feed"
-          style="margin-right:0.5em">
-         <li v-for="(a, aI) in feed.clips"
-             :style="{border: aI === clipsN ? '1px solid black' : null}"
-             >{{a.name}}</li>
-      </ol>
+      <table v-if="feed"
+             style="border-spacing:1em 0">
+         <tr><th></th><th>Artist</th><th>DJ</th><th>Released</th><th>Runtime</th></tr>
+         <tr v-for="(a, aI) in feed.clips"
+             :style="{outline: aI === clipsN ? '1px solid black' : null}">
+            <td>{{a.name}}</td>
+            <td>{{a.artist}}</td>
+            <td>{{feed.curators.find(c => c.id === a.dj).name}}</td>
+            <td>{{a.date}}</td>
+            <td class="uialignr"
+                >{{a.dur}}</td>
+         </tr>
+      </table>
    </div>
 </script><script type="module">
    import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"

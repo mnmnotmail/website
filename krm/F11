@@ -4,7 +4,9 @@
     { "name": "Fiona",  "id": "Cur2" }
   ],
   "clips": [
-    { "name": "One", "file": "https://cdn.pixabay.com/download/audio/2020/08/14/audio_4ad28ef70b.mp3" },
-    { "name": "Two", "file": "https://jplayer.org/audio/mp3/RioMez-01-Sleep_together.mp3" }
+    { "name": "Ho-hum", "artist": "self", "dj": "Cur1", "date": "2022-09-04", "dur": 60,
+      "file": "https://cdn.pixabay.com/download/audio/2020/08/14/audio_4ad28ef70b.mp3" },
+    { "name": "Sleep 2", "artist": "RioMez", "dj": "Cur2", "date": "2020-10-01", "dur": 128,
+      "file": "https://jplayer.org/audio/mp3/RioMez-01-Sleep_together.mp3" }
   ]
 }
