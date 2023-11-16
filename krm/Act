@@ -1,13 +1,28 @@
 {
   "alias": "Liam", "id": "Act1",
   "curate": ["Cur1"],
-  "played": [
-    { "name": "Songs",      "saved": true,  "id": "F11" },
-    { "name": "Soundscape", "saved": true,  "id": "F12" },
-    { "name": "Fiona",      "saved": false, "id": "F13" }
-  ],
-  "saved": [
-    { "name": "Songs",      "saved": true, "id": "F11" },
-    { "name": "Soundscape", "saved": true, "id": "F12" }
-  ]
+  "played": [{
+    "name": "Songs",      "id": "F11", "saved": "2023-10-18", "played": "Today",
+    "schedule": null,
+    "djs": [{"name": "Seamus", "id": "Cur1"},
+            {"name": "Fiona",  "id": "Cur2"}]
+  },{
+    "name": "Soundscape", "id": "F12", "saved": "2023-10-22", "played": "2023-11-10",
+    "schedule": null,
+    "djs": [{"name": "Seamus", "id": "Cur1"}]
+  },{
+    "name": "Fiona",      "id": "F13", "saved": null,         "played": "2023-11-02",
+    "schedule": null,
+    "djs": null
+  }],
+  "saved": [{
+    "name": "Songs",      "id": "F11", "saved": "2023-10-18", "played": "Today",
+    "schedule": null,
+    "djs": [{"name": "Seamus", "id": "Cur1"},
+            {"name": "Fiona",  "id": "Cur2"}]
+  },{
+    "name": "Soundscape", "id": "F12", "saved": "2023-10-22", "played": "2023-11-10",
+    "schedule": null,
+    "djs": [{"name": "Seamus", "id": "Cur1"}]
+  }]
 }

@@ -230,23 +230,36 @@
                >Curate</span>
       </div>
    </div>
-   <div v-show="krm.s.screen === krm.kSc.re"
-        class="tabset2">
-      <span @click="recSaved = false"
-            :class="{tabshow: !recSaved}"
-            >Played</span>
-      <span @click="recSaved = true"
-            :class="{tabshow: recSaved}"
-            >Saved</span>
+   <div v-show="krm.s.screen === krm.kSc.re">
+      <div class="tabset2">
+         <span @click="recSaved = false"
+               :class="{tabshow: !recSaved}"
+               >Played</span>
+         <span @click="recSaved = true"
+               :class="{tabshow: recSaved}"
+               >Saved</span>
+      </div>
+      <div v-show="recSaved">
+         <button @click="addFeed()"
+                 style="float:right"
+                 >&#x2795;</button></div>
+      <table v-if="act"
+             style="border-spacing:1em 1px">
+         <tr><th></th> <th>{{recSaved ? 'Revised' : 'Last played'}}</th> <th>Scheduled</th> <th>DJs</th></tr>
+         <tr v-for="a in (recSaved ? act.saved : act.played)" :key="a.id">
+            <td><span @click="setPlayed(a), krm.s.screen = krm.kSc.fe"
+                      class="uipoint uibold"
+                      >{{a.name}}</span></td>
+            <td>{{recSaved ? a.saved : a.played}}</td>
+            <td>{{a.schedule}}</td>
+            <td><span v-for="aDj in a.djs"
+                      style="margin-right:0.5em; padding:0 0.25em 0.1em; background-color:lightgray"
+                      >{{aDj.name}}</span></td>
+         </tr>
+      </table>
    </div>
-   <ol v-show="krm.s.screen === krm.kSc.re" v-if="act">
-      <li v-for="a in (recSaved ? act.saved : act.played)" :key="a.id"
-          @click="setPlayed(a), krm.s.screen = krm.kSc.fe"
-          class="uipoint"
-          >{{a.name}}</li>
-   </ol>
    <button v-show="krm.s.screen === krm.kSc.br"
-           @click="krm.s.screen = krm.kSc.fo, browse()"
+           @click="krm.s.screen = krm.kSc.fo, goBrowse()"
            style="float:right; margin-right:1em"
            >Find DJs</button>
    <table v-show="krm.s.screen === krm.kSc.br"><tr>
@@ -482,16 +495,29 @@
             if (aPos > 0)
                this.act.played.splice(aPos, 1);
             this.act.played.unshift(iFeed);
+            this.act.played[0].played = 'Today';
+         },
+         addFeed() {
+            this.act.saved.unshift({name: 'Untitled', id: 'Fxx', saved: 'Today', played: null,
+                                    schedule: null, djs: []});
          },
          addFeedDj(iFeed, iDj) {
             if (!iFeed)
                return;
+            var aDj = {name: iDj.name, id: iDj.id};
             if (iFeed === 'new')
-               this.act.saved.unshift({name: 'Untitled', id: 'Fxx', saved: true});
+               this.addFeed();
             else if (iFeed === krm.s.feedRef.id)
-               this.$emit('djadd', {name: iDj.name, id: iDj.id});
+               this.$emit('djadd', aDj);
             else
                ; //todo: update feed
+            var aSaved = iFeed === 'new' ? this.act.saved[0] : this.act.saved.find(c => c.id === iFeed);
+            aSaved.djs.push(aDj);
+            aSaved.saved = 'Today';
+            this.act.saved.sort((cA, cB) => cA.saved > cB.saved ? -1 : cA.saved < cB.saved ? 1 : 0);
+         },
+         goBrowse() {
+            this.$root.xhrGet('Fnd', 'json', 'found', c => { this.found = c });
          },
          goThread(iRef) {
             if (iRef.id in this.msgMap)
@@ -529,7 +555,6 @@
             i.forEach(c => { a += c.name +'\n' });
             return a;
          },
-         browse() { this.$root.xhrGet('Fnd', 'json', 'found', c => { this.found = c }) },
          circName(i) {
             var aC = this.circ.circles.find(c => c.id === i);
             if (!aC)
