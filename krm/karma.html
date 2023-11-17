@@ -147,7 +147,7 @@
          <div style="padding-top:1em; font-style:italic"
               >Where the World Hears Wonders &amp; Wisdom</div>
          <span @click="select = 2"
-               class="uipoint uibold"
+               class="uilink"
                >Try It!</span>
       </template>
       <template v-else>
@@ -248,7 +248,7 @@
          <tr><th></th> <th>{{recSaved ? 'Revised' : 'Last played'}}</th> <th>Scheduled</th> <th>DJs</th></tr>
          <tr v-for="a in (recSaved ? act.saved : act.played)" :key="a.id">
             <td><span @click="setPlayed(a), krm.s.screen = krm.kSc.fe"
-                      class="uipoint uibold"
+                      class="uilink"
                       >{{a.name}}</span></td>
             <td>{{recSaved ? a.saved : a.played}}</td>
             <td>{{a.schedule}}</td>
@@ -267,10 +267,10 @@
          <div v-for="a in aCol">
             <label><input type="checkbox" :name="a.name"/>{{a.name}}</label>
          </div></td></tr></table>
-   <button v-show="krm.s.screen === krm.kSc.fo"
-           @click="krm.s.screen = krm.kSc.br, found = null"
-           style="float:right; margin-right:2em; width:2em"
-           >&times;</button>
+   <span v-show="krm.s.screen === krm.kSc.fo"
+         @click="krm.s.screen = krm.kSc.br, found = null"
+         class="uilink uibrdr" style="float:right; margin-right:1.5em"
+         >&#x2a09;</span>
    <div v-show="krm.s.screen === krm.kSc.fo">
       <div v-show="!found"
            >Looking...</div>
@@ -279,7 +279,7 @@
          <tr><th></th><th>Last Program</th><th>Clips</th><th>Run time</th></tr>
          <tr v-for="a in found">
             <td><span @click="goDj(a.id)"
-                      class="uipoint uibold"
+                      class="uilink"
                       >{{a.name}}</span></td>
             <td>{{a.last}}</td>
             <td>{{a.count}}</td>
@@ -301,13 +301,13 @@
             <td>{{circName(a.circle)}}</td>
             <td>{{a.count}}</td>
             <td><span @click="goThread(a)"
-                      class="uipoint uibold"
+                      class="uilink"
                       >{{a.topic}}</span></td>
          </tr></table>
       <div v-show="thread"
            style="margin:1em 0 0.5em">
          <span @click="thread = null"
-               class="uipoint uibold" style="margin-right:0.25em; padding:0 0.5em"
+               class="uilink uibrdr" style="margin-right:0.25em"
                >&#x276e;</span>
          <span class="uibold tabmargr"
                >{{thread && thread.topic}}</span>
@@ -388,7 +388,7 @@
             <tr><th></th><th>Date</th><th>Count</th><th>Runtime</th><th>Draft</th></tr>
             <tr v-for="(a, aI) in curate[curId].progs">
                <td><span @click="progN = aI"
-                         class="uipoint uibold"
+                         class="uilink"
                          >{{a.name}}</span></td>
                <td>{{a.date}}</td>
                <td class="uialignr"

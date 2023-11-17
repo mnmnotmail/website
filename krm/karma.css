@@ -15,6 +15,17 @@ th { text-align: left }
 
 .uialignr { text-align: right }
 
+.uilink {
+   cursor: pointer;
+   font-weight: bold;
+   color: blue;
+}
+.uilink.uibrdr {
+   border: 1px solid blue;
+   border-radius: 5px;
+   padding: 0.2em 0.5em;
+}
+
 .tabset2 {
    display: inline-block;
    margin-bottom: 0.5em;
