@@ -103,13 +103,30 @@
             aXhr.open('GET', iUrl);
             aXhr.onload = c => {
                if (aXhr.status !== 200) {
-                  this.log(iLog +' not found: '+ iUrl);
+                  this.log(iLog +' "'+ iUrl +'" '+ aXhr.statusText);
                   return;
                }
                iCb(aXhr.response);
             };
             aXhr.onerror = c => { this.log(iLog +' "'+ iUrl +'" error: '+ c.message) };
             aXhr.send();
+            return aXhr;
+         },
+         xhrPost(iForm, iLog, iCb) {
+            if (iForm.method.toLowerCase() !== 'post' || !iForm.action)
+               throw new Error('xhrPost: requires method=POST and valid action');
+            var aXhr = new XMLHttpRequest();
+            aXhr.open('POST', iForm.action);
+            aXhr.onload = c => {
+               if (aXhr.status !== 200) {
+                  this.log(iLog +' "'+ iForm.action +'" '+ aXhr.statusText +': '+ aXhr.responseText);
+                  return;
+               }
+               if (iCb)
+                  iCb(aXhr.response);
+            };
+            aXhr.onerror = c => { this.log(iLog +' "'+ iForm.action +'" error: '+ c.message) };
+            aXhr.send(new FormData(iForm));
             return aXhr;
          },
       },
