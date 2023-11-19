@@ -44,3 +44,5 @@ th { text-align: left }
    border-top: 2px solid lightblue;
    cursor: default !important;
 }
+
+tr.indraft { outline: 2px solid #ec0 }
