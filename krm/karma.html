@@ -378,45 +378,50 @@
             </tr></table>
       </div>
    </div>
-   <div v-if="curId in curate"
+   <div v-if="curId in curators"
         v-show="krm.s.screen === krm.kSc.cu"
         style="margin-right:0.5em">
       <div class="tabset2">
-         <span @click="progN = -2"
-               :class="{tabshow: progN === -2}"
+         <span @click="curate.openId = 'home'"
+               :class="{tabshow: curate.openId === 'home'}"
                >Home</span>
-         <span @click="progN = -1"
-               :class="{tabshow: progN === -1}"
+         <span @click="curate.openId = 'lib'"
+               :class="{tabshow: curate.openId === 'lib'}"
                >Library</span>
-         <span v-for="(a, aI) in curate[curId].progs"
-               @click="progN = aI"
-               :class="{tabshow: progN === aI}"
-               >{{a.name}}</span>
+         <span v-for="a in curate.open"
+               @click="curate.openId = a"
+               :class="{tabshow: curate.openId === a}"
+               >{{curate.progs[a].name}}</span>
       </div>
-      <div v-show="progN === -2">
-         <img :src="curate[curId].img"
+      <div v-show="curate.openId === 'home'">
+         <img :src="curate.img"
               style="float:right; margin-left:0.5em; max-width:25%"/>
-         <h3>{{curate[curId].name}} ({{curate[curId].id}})</h3>
+         <h3>{{curate.name}} ({{curate.id}})</h3>
          <div style="margin-bottom:1em; font-style:italic"
-              >{{curate[curId].title}}</div>
+              >{{curate.title}}</div>
          <table style="margin-bottom:1em; border-spacing:1em 0">
-            <tr><td><button @click="addProg()"
-                            >&#x2795;</button></td></tr>
-            <tr><th></th><th>Date</th><th>Count</th><th>Runtime</th><th>Draft</th></tr>
-            <tr v-for="(a, aI) in curate[curId].progs">
-               <td><span @click="progN = aI"
+            <tr><td>
+               <button @click="addProg()"
+                       title="New program"
+                       >&#x2795; Program</button></td></tr>
+            <tr><th></th><th>Updated</th><th>Count</th><th>Runtime</th><th></th></tr>
+            <tr v-for="aP in curProgSort">
+               <td><span @click="curate.open.find(c => c === aP.id) ||
+                                 curate.open.push(aP.id), curate.openId = aP.id"
                          class="uilink"
-                         >{{a.name}}</span></td>
-               <td>{{a.date}}</td>
+                         >{{aP.name}}</span></td>
+               <td>{{aP.date}}</td>
                <td class="uialignr"
-                   >{{a.count}}</td>
+                   >{{aP.count}}</td>
                <td class="uialignr"
-                   >{{a.dur}}</td>
-               <td>{{a.draft ? '*' : ''}}</td>
+                   >{{aP.dur}}</td>
+               <td v-if="aP.draft"
+                   style="font-style:italic"
+                   >draft</td>
             </tr>
          </table>
       </div>
-      <div v-show="progN === -1">
+      <div v-show="curate.openId === 'lib'">
          <table style="border-spacing:1em 0">
             <tr><td><button @click="addClip()"
                             >&#x2795;</button></td></tr>
@@ -442,8 +447,8 @@
             </template>
          </table>
       </div>
-      <div v-for="(aP, aPi) in curate[curId].progs" k--="todo: iterate over open progs"
-           v-show="progN === aPi">
+      <div v-for="aP in curate.progs"
+           v-show="curate.openId === aP.id">
          <table style="border-spacing:1em 0">
             <tr>
                <td colspan="6">
@@ -460,7 +465,7 @@
                         style="float:left; margin-right:1em">
                      <select @change="addProgClip(aP, $event.target.value), $event.target.value = ''">
                         <option value="">&#x2795; Clip...</option>
-                        <template v-for="(aV, aK) in curate[curId].clips">
+                        <template v-for="(aV, aK) in curate.clips">
                            <option :value="aK"
                                    >{{aV.name}}, {{aV.artist}}</option>
                            <option v-for="(aSub, aSubi) in aV.set"
@@ -502,12 +507,16 @@
                         circ: null, msgMap: {}, thread: null,
                         cats: null, found: null,
                         djs: null, djN: 0,
-                        curate: {}, curId: '', progN: -2 } },
+                        curators: {}, curId: '' } },
       computed: {
+         curate() { return this.curators[this.curId] },
+         curProgSort() {
+            return Object.values(this.curate.progs).sort(
+               (cA, cB) => cA.date > cB.date ? -1 : cA.date < cB.date ? 1 : 0 );
+         },
          curLibSort() {
-            return Object.values(this.curate[this.curId].clips).sort(
-               (cA, cB) => cA.date > cB.date ? -1 : cA.date < cB.date ? 1 : 0
-            );
+            return Object.values(this.curate.clips).sort(
+               (cA, cB) => cA.date > cB.date ? -1 : cA.date < cB.date ? 1 : 0 );
          },
          krm() { return krm },
       },
@@ -578,11 +587,11 @@
                });
          },
          goCurate(iId) {
-            if (iId in this.curate)
+            if (iId in this.curators)
                this.curId = iId;
             else
                this.$root.xhrGet(iId, 'json', 'curator', c => {
-                  this.curate[iId] = c;
+                  this.curators[iId] = c;
                   this.curId = iId;
                });
          },
@@ -598,11 +607,12 @@
             return aC ? aC.name : '??';
          },
          addProg() {
-            this.curate[this.curId].progs.unshift(
-               {name: 'Untitled', date: 'Today', draft: true, count: 0, dur: 0, clips: null});
+            var aCount = Object.values(this.curate.progs).length + 1;
+            this.curate.progs['P'+ aCount] =
+               {id: 'P'+ aCount, name: 'Untitled', date: 'Today', draft: true, count: 0, dur: 0, clips: null};
          },
          addClip() {
-            this.curate[this.curId].clips['Clu'+ Object.values(this.curate[this.curId].clips).length] =
+            this.curate.clips['Clu'+ Object.values(this.curate.clips).length] =
                {name: 'Unknown', artist: 'self', date: 'Today', dur: 0, file: ''};
          },
          addProgClip(iP, iC) {
@@ -619,9 +629,9 @@
             var aDot = iId.indexOf('.');
             var aPkg, aSub;
             if (aDot < 0) {
-               aPkg = aSub = this.curate[this.curId].clips[iId];
+               aPkg = aSub = this.curate.clips[iId];
             } else {
-               aPkg = this.curate[this.curId].clips[iId.substring(0, aDot)];
+               aPkg = this.curate.clips[iId.substring(0, aDot)];
                aSub = aPkg.set[iId.substring(aDot+1)*1];
             }
             return {id: iId, name: aSub.name, artist: aPkg.artist, date: aPkg.date,
