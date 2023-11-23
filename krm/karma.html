@@ -401,9 +401,11 @@
          <div style="float:right; clear:right">
             <button v-if="!curate.edit"
                     @click="curate.edit = curate.title"
+                    title="Edit profile"
                     >Edit</button>
             <button v-else
                     @click="curate.title = curate.edit, curate.edit = false"
+                    title="Cancel edits"
                     style="margin-right:0.5em"
                     >&#x2a09;</button>
          </div>
@@ -427,33 +429,33 @@
                           >&#x2795; Program</button></form></td></tr>
             <tr><th></th><th>Updated</th><th>Count</th><th>Runtime</th><th></th></tr>
             <tr v-for="aP in curProgSort" :key="aP.id">
-               <td>
-                  <form v-if="aP.edit"
-                        onsubmit="return false" @submit="aP.edit = false"
+               <td v-if="aP.edit"
+                   colspan="4">
+                  <form onsubmit="return false" @submit="aP.edit = false"
                         method="POST">
                      <input v-model="aP.name"
                             @keydown.enter="checkProgName(aP) || $event.preventDefault()"
                                k--="todo: localeCompare and move to @submit"
                             placeholder="Program name"
                             name="name" type="text"
-                            style="width:10em"/></form>
-                  <span v-else
-                        @click="curate.open.find(c => c === aP.id) ||
-                                curate.open.push(aP.id), curate.openId = aP.id"
-                        class="uilink uishowspc"
-                        >{{aP.name}}</span>
-               </td>
-               <td>{{aP.date}}</td>
-               <td class="uialignr"
-                   >{{aP.count}}</td>
-               <td class="uialignr"
-                   >{{aP.dur}}</td>
+                            style="width:14em"/></form></td>
+               <template v-else>
+                  <td><span @click="curate.open.find(c => c === aP.id) ||
+                                    curate.open.push(aP.id), curate.openId = aP.id"
+                            class="uilink uishowspc"
+                            >{{aP.name}}</span></td>
+                  <td>{{aP.date}}</td>
+                  <td class="uialignr"
+                      >{{aP.count}}</td>
+                  <td class="uialignr"
+                      >{{aP.dur}}</td>
+               </template>
                <td v-if="aP.edit">
                   <form onsubmit="return false"
                         method="POST">
                      <button @click="delete curate.progs[aP.id]"
                              title="Drop program"
-                             >&#x274c;</button></form></td>
+                             >&#x2a09;</button></form></td>
                <td v-else-if="aP.draft"
                    style="font-style:italic"
                    >draft</td>
@@ -650,7 +652,7 @@
          addProg() {
             var aId = 'P'+ ++this.curate.progN;
             this.curate.progs[aId] =
-               {id: aId, name: 'Untitled', date: 'Today', count: 0, dur: 0, clips: null,
+               {id: aId, name: '', date: 'Today', count: 0, dur: 0, clips: null,
                 draft: true, edit: true};
          },
          checkProgName(iP) {
