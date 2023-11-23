@@ -9,11 +9,31 @@ body {
 
 th { text-align: left }
 
+td { vertical-align: top }
+
+input[type=text],
+textarea {
+   border: 1px solid;
+   border-color: #abadb3 #dbdfe6 #e3e9ef;
+   border-radius: 2px;
+   font-family: Consolas, Menlo, Monaco, monospace;
+   font-weight: bold;
+   font-size: 100%;
+   box-sizing: border-box;
+}
+
+input[type=text]:focus,
+textarea:focus {
+   outline: 2px solid lightgray;
+}
+
 .uipoint { cursor: pointer }
 
 .uibold { font-weight: bold }
 
 .uialignr { text-align: right }
+
+.uishowspc { white-space: break-spaces }
 
 .uilink {
    cursor: pointer;

@@ -391,31 +391,70 @@
          <span v-for="a in curate.open"
                @click="curate.openId = a"
                :class="{tabshow: curate.openId === a}"
+               class="uishowspc"
                >{{curate.progs[a].name}}</span>
       </div>
       <div v-show="curate.openId === 'home'">
          <img :src="curate.img"
               style="float:right; margin-left:0.5em; max-width:25%"/>
          <h3>{{curate.name}} ({{curate.id}})</h3>
-         <div style="margin-bottom:1em; font-style:italic"
+         <div style="float:right; clear:right">
+            <button v-if="!curate.edit"
+                    @click="curate.edit = curate.title"
+                    >Edit</button>
+            <button v-else
+                    @click="curate.title = curate.edit, curate.edit = false"
+                    style="margin-right:0.5em"
+                    >&#x2a09;</button>
+         </div>
+         <div v-if="!curate.edit"
+              style="font-style:italic"
               >{{curate.title}}</div>
-         <table style="margin-bottom:1em; border-spacing:1em 0">
+         <form v-else
+               onsubmit="false" @submit="curate.edit = false"
+               method="POST">
+            <input v-model="curate.title"
+                   @keydown.enter="/^\s*$/.test(curate.title) && $event.preventDefault()"
+                   placeholder="Slogan or mission statement"
+                   name="title" type="text"
+                   style="width:70%"/></form>
+         <table style="margin:1em 0; border-spacing:1em 0">
             <tr><td>
-               <button @click="addProg()"
-                       title="New program"
-                       >&#x2795; Program</button></td></tr>
+               <form onsubmit="return false"
+                     method="POST">
+                  <button @click="addProg()" k--="todo: focus input field"
+                          title="New program"
+                          >&#x2795; Program</button></form></td></tr>
             <tr><th></th><th>Updated</th><th>Count</th><th>Runtime</th><th></th></tr>
-            <tr v-for="aP in curProgSort">
-               <td><span @click="curate.open.find(c => c === aP.id) ||
-                                 curate.open.push(aP.id), curate.openId = aP.id"
-                         class="uilink"
-                         >{{aP.name}}</span></td>
+            <tr v-for="aP in curProgSort" :key="aP.id">
+               <td>
+                  <form v-if="aP.edit"
+                        onsubmit="return false" @submit="aP.edit = false"
+                        method="POST">
+                     <input v-model="aP.name"
+                            @keydown.enter="checkProgName(aP) || $event.preventDefault()"
+                               k--="todo: localeCompare and move to @submit"
+                            placeholder="Program name"
+                            name="name" type="text"
+                            style="width:10em"/></form>
+                  <span v-else
+                        @click="curate.open.find(c => c === aP.id) ||
+                                curate.open.push(aP.id), curate.openId = aP.id"
+                        class="uilink uishowspc"
+                        >{{aP.name}}</span>
+               </td>
                <td>{{aP.date}}</td>
                <td class="uialignr"
                    >{{aP.count}}</td>
                <td class="uialignr"
                    >{{aP.dur}}</td>
-               <td v-if="aP.draft"
+               <td v-if="aP.edit">
+                  <form onsubmit="return false"
+                        method="POST">
+                     <button @click="delete curate.progs[aP.id]"
+                             title="Drop program"
+                             >&#x274c;</button></form></td>
+               <td v-else-if="aP.draft"
                    style="font-style:italic"
                    >draft</td>
             </tr>
@@ -426,7 +465,7 @@
             <tr><td><button @click="addClip()"
                             >&#x2795;</button></td></tr>
             <tr><th></th><th>Artist</th><th>Released</th><th>Runtime</th></tr>
-            <template v-for="aC in curLibSort">
+            <template v-for="aC in curClipSort">
                <tr>
                   <td>{{aC.name}}</td>
                   <td>{{aC.artist}}</td>
@@ -514,7 +553,7 @@
             return Object.values(this.curate.progs).sort(
                (cA, cB) => cA.date > cB.date ? -1 : cA.date < cB.date ? 1 : 0 );
          },
-         curLibSort() {
+         curClipSort() {
             return Object.values(this.curate.clips).sort(
                (cA, cB) => cA.date > cB.date ? -1 : cA.date < cB.date ? 1 : 0 );
          },
@@ -593,6 +632,8 @@
                this.$root.xhrGet(iId, 'json', 'curator', c => {
                   this.curators[iId] = c;
                   this.curId = iId;
+                  this.curate.progN = this.curProgSort.length; //todo: temporary
+                  this.curate.clipN = this.curClipSort.length;
                });
          },
          memlist(i) {
@@ -607,12 +648,17 @@
             return aC ? aC.name : '??';
          },
          addProg() {
-            var aCount = Object.values(this.curate.progs).length + 1;
-            this.curate.progs['P'+ aCount] =
-               {id: 'P'+ aCount, name: 'Untitled', date: 'Today', draft: true, count: 0, dur: 0, clips: null};
+            var aId = 'P'+ ++this.curate.progN;
+            this.curate.progs[aId] =
+               {id: aId, name: 'Untitled', date: 'Today', count: 0, dur: 0, clips: null,
+                draft: true, edit: true};
+         },
+         checkProgName(iP) {
+            return !(/^\s*$/.test(iP.name) ||
+                     this.curProgSort.find(c => c.id !== iP.id && c.name === iP.name));
          },
          addClip() {
-            this.curate.clips['Clu'+ Object.values(this.curate.clips).length] =
+            this.curate.clips['Clu'+ ++this.curate.clipN] =
                {name: 'Unknown', artist: 'self', date: 'Today', dur: 0, file: ''};
          },
          addProgClip(iP, iC) {
