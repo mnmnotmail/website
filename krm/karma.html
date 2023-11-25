@@ -388,11 +388,11 @@
          <span @click="curate.openId = 'lib'"
                :class="{tabshow: curate.openId === 'lib'}"
                >Library</span>
-         <span v-for="a in curate.open"
-               @click="curate.openId = a"
-               :class="{tabshow: curate.openId === a}"
+         <span v-for="aP in curate.open"
+               @click="curate.openId = aP.id"
+               :class="{tabshow: curate.openId === aP.id}"
                class="uishowspc"
-               >{{curate.progs[a].name}}</span>
+               >{{aP.name}}</span>
       </div>
       <div v-show="curate.openId === 'home'">
          <img :src="curate.img"
@@ -440,8 +440,8 @@
                             name="name" type="text"
                             style="width:14em"/></form></td>
                <template v-else>
-                  <td><span @click="curate.open.find(c => c === aP.id) ||
-                                    curate.open.push(aP.id), curate.openId = aP.id"
+                  <td><span @click="curate.open.find(c => c.id === aP.id) ||
+                                    curate.open.push(aP), curate.openId = aP.id"
                             class="uilink uishowspc"
                             >{{aP.name}}</span></td>
                   <td>{{aP.date}}</td>
@@ -539,7 +539,7 @@
             </template>
          </table>
       </div>
-      <div v-for="aP in curate.progs"
+      <div v-for="aP in curate.open"
            v-show="curate.openId === aP.id">
          <table style="border-spacing:1em 0">
             <tr>
@@ -691,6 +691,7 @@
                   this.curId = iId;
                   this.curate.progN = this.curProgSort.length; //todo: temporary
                   this.curate.clipN = this.curClipSort.length;
+                  this.curate.open = this.curate.open.map(c => this.curate.progs[c]);
                });
          },
          memlist(i) {
