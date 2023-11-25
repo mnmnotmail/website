@@ -463,9 +463,60 @@
          </table>
       </div>
       <div v-show="curate.openId === 'lib'">
+         <form onsubmit="return false"
+               method="POST"
+               enctype="multipart/form-data"
+               style="margin-bottom:0.5em">
+            <div style="height:0; overflow:hidden">
+               <input @input="readAudioFiles($event.target.files)"
+                      name="filename" accept="audio/*" type="file" required
+                      ref="curFileSelect"/></div>
+            <div style="float:right">
+               <button v-show="upHide"
+                       @click="$refs.curFileSelect.click()"
+                       type="button"
+                       title="Upload new clip"
+                       >Upload...</button>
+               <button v-show="!upHide"
+                       @click="upClear()"
+                       type="reset"
+                       title="Cancel upload"
+                       >&#x2a09;</button>
+            </div>
+            <template v-for="a in up.set">
+               <div v-if="a.error"
+                    class="uired"
+                    >{{a.file}}: {{a.error}}</div></template>
+            <div :class="{uihide: upHide}">
+               <input v-model="up.name"
+                      placeholder="Clip name"
+                      name="title" type="text"
+                      style="margin-right:0.5em; width:14em"/>
+               <button @click="audSrc ? upStop() : upPlay(up.set[0].buf)"
+                       type="button"
+                       :title="'Play '+ (upHide || up.set[0].file)"
+                       style="margin-right:0.5em"
+                       >{{audSrc ? '&#x25fc;' : '&#x25b6;'}}</button>
+               <span style="margin-right:3em; font-size:80%"
+                     >{{upHide || Math.round(up.set[0].buf.duration)}}</span>
+               <input :value="upHide || Math.round(up.set[0].buf.duration)"
+                      name="dur" type="hidden"/>
+               <button @click="upStop(), addClip(), upClear()"
+                       :disabled="kEmpty.test(up.name) || kEmpty.test(up.artist) || kEmpty.test(up.date)"
+                       title="Add clip"
+                       >&#x2795; Clip</button>
+               <div style="margin-bottom:0.5em"></div>
+               <input v-model="up.artist"
+                      placeholder="Artist"
+                      name="artist" type="text"
+                      style="margin-right:0.5em; width:12em"/>
+               <input v-model="up.date"
+                      placeholder="Released"
+                      name="date" type="text"
+                      style="width:6.5em"/>
+            </div>
+         </form>
          <table style="border-spacing:1em 0">
-            <tr><td><button @click="addClip()"
-                            >&#x2795;</button></td></tr>
             <tr><th></th><th>Artist</th><th>Released</th><th>Runtime</th></tr>
             <template v-for="aC in curClipSort">
                <tr>
@@ -548,7 +599,10 @@
                         circ: null, msgMap: {}, thread: null,
                         cats: null, found: null,
                         djs: null, djN: 0,
-                        curators: {}, curId: '' } },
+                        curators: {}, curId: '',
+                        upHide: true, up: {name:'', date:'', artist:'', set:[]},
+                        audCtx: new AudioContext(), audSrc: null, //todo: only for curator act
+                      } },
       computed: {
          curate() { return this.curators[this.curId] },
          curProgSort() {
@@ -559,6 +613,7 @@
             return Object.values(this.curate.clips).sort(
                (cA, cB) => cA.date > cB.date ? -1 : cA.date < cB.date ? 1 : 0 );
          },
+         kEmpty() { return /^\s*$/ },
          krm() { return krm },
       },
       created() {
@@ -659,9 +714,64 @@
             return !(/^\s*$/.test(iP.name) ||
                      this.curProgSort.find(c => c.id !== iP.id && c.name === iP.name));
          },
+         readAudioFiles(iFiles) {
+            if (iFiles.length < 1) {
+               this.upHide = true;
+               return;
+            }
+            this.up.set.length = 0;
+            let aTot = iFiles.length;
+            const fRead = cF => {
+               let cFr = new FileReader();
+               cFr.onloadend = () => {
+                  let cSet = {file: cF.name, buf: null, error: null};
+                  if (cFr.error) {
+                     cSet.error = cFr.error.message;
+                     this.up.set.push(cSet);
+                     this.upHide = true;
+                     return;
+                  }
+                  this.audCtx.decodeAudioData(cFr.result, cBuf => {
+                     cSet.buf = cBuf;
+                     this.up.set.push(cSet);
+                     if (--aTot === 0)
+                        this.upHide = false;
+                  }, cErr => {
+                     cSet.error = cErr.message;
+                     this.up.set.push(cSet);
+                     this.upHide = true;
+                  });
+               };
+               cFr.readAsArrayBuffer(cF);
+            };
+            for (const aF of iFiles)
+               fRead(aF);
+         },
+         upPlay(iBuf) {
+            if (this.audSrc)
+               return;
+            this.audSrc = this.audCtx.createBufferSource();
+            this.audSrc.buffer = iBuf;
+            this.audSrc.connect(this.audCtx.destination);
+            this.audSrc.onended = c => {
+               this.audSrc = null;
+            };
+            this.audSrc.start(0);
+         },
+         upStop() {
+            if (this.audSrc)
+               this.audSrc.stop(0);
+         },
+         upClear() {
+            this.upHide = true;
+            this.up.name = this.up.artist = this.up.date = '';
+            this.up.set.length = 0;
+         },
          addClip() {
+            let aSum = this.up.set.reduce((cA, c) => cA + c.buf.duration, 0);
             this.curate.clips['Clu'+ ++this.curate.clipN] =
-               {name: 'Unknown', artist: 'self', date: 'Today', dur: 0, file: ''};
+               { name: this.up.name, artist: this.up.artist, date: this.up.date,
+                 dur: Math.round(aSum), file: '' };
          },
          addProgClip(iP, iC) {
             if (!iC)

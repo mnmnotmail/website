@@ -27,9 +27,13 @@ textarea:focus {
    outline: 2px solid lightgray;
 }
 
+.uihide { visibility: hidden }
+
 .uipoint { cursor: pointer }
 
 .uibold { font-weight: bold }
+
+.uired { color: red }
 
 .uialignr { text-align: right }
 
