@@ -5,16 +5,19 @@
   "file": "greeting",
   "progs": {
     "P1": {
-      "id": "P1", "name": "main",          "date": "2023-11-10", "draft": true,
-      "count": 0, "dur": 0,
+      "id": "P1", "name": "main",
+      "date": "2023-11-10", "status": "empty", "count": 0, "dur": 0,
+      "desc": "",
       "clips": null },
     "P2": {
-      "id": "P2", "name": "Celtic Muse",   "date": "2023-10-14", "draft": false,
-      "count": 16, "dur": 1800,
+      "id": "P2", "name": "Celtic Muse",
+      "date": "2023-10-14", "status": "", "count": 16, "dur": 1800,
+      "desc": "Pondering the Legends & Culture of the Celtic World",
       "clips": ["Clp1", "Clp2", "Clp3"] },
     "P3": {
-      "id": "P3", "name": "Mountain Walk", "date": "2023-10-01", "draft": true,
-      "count": 3, "dur": 180,
+      "id": "P3", "name": "Mountain Walk",
+      "date": "2023-10-01", "status": "unpub", "count": 3, "dur": 180,
+      "desc": "Soundscapes of Hiking in High & Wild Places",
       "clips": ["+Clp1", "+Clp3", "+Clp4"] }
   },
   "open": [ "P2" ],

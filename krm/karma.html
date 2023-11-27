@@ -391,8 +391,7 @@
          <span v-for="aP in curate.open"
                @click="curate.openId = aP.id"
                :class="{tabshow: curate.openId === aP.id}"
-               class="uishowspc"
-               >{{aP.name}}</span>
+               >{{aP.edit && aP.edit.name || aP.name}}</span>
       </div>
       <div v-show="curate.openId === 'home'">
          <img :src="curate.img"
@@ -409,10 +408,10 @@
                     style="margin-right:0.5em"
                     >&#x2a09;</button>
          </div>
-         <div v-if="!curate.edit"
-              style="font-style:italic"
+         <div v-show="!curate.edit"
+              class="uitalic"
               >{{curate.title}}</div>
-         <form v-else
+         <form v-if="curate.edit"
                onsubmit="false" @submit="curate.edit = false"
                method="POST">
             <input v-model="curate.title"
@@ -429,9 +428,9 @@
                           >&#x2795; Program</button></form></td></tr>
             <tr><th></th><th>Updated</th><th>Count</th><th>Runtime</th><th></th></tr>
             <tr v-for="aP in curProgSort" :key="aP.id">
-               <td v-if="aP.edit"
+               <td v-if="aP.status === 'pend'"
                    colspan="4">
-                  <form onsubmit="return false" @submit="aP.edit = false"
+                  <form onsubmit="return false" @submit="aP.status = 'empty'"
                         method="POST">
                      <input v-model="aP.name"
                             @keydown.enter="checkProgName(aP) || $event.preventDefault()"
@@ -443,22 +442,23 @@
                   <td><span @click="curate.open.find(c => c.id === aP.id) ||
                                     curate.open.push(aP), curate.openId = aP.id"
                             class="uilink uishowspc"
-                            >{{aP.name}}</span></td>
+                            >{{aP.edit && aP.edit.name || aP.name}}</span></td>
                   <td>{{aP.date}}</td>
                   <td class="uialignr"
                       >{{aP.count}}</td>
                   <td class="uialignr"
                       >{{aP.dur}}</td>
                </template>
-               <td v-if="aP.edit">
+               <td v-if="aP.status === 'pend'"
+                   class="uialignr">
                   <form onsubmit="return false"
                         method="POST">
                      <button @click="delete curate.progs[aP.id]"
                              title="Drop program"
                              >&#x2a09;</button></form></td>
-               <td v-else-if="aP.draft"
-                   style="font-style:italic"
-                   >draft</td>
+               <td v-else-if="aP.status"
+                   class="uitalic"
+                   >{{aP.status}}</td>
             </tr>
          </table>
       </div>
@@ -541,21 +541,63 @@
       </div>
       <div v-for="aP in curate.open"
            v-show="curate.openId === aP.id">
-         <table style="border-spacing:1em 0">
+         <div style="float:right">
+            <button v-if="!aP.edit"
+                    @click="aP.edit = {name: aP.name, desc: aP.desc}"
+                    title="Edit name & description"
+                    >Edit</button>
+            <button v-else
+                    @click="aP.edit.name && (aP.name = aP.edit.name), aP.desc = aP.edit.desc, aP.edit = null"
+                    title="Cancel edits"
+                    style="margin-right:0.5em"
+                    >&#x2a09;</button>
+         </div>
+         <h4 v-show="!aP.edit || !aP.edit.name"
+             style="margin-top:1em"
+             >{{aP.name}}</h4>
+         <span v-if="aP.desc"
+               v-show="!aP.edit"
+               class="uitalic"
+               >{{aP.desc}}</span>
+         <button v-else
+                 v-show="!aP.edit"
+                 @click="aP.edit = {desc: ''}"
+                 title="Add description"
+                 >&#x2795; Description</button>
+         <form v-if="aP.edit"
+               onsubmit="return false"
+               method="POST"
+               style="margin-top:1em">
+            <div style="height:0; overflow:hidden">
+               <button @click="checkProgName(aP) && !/^\s+$/.test(aP.desc) && (aP.edit = null)"></button></div>
+            <input v-if="aP.edit.name"
+                   v-model="aP.name"
+                   placeholder="Program name"
+                   name="name" type="text"
+                   style="margin-bottom:1em; width:14em"/>
+            <div></div>
+            <input v-model="aP.desc"
+                   placeholder="Description"
+                   name="desc" type="text"
+                   style="width:26em"/>
+         </form>
+         <table style="margin-top:1em; border-spacing:1em 0">
             <tr>
                <td colspan="6">
                   <form onsubmit="return false"
                         method="POST"
                         style="float:right">
                      <button @click="aP.clips.forEach(
-                                        (c, cI) => { if (c.charAt(0) === '+') aP.clips[cI] = c.substring(1) })"
+                                        (c, cI) => { if (c.charAt(0) === '+') aP.clips[cI] = c.substring(1) }),
+                                     aP.status = ''"
                              :disabled="!aP.clips || aP.clips.every(c => c.charAt(0) !== '+')"
                              title="Post draft clips"
                              >&#x266c; Post</button></form>
                   <form onsubmit="return false"
                         method="POST"
                         style="float:left; margin-right:1em">
-                     <select @change="addProgClip(aP, $event.target.value), $event.target.value = ''">
+                     <select @change="addProgClip(aP, $event.target.value), $event.target.value = ''"
+                             title="Add clip from Library">
                         <option value="">&#x2795; Clip...</option>
                         <template v-for="(aV, aK) in curate.clips">
                            <option :value="aK"
@@ -566,7 +608,7 @@
                         </template>
                      </select></form>
                </td></tr>
-            <tr v-if="aP.clips">
+            <tr v-if="aP.clips && aP.clips.length">
                <th>Title</th><th>Artist</th><th>Released</th><th>Runtime</th></tr>
             <tr v-else>
                <th>(No clips)</th></tr>
@@ -582,7 +624,9 @@
                <td>
                   <form onsubmit="return false"
                         method="POST">
-                     <button @click="aP.clips.splice(aI, 1)"
+                     <button @click="aP.clips.splice(aI, 1),
+                                     aP.clips.length ? aP.clips[0].charAt(0) !== '+' && (aP.status = '')
+                                                     : aP.status = 'empty'"
                              title="Drop clip"
                              >&#x274c;</button></form></td>
             </tr>
@@ -708,8 +752,7 @@
          addProg() {
             var aId = 'P'+ ++this.curate.progN;
             this.curate.progs[aId] =
-               {id: aId, name: '', date: 'Today', count: 0, dur: 0, clips: null,
-                draft: true, edit: true};
+               {id: aId, name: '', date: 'Today', count: 0, dur: 0, clips: null, status: 'pend'};
          },
          checkProgName(iP) {
             return !(/^\s*$/.test(iP.name) ||
@@ -780,6 +823,7 @@
             if (!iP.clips)
                iP.clips = [];
             iP.clips.unshift('+'+ iC);
+            iP.status = 'unpub';
          },
          getClip(iId) {
             var aNew = iId.charAt(0) === '+';
