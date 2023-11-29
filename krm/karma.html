@@ -378,6 +378,9 @@
             </tr></table>
       </div>
    </div>
+   <audio v-if="curId"
+          preload="none"
+          ref="audioClient"/>
    <div v-if="curId in curators"
         v-show="krm.s.screen === krm.kSc.cu"
         style="margin-right:0.5em">
@@ -439,8 +442,7 @@
                             name="name" type="text"
                             style="width:14em"/></form></td>
                <template v-else>
-                  <td><span @click="curate.open.find(c => c.id === aP.id) ||
-                                    curate.open.push(aP), curate.openId = aP.id"
+                  <td><span @click="openProg(aP), curate.openId = aP.id"
                             class="uilink uishowspc"
                             >{{aP.edit && aP.edit.name || aP.name}}</span></td>
                   <td>{{aP.date}}</td>
@@ -525,16 +527,17 @@
                   <td>{{aC.date}}</td>
                   <td class="uialignr"
                       >{{aC.dur}}</td>
-                  <td><button @click=""
-                              >&#x25b6;</button></td>
+                  <td v-if="aC.file">
+                     <button @click="toggleClient(aC)"
+                             >{{clientClip === aC ? '&#x25fc;' : '&#x25b6;'}}</button></td>
                </tr>
                <tr v-for="(aSub, aSubi) in aC.set">
                   <td colspan="3"
                       >&nbsp; {{aSubi+1}}. <em>{{aSub.name}}</em></td>
                   <td class="uialignr"
                       >{{aSub.dur}}</td>
-                  <td><button @click=""
-                              >&#x25b6;</button></td>
+                  <td><button @click="toggleClient(aSub)"
+                              >{{clientClip === aSub ? '&#x25fc;' : '&#x25b6;'}}</button></td>
                </tr>
             </template>
          </table>
@@ -587,10 +590,8 @@
                   <form onsubmit="return false"
                         method="POST"
                         style="float:right">
-                     <button @click="aP.clips.forEach(
-                                        (c, cI) => { if (c.charAt(0) === '+') aP.clips[cI] = c.substring(1) }),
-                                     aP.status = ''"
-                             :disabled="!aP.clips || aP.clips.every(c => c.charAt(0) !== '+')"
+                     <button @click="aP.clips.forEach(c => { c.draft = false }), aP.status = ''"
+                             :disabled="!aP.clips || aP.clips.every(c => !c.draft)"
                              title="Post draft clips"
                              >&#x266c; Post</button></form>
                   <form onsubmit="return false"
@@ -612,21 +613,21 @@
                <th>Title</th><th>Artist</th><th>Released</th><th>Runtime</th></tr>
             <tr v-else>
                <th>(No clips)</th></tr>
-            <tr v-for="(a, aI) in (aP.clips && aP.clips.map(getClip))"
+            <tr v-for="(a, aI) in aP.clips"
                 :class="{indraft: a.draft}">
                <td>{{a.name}}</td>
                <td>{{a.artist}}</td>
                <td>{{a.date}}</td>
                <td class="uialignr"
                    >{{a.dur}}</td>
-               <td><button @click=""
-                           >&#x25b6;</button></td>
+               <td><button @click="toggleClient(a)"
+                           >{{clientClip === a ? '&#x25fc;' : '&#x25b6;'}}</button></td>
                <td>
                   <form onsubmit="return false"
                         method="POST">
                      <button @click="aP.clips.splice(aI, 1),
-                                     aP.clips.length ? aP.clips[0].charAt(0) !== '+' && (aP.status = '')
-                                                     : aP.status = 'empty'"
+                                     aP.clips.length ? !aP.clips[0].draft && (aP.status = '') : aP.status = 'empty'"
+                             :disabled="clientClip === a"
                              title="Drop clip"
                              >&#x274c;</button></form></td>
             </tr>
@@ -639,7 +640,8 @@
    krm.app.component('finder', {
       template: '#krm-finder',
       emits: [ 'djadd' ],
-      data() { return { act: null, recSaved: false,
+      data() { return { clientClip: null,
+                        act: null, recSaved: false,
                         circ: null, msgMap: {}, thread: null,
                         cats: null, found: null,
                         djs: null, djN: 0,
@@ -673,6 +675,18 @@
          },
       },
       methods: {
+         toggleClient(iClip) {
+            if (iClip !== this.clientClip) {
+               let aUrl = 'https://cdn.pixabay.com/download/audio/2020/08/14/audio_4ad28ef70b.mp3'; //todo: temporary
+               this.$refs.audioClient.src = aUrl; // iClip.file
+               this.$refs.audioClient.load();
+               this.$refs.audioClient.play();
+               this.clientClip = iClip;
+            } else {
+               this.$refs.audioClient.pause();
+               this.clientClip = null;
+            }
+         },
          setPlayed(iFeed) {
             var aPos = this.act.played.findIndex(c => c.id === iFeed.id);
             if (aPos === 0)
@@ -736,6 +750,7 @@
                   this.curate.progN = this.curProgSort.length; //todo: temporary
                   this.curate.clipN = this.curClipSort.length;
                   this.curate.open = this.curate.open.map(c => this.curate.progs[c]);
+                  this.curate.open.forEach(c => { this.makeClips(c) });
                });
          },
          memlist(i) {
@@ -817,15 +832,25 @@
                { name: this.up.name, artist: this.up.artist, date: this.up.date,
                  dur: Math.round(aSum), file: '' };
          },
+         openProg(iP) {
+            if (this.curate.open.find(c => c.id === iP.id))
+               return;
+            this.curate.open.push(iP);
+            this.makeClips(iP);
+         },
          addProgClip(iP, iC) {
             if (!iC)
                return;
             if (!iP.clips)
                iP.clips = [];
-            iP.clips.unshift('+'+ iC);
+            iP.clips.unshift(this.makeClip('+'+ iC));
             iP.status = 'unpub';
          },
-         getClip(iId) {
+         makeClips(iProg) {
+            if (iProg.clips)
+               iProg.clips = iProg.clips.map(c => this.makeClip(c));
+         },
+         makeClip(iId) {
             var aNew = iId.charAt(0) === '+';
             if (aNew)
                iId = iId.substring(1);
