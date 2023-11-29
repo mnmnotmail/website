@@ -379,6 +379,8 @@
       </div>
    </div>
    <audio v-if="curId"
+          @pause="clientClip = null"
+          @ended="clientClip = null"
           preload="none"
           ref="audioClient"/>
    <div v-if="curId in curators"
@@ -640,7 +642,7 @@
    krm.app.component('finder', {
       template: '#krm-finder',
       emits: [ 'djadd' ],
-      data() { return { clientClip: null,
+      data() { return { clientClip: null, //todo must be array? pop() in client @ended & @pause events
                         act: null, recSaved: false,
                         circ: null, msgMap: {}, thread: null,
                         cats: null, found: null,
@@ -677,6 +679,7 @@
       methods: {
          toggleClient(iClip) {
             if (iClip !== this.clientClip) {
+               this.upStop();
                let aUrl = 'https://cdn.pixabay.com/download/audio/2020/08/14/audio_4ad28ef70b.mp3'; //todo: temporary
                this.$refs.audioClient.src = aUrl; // iClip.file
                this.$refs.audioClient.load();
@@ -684,8 +687,11 @@
                this.clientClip = iClip;
             } else {
                this.$refs.audioClient.pause();
-               this.clientClip = null;
             }
+         },
+         stopClient() {
+            if (this.clientClip)
+               this.$refs.audioClient.pause();
          },
          setPlayed(iFeed) {
             var aPos = this.act.played.findIndex(c => c.id === iFeed.id);
@@ -809,6 +815,7 @@
          upPlay(iBuf) {
             if (this.audSrc)
                return;
+            this.stopClient();
             this.audSrc = this.audCtx.createBufferSource();
             this.audSrc.buffer = iBuf;
             this.audSrc.connect(this.audCtx.destination);
