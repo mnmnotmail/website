@@ -73,4 +73,5 @@ textarea:focus {
    cursor: default !important;
 }
 
-tr.indraft { outline: 2px solid #ec0 }
+tr.inunpub { box-shadow: inset 0 4em #ed5 }
+tr.inhide  { box-shadow: inset 0 4em gainsboro }

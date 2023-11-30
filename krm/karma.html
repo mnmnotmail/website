@@ -592,8 +592,12 @@
                   <form onsubmit="return false"
                         method="POST"
                         style="float:right">
-                     <button @click="aP.clips.forEach(c => { c.draft = false }), aP.status = ''"
-                             :disabled="!aP.clips || aP.clips.every(c => !c.draft)"
+                     <span v-show="aP.hidden"
+                           style="margin-right:1em"
+                           >{{aP.hidden}}&nbsp;hidden</span>
+                     <button @click="aP.clips.forEach(c => { if (c.status === 'unpub') c.status = '' }),
+                                     aP.status = ''"
+                             :disabled="!aP.clips || aP.clips.every(c => c.status !== 'unpub')"
                              title="Post draft clips"
                              >&#x266c; Post</button></form>
                   <form onsubmit="return false"
@@ -616,7 +620,7 @@
             <tr v-else>
                <th>(No clips)</th></tr>
             <tr v-for="(a, aI) in aP.clips"
-                :class="{indraft: a.draft}">
+                :class="{inunpub: a.status === 'unpub', inhide: a.status === 'hide'}">
                <td>{{a.name}}</td>
                <td>{{a.artist}}</td>
                <td>{{a.date}}</td>
@@ -625,13 +629,23 @@
                <td><button @click="toggleClient(a)"
                            >{{clientClip === a ? '&#x25fc;' : '&#x25b6;'}}</button></td>
                <td>
-                  <form onsubmit="return false"
+                  <form v-if="a.status === 'unpub'"
+                        onsubmit="return false"
                         method="POST">
                      <button @click="aP.clips.splice(aI, 1),
-                                     aP.clips.length ? !aP.clips[0].draft && (aP.status = '') : aP.status = 'empty'"
+                                     aP.clips.length ? aP.clips[0].status !== 'unpub' && (aP.status = '')
+                                                     : aP.status = 'empty'"
                              :disabled="clientClip === a"
                              title="Drop clip"
-                             >&#x274c;</button></form></td>
+                             >&#x274c;</button></form>
+                  <form v-else
+                        onsubmit="return false"
+                        method="POST">
+                     <button @click="a.status = !a.status ? 'hide' : '',
+                                     aP.hidden += (a.status === 'hide') *2 -1"
+                             :title="(!a.status ? 'Hide' : 'Publish') +' clip'"
+                             >{{a.status === '' ? '&#x26d4;' : '&#x266c;'}}</button></form>
+               </td>
             </tr>
          </table>
       </div>
@@ -837,7 +851,7 @@
             let aSum = this.up.set.reduce((cA, c) => cA + c.buf.duration, 0);
             this.curate.clips['Clu'+ ++this.curate.clipN] =
                { name: this.up.name, artist: this.up.artist, date: this.up.date,
-                 dur: Math.round(aSum), file: '' };
+                 dur: Math.round(aSum), file: this.up.set[0].file };
          },
          openProg(iP) {
             if (this.curate.open.find(c => c.id === iP.id))
@@ -854,15 +868,20 @@
             iP.status = 'unpub';
          },
          makeClips(iProg) {
-            if (iProg.clips)
+            if (iProg.clips) {
                iProg.clips = iProg.clips.map(c => this.makeClip(c));
+               iProg.hidden = iProg.clips.reduce((cA, c) => cA + (c.status === 'hide') *1, 0);
+            }
          },
          makeClip(iId) {
-            var aNew = iId.charAt(0) === '+';
-            if (aNew)
-               iId = iId.substring(1);
-            var aDot = iId.indexOf('.');
-            var aPkg, aSub;
+            var aStat;
+            switch (iId.charAt(0)) {
+            case '+': aStat = 'unpub'; break;
+            case '-': aStat = 'hide';  break;
+            case '=': aStat = '';      break;
+            }
+            iId = iId.substring(1);
+            var aPkg, aSub, aDot = iId.indexOf('.');
             if (aDot < 0) {
                aPkg = aSub = this.curate.clips[iId];
             } else {
@@ -870,7 +889,7 @@
                aSub = aPkg.set[iId.substring(aDot+1)*1];
             }
             return {id: iId, name: aSub.name, artist: aPkg.artist, date: aPkg.date,
-                    dur: aSub.dur, file: aSub.file, draft: aNew};
+                    dur: aSub.dur, file: aSub.file, status: aStat};
          },
       },
    });
