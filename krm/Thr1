@@ -1,7 +1,17 @@
-[{
-  "date": "2023-10-22", "from": "Uid1", "alias": "Liam", "tags": ["humor"],
-  "heard": false, "runtime": 20, "clip": "file"
-},{
-  "date": "2023-09-03", "from": "Uid2", "alias": "Tharu", "tags": ["mystical"],
-  "heard": true, "runtime": 122, "clip": "file"
-}]
+{
+  "members": [
+    {"alias": "Tharu",  "id": "T111"},
+    {"alias": "Liam",   "id": "L114"},
+    {"alias": "Sean",   "id": "S115"}],
+
+  "filter": { "": false, "demo": true, "mystical": false },
+  "filterCount": 1,
+
+  "posts": [{
+    "date": "2023-10-26", "tags": ["demo"], "alias": "Liam",
+    "heard": false, "runtime": 20, "clip": {"file": "tbd"}
+  },{
+    "date": "2023-09-03", "tags": ["mystical"], "alias": "Tharu",
+    "heard": true, "runtime": 122, "clip": {"file": "tbd"}
+  }]
+}

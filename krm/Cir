@@ -1,21 +1,26 @@
 {
   "circles": [{
-    "name": "school friends", "id": "Sc11", "members": [
-      {"name": "tharu",  "id": "T111"},
-      {"name": "jess",   "id": "J112"},
-      {"name": "ananda", "id": "A113"}]
+    "name": "school friends", "id": "Thr2", "count": 3
   },{
-    "name": "nerdy werkers",  "id": "Ne12", "members": [
-      {"name": "tharu",  "id": "T111"},
-      {"name": "liam",   "id": "L114"},
-      {"name": "sean",   "id": "S115"}]
+    "name": "nerdy werkers",  "id": "Thr1", "count": 2
+  },{
+    "name": "meditators",     "id": "Thr3", "count": 2, "invite": true
   }],
 
-  "threads": [{
-    "date": "2023-10-26", "topic": "thrilling demo", "count": 4, "isNew": true,
-    "circle": "Ne12", "id": "Thr1"
+  "filter": { "": true, "circle_invite": false, "demo": false, "stories": false, "humor": false },
+  "filterCount": 0,
+
+  "posts": [{
+    "circle": "Thr3", "date": "2023-12-08", "tags": ["circle_invite"], "alias": "Ananda",
+    "heard": false, "runtime": 45, "clip": {"file": "tbd"}
   },{
-    "date": "2023-09-08", "topic": "skool again?", "count": 9, "isNew": false,
-    "circle": "Sc11", "id": "Thr2"
+    "circle": "Thr1", "date": "2023-10-26", "tags": ["demo"], "alias": "Liam",
+    "heard": false, "runtime": 20, "clip": {"file": "tbd"}
+  },{
+    "circle": "Thr2", "date": "2023-10-13", "tags": ["stories"], "alias": "Jess",
+    "heard": true, "runtime": 40, "clip": {"file": "tbd"}
+  },{
+    "circle": "Thr2", "date": "2023-09-08", "tags": ["stories", "humor"], "alias": "Tharu",
+    "heard": false, "runtime": 40, "clip": {"file": "tbd"}
   }]
 }

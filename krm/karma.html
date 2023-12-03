@@ -305,43 +305,62 @@
    </div>
    <div v-show="krm.s.screen === krm.kSc.ci" v-if="circ"
         style="margin-right:0.5em">
-      <span v-for="a in circ.circles"
-            v-show="!thread || a.id === thread.circle"
-            style="margin-right:0.5em; padding:0.25em; background-color:lightgray"
-            :title="memlist(a.members)"
-            >{{a.name}} ({{a.members.length}})</span>
-      <table v-show="!thread"
-             style="margin-top:1em; border-spacing:1em 0.25em">
-         <tr v-for="a in circ.threads">
-            <td>{{a.isNew ? '\u2600' : ' '}}</td>
-            <td>{{a.date}}</td>
-            <td>{{circName(a.circle)}}</td>
-            <td>{{a.count}}</td>
-            <td><span @click="goThread(a)"
-                      class="uilink"
-                      >{{a.topic}}</span></td>
-         </tr></table>
-      <div v-show="thread"
-           style="margin:1em 0 0.5em">
-         <span @click="thread = null"
-               class="uilink uibrdr" style="margin-right:0.25em"
-               >&#x276e;</span>
-         <span class="uibold tabmargr"
-               >{{thread && thread.topic}}</span>
-         <span >({{thread && thread.count}})</span>
+      <div class="tabset2">
+         <span @click="circId = 'new'"
+               :class="{tabshow: circId === 'new'}"
+               >Latest</span>
+         <template v-for="a in circ">
+            <span v-if="!a.invite || a.id in circOpen"
+                  @click="goCircle(a.id)"
+                  :class="{tabshow: circId === a.id}"
+                  >{{a.name}}</span></template>
       </div>
-      <table v-show="thread"
-             style="border-spacing:1em 0.2em">
-         <tr v-for="a in (thread && msgMap[thread.id])">
-            <td>{{a.date}}</td>
-            <td>{{a.alias}}</td>
-            <td><span v-for="aTg in a.tags"
-                      style="margin-right:0.25em; padding:2px; background-color:#f8f8aa"
-                      >{{aTg}}</span></td>
-            <td>{{a.runtime}}</td>
-            <td><button @click=""
-                        >&#x25b6;</button></td>
-         </tr></table>
+      <div v-for="(aV, aK) in circOpen"
+           v-show="aK === circId">
+         <div v-if="aV.invited"
+              style="margin-bottom:0.5em; border: 3px solid blue; border-radius:6px; padding:0.5em">
+            <span style="font-style:italic"
+                  >{{aV.invited.by}} invited you to this group.</span>
+            <form onsubmit="return false"
+                  method="POST"
+                  style="float:right">
+               <button @click="aV.invited = null"
+                       >&#x2795; Join Circle!</button></form>
+         </div>
+         <div style="margin-bottom:1em">
+            <span v-for="a in aV.members"
+                  style="display:inline-block; margin-right:0.5em; padding:0.25em; background-color:lightgray"
+                  :style="{opacity: a.invited && aV.invited !== null ? '0.6' : null}"
+                  >{{a.alias}}</span></div>
+         <div style="float:right"
+              >({{aV.fltrPosts.length}} of {{aV.posts.length}})</div>
+         <div>
+            <label v-for="(aFv, aFk) in aV.filter"
+                   style="margin-right:1em">
+               <input @input="aV.filter[aFk] = $event.target.checked,
+                              aV.filterCount += aV.filter[aFk] *2-1,
+                              aFk && (aV.filter[''] = !aV.filterCount),
+                              filterCircle(aV)"
+                      :checked="aFv"
+                      :disabled="aFk ? aV.filterCount && aV.filter[''] : !aV.filterCount"
+                      type="checkbox"/>&nbsp;{{aFk || 'All'}}</label></div>
+         <table style="margin-top:1em; border-spacing:1em 0.25em">
+            <tr v-for="aP in aV.fltrPosts">
+               <td>{{aP.heard ? '' : aP.tags && aP.tags[0] === 'circle_invite' ? '&#x2709;' : '&#x2600;'}}</td>
+               <td>{{aP.date}}</td>
+               <td v-if="aP.circle"
+                   @click="goCircle(aP.circle)"
+                   class="uilink"
+                   >{{circleName(aP.circle)}}</td>
+               <td>{{aP.alias}}</td>
+               <td>{{aP.runtime}}</td>
+               <td><button @click="toggleClient(aP.clip)"
+                           >{{clientClip === aP.clip ? '&#x25fc;' : '&#x25b6;'}}</button></td>
+               <td><span v-for="a in aP.tags"
+                         style="margin-right:0.25em; padding:2px; background-color:#f8f8aa"
+                         >{{a}}</span></td>
+            </tr></table>
+      </div>
    </div>
    <div v-show="krm.s.screen === krm.kSc.dj"
         style="margin-right:0.5em">
@@ -378,7 +397,7 @@
             </tr></table>
       </div>
    </div>
-   <audio v-if="curId"
+   <audio v-if="circ || curId"
           @pause="clientClip = null"
           @ended="clientClip = null"
           preload="none"
@@ -658,7 +677,7 @@
       emits: [ 'djadd' ],
       data() { return { clientClip: null, //todo must be array? pop() in client @ended & @pause events
                         act: null, recSaved: false,
-                        circ: null, msgMap: {}, thread: null,
+                        circ: null, circOpen: {}, circId: 'new',
                         cats: null, found: null,
                         djs: null, djN: 0,
                         curators: {}, curId: '',
@@ -682,7 +701,11 @@
          krm.s.screen = krm.kSc.fe;
          this.$root.xhrGet('Act', 'json', 'account',     c => { this.act = c });
          this.$root.xhrGet('Cat', 'json', 'categories',  c => { this.cats = c });
-         this.$root.xhrGet('Cir', 'json', 'circles',     c => { this.circ = c });
+         this.$root.xhrGet('Cir', 'json', 'circles',     c => {
+            this.circ = c.circles;
+            this.filterCircle(c);
+            this.circOpen.new = c;
+         });
       },
       watch: {
          'act.played': {
@@ -738,14 +761,35 @@
          goBrowse() {
             this.$root.xhrGet('Fnd', 'json', 'found', c => { this.found = c });
          },
-         goThread(iRef) {
-            if (iRef.id in this.msgMap)
-               this.thread = iRef;
+         circleName(i) {
+            var aC = this.circ.find(c => c.id === i);
+            if (!aC)
+               this.$root.log('circle id missing: '+ i);
+            return aC ? aC.name : '??';
+         },
+         goCircle(iId) {
+            if (iId in this.circOpen)
+               this.circId = iId;
             else
-               this.$root.xhrGet(iRef.id, 'json', 'thread', c => {
-                  this.msgMap[iRef.id] = c;
-                  this.thread = iRef;
+               this.$root.xhrGet(iId, 'json', 'circle', c => {
+                  if (c.invited)
+                     c.invited = c.members.find(cM => cM.id === this.act.id).invited;
+                  this.filterCircle(c);
+                  this.circOpen[iId] = c;
+                  this.circId = iId;
                });
+         },
+         filterCircle(iC) {
+            if (iC.filter['']) {
+               iC.fltrPosts = iC.posts;
+               return;
+            }
+            iC.fltrPosts = iC.posts.filter(cP => {
+               for (let aTag in iC.filter)
+                  if (aTag && iC.filter[aTag] && cP.tags.find(cT => cT === aTag))
+                     return true;
+               return false;
+            });
          },
          goDj(iId) {
             const fGo = () => {
@@ -772,17 +816,6 @@
                   this.curate.open = this.curate.open.map(c => this.curate.progs[c]);
                   this.curate.open.forEach(c => { this.makeClips(c) });
                });
-         },
-         memlist(i) {
-            var a = '';
-            i.forEach(c => { a += c.name +'\n' });
-            return a;
-         },
-         circName(i) {
-            var aC = this.circ.circles.find(c => c.id === i);
-            if (!aC)
-               this.$root.log('circle id missing: '+ i);
-            return aC ? aC.name : '??';
          },
          addProg() {
             var aId = 'P'+ ++this.curate.progN;
