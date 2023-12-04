@@ -293,7 +293,7 @@
            >Looking...</div>
       <table v-show="found"
              style="border-spacing:1em 0">
-         <tr><th></th><th>Last Program</th><th>Clips</th><th>Run time</th></tr>
+         <tr><th></th><th>Last Program</th><th>Clips</th><th>Runtime</th></tr>
          <tr v-for="a in found">
             <td><span @click="goDj(a.id)"
                       class="uilink"
@@ -353,9 +353,10 @@
                    class="uilink"
                    >{{circleName(aP.circle)}}</td>
                <td>{{aP.alias}}</td>
-               <td>{{aP.runtime}}</td>
                <td><button @click="toggleClient(aP.clip)"
                            >{{clientClip === aP.clip ? '&#x25fc;' : '&#x25b6;'}}</button></td>
+               <td class="uifont80 uivalignm uialignr"
+                   >{{aP.runtime}}</td>
                <td><span v-for="a in aP.tags"
                          style="margin-right:0.25em; padding:2px; background-color:#f8f8aa"
                          >{{a}}</span></td>
@@ -393,7 +394,8 @@
                <td>{{aP.date}}</td>
                <td>{{aP.name}}</td>
                <td>{{aP.count}}</td>
-               <td>{{aP.dur}}</td>
+               <td class="uialignr"
+                   >{{aP.dur}}</td>
             </tr></table>
       </div>
    </div>
@@ -450,7 +452,7 @@
                   <button @click="addProg()" k--="todo: focus input field"
                           title="New program"
                           >&#x2795; Program</button></form></td></tr>
-            <tr><th></th><th>Updated</th><th>Count</th><th>Runtime</th><th></th></tr>
+            <tr><th></th><th>Updated</th><th>Count</th><th>Runtime</th></tr>
             <tr v-for="aP in curProgSort" :key="aP.id">
                <td v-if="aP.status === 'pend'"
                    colspan="4">
@@ -540,25 +542,25 @@
             </div>
          </form>
          <table style="border-spacing:1em 0">
-            <tr><th></th><th>Artist</th><th>Released</th><th>Runtime</th></tr>
+            <tr><th>Title</th><th>Artist</th><th>Released</th></tr>
             <template v-for="aC in curClipSort">
                <tr>
                   <td>{{aC.name}}</td>
                   <td>{{aC.artist}}</td>
                   <td>{{aC.date}}</td>
-                  <td class="uialignr"
+                  <td><button v-if="aC.file"
+                              @click="toggleClient(aC)"
+                              >{{clientClip === aC ? '&#x25fc;' : '&#x25b6;'}}</button></td>
+                  <td class="uifont80 uivalignm uialignr"
                       >{{aC.dur}}</td>
-                  <td v-if="aC.file">
-                     <button @click="toggleClient(aC)"
-                             >{{clientClip === aC ? '&#x25fc;' : '&#x25b6;'}}</button></td>
                </tr>
                <tr v-for="(aSub, aSubi) in aC.set">
                   <td colspan="3"
                       >&nbsp; {{aSubi+1}}. <em>{{aSub.name}}</em></td>
-                  <td class="uialignr"
-                      >{{aSub.dur}}</td>
                   <td><button @click="toggleClient(aSub)"
                               >{{clientClip === aSub ? '&#x25fc;' : '&#x25b6;'}}</button></td>
+                  <td class="uifont80 uivalignm uialignr"
+                      >{{aSub.dur}}</td>
                </tr>
             </template>
          </table>
@@ -635,7 +637,7 @@
                      </select></form>
                </td></tr>
             <tr v-if="aP.clips && aP.clips.length">
-               <th>Title</th><th>Artist</th><th>Released</th><th>Runtime</th></tr>
+               <th>Title</th><th>Artist</th><th>Released</th></tr>
             <tr v-else>
                <th>(No clips)</th></tr>
             <tr v-for="(a, aI) in aP.clips"
@@ -643,10 +645,10 @@
                <td>{{a.name}}</td>
                <td>{{a.artist}}</td>
                <td>{{a.date}}</td>
-               <td class="uialignr"
-                   >{{a.dur}}</td>
                <td><button @click="toggleClient(a)"
                            >{{clientClip === a ? '&#x25fc;' : '&#x25b6;'}}</button></td>
+               <td class="uifont80 uivalignm uialignr"
+                   >{{a.dur}}</td>
                <td>
                   <form v-if="a.status === 'unpub'"
                         onsubmit="return false"
@@ -957,7 +959,7 @@
       </h3>
       <table v-if="feed"
              style="border-spacing:1em 0">
-         <tr><th></th><th>Artist</th><th>DJ</th><th>Released</th><th>Runtime</th></tr>
+         <tr><th></th><th>Artist</th><th>DJ</th><th>Released</th><th>Runs</th></tr>
          <tr v-for="(a, aI) in feed.clips"
              :style="{outline: aI === clipsN ? '1px solid black' : null}">
             <td>{{a.name}}</td>

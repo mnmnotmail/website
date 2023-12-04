@@ -35,9 +35,13 @@ textarea:focus {
 
 .uitalic { font-style: italic }
 
+.uifont80 { font-size: 80% }
+
 .uired { color: red }
 
 .uialignr { text-align: right }
+
+.uivalignm { vertical-align: middle }
 
 .uishowspc { white-space: break-spaces }
 
