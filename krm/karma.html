@@ -222,7 +222,7 @@
 </script>
 
 <script type="text/x-template" id="krm-finder">
-   <div style="position:fixed; left:0.5em; right:0.5em; top:0;
+   <div style="position:fixed; left:0.5em; right:0.5em; top:0; z-index:10;
                padding: 0.5em 0; border-bottom: 1px solid gray; background-color:#fff">
       <span @click="krm.s.screen = krm.kSc.fe"
             class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.fe}"
@@ -315,6 +315,23 @@
                   :class="{tabshow: circId === a.id}"
                   >{{a.name}}</span></template>
       </div>
+      <krm-dropdown ref="circStart"
+                    title="Start circle"
+                    style="float:right">
+         <template #icon>&#x2795;</template>
+         <form onsubmit="return false"
+               method="POST" autocomplete="off">
+            <input v-model="circName"
+                   placeholder="New circle name"
+                   name="name" type="text"
+                   style="width:12em; margin-bottom:0.5em"/>
+            <button @click="circId = addCircle(circName), circName = '', $refs.circStart.hide()"
+                    :disabled="kEmpty.test(circName) || circ.find(c => c.name === circName)"
+                    title="Create circle"
+                    style="float:right"
+                    >&#x2795; Circle</button>
+         </form>
+      </krm-dropdown>
       <div v-for="(aV, aK) in circOpen"
            v-show="aK === circId">
          <div v-if="aV.invited"
@@ -630,7 +647,7 @@
       emits: [ 'djadd' ],
       data() { return { clientClip: null, //todo must be array? pop() in client @ended & @pause events
                         act: null, recSaved: false,
-                        circ: null, circOpen: {}, circId: 'new',
+                        circ: null, circOpen: {}, circId: 'new', circName: '',
                         cats: null, found: null,
                         djs: null, djN: 0,
                         curators: {}, curId: '',
@@ -655,6 +672,7 @@
          this.$root.xhrGet('Cat', 'json', 'categories',  c => { this.cats = c });
          this.$root.xhrGet('Cir', 'json', 'circles',     c => {
             this.circ = c.circles;
+            this.circN = c.circles.length; //todo temporary
             this.filterCircle(c);
             this.circOpen.new = c;
          });
@@ -713,6 +731,13 @@
          },
          goBrowse() {
             this.$root.xhrGet('Fnd', 'json', 'found', c => { this.found = c });
+         },
+         addCircle(iName) {
+            var aId = 'Thr'+ ++this.circN;
+            this.circ.unshift({name: iName, id: aId, count: 0});
+            this.circOpen[aId] = { members: [{alias: this.act.alias, id: this.act.id}],
+                                   filter: {'': true}, filterCount: 0, posts: [], fltrPosts: [] };
+            return aId;
          },
          circleName(i) {
             var aC = this.circ.find(c => c.id === i);
@@ -1083,6 +1108,26 @@
             this.up.name = this.up.artist = this.up.date = '';
             this.up.set.length = 0;
          },
+      },
+   });
+</script>
+
+<script type="text/x-template" id="krm-dropdown">
+   <div class="dropdn">
+      <span @click="shown = !shown">
+         <slot name="icon"></slot></span>
+      <div v-show="shown"
+           title="">
+         <slot></slot></div>
+   </div>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+
+   krm.app.component('krm-dropdown', {
+      template: '#krm-dropdown',
+      data() { return { shown: false } },
+      methods: {
+         hide() { this.shown = false },
       },
    });
 </script>
