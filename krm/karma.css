@@ -77,6 +77,15 @@ textarea:focus {
    cursor: default !important;
 }
 
+.person {
+   display: inline-block;
+   margin-top: 0.15em;
+   margin-right: 0.5em;
+   padding: 0.25em;
+   background-color: lightgray;
+}
+.person.uifade { opacity: 0.6 }
+
 tr.inunpub { box-shadow: inset 0 4em #ed5 }
 tr.inhide  { box-shadow: inset 0 4em gainsboro }
 
@@ -91,6 +100,7 @@ tr.inhide  { box-shadow: inset 0 4em gainsboro }
 .dropdn > :last-child {
    position: absolute;
    right: 0; top: 100%;
+   z-index: 1;
    box-shadow: 8px 8px 6px gainsboro;
    border: 1px solid #bbb;
    border-radius: 6px 0 6px 6px;

@@ -7,6 +7,12 @@
     "name": "meditators",     "id": "Thr3", "count": 2, "invite": true
   }],
 
+  "contacts": [
+    {"alias": "Jess",   "id": "J112"},
+    {"alias": "Ananda", "id": "A113"},
+    {"alias": "Liam",   "id": "L114"},
+    {"alias": "Sean",   "id": "S115"}],
+
   "filter": { "": true, "circle_invite": false, "demo": false, "stories": false, "humor": false },
   "filterCount": 0,
 

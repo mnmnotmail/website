@@ -317,7 +317,7 @@
       </div>
       <krm-dropdown ref="circStart"
                     title="Start circle"
-                    style="float:right">
+                    style="position:absolute; right:0.5em; top:3em">
          <template #icon>&#x2795;</template>
          <form onsubmit="return false"
                method="POST" autocomplete="off">
@@ -341,14 +341,26 @@
             <form onsubmit="return false"
                   method="POST"
                   style="float:right">
-               <button @click="aV.invited = null"
+               <button @click="aV.invited = aV.members.find(c => c.id === act.id).invited = null"
                        >&#x2795; Join Circle!</button></form>
          </div>
          <div style="margin-bottom:1em">
+            <select v-if="aK !== 'new' && !aV.invited"
+                    @change="inviteCircleMember(aV, $event.target.value), $event.target.value = ''"
+                    title="Invite member"
+                    style="float:right">
+               <option value=""
+                       >&#x2795; Member</option>
+               <option v-for="a in ppl"
+                       :value="a.id"
+                       :disabled="!!aV.members.find(c => c.id === a.id)"
+                       >{{a.alias}}</option>
+            </select>
             <span v-for="a in aV.members"
-                  style="display:inline-block; margin-right:0.5em; padding:0.25em; background-color:lightgray"
-                  :style="{opacity: a.invited && aV.invited !== null ? '0.6' : null}"
-                  >{{a.alias}}</span></div>
+                  class="person"
+                  :class="{uifade: a.invited}"
+                  >{{a.alias}}</span>
+         </div>
          <div style="float:right"
               >({{aV.fltrPosts.length}} of {{aV.posts.length}})</div>
          <div>
@@ -671,6 +683,7 @@
          this.$root.xhrGet('Act', 'json', 'account',     c => { this.act = c });
          this.$root.xhrGet('Cat', 'json', 'categories',  c => { this.cats = c });
          this.$root.xhrGet('Cir', 'json', 'circles',     c => {
+            this.ppl = c.contacts;
             this.circ = c.circles;
             this.circN = c.circles.length; //todo temporary
             this.filterCircle(c);
@@ -738,6 +751,10 @@
             this.circOpen[aId] = { members: [{alias: this.act.alias, id: this.act.id}],
                                    filter: {'': true}, filterCount: 0, posts: [], fltrPosts: [] };
             return aId;
+         },
+         inviteCircleMember(iC, iId) {
+            var aM = this.ppl.find(c => c.id === iId);
+            iC.members.push({alias: aM.alias, id: aM.id, invited: {by: this.act.alias, date: 'Today'}});
          },
          circleName(i) {
             var aC = this.circ.find(c => c.id === i);
