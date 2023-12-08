@@ -332,7 +332,7 @@
                     >&#x2795; Circle</button>
          </form>
       </krm-dropdown>
-      <div v-for="(aV, aK) in circOpen"
+      <div v-for="(aV, aK, aI) in circOpen"
            v-show="aK === circId">
          <div v-if="aV.invited"
               style="margin-bottom:0.5em; border: 3px solid blue; border-radius:6px; padding:0.5em">
@@ -362,10 +362,21 @@
                   >{{a.alias}}</span>
          </div>
          <div style="float:right"
-              >({{aV.fltrPosts.length}} of {{aV.posts.length}})</div>
-         <div>
-            <label v-for="(aFv, aFk) in aV.filter"
-                   style="margin-right:1em">
+              >{{aV.fltrPosts.length}} of {{aV.posts.length}}<!---->
+            <krm-dropdown v-if="aK !== 'new' && !aV.invited"
+                          @open="circUp[aI].chooseFile()"
+                          :ref="function(c) { circPost[aI] = c }"
+                          title="Post clip"
+                          style="display:inline; margin-left:1em">
+               <template #icon>&#x2af7;</template>
+               <krm-upload @post="function(c) { addCircleClip(aV, aK, c), circPost[aI].hide() }"
+                           @playing="stopClient()"
+                           :aud="aud"
+                           :ref="function(c) { circUp[aI] = c }"/>
+            </krm-dropdown>
+         </div>
+         <div class="checkset">
+            <label v-for="(aFv, aFk) in aV.filter">
                <input @input="aV.filter[aFk] = $event.target.checked,
                               aV.filterCount += aV.filter[aFk] *2-1,
                               aFk && (aV.filter[''] = !aV.filterCount),
@@ -377,7 +388,7 @@
             <tr v-for="aP in aV.fltrPosts">
                <td>{{aP.heard ? '' : aP.tags && aP.tags[0] === 'circle_invite' ? '&#x2709;' : '&#x2600;'}}</td>
                <td>{{aP.date}}</td>
-               <td v-if="aP.circle"
+               <td v-if="aK === 'new'"
                    @click="goCircle(aP.circle)"
                    class="uilink"
                    >{{circleName(aP.circle)}}</td>
@@ -659,7 +670,7 @@
       emits: [ 'djadd' ],
       data() { return { clientClip: null, //todo must be array? pop() in client @ended & @pause events
                         act: null, recSaved: false,
-                        circ: null, circOpen: {}, circId: 'new', circName: '',
+                        circ: null, circOpen: {}, circId: 'new', circName: '', circPost: [], circUp: [],
                         cats: null, found: null,
                         djs: null, djN: 0,
                         curators: {}, curId: '',
@@ -756,6 +767,14 @@
             var aM = this.ppl.find(c => c.id === iId);
             iC.members.push({alias: aM.alias, id: aM.id, invited: {by: this.act.alias, date: 'Today'}});
          },
+         addCircleClip(iC, iId, iUp) {
+            let aClip = this.newLibClip(iUp);
+            iC.posts.unshift({ circle: iId, date: 'Today', alias: this.act.alias, tags: [], heard: true,
+                               runtime: aClip.dur, clip: aClip });
+            this.filterCircle(iC);
+            this.circOpen.new.posts.unshift(iC.posts[0]);
+            this.filterCircle(this.circOpen.new);
+         },
          circleName(i) {
             var aC = this.circ.find(c => c.id === i);
             if (!aC)
@@ -822,10 +841,12 @@
                      this.curProgSort.find(c => c.id !== iP.id && c.name === iP.name));
          },
          addClip(iUp) {
+            this.curate.clips['Clu'+ ++this.curate.clipN] = this.newLibClip(iUp);
+         },
+         newLibClip(iUp) {
             let aSum = iUp.set.reduce((cA, c) => cA + c.buf.duration, 0);
-            this.curate.clips['Clu'+ ++this.curate.clipN] =
-               { name: iUp.name, artist: iUp.artist, date: iUp.date,
-                 dur: Math.round(aSum), file: iUp.set[0].file };
+            return { name: iUp.name, artist: iUp.artist, date: iUp.date,
+                     dur: Math.round(aSum), file: iUp.set[0].file };
          },
          openProg(iP) {
             if (this.curate.open.find(c => c.id === iP.id))
@@ -1030,7 +1051,8 @@
          <div v-if="a.error"
               class="uired"
               >{{a.file}}: {{a.error}}</div></template>
-      <div :class="{uihide: upHide}">
+      <div :class="{uihide: upHide}"
+           style="width:max-content">
          <input v-model="up.name"
                 placeholder="Clip name"
                 name="title" type="text"
@@ -1040,14 +1062,10 @@
                  :title="'Play '+ (upHide || up.set[0].file)"
                  style="margin-right:0.5em"
                  >{{aud.src ? '&#x25fc;' : '&#x25b6;'}}</button>
-         <span style="margin-right:3em; font-size:80%"
+         <span style="margin-right:1em; font-size:80%"
                >{{upHide || Math.round(up.set[0].buf.duration)}}</span>
          <input :value="upHide || Math.round(up.set[0].buf.duration)"
                 name="dur" type="hidden"/>
-         <button @click="upStop(), $emit('post', up), upClear()"
-                 :disabled="kEmpty.test(up.name) || kEmpty.test(up.artist) || kEmpty.test(up.date)"
-                 title="Add clip"
-                 >&#x2795; Clip</button>
          <div style="margin-bottom:0.5em"></div>
          <input v-model="up.artist"
                 placeholder="Artist"
@@ -1056,7 +1074,11 @@
          <input v-model="up.date"
                 placeholder="Released"
                 name="date" type="text"
-                style="width:6.5em"/>
+                style="width:6.5em; margin-right:1em"/>
+         <button @click="upStop(), $emit('post', up), upClear()"
+                 :disabled="kEmpty.test(up.name) || kEmpty.test(up.artist) || kEmpty.test(up.date)"
+                 title="Add clip"
+                 >&#x2795; Clip</button>
       </div>
    </form>
 </script><script type="module">
@@ -1071,6 +1093,10 @@
          kEmpty() { return /^\s*$/ },
       },
       methods: {
+         chooseFile() {
+            if (this.upHide)
+               this.$refs.fileSelect.click();
+         },
          readAudioFiles(iFiles) {
             if (iFiles.length < 1) {
                this.upHide = true;
@@ -1131,7 +1157,7 @@
 
 <script type="text/x-template" id="krm-dropdown">
    <div class="dropdn">
-      <span @click="shown = !shown">
+      <span @click="(shown = !shown) && $emit('open')">
          <slot name="icon"></slot></span>
       <div v-show="shown"
            title="">
@@ -1142,6 +1168,7 @@
 
    krm.app.component('krm-dropdown', {
       template: '#krm-dropdown',
+      emits: [ 'open' ],
       data() { return { shown: false } },
       methods: {
          hide() { this.shown = false },

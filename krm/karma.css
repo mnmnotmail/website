@@ -77,6 +77,11 @@ textarea:focus {
    cursor: default !important;
 }
 
+.checkset > label {
+   margin-right: 1em;
+   display: inline-block;
+}
+
 .person {
    display: inline-block;
    margin-top: 0.15em;
