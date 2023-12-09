@@ -1157,9 +1157,10 @@
 
 <script type="text/x-template" id="krm-dropdown">
    <div class="dropdn">
-      <span @click="(shown = !shown) && $emit('open')">
+      <span @mousedown="handleToggle">
          <slot name="icon"></slot></span>
       <div v-show="shown"
+           @mousedown="localMd = true"
            title="">
          <slot></slot></div>
    </div>
@@ -1169,9 +1170,33 @@
    krm.app.component('krm-dropdown', {
       template: '#krm-dropdown',
       emits: [ 'open' ],
-      data() { return { shown: false } },
+      data() { return { shown: false, localMd: false } },
+      beforeMount() {
+         window.addEventListener('mousedown', this.handleWinMd);
+         window.addEventListener('keyup', this.handleWinKey);
+      },
+      unmounted() {
+         window.removeEventListener('mousedown', this.handleWinMd);
+         window.removeEventListener('keyup', this.handleWinKey);
+      },
       methods: {
          hide() { this.shown = false },
+         handleToggle() {
+            if (this.shown)
+               return;
+            this.shown = this.localMd = true;
+            this.$emit('open');
+         },
+         handleWinMd() {
+            if (this.localMd)
+               this.localMd = false;
+            else
+               this.shown = false;
+         },
+         handleWinKey(iEvt) {
+            if (iEvt.key === 'Escape')
+               this.shown = false;
+         },
       },
    });
 </script>
