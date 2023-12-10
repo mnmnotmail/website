@@ -45,6 +45,8 @@ textarea:focus {
 
 .uishowspc { white-space: break-spaces }
 
+.uibreakword { word-break: break-word }
+
 .uilink {
    cursor: pointer;
    font-weight: bold;
@@ -54,6 +56,16 @@ textarea:focus {
    border: 1px solid blue;
    border-radius: 5px;
    padding: 0.2em 0.5em;
+}
+
+.box40vh {
+   max-height: 40vh;
+   overflow-y: auto;
+}
+
+.box50vw {
+   max-width: 50vw;
+   min-width: max-content;
 }
 
 .tabset2 {

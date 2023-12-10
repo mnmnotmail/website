@@ -57,7 +57,7 @@
    <start v-if="firstStart"
           @ok="firstStart = false"/>
    <finder v-else
-           @djadd="function(c) { $refs.feed.addDj(c) }"
+           @djrev="function(c) { $refs.feed.revDjs(c) }"
            ref="finder"/>
    <div style="margin-top:3em; border-top:1px solid gray; padding-left:0.5em;
                font-family:monospace; white-space:pre-wrap;">
@@ -415,16 +415,9 @@
            v-show="aI === djN">
          <img :src="a.img"
               style="float:right; margin:0 0 0.5em 0.5em; max-width:25%"/>
-         <select @change="addFeedDj($event.target.value, a), $event.target.value = ''"
-                 style="float:right; clear:right">
-            <option value=""
-                    >&#x2795; to Feed...</option>
-            <option value="new"
-                    >New Feed</option>
-            <option v-for="aF in act.saved"
-                    :value="aF.id"
-                    >{{aF.name}}</option>
-         </select>
+         <krm-tofeed @djrev="function(c) { $emit('djrev', c) }"
+                     :src="a.id" :srcname="a.name" :feeds="act.saved"
+                     style="float:right; clear:right"/>
          <h3>{{a.name}}</h3>
          <div style="margin-bottom:0.5em; font-style:italic"
               >{{a.title}}</div>
@@ -667,7 +660,7 @@
 
    krm.app.component('finder', {
       template: '#krm-finder',
-      emits: [ 'djadd' ],
+      emits: [ 'djrev' ],
       data() { return { clientClip: null, //todo must be array? pop() in client @ended & @pause events
                         act: null, recSaved: false,
                         circ: null, circOpen: {}, circId: 'new', circName: '', circPost: [], circUp: [],
@@ -737,21 +730,6 @@
          addFeed() {
             this.act.saved.unshift({name: 'Untitled', id: 'Fxx', saved: 'Today', played: null,
                                     schedule: null, djs: []});
-         },
-         addFeedDj(iFeed, iDj) {
-            if (!iFeed)
-               return;
-            var aDj = {name: iDj.name, id: iDj.id};
-            if (iFeed === 'new')
-               this.addFeed();
-            else if (iFeed === krm.s.feedRef.id)
-               this.$emit('djadd', aDj);
-            else
-               ; //todo: update feed
-            var aSaved = iFeed === 'new' ? this.act.saved[0] : this.act.saved.find(c => c.id === iFeed);
-            aSaved.djs.push(aDj);
-            aSaved.saved = 'Today';
-            this.act.saved.sort((cA, cB) => cA.saved > cB.saved ? -1 : cA.saved < cB.saved ? 1 : 0);
          },
          goBrowse() {
             this.$root.xhrGet('Fnd', 'json', 'found', c => { this.found = c });
@@ -924,7 +902,7 @@
              :style="{outline: aI === clipsN ? '1px solid black' : null}">
             <td>{{a.name}}</td>
             <td>{{a.artist}}</td>
-            <td>{{feed.curators.find(c => c.id === a.dj).name}}</td>
+            <td>{{djName(a.dj)}}</td>
             <td>{{a.date}}</td>
             <td class="uialignr"
                 >{{a.dur}}</td>
@@ -1018,10 +996,88 @@
                });
             });
          },
-         addDj(i) {
-            if (this.feed.curators.find(c => c.id === i.id))
-               return;
-            this.feed.curators.push(i);
+         djName(iId) { //todo: obtain curators from finder:act.saved[n]
+            var aDj = this.feed.curators.find(c => c.id === iId);
+            return aDj ? aDj.name : '??';
+         },
+         revDjs(i) {
+            this.feed.curators.length = 0;
+            for (let a of i)
+               this.feed.curators.push({id: a.id, name: a.name});
+         },
+      },
+   });
+</script>
+
+<script type="text/x-template" id="krm-tofeed">
+   <krm-dropdown title="Add to feed"
+                 ref="dropPane">
+      <template #icon>&#x2795;&#x266c;</template>
+      {{srcname}} heard on...
+      <form onsubmit="return false"
+            method="POST">
+         <div class="box40vh box50vw uishowspc uibreakword">
+            <label v-for="(a, aI) in feeds"
+                   style="display:block">
+               <input @input="flags[aI] = !flags[aI], feedSet[a.id] = $event.target.checked"
+                      :checked="a.djs.find(c => c.id === src)"
+                      :name="a.id" type="checkbox"
+                      style="margin-right:0.5em"/>{{a.name}}</label></div>
+         <button @click="update(), $refs.dropPane.hide()"
+                 :disabled="flags.every(c => !c)"
+                 title="Update feeds"
+                 style="float:right; margin-top:0.25em"
+                 >Update</button>
+         <br>
+      </form>
+      <form onsubmit="this.reset(); return false"
+            method="POST" autocomplete="off"
+            style="margin-top:0.5em">
+         <input @keydown.enter="add($event.target.value) || $event.preventDefault()"
+                placeholder="New feed"
+                name="new" type="text"
+                style="width:10em"/></form>
+   </krm-dropdown>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+
+   krm.app.component('krm-tofeed', {
+      template: '#krm-tofeed',
+      props: { feeds: Array, src: String, srcname: String },
+      emits: [ 'djrev' ],
+      data() { return { flags: [],
+                        feedSet: {}, /* temporary */ } },
+      computed: {
+         kEmpty() { return /^\s*$/ },
+      },
+      methods: {
+         add(iName) {
+            if (this.kEmpty.test(iName) || this.feeds.some(c => c.name === iName))
+               return false;
+            this.feeds.unshift({name: iName, id: 'Fx'+ this.feeds.length,
+                                saved: 'Today', played: null, schedule: null,
+                                djs: [{name: this.srcname, id: this.src}], });
+            return true;
+         },
+         update() {
+            this.flags.fill(false);
+            for (let aF of this.feeds) {
+               if (!(aF.id in this.feedSet))
+                  continue;
+               var aDj = aF.djs.findIndex(c => c.id === this.src);
+               var aLen = aF.djs.length;
+               if (this.feedSet[aF.id]) {
+                  if (aDj < 0)
+                     aF.djs.push({name: this.srcname, id: this.src});
+               } else if (aDj >= 0)
+                  aF.djs.splice(aDj, 1);
+               if (aF.djs.length !== aLen) {
+                  aF.saved = 'Today';
+                  if (aF.id === krm.s.feedRef.id)
+                     this.$emit('djrev', aF.djs);
+               }
+            }
+            this.feeds.sort((cA, cB) => cA.saved > cB.saved ? -1 : cA.saved < cB.saved ? 1 : 0);
          },
       },
    });
