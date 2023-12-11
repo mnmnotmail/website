@@ -332,7 +332,7 @@
                     >&#x2795; Circle</button>
          </form>
       </krm-dropdown>
-      <div v-for="(aV, aK, aI) in circOpen"
+      <div v-for="(aV, aK) in circOpen"
            v-show="aK === circId">
          <div v-if="aV.invited"
               style="margin-bottom:0.5em; border: 3px solid blue; border-radius:6px; padding:0.5em">
@@ -345,17 +345,31 @@
                        >&#x2795; Join Circle!</button></form>
          </div>
          <div style="margin-bottom:1em">
-            <select v-if="aK !== 'new' && !aV.invited"
-                    @change="inviteCircleMember(aV, $event.target.value), $event.target.value = ''"
-                    title="Invite member"
-                    style="float:right">
-               <option value=""
-                       >&#x2795; Member</option>
-               <option v-for="a in ppl"
-                       :value="a.id"
-                       :disabled="!!aV.members.find(c => c.id === a.id)"
-                       >{{a.alias}}</option>
-            </select>
+            <krm-dropdown v-if="aK !== 'new' && !aV.invited"
+                          title="Invite members"
+                          :ref="function(c) { aV.refs.inv = c }"
+                          style="float:right">
+               <template #icon>\o/</template>
+               <div v-if="ppl.every(c => aV.members.some(cM => cM.id === c.id))"
+                    style="width:10em; text-align:center"
+                    >The gang's all here :)</div>
+               <form v-else
+                     onsubmit="return false"
+                     method="POST">
+                  <div class="box40vh box50vw uishowspc uibreakword">
+                     <template v-for="(a, aI) in ppl" k--="todo: compute array of non-member ppl?">
+                        <label v-if="aV.members.every(c => c.id !== a.id)"
+                               style="display:block">
+                           <input @input="aV.invList[aI] = $event.target.checked ? a : null"
+                                  :name="a.id" type="checkbox"
+                                  style="margin-right:0.5em"/>{{a.alias}}</label></template></div>
+                  <button @click="inviteToCircle(aV), aV.refs.inv.hide()"
+                          :disabled="aV.invList.every(c => !c)"
+                          title="Invite new members"
+                          style="float:right; margin-top:0.25em"
+                          >Invite</button>
+               </form>
+            </krm-dropdown>
             <span v-for="a in aV.members"
                   class="person"
                   :class="{uifade: a.invited}"
@@ -364,15 +378,15 @@
          <div style="float:right"
               >{{aV.fltrPosts.length}} of {{aV.posts.length}}<!---->
             <krm-dropdown v-if="aK !== 'new' && !aV.invited"
-                          @open="circUp[aI].chooseFile()"
-                          :ref="function(c) { circPost[aI] = c }"
+                          @open="aV.refs.up.chooseFile()"
+                          :ref="function(c) { aV.refs.post = c }"
                           title="Post clip"
                           style="display:inline; margin-left:1em">
                <template #icon>&#x2af7;</template>
-               <krm-upload @post="function(c) { addCircleClip(aV, aK, c), circPost[aI].hide() }"
+               <krm-upload @post="function(c) { addCircleClip(aV, aK, c), aV.refs.post.hide() }"
                            @playing="stopClient()"
                            :aud="aud"
-                           :ref="function(c) { circUp[aI] = c }"/>
+                           :ref="function(c) { aV.refs.up = c }"/>
             </krm-dropdown>
          </div>
          <div class="checkset">
@@ -663,7 +677,7 @@
       emits: [ 'djrev' ],
       data() { return { clientClip: null, //todo must be array? pop() in client @ended & @pause events
                         act: null, recSaved: false,
-                        circ: null, circOpen: {}, circId: 'new', circName: '', circPost: [], circUp: [],
+                        circ: null, circOpen: {}, circId: 'new', circName: '',
                         cats: null, found: null,
                         djs: null, djN: 0,
                         curators: {}, curId: '',
@@ -738,12 +752,15 @@
             var aId = 'Thr'+ ++this.circN;
             this.circ.unshift({name: iName, id: aId, count: 0});
             this.circOpen[aId] = { members: [{alias: this.act.alias, id: this.act.id}],
-                                   filter: {'': true}, filterCount: 0, posts: [], fltrPosts: [] };
+                                   filter: {'': true}, filterCount: 0, posts: [],
+                                   fltrPosts: [], refs: {}, invList: [] };
             return aId;
          },
-         inviteCircleMember(iC, iId) {
-            var aM = this.ppl.find(c => c.id === iId);
-            iC.members.push({alias: aM.alias, id: aM.id, invited: {by: this.act.alias, date: 'Today'}});
+         inviteToCircle(iC) {
+            for (var a of iC.invList)
+               if (a)
+                  iC.members.push({alias: a.alias, id: a.id, invited: {by: this.act.alias, date: 'Today'}});
+            iC.invList.fill(null);
          },
          addCircleClip(iC, iId, iUp) {
             let aClip = this.newLibClip(iUp);
@@ -764,6 +781,8 @@
                this.circId = iId;
             else
                this.$root.xhrGet(iId, 'json', 'circle', c => {
+                  c.refs = {};
+                  c.invList = [];
                   if (c.invited)
                      c.invited = c.members.find(cM => cM.id === this.act.id).invited;
                   this.filterCircle(c);
