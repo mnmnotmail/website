@@ -103,6 +103,11 @@ textarea:focus {
 }
 .person.uifade { opacity: 0.6 }
 
+.tag {
+   padding: 2px;
+   background-color: #f8f8aa;
+}
+
 tr.inunpub { box-shadow: inset 0 4em #ed5 }
 tr.inhide  { box-shadow: inset 0 4em gainsboro }
 
@@ -114,7 +119,7 @@ tr.inhide  { box-shadow: inset 0 4em gainsboro }
    cursor: pointer;
    user-select: none;
 }
-.dropdn > :last-child {
+.dropdn > :nth-child(2) {
    position: absolute;
    right: 0; top: 100%;
    z-index: 1;

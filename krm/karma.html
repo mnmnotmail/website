@@ -399,7 +399,7 @@
                       :disabled="aFk ? aV.filterCount && aV.filter[''] : !aV.filterCount"
                       type="checkbox"/>&nbsp;{{aFk || 'All'}}</label></div>
          <table style="margin-top:1em; border-spacing:1em 0.25em">
-            <tr v-for="aP in aV.fltrPosts">
+            <tr v-for="aP in aV.fltrPosts" :key="aP.id">
                <td>{{aP.heard ? '' : aP.tags && aP.tags[0] === 'circle_invite' ? '&#x2709;' : '&#x2600;'}}</td>
                <td>{{aP.date}}</td>
                <td v-if="aK === 'new'"
@@ -411,9 +411,12 @@
                            >{{clientClip === aP.clip ? '&#x25fc;' : '&#x25b6;'}}</button></td>
                <td class="uifont80 uivalignm uialignr"
                    >{{aP.runtime}}</td>
-               <td><span v-for="a in aP.tags"
-                         style="margin-right:0.25em; padding:2px; background-color:#f8f8aa"
-                         >{{a}}</span></td>
+               <td><template v-for="a in aP.tags" :key="a">
+                     <span class="tag"
+                           >{{a}}</span>{{' '}}</template>
+                  <krm-tag v-if="aK !== 'new' && !aV.invited"
+                           :set="aV.filter" :tags="aP.tags" :sparse="true"/>
+               </td>
             </tr></table>
       </div>
    </div>
@@ -1042,7 +1045,10 @@
                       :checked="a.djs.find(c => c.id === src)"
                       :name="a.id" type="checkbox"
                       style="margin-right:0.5em"/>{{a.name}}</label></div>
-         <button @click="update(), $refs.dropPane.hide()"
+         <em v-if="!feeds.length"
+             >Saved feeds</em>
+         <button v-show="feeds.length"
+                 @click="update(), $refs.dropPane.hide()"
                  :disabled="flags.every(c => !c)"
                  title="Update feeds"
                  style="float:right; margin-top:0.25em"
@@ -1097,6 +1103,76 @@
                }
             }
             this.feeds.sort((cA, cB) => cA.saved > cB.saved ? -1 : cA.saved < cB.saved ? 1 : 0);
+         },
+      },
+   });
+</script>
+
+<script type="text/x-template" id="krm-tag">
+   <krm-dropdown :sparse="sparse"
+                 title="Add/drop tags"
+                 ref="dropPane"
+                 style="display:inline">
+      <template #icon>&sharp;</template>
+      <form onsubmit="return false"
+            method="POST">
+         <div class="box40vh box50vw uishowspc uibreakword">
+            <label v-for="(aT, aTi) in tagSet" :key="aT"
+                   style="display:block">
+               <input @input="flags[aTi] = !flags[aTi], chgSet[aT] = $event.target.checked"
+                      :checked="tags.some(c => c === aT)"
+                      :name="aT" type="checkbox"
+                      style="margin-right:0.5em"/>{{aT}}</label></div>
+         <em v-if="!tagSet.length"
+             >Circle tags</em>
+         <button v-show="tagSet.length"
+                 @click="update(), $refs.dropPane.hide()"
+                 :disabled="flags.every(c => !c)"
+                 title="Update tags"
+                 style="float:right; margin-top:0.25em"
+                 >Update</button>
+         <br>
+      </form>
+      <form onsubmit="this.reset(); return false"
+            method="POST" autocomplete="off"
+            style="margin-top:0.5em">
+         <input @keydown.enter="add($event.target.value) || $event.preventDefault()"
+                placeholder="New tag"
+                name="new" type="text"
+                style="min-width:8em; width:100%"/></form>
+   </krm-dropdown>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+
+   krm.app.component('krm-tag', {
+      template: '#krm-tag',
+      props: { set: Object, tags: Array, sparse: Boolean },
+      data() { return { flags: [],
+                        chgSet: {}, /* temporary */ } },
+      computed: {
+         tagSet() { return Object.keys(this.set).slice(1) },
+         kEmpty() { return /^\s*$/ },
+      },
+      methods: {
+         add(iTag) {
+            if (this.kEmpty.test(iTag) || iTag in this.set)
+               return false;
+            this.set[iTag] = false;
+            this.tags.push(iTag);
+            return true;
+         },
+         update() {
+            this.flags.fill(false);
+            for (var aT in this.set) {
+               if (!(aT in this.chgSet))
+                  continue;
+               var aTi = this.tags.findIndex(c => c === aT);
+               if (this.chgSet[aT]) {
+                  if (aTi < 0)
+                     this.tags.push(aT);
+               } else if (aTi >= 0)
+                  this.tags.splice(aTi, 1);
+            }
          },
       },
    });
@@ -1234,7 +1310,8 @@
    <div class="dropdn">
       <span @mousedown="handleToggle">
          <slot name="icon"></slot></span>
-      <div v-show="shown"
+      <div v-if="!sparse || unsparse"
+           v-show="shown"
            @mousedown="localMd = true"
            title="">
          <slot></slot></div>
@@ -1244,8 +1321,9 @@
 
    krm.app.component('krm-dropdown', {
       template: '#krm-dropdown',
+      props: { sparse: Boolean },
       emits: [ 'open' ],
-      data() { return { shown: false, localMd: false } },
+      data() { return { unsparse: false, shown: false, localMd: false } },
       beforeMount() {
          window.addEventListener('mousedown', this.handleWinMd);
          window.addEventListener('keyup', this.handleWinKey);
@@ -1259,7 +1337,7 @@
          handleToggle() {
             if (this.shown)
                return;
-            this.shown = this.localMd = true;
+            this.shown = this.localMd = this.unsparse = true;
             this.$emit('open');
          },
          handleWinMd() {
