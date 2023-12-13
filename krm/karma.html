@@ -28,6 +28,7 @@
       appRoot: null,
       s: { feedRef: {}, screen: -1 },
       kSc: {fe:0, st:1, jo:2, si:3, re:1, br:2, fo:3, ci:4, dj:5, cu:6},
+      kEmpty: /^\s*$/,
    };
    window.onload = () => {
       krm.appRoot = krm.app.mount('#krm-app');
@@ -326,7 +327,7 @@
                    name="name" type="text"
                    style="width:12em; margin-bottom:0.5em"/>
             <button @click="circId = addCircle(circName), circName = '', $refs.circStart.hide()"
-                    :disabled="kEmpty.test(circName) || circ.find(c => c.name === circName)"
+                    :disabled="krm.kEmpty.test(circName) || circ.find(c => c.name === circName)"
                     title="Create circle"
                     style="float:right"
                     >&#x2795; Circle</button>
@@ -491,7 +492,7 @@
                onsubmit="false" @submit="curate.edit = false"
                method="POST">
             <input v-model="curate.title"
-                   @keydown.enter="kEmpty.test(curate.title) && $event.preventDefault()"
+                   @keydown.enter="krm.kEmpty.test(curate.title) && $event.preventDefault()"
                    placeholder="Slogan or mission statement"
                    name="title" type="text"
                    style="width:70%"/></form>
@@ -696,7 +697,6 @@
             return Object.values(this.curate.clips).sort(
                (cA, cB) => cA.date > cB.date ? -1 : cA.date < cB.date ? 1 : 0 );
          },
-         kEmpty() { return /^\s*$/ },
          krm() { return krm },
       },
       created() {
@@ -837,7 +837,7 @@
                {id: aId, name: '', date: 'Today', count: 0, dur: 0, clips: null, status: 'pend'};
          },
          checkProgName(iP) {
-            return !(this.kEmpty.test(iP.name) ||
+            return !(krm.kEmpty.test(iP.name) ||
                      this.curProgSort.find(c => c.id !== iP.id && c.name === iP.name));
          },
          addClip(iUp) {
@@ -1072,12 +1072,9 @@
       emits: [ 'djrev' ],
       data() { return { flags: [],
                         feedSet: {}, /* temporary */ } },
-      computed: {
-         kEmpty() { return /^\s*$/ },
-      },
       methods: {
          add(iName) {
-            if (this.kEmpty.test(iName) || this.feeds.some(c => c.name === iName))
+            if (krm.kEmpty.test(iName) || this.feeds.some(c => c.name === iName))
                return false;
             this.feeds.unshift({name: iName, id: 'Fx'+ this.feeds.length,
                                 saved: 'Today', played: null, schedule: null,
@@ -1151,11 +1148,10 @@
                         chgSet: {}, /* temporary */ } },
       computed: {
          tagSet() { return Object.keys(this.set).slice(1) },
-         kEmpty() { return /^\s*$/ },
       },
       methods: {
          add(iTag) {
-            if (this.kEmpty.test(iTag) || iTag in this.set)
+            if (krm.kEmpty.test(iTag) || iTag in this.set)
                return false;
             this.set[iTag] = false;
             this.tags.push(iTag);
@@ -1227,7 +1223,7 @@
                 name="date" type="text"
                 style="width:6.5em; margin-right:1em"/>
          <button @click="upStop(), $emit('post', up), upClear()"
-                 :disabled="kEmpty.test(up.name) || kEmpty.test(up.artist) || kEmpty.test(up.date)"
+                 :disabled="krm.kEmpty.test(up.name) || krm.kEmpty.test(up.artist) || krm.kEmpty.test(up.date)"
                  title="Add clip"
                  >&#x2795; Clip</button>
       </div>
@@ -1241,7 +1237,7 @@
       emits: [ 'playing', 'post' ],
       data() { return { upHide: true, up: {name:'', date:'', artist:'', set:[]}, } },
       computed: {
-         kEmpty() { return /^\s*$/ },
+         krm() { return krm },
       },
       methods: {
          chooseFile() {
