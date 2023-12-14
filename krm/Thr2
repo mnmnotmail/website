@@ -1,4 +1,6 @@
 {
+  "name": "school friends",
+
   "members": [
     {"alias": "Tharu",  "id": "T111"},
     {"alias": "Jess",   "id": "J112"},

@@ -121,11 +121,16 @@ tr.inhide  { box-shadow: inset 0 4em gainsboro }
 }
 .dropdn > :nth-child(2) {
    position: absolute;
-   right: 0; top: 100%;
+   right: 0;
+   top: 100%;
    z-index: 1;
    box-shadow: 8px 8px 6px gainsboro;
    border: 1px solid #bbb;
    border-radius: 6px 0 6px 6px;
    background-color: #f6f6f6;
    padding: 0.5em;
+}
+.dropdn.uileft0 > :nth-child(2) {
+   left: 0;
+   right: auto;
 }

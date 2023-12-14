@@ -1,4 +1,6 @@
 {
+  "name": "meditators",
+
   "members": [
     {"alias": "Ananda", "id": "T113"},
     {"alias": "Liam",   "id": "L114"},

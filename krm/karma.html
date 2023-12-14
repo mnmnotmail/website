@@ -51,7 +51,8 @@
 <script type="text/x-template" id="krm-main">
    <div style="margin-top:3em"></div>
    <feed v-show="krm.s.screen === krm.kSc.fe"
-         @godj="function(c) { if ($refs.finder) $refs.finder.goDj(c) }"
+         @gosrc="function(c) { if ($refs.finder) c.slice(0,3) === 'Thr' ? $refs.finder.goCircle(c)
+                                                                        : $refs.finder.goDj(c) }"
          :id="krm.s.feedRef.id" :name="krm.s.feedRef.name"
          :go="firstStart"
          ref="feed"/>
@@ -371,7 +372,14 @@
                           >Invite</button>
                </form>
             </krm-dropdown>
-            <span v-for="a in aV.members"
+            <template v-if="aK !== 'new' && !aV.invited">
+               <krm-tofeed @djrev="function(c) { $emit('djrev', c) }"
+                           :src="aK" :srcname="aV.name" :feeds="act.saved" :side="'left'"
+                           style="display:inline"/>
+               <span style="margin-right:0.5em; border-right: 2px solid darkgray; padding:0.25em; font-weight:bold"
+                     >{{act.saved.reduce((cA, c) => cA + c.djs.some(cDj => cDj.id === aK) *1, 0) || 'none'}}</span>
+            </template>
+            <span v-for="a in aV.members" :key="a.id"
                   class="person"
                   :class="{uifade: a.invited}"
                   >{{a.alias}}</span>
@@ -780,9 +788,10 @@
             return aC ? aC.name : '??';
          },
          goCircle(iId) {
-            if (iId in this.circOpen)
+            if (iId in this.circOpen) {
                this.circId = iId;
-            else
+               krm.s.screen = krm.kSc.ci;
+            } else
                this.$root.xhrGet(iId, 'json', 'circle', c => {
                   c.refs = {};
                   c.invList = [];
@@ -791,6 +800,7 @@
                   this.filterCircle(c);
                   this.circOpen[iId] = c;
                   this.circId = iId;
+                  krm.s.screen = krm.kSc.ci;
                });
          },
          filterCircle(iC) {
@@ -896,7 +906,7 @@
            style="margin:0 0.5em 1em 0">
          DJs
          <span v-for="a in feed.curators"
-               @click="$emit('godj', a.id)" k--="todo: popup dj profile card on firstStart"
+               @click="$emit('gosrc', a.id)" k--="todo: popup dj profile card on firstStart"
                class="uipoint" style="margin-right:0.5em; padding:0.25em; background-color:lightgray"
                >{{a.name}}</span>
       </div>
@@ -936,7 +946,7 @@
 
    krm.app.component('feed', {
       template: '#krm-feed',
-      emits: [ 'godj' ],
+      emits: [ 'gosrc' ],
       props: { id: String, name: String, go: Boolean },
       data() { return { audCtx: new AudioContext(), audSrc: null, state: 'run',
                         feed: null, clipsN: 0,
@@ -1032,19 +1042,20 @@
 </script>
 
 <script type="text/x-template" id="krm-tofeed">
-   <krm-dropdown title="Add to feed"
+   <krm-dropdown :side="side"
+                 title="Add to feed"
                  ref="dropPane">
       <template #icon>&#x2795;&#x266c;</template>
       {{srcname}} heard on...
       <form onsubmit="return false"
             method="POST">
          <div class="box40vh box50vw uishowspc uibreakword">
-            <label v-for="(a, aI) in feeds"
+            <label v-for="(aF, aFi) in feeds" :key="aF.id"
                    style="display:block">
-               <input @input="flags[aI] = !flags[aI], feedSet[a.id] = $event.target.checked"
-                      :checked="a.djs.find(c => c.id === src)"
-                      :name="a.id" type="checkbox"
-                      style="margin-right:0.5em"/>{{a.name}}</label></div>
+               <input @input="flags[aFi] = !flags[aFi], feedSet[aF.id] = $event.target.checked"
+                      :checked="aF.djs.find(c => c.id === src)"
+                      :name="aF.id" type="checkbox"
+                      style="margin-right:0.5em"/>{{aF.name}}</label></div>
          <em v-if="!feeds.length"
              >Saved feeds</em>
          <button v-show="feeds.length"
@@ -1068,7 +1079,7 @@
 
    krm.app.component('krm-tofeed', {
       template: '#krm-tofeed',
-      props: { feeds: Array, src: String, srcname: String },
+      props: { feeds: Array, src: String, srcname: String, side: String },
       emits: [ 'djrev' ],
       data() { return { flags: [],
                         feedSet: {}, /* temporary */ } },
@@ -1303,7 +1314,8 @@
 </script>
 
 <script type="text/x-template" id="krm-dropdown">
-   <div class="dropdn">
+   <div class="dropdn"
+        :class="{uileft0: side === 'left'}">
       <span @mousedown="handleToggle">
          <slot name="icon"></slot></span>
       <div v-if="!sparse || unsparse"
@@ -1317,7 +1329,7 @@
 
    krm.app.component('krm-dropdown', {
       template: '#krm-dropdown',
-      props: { sparse: Boolean },
+      props: { sparse: Boolean, side: String },
       emits: [ 'open' ],
       data() { return { unsparse: false, shown: false, localMd: false } },
       beforeMount() {
