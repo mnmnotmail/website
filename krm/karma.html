@@ -907,7 +907,7 @@
          DJs
          <span v-for="a in feed.curators"
                @click="$emit('gosrc', a.id)" k--="todo: popup dj profile card on firstStart"
-               class="uipoint" style="margin-right:0.5em; padding:0.25em; background-color:lightgray"
+               class="person uilink"
                >{{a.name}}</span>
       </div>
       <h3>
@@ -930,14 +930,14 @@
       <table v-if="feed"
              style="border-spacing:1em 0">
          <tr><th></th><th>Artist</th><th>DJ</th><th>Released</th><th>Runs</th></tr>
-         <tr v-for="(a, aI) in feed.clips"
-             :style="{outline: aI === clipsN ? '1px solid black' : null}">
-            <td>{{a.name}}</td>
-            <td>{{a.artist}}</td>
-            <td>{{djName(a.dj)}}</td>
-            <td>{{a.date}}</td>
+         <tr v-for="(aC, aCi) in feed.clips"
+             :class="{inplay: aCi === clipsN}">
+            <td>{{aC.name}}</td>
+            <td>{{aC.artist}}</td>
+            <td>{{djName(aC.dj)}}</td>
+            <td>{{aC.date}}</td>
             <td class="uialignr"
-                >{{a.dur}}</td>
+                >{{aC.dur}}</td>
          </tr>
       </table>
    </div>
