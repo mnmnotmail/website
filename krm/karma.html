@@ -473,11 +473,28 @@
          <span @click="curate.openId = 'lib'"
                :class="{tabshow: curate.openId === 'lib'}"
                >Library</span>
-         <span v-for="aP in curate.open"
+         <span v-for="aP in curate.open" :key="aP.id"
                @click="curate.openId = aP.id"
                :class="{tabshow: curate.openId === aP.id}"
                >{{aP.edit && aP.edit.name || aP.name}}</span>
       </div>
+      <krm-dropdown ref="progAdd"
+                    title="Add program"
+                    style="position:absolute; right:0.5em; top:3em">
+         <template #icon>&#x2795;</template>
+         <form onsubmit="return false"
+               method="POST" autocomplete="off">
+            <input v-model="newProg.name" k--="todo: focus input field on open"
+                   placeholder="New program name"
+                   name="name" type="text"
+                   style="width:12em; margin-bottom:0.5em"/>
+            <button @click="curate.openId = addProgram(newProg), newProg.name = '', $refs.progAdd.hide()"
+                    :disabled="!checkProgName(newProg)"
+                    title="Create program"
+                    style="float:right"
+                    >&#x2795; Program</button>
+         </form>
+      </krm-dropdown>
       <div v-show="curate.openId === 'home'">
          <img :src="curate.img"
               style="float:right; margin-left:0.5em; max-width:25%"/>
@@ -505,41 +522,23 @@
                    name="title" type="text"
                    style="width:70%"/></form>
          <table style="margin:1em 0; border-spacing:1em 0">
-            <tr><td>
-               <form onsubmit="return false"
-                     method="POST">
-                  <button @click="addProg()" k--="todo: focus input field"
-                          title="New program"
-                          >&#x2795; Program</button></form></td></tr>
             <tr><th></th><th>Updated</th><th>Count</th><th>Runtime</th></tr>
             <tr v-for="aP in curProgSort" :key="aP.id">
-               <td v-if="aP.status === 'pend'"
-                   colspan="4">
-                  <form onsubmit="return false" @submit="aP.status = 'empty'"
-                        method="POST">
-                     <input v-model="aP.name"
-                            @keydown.enter="checkProgName(aP) || $event.preventDefault()"
-                               k--="todo: localeCompare and move to @submit"
-                            placeholder="Program name"
-                            name="name" type="text"
-                            style="width:14em"/></form></td>
-               <template v-else>
-                  <td><span @click="openProg(aP), curate.openId = aP.id"
-                            class="uilink uishowspc"
-                            >{{aP.edit && aP.edit.name || aP.name}}</span></td>
-                  <td>{{aP.date}}</td>
-                  <td class="uialignr"
-                      >{{aP.count}}</td>
-                  <td class="uialignr"
-                      >{{aP.dur}}</td>
-               </template>
-               <td v-if="aP.status === 'pend'"
+               <td><span @click="openProg(aP), curate.openId = aP.id"
+                         class="uilink uishowspc"
+                         >{{aP.edit && aP.edit.name || aP.name}}</span></td>
+               <td>{{aP.date}}</td>
+               <td class="uialignr"
+                   >{{aP.count}}</td>
+               <td class="uialignr"
+                   >{{aP.dur}}</td>
+               <td v-if="aP.status === 'empty'"
                    class="uialignr">
                   <form onsubmit="return false"
                         method="POST">
-                     <button @click="delete curate.progs[aP.id]"
-                             title="Drop program"
-                             >&#x2a09;</button></form></td>
+                     <button @click="dropProgram(aP)"
+                             title="Drop empty program"
+                             >&#x274c;</button></form></td>
                <td v-else-if="aP.status"
                    class="uitalic"
                    >{{aP.status}}</td>
@@ -692,7 +691,7 @@
                         circ: null, circOpen: {}, circId: 'new', circName: '',
                         cats: null, found: null,
                         djs: null, djN: 0,
-                        curators: {}, curId: '',
+                        curators: {}, curId: '', newProg: {name:'', id:null},
                         aud: {ctx: new AudioContext(), src: null}, //todo: only for curator & circles
                       } },
       computed: {
@@ -841,12 +840,20 @@
                   this.curate.open.forEach(c => { this.makeClips(c) });
                });
          },
-         addProg() {
+         addProgram(iP) {
             var aId = 'P'+ ++this.curate.progN;
-            this.curate.progs[aId] =
-               {id: aId, name: '', date: 'Today', count: 0, dur: 0, clips: null, status: 'pend'};
+            var aP = this.curate.progs[aId] =
+               {id: aId, name: iP.name, date: 'Today', count: 0, dur: 0, clips: null, hidden: 0, status: 'empty'};
+            this.curate.open.unshift(aP);
+            return aId;
          },
-         checkProgName(iP) {
+         dropProgram(iP) {
+            var aPos = this.curate.open.findIndex(c => c.id === iP.id);
+            if (aPos >= 0)
+               this.curate.open.splice(aPos, 1);
+            delete this.curate.progs[iP.id];
+         },
+         checkProgName(iP) { //todo localeCompare
             return !(krm.kEmpty.test(iP.name) ||
                      this.curProgSort.find(c => c.id !== iP.id && c.name === iP.name));
          },
