@@ -432,24 +432,24 @@
    <div v-show="krm.s.screen === krm.kSc.dj"
         style="margin-right:0.5em">
       <div class="tabset2">
-         <span v-for="(a, aI) in djs"
-               @click="djN = aI"
-               :class="{tabshow: djN === aI}"
-               >{{a.name}}</span>
+         <span v-for="aD in djs" :key="aD.id"
+               @click="djId = aD.id"
+               :class="{tabshow: djId === aD.id}"
+               >{{aD.name}}</span>
       </div>
-      <div v-for="(a, aI) in djs"
-           v-show="aI === djN">
-         <img :src="a.img"
+      <div v-for="aD in djs" :key="aD.id"
+           v-show="aD.id === djId">
+         <img :src="aD.img"
               style="float:right; margin:0 0 0.5em 0.5em; max-width:25%"/>
          <krm-tofeed @djrev="function(c) { $emit('djrev', c) }"
-                     :src="a.id" :srcname="a.name" :feeds="act.saved"
+                     :src="aD.id" :srcname="aD.name" :feeds="act.saved"
                      style="float:right; clear:right"/>
-         <h3>{{a.name}}</h3>
+         <h3>{{aD.name}}</h3>
          <div style="margin-bottom:0.5em; font-style:italic"
-              >{{a.title}}</div>
+              >{{aD.title}}</div>
          Programs
          <table style="margin-left:1em; border-spacing:1em 0">
-            <tr v-for="aP in a.progs">
+            <tr v-for="aP in aD.progs">
                <td>{{aP.date}}</td>
                <td>{{aP.name}}</td>
                <td>{{aP.count}}</td>
@@ -690,7 +690,7 @@
                         act: null, recSaved: false,
                         circ: null, circOpen: {}, circId: 'new', circName: '',
                         cats: null, found: null,
-                        djs: null, djN: 0,
+                        djs: null, djId: 0,
                         curators: {}, curId: '', newProg: {name:'', id:null},
                         aud: {ctx: new AudioContext(), src: null}, //todo: only for curator & circles
                       } },
@@ -815,16 +815,14 @@
             });
          },
          goDj(iId) {
-            const fGo = () => {
-               this.djN = this.djs.findIndex(c => c.id === iId);
+            if (this.djs && this.djs.some(c => c.id === iId)) {
+               this.djId = iId;
                krm.s.screen = krm.kSc.dj;
-            };
-            if (this.djs)
-               fGo();
-            else
+            } else
                this.$root.xhrGet('Djs', 'json', 'djs', c => {
                   this.djs = c;
-                  fGo();
+                  this.djId = iId;
+                  krm.s.screen = krm.kSc.dj;
                });
          },
          goCurate(iId) {
