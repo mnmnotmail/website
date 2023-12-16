@@ -708,8 +708,13 @@
       },
       created() {
          krm.s.screen = krm.kSc.fe;
-         this.$root.xhrGet('Act', 'json', 'account',     c => { this.act = c });
          this.$root.xhrGet('Cat', 'json', 'categories',  c => { this.cats = c });
+         this.$root.xhrGet('Act', 'json', 'account',     c => {
+            c.saved.forEach((cId, cN) => { c.saved[cN] = c.feeds[cId] });
+            c.played.forEach((cId, cN) => { c.played[cN] = c.feeds[cId] });
+            delete c.feeds;
+            this.act = c;
+         });
          this.$root.xhrGet('Cir', 'json', 'circles',     c => {
             this.ppl = c.contacts;
             this.circ = c.circles;
