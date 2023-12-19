@@ -27,7 +27,7 @@
       app: null,
       appRoot: null,
       s: { feedRef: {}, screen: -1 },
-      kSc: {fe:0, st:1, jo:2, si:3, re:1, br:2, fo:3, ci:4, dj:5, cu:6},
+      kSc: {fe:0, st:1, jo:2, si:3, re:1, br:2, ci:3, dj:4, cu:5},
       kEmpty: /^\s*$/,
    };
    window.onload = () => {
@@ -232,8 +232,8 @@
       <span @click="krm.s.screen = krm.kSc.re"
             class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.re}"
             >Recent</span>
-      <span @click="krm.s.screen = found ? krm.kSc.fo : krm.kSc.br"
-            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === (found ? krm.kSc.fo : krm.kSc.br)}"
+      <span @click="krm.s.screen = krm.kSc.br"
+            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.br}"
             >Browse</span>
       <span @click="krm.s.screen = krm.kSc.ci"
             class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.ci}"
@@ -277,33 +277,87 @@
          </tr>
       </table>
    </div>
-   <button v-show="krm.s.screen === krm.kSc.br"
-           @click="krm.s.screen = krm.kSc.fo, goBrowse()"
-           style="float:right; margin-right:1em"
-           >Find DJs</button>
-   <table v-show="krm.s.screen === krm.kSc.br"><tr>
-      <td v-for="aCol in cats">
-         <div v-for="a in aCol">
-            <label><input type="checkbox" :name="a.name"/>{{a.name}}</label>
-         </div></td></tr></table>
-   <span v-show="krm.s.screen === krm.kSc.fo"
-         @click="krm.s.screen = krm.kSc.br, found = null"
-         class="uilink uibrdr" style="float:right; margin-right:1.5em"
-         >&#x2a09;</span>
-   <div v-show="krm.s.screen === krm.kSc.fo">
-      <div v-show="!found"
-           >Looking...</div>
-      <table v-show="found"
+   <div v-show="krm.s.screen === krm.kSc.br">
+      <form v-show="catUi"
+            onsubmit="return false"
+            method="GET">
+         <button @click="goBrowse()"
+                 :disabled="!catN && !catSet._q"
+                 style="float:right; margin-right:1em"
+                 >Find DJs</button>
+         <div style="float:left; margin-right:2em">
+            <label style="display:block; padding-top:1px">
+               <input v-model="catSet._w"
+                      name="_w" value="any" type="radio"/>Any</label>
+            <label style="display:block; padding-top:1px">
+               <input v-model="catSet._w"
+                      name="_w" value="all" type="radio"/>All&nbsp;&nbsp;of:</label>
+         </div>
+         <div>Search DJs<br/>
+            <input v-model="catSet._q"
+                   placeholder="Tags or Keywords"
+                   name="_q" type="text" autocomplete="off"
+                   style="margin-top:0.25em; width:18em"/></div>
+         <table style="margin:0.5em 0 1em; border-spacing:1em 0">
+            <tr><td v-for="aCol in cats">
+               <label v-for="a in aCol"
+                      style="display:block">
+                  <input @input="catN += $event.target.checked *2-1"
+                         v-model="catSet[a.name]"
+                         type="checkbox"/>{{a.name}}</label></td></tr></table>
+      </form>
+      <span v-show="found.length"
+            @click="found.length = 0, catSet = {_w:'any'}, catN = 0, catUi = true"
+            :title="'Drop search'+ (found.length > 1 ? 'es' : '')"
+            class="uilink uibrdr" style="float:right; margin-right:1.5em"
+            >&#x2a09;</span>
+      <span v-show="found.length > 1"
+            @click="browseBack()"
+            title="Back to prior search"
+            class="uilink uibrdr" style="float:right; margin-right:1em; padding-right:0.65em"
+            >&#x276e;</span>
+      <div v-show="found.length"
+           style="margin-bottom:1em">
+         <div @click="catUi = !catUi"
+              :title="(catUi ? 'Hide' : 'Show') +' search panel'"
+              class="uilink uibrdr" style="float:left; margin-right:1em"
+              >&#x2714;</div>
+         <em>DJs with {{found.length && found[found.length-1].set._w}} of: </em>
+         <template v-for="(aV, aK) in found.length ? found[found.length-1].set : null">
+            <span v-if="aK !== '_w' && aK !== '_q' && aV"
+                  class="tag"
+                  >{{aK}}</span>{{' '}}</template>
+      </div>
+      <em v-show="found.length && !found[found.length-1].res"
+          >Looking...</em>
+      <table v-show="found.length && found[found.length-1].res"
              style="border-spacing:1em 0">
-         <tr><th></th><th>Last Program</th><th>Clips</th><th>Runtime</th></tr>
-         <tr v-for="a in found">
-            <td><span @click="goDj(a.id)"
-                      class="uilink"
-                      >{{a.name}}</span></td>
-            <td>{{a.last}}</td>
-            <td>{{a.count}}</td>
-            <td>{{a.dur}}</td>
-         </tr></table>
+         <tr><th></th><th>Recent Programs</th><th>Clips</th></tr>
+         <template v-for="aD in found.length ? found[found.length-1].res : null">
+            <template v-for="(aP, aPi) in aD.rec" :key="aP.id">
+               <tr>
+                  <td v-if="aPi === 0"
+                      :rowspan="aD.rec.length * 2">
+                     <span @click="goDj(aD.id)"
+                           class="uilink"
+                           >{{aD.name}}</span></td>
+                  <td colspan="4"
+                      class="uitalic"
+                      >{{aP.name}}</td>
+               </tr>
+               <tr>
+                  <td>{{aP.date}}</td>
+                  <td>{{aP.count}}</td>
+                  <td><button @click="toggleClient(aP.clip)"
+                              >{{clientClip === aP.clip ? '&#x25fc;' : '&#x25b6;'}}</button></td>
+                  <td class="uifont80 uialignr"
+                      >{{aP.clip.dur}}</td>
+                  <td v-if="aPi === aD.rec.length-1"
+                      style="height:2em"
+                      ></td>
+               </tr>
+            </template></template>
+      </table>
    </div>
    <div v-show="krm.s.screen === krm.kSc.ci" v-if="circ"
         style="margin-right:0.5em">
@@ -689,7 +743,7 @@
       data() { return { clientClip: null, //todo must be array? pop() in client @ended & @pause events
                         act: null, recSaved: false,
                         circ: null, circOpen: {}, circId: 'new', circName: '',
-                        cats: null, found: null,
+                        cats: null, catUi: true, catN: 0, catSet: {_w:'any'}, found: [],
                         djs: null, djId: 0,
                         curators: {}, curId: '', newProg: {name:'', id:null},
                         aud: {ctx: new AudioContext(), src: null}, //todo: only for curator & circles
@@ -761,7 +815,27 @@
                                     schedule: null, djs: []});
          },
          goBrowse() {
-            this.$root.xhrGet('Fnd', 'json', 'found', c => { this.found = c });
+            var aF = {set: {}, n: this.catN, res: null};
+            if (this.catSet._q)
+               for (var a of this.catSet._q.split(' '))
+                  if (a)
+                     aF.set[a] = 1;
+            for (var a in this.catSet)
+               if (this.catSet[a])
+                  aF.set[a] = this.catSet[a];
+            this.catUi = false;
+            this.found.push(aF);
+            this.$root.xhrGet('Fnd', 'json', 'found', c => { this.found[this.found.length-1].res = c });
+         },
+         browseBack() {
+            this.found.pop();
+            var aF = this.found[this.found.length-1];
+            this.catSet = {};
+            for (var a in aF.set)
+               if (aF.set[a] !== 1)
+                  this.catSet[a] = aF.set[a];
+            this.catN = aF.n;
+            this.catUi = false;
          },
          addCircle(iName) {
             var aId = 'Thr'+ ++this.circN;

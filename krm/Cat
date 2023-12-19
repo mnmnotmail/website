@@ -1,7 +1,25 @@
 [[
-  { "name": "Outdoor", "file": "C11" },
-  { "name": "New age", "file": "C11" }
+  { "name": "Biography",       "id": "Caa" },
+  { "name": "Wellness",        "id": "Cab" },
+  { "name": "Science",         "id": "Cac" },
+  { "name": "Relationship",    "id": "Cae" },
+  { "name": "Career",          "id": "Caf" },
+  { "name": "Fitness",         "id": "Cag" },
+  { "name": "Home",            "id": "Cag1" }
  ],[
-  { "name": "Music",   "file": "C11" },
-  { "name": "Stories", "file": "C11" }
+  { "name": "Personal Growth", "id": "Cah" },
+  { "name": "Outdoor",         "id": "Cai" },
+  { "name": "New age",         "id": "Caj" },
+  { "name": "UAP/NHI",         "id": "Cak" },
+  { "name": "Meditation",      "id": "Cba" },
+  { "name": "Spirituality",    "id": "Cba1" },
+  { "name": "Soundscape",      "id": "Cbb" }
+ ],[
+  { "name": "Healing",         "id": "Cbd" },
+  { "name": "Mystery",         "id": "Cbf" },
+  { "name": "Poetry",          "id": "Cbg" },
+  { "name": "Philosophy",      "id": "Cbh" },
+  { "name": "News",            "id": "Cbi" },
+  { "name": "Music",           "id": "Cbj" },
+  { "name": "Stories",         "id": "Cbk" }
 ]]
