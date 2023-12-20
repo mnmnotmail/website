@@ -51,6 +51,7 @@
 <script type="text/x-template" id="krm-main">
    <div style="margin-top:3em"></div>
    <feed v-show="krm.s.screen === krm.kSc.fe"
+         @playing="$refs.finder && ($refs.finder.stopClient(), $refs.finder.stopAudsrc())"
          @gosrc="function(c) { if ($refs.finder) c.slice(0,3) === 'Thr' ? $refs.finder.goCircle(c)
                                                                         : $refs.finder.goDj(c) }"
          :id="krm.s.feedRef.id" :name="krm.s.feedRef.name"
@@ -59,6 +60,7 @@
    <start v-if="firstStart"
           @ok="firstStart = false"/>
    <finder v-else
+           @playing="$refs.feed.pause()"
            @djrev="function(c) { $refs.feed.revDjs(c) }"
            ref="finder"/>
    <div style="margin-top:3em; border-top:1px solid gray; padding-left:0.5em;
@@ -447,7 +449,7 @@
                           style="display:inline; margin-left:1em">
                <template #icon>&#x2af7;</template>
                <krm-upload @post="function(c) { addCircleClip(aV, aK, c), aV.refs.post.hide() }"
-                           @playing="stopClient()"
+                           @playing="$emit('playing'), stopClient()"
                            :aud="aud"
                            :ref="function(c) { aV.refs.up = c }"/>
             </krm-dropdown>
@@ -601,7 +603,7 @@
       </div>
       <div v-show="curate.openId === 'lib'">
          <krm-upload @post="addClip"
-                     @playing="stopClient()"
+                     @playing="$emit('playing'), stopClient()"
                      :aud="aud"
                      style="margin-bottom:0.5em"/>
          <table style="border-spacing:1em 0">
@@ -739,7 +741,7 @@
 
    krm.app.component('finder', {
       template: '#krm-finder',
-      emits: [ 'djrev' ],
+      emits: [ 'playing', 'djrev' ],
       data() { return { clientClip: null, //todo must be array? pop() in client @ended & @pause events
                         act: null, recSaved: false,
                         circ: null, circOpen: {}, circId: 'new', circName: '',
@@ -786,8 +788,8 @@
       methods: {
          toggleClient(iClip) {
             if (iClip !== this.clientClip) {
-               if (this.aud.src)
-                  this.aud.src.stop(0);
+               this.$emit('playing');
+               this.stopAudsrc();
                let aUrl = 'https://cdn.pixabay.com/download/audio/2020/08/14/audio_4ad28ef70b.mp3'; //todo: temporary
                this.$refs.audioClient.src = aUrl; // iClip.file
                this.$refs.audioClient.load();
@@ -800,6 +802,10 @@
          stopClient() {
             if (this.clientClip)
                this.$refs.audioClient.pause();
+         },
+         stopAudsrc() {
+            if (this.aud.src)
+               this.aud.src.stop(0);
          },
          setPlayed(iFeed) {
             var aPos = this.act.played.findIndex(c => c.id === iFeed.id);
@@ -1028,7 +1034,7 @@
 
    krm.app.component('feed', {
       template: '#krm-feed',
-      emits: [ 'gosrc' ],
+      emits: [ 'playing', 'gosrc' ],
       props: { id: String, name: String, go: Boolean },
       data() { return { audCtx: new AudioContext(), audSrc: null, state: 'run',
                         feed: null, clipsN: 0,
@@ -1071,11 +1077,19 @@
       },
       methods: {
          toggle() {
+            if (this.state !== 'run')
+               this.$emit('playing');
             switch (this.state) {
             case 'off': this.start();          this.state = 'run'; break;
             case 'run': this.audCtx.suspend(); this.state = 'sus'; break;
             case 'sus': this.audCtx.resume();  this.state = 'run'; break;
             }
+         },
+         pause() {
+            if (this.state !== 'run')
+               return;
+            this.audCtx.suspend();
+            this.state = 'sus';
          },
          skip() {
             if (this.state === 'off' || !this.audSrc) {
