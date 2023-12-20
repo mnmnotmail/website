@@ -348,8 +348,8 @@
                <tr>
                   <td>{{aP.date}}</td>
                   <td>{{aP.count}}</td>
-                  <td><button @click="toggleClient(aP.clip)"
-                              >{{clientClip === aP.clip ? '&#x25fc;' : '&#x25b6;'}}</button></td>
+                  <td><krm-playbtn @click.native="toggleClient(aP.clip)"
+                                   :playing="clientClip === aP.clip"/></td>
                   <td class="uifont80 uialignr"
                       >{{aP.clip.dur}}</td>
                   <td v-if="aPi === aD.rec.length-1"
@@ -470,8 +470,8 @@
                    class="uilink"
                    >{{circleName(aP.circle)}}</td>
                <td>{{aP.alias}}</td>
-               <td><button @click="toggleClient(aP.clip)"
-                           >{{clientClip === aP.clip ? '&#x25fc;' : '&#x25b6;'}}</button></td>
+               <td><krm-playbtn @click.native="toggleClient(aP.clip)"
+                                :playing="clientClip === aP.clip"/></td>
                <td class="uifont80 uivalignm uialignr"
                    >{{aP.runtime}}</td>
                <td><template v-for="a in aP.tags" :key="a">
@@ -611,17 +611,17 @@
                   <td>{{aC.name}}</td>
                   <td>{{aC.artist}}</td>
                   <td>{{aC.date}}</td>
-                  <td><button v-if="aC.file"
-                              @click="toggleClient(aC)"
-                              >{{clientClip === aC ? '&#x25fc;' : '&#x25b6;'}}</button></td>
+                  <td><krm-playbtn v-if="aC.file"
+                                   @click.native="toggleClient(aC)"
+                                   :playing="clientClip === aC"/></td>
                   <td class="uifont80 uivalignm uialignr"
                       >{{aC.dur}}</td>
                </tr>
                <tr v-for="(aSub, aSubi) in aC.set">
                   <td colspan="3"
                       >&nbsp; {{aSubi+1}}. <em>{{aSub.name}}</em></td>
-                  <td><button @click="toggleClient(aSub)"
-                              >{{clientClip === aSub ? '&#x25fc;' : '&#x25b6;'}}</button></td>
+                  <td><krm-playbtn @click.native="toggleClient(aSub)"
+                                   :playing="clientClip === aSub"/></td>
                   <td class="uifont80 uivalignm uialignr"
                       >{{aSub.dur}}</td>
                </tr>
@@ -708,8 +708,8 @@
                <td>{{a.name}}</td>
                <td>{{a.artist}}</td>
                <td>{{a.date}}</td>
-               <td><button @click="toggleClient(a)"
-                           >{{clientClip === a ? '&#x25fc;' : '&#x25b6;'}}</button></td>
+               <td><krm-playbtn @click.native="toggleClient(a)"
+                                :playing="clientClip === a"/></td>
                <td class="uifont80 uivalignm uialignr"
                    >{{a.dur}}</td>
                <td>
@@ -997,10 +997,8 @@
       <h3>
          <button @click="toggle()"
                  :disabled="state === 'off' && !nextBuf"
-                 style="width:2em; float:right; margin-right:2em">
-            <span v-show="state === 'run'">&#x2225;</span>
-            <span v-show="state !== 'run'">&#x25b6;</span>
-         </button>
+                 style="width:2em; float:right; margin-right:2em"
+                 >{{state === 'run' ? '&#x2225;' : '&#x25b6;'}}</button>
          <button @click="skip()"
                  :disabled="state !== 'run'"
                  style="width:2em; float:right; margin-right:1em"
@@ -1299,11 +1297,11 @@
                 placeholder="Clip name"
                 name="title" type="text"
                 style="margin-right:0.5em; width:14em"/>
-         <button @click="aud.src ? upStop() : upPlay(up.set[0].buf)"
-                 type="button"
-                 :title="'Play '+ (upHide || up.set[0].file)"
-                 style="margin-right:0.5em"
-                 >{{aud.src ? '&#x25fc;' : '&#x25b6;'}}</button>
+         <krm-playbtn @click.native="aud.src ? upStop() : upPlay(up.set[0].buf)"
+                      type="button"
+                      :title="'Play '+ (upHide || up.set[0].file)"
+                      style="margin-right:0.5em"
+                      :playing="!!aud.src"/>
          <span style="margin-right:1em; font-size:80%"
                >{{upHide || Math.round(up.set[0].buf.duration)}}</span>
          <input :value="upHide || Math.round(up.set[0].buf.duration)"
@@ -1443,6 +1441,17 @@
                this.shown = false;
          },
       },
+   });
+</script>
+
+<script type="text/x-template" id="krm-playbtn">
+   <button>{{playing ? '&#x25fc;' : '&#x25b6;'}}</button>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+
+   krm.app.component('krm-playbtn', {
+      template: '#krm-playbtn',
+      props: { playing: Boolean },
    });
 </script>
 
