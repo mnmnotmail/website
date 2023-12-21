@@ -672,6 +672,14 @@
                    name="desc" type="text"
                    style="width:26em"/>
          </form>
+         <div style="margin-top:1em">
+            <em v-if="!aP.tags.length"
+                >No tags&nbsp;</em>
+            <template v-for="a in aP.tags" :key="a">
+               <span class="tag"
+                     >{{a}}</span>{{' '}}</template>
+            <krm-tag :set="curate.filter" :tags="aP.tags" :setro="true"/>
+         </div>
          <table style="margin-top:1em; border-spacing:1em 0">
             <tr>
                <td colspan="6">
@@ -926,7 +934,8 @@
          addProgram(iP) {
             var aId = 'P'+ ++this.curate.progN;
             var aP = this.curate.progs[aId] =
-               {id: aId, name: iP.name, date: 'Today', count: 0, dur: 0, clips: null, hidden: 0, status: 'empty'};
+               {id: aId, name: iP.name, date: 'Today', status: 'empty', count: 0, dur: 0,
+                desc: '', tags: [], clips: null};
             this.curate.open.unshift(aP);
             return aId;
          },
@@ -957,8 +966,10 @@
          addProgClip(iP, iC) {
             if (!iC)
                return;
-            if (!iP.clips)
+            if (!iP.clips) {
                iP.clips = [];
+               iP.hidden = 0;
+            }
             iP.clips.unshift(this.makeClip('+'+ iC));
             iP.status = 'unpub';
          },
@@ -1250,23 +1261,30 @@
 
    krm.app.component('krm-tag', {
       template: '#krm-tag',
-      props: { set: Object, tags: Array, sparse: Boolean },
+      props: { set: Object, tags: Array, setro: Boolean, sparse: Boolean },
       data() { return { flags: [],
                         chgSet: {}, /* temporary */ } },
       computed: {
-         tagSet() { return Object.keys(this.set).slice(1) },
+         tagSet() {
+            var aS = this.tags.slice();
+            for (var a in this.set)
+               if (a && this.tags.every(c => c !== a))
+                  aS.push(a);
+            return aS;
+         },
       },
       methods: {
          add(iTag) {
-            if (krm.kEmpty.test(iTag) || iTag in this.set)
+            if (krm.kEmpty.test(iTag) || this.tagSet.some(c => c === iTag))
                return false;
-            this.set[iTag] = false;
+            if (!this.setro)
+               this.set[iTag] = false;
             this.tags.push(iTag);
             return true;
          },
          update() {
             this.flags.fill(false);
-            for (var aT in this.set) {
+            for (var aT of this.tagSet) {
                if (!(aT in this.chgSet))
                   continue;
                var aTi = this.tags.findIndex(c => c === aT);
@@ -1443,6 +1461,14 @@
                return;
             this.shown = this.localMd = this.unsparse = true;
             this.$emit('open');
+            if (this.side !== 'left') {
+               this.$el.lastElementChild.style.right = null;
+               this.$nextTick(() => {
+                  var aShift = this.$el.lastElementChild.offsetLeft + this.$el.offsetLeft;
+                  if (aShift < 3)
+                     this.$el.lastElementChild.style.right = aShift-3 +'px';
+               });
+            }
          },
          handleWinMd() {
             if (this.localMd)
