@@ -499,19 +499,31 @@
               style="float:right; margin:0 0 0.5em 0.5em; max-width:25%"/>
          <krm-tofeed @djrev="function(c) { $emit('djrev', c) }"
                      :src="aD.id" :srcname="aD.name" :feeds="act.saved"
-                     style="float:right; clear:right"/>
+                     style="float:right; margin:0.13em 0.5em 0 0.5em"/>
          <h3>{{aD.name}}</h3>
          <div style="margin-bottom:0.5em; font-style:italic"
               >{{aD.title}}</div>
-         Programs
-         <table style="margin-left:1em; border-spacing:1em 0">
-            <tr v-for="aP in aD.progs">
-               <td>{{aP.date}}</td>
-               <td>{{aP.name}}</td>
-               <td>{{aP.count}}</td>
+         <table style="border-spacing:0.5em">
+            <tr><th>Recent Programs</th><th>Clips</th></tr>
+            <tr v-for="aP in aD.progs" :key="aP.id">
+               <td>
+                  <div style="margin-bottom:0.25em"
+                       >{{aP.name}} &ndash;
+                     <span class="uitalic"
+                           >{{aP.desc || '?'}}</span></div>
+                  {{aP.date}}
+                  <template v-for="aT in aP.tags" :key="aT">
+                     <span class="tag"
+                           >{{aT}}</span>{{' '}}</template>
+               </td>
                <td class="uialignr"
-                   >{{aP.dur}}</td>
-            </tr></table>
+                   >{{aP.count}}</td>
+               <td><krm-playbtn @click.native="toggleClient(aP.clip)"
+                                :playing="clientClip === aP.clip"/></td>
+               <td class="uifont80 uialignr"
+                   >{{aP.clip.dur}}</td>
+            </tr>
+         </table>
       </div>
    </div>
    <audio v-if="circ || curId"
