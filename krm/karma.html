@@ -750,9 +750,9 @@
                         onsubmit="return false"
                         method="POST">
                      <button @click="a.status = !a.status ? 'hide' : '',
-                                     aP.hidden += (a.status === 'hide') *2 -1"
+                                     aP.hidden += (a.status === 'hide') *2-1"
                              :title="(!a.status ? 'Hide' : 'Publish') +' clip'"
-                             >{{a.status === '' ? '&#x26d4;' : '&#x266c;'}}</button></form>
+                             >{{!a.status ? '&#x229d;' : '&#x266c;'}}</button></form>
                </td>
             </tr>
          </table>
