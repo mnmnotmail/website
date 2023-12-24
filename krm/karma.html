@@ -496,7 +496,8 @@
       <div v-for="aD in djs" :key="aD.id"
            v-show="aD.id === djId">
          <img :src="aD.img"
-              style="float:right; margin:0 0 0.5em 0.5em; max-width:25%; max-height:8em"/>
+              style="float:right; margin:0 0 0.5em 0.5em;
+                     width:10em; height:10em; max-width:25vw; max-height:25vw; object-fit:cover"/>
          <krm-tofeed @djrev="function(c) { $emit('djrev', c) }"
                      :src="aD.id" :srcname="aD.name" :feeds="act.saved"
                      style="float:right; margin:0.13em 0.5em 0 0.5em"/>
@@ -564,20 +565,21 @@
          </form>
       </krm-dropdown>
       <div v-show="curate.openId === 'home'">
-         <img :src="curate.img"
-              style="float:right; margin-left:0.5em; max-width:25%"/>
-         <h3>{{curate.name}} ({{curate.id}})</h3>
-         <div style="float:right; clear:right">
-            <button v-if="!curate.edit"
+         <krm-imgpost :src="curate.img"
+                      style="float:right; margin:0 0 0.5em 0.5em;
+                             width:10em; height:10em; max-width:25vw; max-height:25vw"/>
+         <div style="float:right; margin-left:0.5em">
+            <button v-show="!curate.edit"
                     @click="curate.edit = curate.title"
                     title="Edit profile"
                     >Edit</button>
-            <button v-else
+            <button v-if="curate.edit"
                     @click="curate.title = curate.edit, curate.edit = false"
                     title="Cancel edits"
                     style="margin-right:0.5em"
                     >&#x2a09;</button>
          </div>
+         <h3>{{curate.name}} ({{curate.id}})</h3>
          <div v-show="!curate.edit"
               class="uitalic"
               >{{curate.title}}</div>
@@ -589,8 +591,8 @@
                    placeholder="Slogan or mission statement"
                    name="title" type="text"
                    style="width:70%"/></form>
-         <table style="margin:1em 0; border-spacing:1em 0">
-            <tr><th></th><th>Updated</th><th>Count</th><th>Runtime</th></tr>
+         <table style="clear:right; margin-top:0.5em; border-spacing:1em 0">
+            <tr><th></th><th>Updated</th><th>Clips</th><th>Len</th></tr>
             <tr v-for="aP in curProgSort" :key="aP.id">
                <td><span @click="openProg(aP), curate.openId = aP.id"
                          class="uilink uishowspc"
@@ -1434,6 +1436,64 @@
             this.upHide = true;
             this.up.name = this.up.artist = this.up.date = '';
             this.up.set.length = 0;
+         },
+      },
+   });
+</script>
+
+<script type="text/x-template" id="krm-imgpost">
+   <div style="position:relative">
+      <img :src="src"
+           ref="image"
+           style="width:100%; height:100%; object-fit:cover"/>
+      <button v-show="!state"
+              @click="state = 1, $nextTick(() => { $refs.fileSelect.click() })"
+              title="Replace image"
+              style="position:absolute; right:2px; bottom:2px"
+              >Set</button>
+      <form v-if="state"
+            @submit.prevent="state = 0"
+            :action="action" method="POST"
+            style="height:0; overflow:hidden">
+         <input @input="readFiles($event.target.files)"
+                @cancel="state = 0"
+                name="filename" accept="image/*" type="file" required
+                ref="fileSelect"/>
+         <button :disabled="state < 2"
+                 title="Save new image"
+                 style="position:absolute; right:2px; bottom:2px"
+                 >OK</button>
+         <button @click="state = 0, $refs.image.src = src"
+                 title="Cancel change"
+                 type="reset"
+                 style="position:absolute; left:2px; bottom:2px"
+                 >&#x2a09;</button>
+      </form>
+   </div>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+
+   krm.app.component('krm-imgpost', {
+      template: '#krm-imgpost',
+      props: { src: String, action: String },
+      data() { return { state: 0 } },
+      methods: {
+         readFiles(iFiles) {
+            if (iFiles.length < 1) {
+               this.state = 0;
+               return;
+            }
+            var aFr = new FileReader();
+            aFr.onloadend = () => {
+               if (aFr.error) {
+                  this.$root.log(iFiles[0].name +': '+ aFr.error.message);
+                  //todo: display error
+                  return;
+               }
+               this.$refs.image.src = aFr.result;
+               this.state = 2;
+            };
+            aFr.readAsDataURL(iFiles[0]);
          },
       },
    });

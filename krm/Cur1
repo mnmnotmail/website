@@ -1,7 +1,7 @@
 {
   "name": "Seamus", "id": "Cur1",
   "title": "A wondering wandering soul with an ear to the world",
-  "img": "/logo-400-bleed-dim.png",
+  "img": "/w/img/logo-400-bleed-dim.png",
   "file": "greeting",
   "filter": {"": true, "Music": false, "Stories": false, "Outdoors": false, "Mythology": false },
   "progs": {
