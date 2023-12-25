@@ -15,7 +15,6 @@
       "djs": [{"name": "Seamus", "id": "Cur1"}] },
     "F13": {
       "name": "Fiona",      "id": "F13", "saved": null,         "played": "2023-11-02",
-      "schedule": null,
-      "djs": null }
+      "schedule": null }
   }
 }
