@@ -670,7 +670,7 @@
       <div v-show="curate.openId === 'lib'">
          <krm-upload @post="addClip"
                      @playing="$emit('playing'), stopClient()"
-                     :aud="aud"
+                     :aud="aud" :many="true"
                      style="margin-bottom:0.5em"/>
          <table style="border-spacing:1em 0">
             <tr><th>Title</th><th>Artist</th><th>Released</th></tr>
@@ -822,7 +822,7 @@
                         cats: null, catUi: true, catN: 0, catSet: {_w:'any'}, found: [],
                         djs: null, djId: 0,
                         curators: {}, curId: '', newProg: {name:'', id:null},
-                        aud: {ctx: new AudioContext(), src: null}, //todo: only for curator & circles
+                        aud: {ctx: new AudioContext(), src: null, next: null}, //todo: only for curator & circles
                       } },
       computed: {
          curate() { return this.curators[this.curId] },
@@ -1031,9 +1031,12 @@
             this.curate.clips['Clu'+ ++this.curate.clipN] = this.newLibClip(iUp);
          },
          newLibClip(iUp) {
-            let aSum = iUp.set.reduce((cA, c) => cA + c.buf.duration, 0);
-            return { name: iUp.name, artist: iUp.artist, date: iUp.date,
-                     dur: Math.round(aSum), file: iUp.set[0].file };
+            let aSum = Math.round(iUp.set.reduce((cA, c) => cA + c.buf.duration, 0));
+            if (!iUp.album)
+               return { name: iUp.set[0].title, artist: iUp.artist, date: iUp.date, dur: aSum,
+                        file: iUp.set[0].file };
+            return { name: iUp.album, artist: iUp.artist, date: iUp.date, dur: aSum,
+                     set: iUp.set.map(c => ({name: c.title, dur: Math.round(c.buf.duration), file: c.file})) };
          },
          openProg(iP) {
             if (this.curate.open.find(c => c.id === iP.id))
@@ -1379,10 +1382,11 @@
 
 <script type="text/x-template" id="krm-upload">
    <form onsubmit="return false"
-         method="POST"
+         method="POST" autocomplete="off"
          enctype="multipart/form-data">
       <div style="height:0; overflow:hidden">
          <input @input="readAudioFiles($event.target.files)"
+                :multiple="many || null"
                 name="filename" accept="audio/*" type="file" required
                 ref="fileSelect"/></div>
       <div style="float:right">
@@ -1397,26 +1401,8 @@
                  title="Cancel upload"
                  >&#x2a09;</button>
       </div>
-      <template v-for="a in up.set">
-         <div v-if="a.error"
-              class="uired"
-              >{{a.file}}: {{a.error}}</div></template>
       <div :class="{uihide: upHide}"
            style="width:max-content">
-         <input v-model="up.name"
-                placeholder="Clip name"
-                name="title" type="text"
-                style="margin-right:0.5em; width:14em"/>
-         <krm-playbtn @click.native="aud.src ? upStop() : upPlay(up.set[0].buf)"
-                      type="button"
-                      :title="'Play '+ (upHide || up.set[0].file)"
-                      style="margin-right:0.5em"
-                      :playing="!!aud.src"/>
-         <span style="margin-right:1em; font-size:80%"
-               >{{upHide || Math.round(up.set[0].buf.duration)}}</span>
-         <input :value="upHide || Math.round(up.set[0].buf.duration)"
-                name="dur" type="hidden"/>
-         <div style="margin-bottom:0.5em"></div>
          <input v-model="up.artist"
                 placeholder="Artist"
                 name="artist" type="text"
@@ -1424,23 +1410,81 @@
          <input v-model="up.date"
                 placeholder="Released"
                 name="date" type="text"
-                style="width:6.5em; margin-right:1em"/>
-         <button @click="upStop(), $emit('post', up), upClear()"
-                 :disabled="krm.kEmpty.test(up.name) || krm.kEmpty.test(up.artist) || krm.kEmpty.test(up.date)"
-                 title="Add clip"
-                 >&#x2795; Clip</button>
+                style="width:6.5em"/>
+         <div v-if="many"
+              v-show="up.set.length > 1"
+              style="margin-top:0.5em">
+            <input v-model="up.album"
+                   placeholder="Album name"
+                   name="album" type="text"
+                   style="margin-right:0.5em; width:16em"/>
+            <span class="uifont80"
+                  >{{duration}}</span>
+            <input :value="duration"
+                   name="dur" type="hidden"/>
+            <button @click="upStop(), $emit('post', up), upClear()"
+                    :disabled="needsInput"
+                    title="Add album"
+                    style="margin-left:2.5em"
+                    >&#x2795; Album</button>
+         </div>
+         <div v-for="(aC, aCi) in up.set.length ? up.set : setEmpty" :key="aC.file"
+              style="margin-top:0.5em">
+            <span v-if="aC.error"
+                  style="display:inline-block; width:19em" class="uired"
+                  >{{aC.file}}: {{aC.error}}</span>
+            <template v-else>
+               <input v-model="aC.title"
+                      placeholder="Clip name"
+                      :name="aC.file +':title'" type="text"
+                      style="margin-right:0.5em; width:14em"/>
+               <krm-playbtn @click.native="aud.src && aud.src.buffer === aC.buf ? upStop() : upPlay(aC.buf)"
+                            type="button"
+                            :title="'Play '+ aC.file"
+                            style="margin-right:0.5em"
+                            :playing="!!aud.src && aud.src.buffer === aC.buf"/>
+               <span class="uifont80"
+                     >{{Math.round(aC.buf.duration)}}</span>
+               <input :value="Math.round(aC.buf.duration)"
+                      :name="aC.file +':dur'" type="hidden"/>
+            </template>
+            <div v-if="many"
+                 v-show="up.set.length > 1"
+                 @click="dropFile(aC.file, aCi)"
+                 title="Drop file"
+                 style="float:right; margin-right:1.5em" class="uilink"
+                 >&#x2a09;</div>
+            <button v-if="aCi === 0"
+                    v-show="up.set.length <= 1"
+                    @click="upStop(), $emit('post', up), upClear()"
+                    :disabled="needsInput"
+                    title="Add clip"
+                    style="margin-left:2.5em"
+                    >&#x2795; Clip</button>
+         </div>
       </div>
    </form>
 </script><script type="module">
    import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
+   const sSetEmpty = [{title: '', file: '', buf: {duration:60*60-1}}];
+
    krm.app.component('krm-upload', {
       template: '#krm-upload',
-      props: { 'aud': Object },
+      props: { aud: Object, many: Boolean },
       emits: [ 'playing', 'post' ],
-      data() { return { upHide: true, up: {name:'', date:'', artist:'', set:[]}, } },
+      data() { return { upHide: true, up: {album:'', date:'', artist:'', set:[]} } },
       computed: {
-         krm() { return krm },
+         setEmpty() { return sSetEmpty },
+         duration() { return Math.round(this.up.set.reduce((cA, c) => c.buf ? cA + c.buf.duration : cA, 0)) },
+         needsInput() {
+            return this.upHide ||
+                   this.up.set.length < this.$refs.fileSelect.files.length ||
+                   this.up.set.length > 1 && krm.kEmpty.test(this.up.album) ||
+                   krm.kEmpty.test(this.up.artist) || krm.kEmpty.test(this.up.date) ||
+                   this.up.set.some(c => c.error || krm.kEmpty.test(c.title) ||
+                                         this.up.set.some(c1 => c1.file !== c.file && c1.title === c.title));
+         },
       },
       methods: {
          chooseFile() {
@@ -1449,46 +1493,60 @@
          },
          readAudioFiles(iFiles) {
             if (iFiles.length < 1) {
-               this.upHide = true;
+               this.upClear();
                return;
             }
             this.up.set.length = 0;
-            let aTot = iFiles.length;
-            const fRead = cF => {
-               let cFr = new FileReader();
-               cFr.onloadend = () => {
-                  let cSet = {file: cF.name, buf: null, error: null};
-                  if (cFr.error) {
-                     cSet.error = cFr.error.message;
+            for (const aF of iFiles) {
+               let aFr = new FileReader();
+               aFr.onloadend = () => {
+                  let cSet = {file: aF.name, title: aF.name, buf: null, error: null};
+                  if (aFr.error) {
+                     cSet.error = aFr.error.message;
                      this.up.set.push(cSet);
-                     this.upHide = true;
+                     this.upHide = false;
                      return;
                   }
-                  this.aud.ctx.decodeAudioData(cFr.result, cBuf => {
+                  this.aud.ctx.decodeAudioData(aFr.result, cBuf => {
                      cSet.buf = cBuf;
                      this.up.set.push(cSet);
-                     if (--aTot === 0)
-                        this.upHide = false;
+                     this.upHide = false;
                   }, cErr => {
                      cSet.error = cErr.message;
                      this.up.set.push(cSet);
-                     this.upHide = true;
+                     this.upHide = false;
                   });
                };
-               cFr.readAsArrayBuffer(cF);
-            };
-            for (const aF of iFiles)
-               fRead(aF);
+               aFr.readAsArrayBuffer(aF);
+            }
+         },
+         dropFile(iName, iN) {
+            var aDt = new DataTransfer();
+            for (var a of this.$refs.fileSelect.files)
+               if (a.name !== iName)
+                  aDt.items.add(a);
+            this.$refs.fileSelect.files = aDt.files;
+            this.up.set.splice(iN, 1);
+            if (this.up.set.length <= 1)
+               this.up.album = '';
          },
          upPlay(iBuf) {
-            if (this.aud.src)
+            if (this.aud.src) {
+               this.aud.src.stop(0);
+               this.aud.next = iBuf;
                return;
+            }
             this.$emit('playing');
             this.aud.src = this.aud.ctx.createBufferSource();
             this.aud.src.buffer = iBuf;
             this.aud.src.connect(this.aud.ctx.destination);
-            this.aud.src.onended = c => {
+            this.aud.src.onended = () => {
                this.aud.src = null;
+               if (!this.aud.next)
+                  return;
+               let cNxt = this.aud.next;
+               this.aud.next = null;
+               this.upPlay(cNxt);
             };
             this.aud.src.start(0);
          },
@@ -1498,7 +1556,7 @@
          },
          upClear() {
             this.upHide = true;
-            this.up.name = this.up.artist = this.up.date = '';
+            this.up.album = this.up.artist = this.up.date = '';
             this.up.set.length = 0;
          },
       },
