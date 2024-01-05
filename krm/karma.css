@@ -11,6 +11,8 @@ th { text-align: left }
 
 td { vertical-align: top }
 
+ul { padding-left: 1.5em }
+
 input[type=text],
 textarea {
    border: 1px solid;

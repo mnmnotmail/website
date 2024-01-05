@@ -24,10 +24,11 @@
 
 <script>
    var krm = {
+      client: 'd.1',
       app: null,
       appRoot: null,
       s: { feedRef: {}, screen: -1 },
-      kSc: {fe:0, st:1, jo:2, si:3, re:1, br:2, ci:3, dj:4, cu:5},
+      kSc: {fe:0, st:1, jo:2, si:3, re:1, br:2, ci:3, dj:4, cu:5, ab:6},
       kEmpty: /^\s*$/,
    };
    window.onload = () => {
@@ -249,6 +250,9 @@
                @click="krm.s.screen = krm.kSc.cu, goCurate(act.curate[0])"
                class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.cu}"
                >Curate</span>
+         <span @click="krm.s.screen = krm.kSc.ab, loadAbout()"
+               class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.ab}"
+               >About</span>
       </div>
    </div>
    <div v-show="krm.s.screen === krm.kSc.re" v-if="act">
@@ -579,6 +583,29 @@
          </table>
       </div>
    </div>
+   <div v-show="krm.s.screen === krm.kSc.ab"
+        style="margin-right:0.5em">
+      <div class="tabset2">
+         <span @click="setAbout('dj')"
+               :class="{tabshow: aboutId === 'dj'}"
+               >For Creators</span>
+         <span @click="setAbout('listen')"
+               :class="{tabshow: aboutId === 'listen'}"
+               >For Listeners</span>
+         <span @click="setAbout('new')"
+               :class="{tabshow: aboutId === 'new'}"
+               class="uitalic"
+               >What's New</span>
+      </div>
+      <div v-html="about"
+           ref="about"
+           style="margin-left:1em">
+      </div>
+      &nbsp;
+      <div style="float:right; border:1px solid gray; border-radius:6px; padding:0.5em" class="uifont80"
+           >client: {{krm.client}}<br/>
+            server: {{act && act.server || 'none'}}</div>
+   </div>
    <audio v-if="circ || curId"
           @pause="clientClip = null"
           @ended="clientClip = null"
@@ -821,6 +848,7 @@
                         circ: null, circOpen: {}, circId: 'new', circName: '',
                         cats: null, catUi: true, catN: 0, catSet: {_w:'any'}, found: [],
                         djs: null, djId: 0,
+                        about: null, aboutId: 'dj',
                         curators: {}, curId: '', newProg: {name:'', id:null},
                         aud: {ctx: new AudioContext(), src: null, next: null}, //todo: only for curator & circles
                       } },
@@ -995,6 +1023,19 @@
                   this.djId = iId;
                   krm.s.screen = krm.kSc.dj;
                });
+         },
+         loadAbout() {
+            if (this.about)
+               return;
+            this.$root.xhrGet('About', '', 'about', c => {
+               this.about = c;
+               this.$nextTick(() => { this.setAbout(this.aboutId) });
+            });
+         },
+         setAbout(iId) {
+            this.$refs.about.querySelector('#'+ this.aboutId).style.display = 'none';
+            this.$refs.about.querySelector('#'+ iId).style.display = null;
+            this.aboutId = iId;
          },
          goCurate(iId) {
             if (iId in this.curators)

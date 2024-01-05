@@ -1,0 +1,211 @@
+<div id="dj" style="display:none">
+
+<h3>For Creators</h3>
+
+Today's social media is terrible for creators 
+and those who wish to promote their work or reuse it with permission.
+For example, they...
+
+<ul>
+<li>Drown out the work of compassionate, skilled creators by letting anyone post virtually anything.</li>
+<li>Rely on secret, ever-shifting algorithms to select content for users.</li>
+<li>Yank or demonetize works and whole accounts without warnings or stated reasons.</li>
+<li>Deny creators fair payment for their work.</li>
+<li>Exclude expert curators who feature others' works on their own channels.</li>
+<li>Provide no way to order works so that users always receive them in a specific sequence.</li>
+</ul>
+
+<p>Today's social media corporations don't care if creators or audiences suffer at their hands, 
+as quarterly profit growth is all that matters in their mindset.
+But the above issues are unnecessary, and that mindset is unsustainable, 
+so we're building a new media model for creators whose work cultivates 
+awareness, understanding, cohesion, wellness.
+</p>
+
+<h3>Creator roles: Author &amp; Curator</h3>
+
+<p>Authors publish their own works. Today, most creators fit in this category.
+</p>
+
+<p>Curators re-publish Authors' works that are tagged for re-use.
+Curators may also edit an Author's work (provided they preserve the Author's intent), 
+by taking segments and perhaps refining them or inserting commentary.
+The result is then publishable by that Curator and the Author whose work it borrows.
+</p>
+
+<p>Authors can also act as Curators, and vice versa.<br/>
+Note: the Listener UI refers to all creators as "DJs".
+</p>
+
+<h3>Creator tools</h3>
+
+(See the <em>Curate</em> screen.)
+
+<p><em>Home:</em> your DJ profile, and list of Programs.
+You create a Program with the &#x2795; dropdown at top-right of <em>Curate</em>.
+</p>
+
+<p><em>Library:</em> your clips repository 
+(includes uploaded and third-party clips &amp; albums).
+To create an album, upload a group of clips released by the same Author on the same date.
+A clip can appear in multiple Programs.
+</p>
+
+<p><em>Program:</em> a named sequence of related clips 
+(e.g. segments from the same podcast, clips focused on a topic).
+When added to a Program, a clip is unpublished, and may be posted or removed.
+When posted to a Program, a clip may be hidden.
+</p>
+
+<p>Circles let their members share clips within a private, invitation-only group.
+A Circle allows a creator to preview works to a small, known audience 
+prior to publishing in a Program.
+(See the <em>For Listeners</em> section for more on Circles.)
+</p>
+
+<p>We screen creators (both Authors &amp; Curators) for alignment with our mission 
+before allowing them to post or re-publish content for public consumption.
+However any member of a Circle can post in that Circle without a screening approval.
+</p>
+
+<p>Finally, our software is open source, so if creators wish to establish alternative sites, 
+they're free to do so.
+</p>
+
+</div>
+<div id="listen" style="display:none">
+
+<h3>For Listeners</h3>
+
+Today's social media has terrible problems that are widely recognized.
+For example, they...
+
+<ul>
+<li>Promote whatever causes "engagement", even outraging, alarming, depressing, or false material.</li>
+<li>Bury content you want/need with opaque recommendation algorithms.</li>
+<li>Want everyone to post material, chase followers, and comment on others' work.</li>
+<li>Glue your eyes to a screen, pulling you out of the real world.</li>
+<li>Create a cycle of dissatisfaction/depression followed by use in hopes of feeling better.</li>
+<li>Foster a twisted, bleak view of one's self, community, and world.</li>
+</ul>
+
+<p>Today's social media corporations don't care if their members or society suffer at their hands, 
+as quarterly profit growth is all that matters in their mindset.
+But these problems are solvable, and that mindset is unsustainable, 
+so we're building a new media model that brings audiences 
+awareness, understanding, cohesion, wellness.
+</p>
+
+<p>We're centered around short-form audio (e.g. 1-6 minute clips), 
+from "DJs" who produce original work and/or edit and organize others' works 
+into cohesive programs.
+The content is primarily spoken-word (conversations &amp; monologues), 
+and instrumental music (e.g. jazz, classical, soundscapes).
+We screen all creators for alignment with our mission before allowing them 
+to contribute works for public hearing.
+Very few topics are out-of-bounds; 
+what we care about is a compassionate, constructive tone conveying each perspective.
+</p>
+
+<h3>Listener features</h3>
+
+<p><em>Feed:</em> Your selected feed, or default feed if you haven't created any others.
+A feed plays material from one or more DJs and/or Circles, listed at the top of <em>Feed</em>.
+You can add more sources to the feed from <em>DJs</em> or <em>Circles</em> 
+using the &#x2795;&#x266c; dropdown.
+</p>
+
+<p><em>Recent:</em> Your Played and Saved feed lists.
+Tapping or clicking the name of a feed begins playing it on the <em>Feed</em> screen.
+Within <em>Saved</em>, the &bigotimes; dropdown lets you remove sources from a feed, 
+or delete an entire feed.
+You create a feed with the &#x2795; dropdown at top-right of <em>Recent</em>, 
+or from <em>DJs</em> or <em>Circles</em> using the &#x2795;&#x266c; dropdown.
+</p>
+
+<p><em>Browse:</em> Lets you find &amp; sample DJs by topic tag or input terms.
+A search returns matching "Programs" (a named sequence of related clips), grouped by DJ.
+From a search result, you can refine your query, back up to the prior result 
+(if there's more than one), or drop all search results.
+</p>
+
+<p><em>DJs:</em> Opened DJ profiles.
+From <em>Feed</em> or <em>Browse</em>, tapping or clicking a DJ name opens <em>DJs</em>, 
+and displays that DJ's profile.
+You can add or remove the DJ to/from a feed using the &#x2795;&#x266c; dropdown.
+</p>
+
+<p><em>Circles:</em> Private (by invitation only) groups where members can post their own recordings 
+and share clips published by creators.
+When invited to join a circle, your invitation appears in the <em>Latest</em> list.
+You create a Circle with the &#x2795; dropdown at top-right of <em>Circles</em>.
+Within a specific Circle, you can invite new members with the \o/ dropdown, 
+and post new content with the &#x2af7; dropdown.
+For any post in a Circle, you can add/drop tags with the &sharp; dropdown in the right-side column.
+</p>
+
+</div>
+<div id="new" style="display:none">
+
+<h3>What's New</h3>
+
+[update for each release to users]
+
+<h3>To-do</h3>
+
+<pre style="box-sizing:border-box; width:100%; overflow-x:auto;
+            border:1px solid lightgray; padding:0.25em; font-family:inherit">
+Navbar menu for About, Account, etc
+Preserve screen scroll position
+Dark blueish background color
+Clips with slide deck
+Location-based content
+Users can invite friends to platform
+
+Startpage: Allow re-selection of categories
+
+Account:
+  Give listeners periodic coupons which they can assign to multiple DJs
+    free coupons expire
+    let them buy coupons anytime, or subscribe to periodic coupon
+    let DJ payout be tied to future work
+
+Feed:
+  Button to rewind n seconds
+  Adjust playback speed; persists for that Program (at least)
+  Set play-time proportion for each source ?
+  Listeners can register mental/emotional impact of feed ?
+
+Recent:
+  Scheduling UI
+
+Browse:
+  Result shows program subtitle and matched search terms/tags
+
+Circles:
+  Post clip from feed
+  Record a clip to post
+  Leave circle
+
+DJ:
+  Select DJ as current feed
+  Comment on Program
+
+Curate:
+  Profile: audio bio, URL, languages, etc
+  Library:
+    add clip from feed or circle
+    search box & result tabs
+    item tags
+    indicate where published on Programs
+    indicate whether item is re-publishable by other DJs
+  Program:
+    find-clip widget is text-input with result menu
+    re-intro clip, to play before any subset of clips appearing consecutively on a feed
+    scheduling, e.g. daily, weekly, debut date
+    allow non-concurrency with my other Programs
+    can select comments to publish on Profile
+  Multiple DJ names per account
+</pre>
+
+</div>
