@@ -1133,21 +1133,22 @@
                class="person uilink"
                >{{a.name}}</span>
       </div>
-      <h3>
-         <button @click="toggle()"
-                 :disabled="state === 'off' && !nextBuf"
-                 style="width:2em; float:right; margin-right:2em"
-                 >{{state === 'run' ? '&#x2759;&hairsp;&#x2759;' : '&#x25b6;'}}</button>
+      <span style="float:right; margin-right:1.5em">
+         <span v-show="!nextBuf"
+               style="margin-right:1em; vertical-align:-1px; padding:0 0.5em; background-color:lightgray"
+               title="Loading clip"
+               >&#x2913;</span>
          <button @click="skip()"
                  :disabled="state !== 'run'"
-                 style="width:2em; float:right; margin-right:1em"
+                 style="margin-right:1.5em; width:2.5em"
                  >&#x276f;&#x276f;</button>
-         <div v-show="!nextBuf"
-              style="float:right; margin-right:1em; padding:0 0.5em; background-color:lightgray"
-              title="Loading clip"
-              >&#x2913;</div>
-         {{name}} ({{id}})
-      </h3>
+         <button @click="toggle()"
+                 :disabled="state === 'off' && !nextBuf"
+                 style="width:2.5em"
+                 >{{state === 'run' ? '&#x2759;&hairsp;&#x2759;' : '&#x25b6;'}}</button>
+      </span>
+      <h3 style="margin:1rem 0"
+          >{{name}} ({{id}})</h3>
       <table v-if="feed"
              style="border-spacing:1em 0">
          <tr><th></th><th>Artist</th><th>DJ</th><th>Released</th><th>Runs</th></tr>
