@@ -243,16 +243,24 @@
             >Circles</span>
       <span v-show="!!djs"
             @click="krm.s.screen = krm.kSc.dj"
-            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.dj}"
+            class="uipoint" :class="{tabshow: krm.s.screen === krm.kSc.dj}"
             >DJs</span>
-      <div style="position:absolute; right:0; top:0.5em">
+      <div style="float:right">
          <span v-if="act && act.curate" k--="todo: menu if multiple curators"
                @click="krm.s.screen = krm.kSc.cu, goCurate(act.curate[0])"
                class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.cu}"
                >Curate</span>
-         <span @click="krm.s.screen = krm.kSc.ab, loadAbout()"
-               class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.ab}"
-               >About</span>
+         <krm-dropdown ref="menu"
+                       title="More options"
+                       style="display:inline">
+            <template #icon>&nbsp;&#x2263;&nbsp;</template>
+            <div @click=""
+                 class="menutab"
+                 >Tbd</div>
+            <div @click="$refs.menu.hide(), krm.s.screen = krm.kSc.ab, loadAbout()"
+                 class="menutab" :class="{tabshow: krm.s.screen === krm.kSc.ab}"
+                 >About</div>
+         </krm-dropdown>
       </div>
    </div>
    <div v-show="krm.s.screen === krm.kSc.re" v-if="act">
