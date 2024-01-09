@@ -74,6 +74,26 @@ textarea:focus {
    min-width: max-content;
 }
 
+.tabset {
+   position: fixed;
+   left: 0.5em;
+   right: 0.5em;
+   top: 0;
+   z-index: 10;
+   border-bottom: 1px solid gray;
+   padding: 0.5em 0;
+   background-color: #fff;
+}
+.tabset > span,
+.tabset > div > span {
+   margin-right: 1em;
+   cursor: pointer;
+}
+.tabset > span:last-of-type,
+.tabset > div > span:last-child {
+   margin-right: 0;
+}
+
 .tabset2 {
    display: inline-block;
    margin-bottom: 0.5em;
@@ -87,8 +107,6 @@ textarea:focus {
    cursor: pointer;
    white-space: break-spaces;
 }
-
-.tabmargr { margin-right: 1em }
 
 span.tabshow {
    border-top: 2px solid lightblue;
@@ -116,10 +134,14 @@ span.tabshow {
 
 .person {
    display: inline-block;
-   margin-top: 0.15em;
    margin-right: 0.5em;
+   margin-bottom: 0.15em;
    padding: 0.25em;
    background-color: lightgray;
+}
+td > .person {
+   margin-right: 0.25em;
+   padding: 0 0.25em 0.1em;
 }
 .person.uifade { opacity: 0.6 }
 .person.uilink { font-weight: normal }
@@ -157,4 +179,38 @@ tr.inplay  { box-shadow: inset 0 4em #ddf }
 .dropdn.uileft0 > :nth-child(2) {
    left: 0;
    right: auto;
+}
+
+.logo {
+   height: 64px;
+   border: 2px solid lightgray;
+   border-radius: 50%;
+   padding: 8px;
+   background-color: #2020aa;
+   font-size: 32px;
+   color: white;
+}
+.logo > span { vertical-align: middle }
+
+.circle-invite {
+   border: 3px solid blue;
+   border-radius: 6px;
+   padding: 0.5em;
+}
+
+.circle-feedn { /* displays next to .person */
+   margin-right: 0.5em;
+   border-right: 2px solid darkgray;
+   padding: 0.25em;
+}
+
+.version {
+   border: 1px solid gray;
+   border-radius: 6px;
+   padding: 0.5em;
+}
+
+.default-page {
+   color: tan;
+   text-align: center;
 }

@@ -43,7 +43,7 @@
       };
 </script>
 
-<div id="krm-app"><div style="text-align:center; color:tan">
+<div id="krm-app"><div class="default-page">
    <h3>Karma Audio Worlds</h3>
    <a style="color:inherit" href="https://github.com/networkimprov/karma">Karma on Github</a>
    <p>Karma is an audio service to uplift and expand all listeners.</p>
@@ -64,7 +64,7 @@
            @playing="$refs.feed.pause()"
            @djrev="function(c) { $refs.feed.revDjs(c) }"
            ref="finder"/>
-   <div style="margin-top:3em; border-top:1px solid gray; padding-left:0.5em;
+   <div style="margin-top:3em; border-top:1px solid lightgray; padding-left:0.5em;
                font-family:monospace; white-space:pre-wrap;">
       <a @click.prevent="debug = !debug"
          style="text-decoration:none"
@@ -139,33 +139,31 @@
 </script>
 
 <script type="text/x-template" id="krm-start">
-   <div style="position:fixed; left:0.5em; right:0.5em; top:0;
-               padding: 0.5em 0; border-bottom: 1px solid gray; background-color:#fff">
+   <div class="tabset">
       <span v-if="select"
             @click="krm.s.screen = krm.kSc.st"
-            class="uipoint uibold"
+            class="uibold"
             >Karma Audio {{select === 2 ? '- Sampler' : ''}}</span>
       <span v-else
             @click="krm.s.screen = krm.kSc.fe"
-            class="uipoint uibold"
+            class="uibold"
             >Karma Audio - Welcome!</span>
-      <div style="position:absolute; right:0; top:0.5em">
+      <div style="float:right">
          <span v-if="!select"
                @click="krm.s.screen = krm.kSc.jo"
-               class="uipoint tabmargr uibold" :class="{tabshow: krm.s.screen === krm.kSc.jo}"
+               class="uibold" :class="{tabshow: krm.s.screen === krm.kSc.jo}"
                >Join Karma</span>
          <span @click="krm.s.screen = krm.kSc.si"
-               class="uipoint" :class="{tabshow: krm.s.screen === krm.kSc.si}"
+               :class="{tabshow: krm.s.screen === krm.kSc.si}"
                >Sign In</span>
       </div>
    </div>
    <div v-if="select"
         v-show="krm.s.screen === krm.kSc.st">
       <template v-if="select === 1">
-         <div style="float:left; margin-right:0.5em; height:64px;
-                     border:2px solid lightgray; border-radius:50%; background-color:#2020aa;
-                     padding:8px; font-size:32px; color:white">
-            <span style="vertical-align:middle">KmA</span></div>
+         <div class="logo"
+              style="float:left; margin-right:0.5em">
+            <span>KmA</span></div>
          <div style="padding-top:1em; font-style:italic"
               >Where the World Hears Wonders &amp; Wisdom</div>
          <span @click="select = 2"
@@ -227,28 +225,27 @@
 </script>
 
 <script type="text/x-template" id="krm-finder">
-   <div style="position:fixed; left:0.5em; right:0.5em; top:0; z-index:10;
-               padding: 0.5em 0; border-bottom: 1px solid gray; background-color:#fff">
+   <div class="tabset">
       <span @click="krm.s.screen = krm.kSc.fe"
-            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.fe}"
+            :class="{tabshow: krm.s.screen === krm.kSc.fe}"
             >Feed</span>
       <span @click="krm.s.screen = krm.kSc.re"
-            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.re}"
+            :class="{tabshow: krm.s.screen === krm.kSc.re}"
             >Recent</span>
       <span @click="krm.s.screen = krm.kSc.br"
-            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.br}"
+            :class="{tabshow: krm.s.screen === krm.kSc.br}"
             >Browse</span>
       <span @click="krm.s.screen = krm.kSc.ci"
-            class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.ci}"
+            :class="{tabshow: krm.s.screen === krm.kSc.ci}"
             >Circles</span>
       <span v-show="!!djs"
             @click="krm.s.screen = krm.kSc.dj"
-            class="uipoint" :class="{tabshow: krm.s.screen === krm.kSc.dj}"
+            :class="{tabshow: krm.s.screen === krm.kSc.dj}"
             >DJs</span>
       <div style="float:right">
          <span v-if="act && act.curate" k--="todo: menu if multiple curators"
                @click="krm.s.screen = krm.kSc.cu, goCurate(act.curate[0])"
-               class="uipoint tabmargr" :class="{tabshow: krm.s.screen === krm.kSc.cu}"
+               :class="{tabshow: krm.s.screen === krm.kSc.cu}"
                >Curate</span>
          <krm-dropdown ref="menu"
                        title="More options"
@@ -289,7 +286,7 @@
                     >&#x2795; Feed</button>
          </form>
       </krm-dropdown>
-      <table style="border-spacing:1em 1px">
+      <table style="border-spacing:1em 0">
          <tr><th></th> <th>{{recSaved ? 'Revised' : 'Played on'}}</th> <th>Sched</th> <th>Plays</th></tr>
          <tr v-for="(aF, aFi) in (recSaved ? act.saved : act.played)" :key="aF.id">
             <td>
@@ -304,9 +301,9 @@
             <td>{{recSaved ? aF.saved : aF.played}}</td>
             <td>{{aF.schedule}}</td>
             <td>
-               <template v-for="a in aF.djs">
-                  <span style="padding:0 0.25em 0.1em; background-color:lightgray"
-                        >{{a.name}}</span>{{' '}}</template>
+               <span v-for="a in aF.djs"
+                     class="person"
+                     >{{a.name}}</span>
                <em v-if="aF.saved && !aF.djs.length"
                    >None </em>
                <krm-dropdown v-if="aF.saved"
@@ -457,8 +454,9 @@
       <div v-for="(aV, aK) in circOpen"
            v-show="aK === circId">
          <div v-if="aV.invited"
-              style="margin-bottom:0.5em; border: 3px solid blue; border-radius:6px; padding:0.5em">
-            <span style="font-style:italic"
+              class="circle-invite"
+              style="margin-bottom:0.5em">
+            <span class="uitalic"
                   >{{aV.invited.by}} invited you to this group.</span>
             <form onsubmit="return false"
                   method="POST"
@@ -496,7 +494,7 @@
                <krm-tofeed @djrev="function(c) { $emit('djrev', c) }"
                            :src="aK" :srcname="aV.name" :feeds="act.saved" :side="'left'"
                            style="display:inline"/>
-               <span style="margin-right:0.5em; border-right: 2px solid darkgray; padding:0.25em; font-weight:bold"
+               <span class="circle-feedn uibold"
                      >{{act.saved.reduce((cA, c) => cA + c.djs.some(cDj => cDj.id === aK) *1, 0) || 'none'}}</span>
             </template>
             <span v-for="a in aV.members" :key="a.id"
@@ -610,7 +608,8 @@
            style="margin-left:1em">
       </div>
       &nbsp;
-      <div style="float:right; border:1px solid gray; border-radius:6px; padding:0.5em" class="uifont80"
+      <div class="version uifont80"
+           style="float:right"
            >client: {{krm.client}}<br/>
             server: {{act && act.server || 'none'}}</div>
    </div>
