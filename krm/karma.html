@@ -901,7 +901,7 @@
             if (iClip !== this.clientClip) {
                this.$emit('playing');
                this.stopAudsrc();
-               let aUrl = 'https://cdn.pixabay.com/download/audio/2020/08/14/audio_4ad28ef70b.mp3'; //todo: temporary
+               let aUrl = 'audio_4ad28ef70b.mp3'; //todo: temporary
                this.$refs.audioClient.src = aUrl; // iClip.file
                this.$refs.audioClient.load();
                this.$refs.audioClient.play();
