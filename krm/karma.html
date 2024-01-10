@@ -140,26 +140,27 @@
 
 <script type="text/x-template" id="krm-start">
    <div class="tabset">
+      <strong style="margin-right:1em"
+              >Karma Audio</strong>
       <span v-if="select"
             @click="krm.s.screen = krm.kSc.st"
-            class="uibold"
-            >Karma Audio {{select === 2 ? '- Sampler' : ''}}</span>
+            :class="{tabshow: krm.s.screen === krm.kSc.st}"
+            >{{select === 2 ? 'Topics' : 'Welcome!'}}</span>
       <span v-else
             @click="krm.s.screen = krm.kSc.fe"
-            class="uibold"
-            >Karma Audio - Welcome!</span>
+            :class="{tabshow: krm.s.screen === krm.kSc.fe}"
+            >Sampler</span>
       <div style="float:right">
          <span v-if="!select"
                @click="krm.s.screen = krm.kSc.jo"
                class="uibold" :class="{tabshow: krm.s.screen === krm.kSc.jo}"
-               >Join Karma</span>
+               >Join Us</span>
          <span @click="krm.s.screen = krm.kSc.si"
                :class="{tabshow: krm.s.screen === krm.kSc.si}"
                >Sign In</span>
       </div>
    </div>
-   <div v-if="select"
-        v-show="krm.s.screen === krm.kSc.st">
+   <div v-show="krm.s.screen === krm.kSc.st">
       <template v-if="select === 1">
          <div class="logo"
               style="float:left; margin-right:0.5em">
@@ -171,18 +172,19 @@
                >Try It!</span>
       </template>
       <template v-else>
+         <button @click="krm.s.screen = krm.kSc.fe, select = 0, getMix()"
+                 style="float:right; margin:1em 0.5em 0 0"
+                 >&#x25b6; Listen</button>
          <div style="margin-bottom:1em"
-              >Select some topics of interest for your first feed<br/>
+              >Select topics of interest for your first feed<br/>
                (You can add or amend feeds anytime.)
          </div>
-         <button @click="krm.s.screen = krm.kSc.fe, select = 0, getMix()"
-                 style="float:right; margin-right:2em"
-                 >&#x25b6; Listen</button>
-         <table><tr>
+         <table style="border-spacing:0.5em 0"><tr>
             <td v-for="aCol in cats">
-               <div v-for="a in aCol">
-                  <label><input type="checkbox" :name="a.name"/>{{a.name}}</label>
-               </div></td></tr></table>
+               <label v-for="a in aCol"
+                      style="display:block">
+                  <input type="checkbox" :name="a.name"/>{{a.name}}</label></td>
+         </tr></table>
       </template>
    </div>
    <div v-show="krm.s.screen === krm.kSc.jo">
