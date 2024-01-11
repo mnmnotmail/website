@@ -154,7 +154,7 @@ For any post in a Circle, you can add/drop tags with the &sharp; dropdown in the
 <h3>To-do</h3>
 
 <pre style="box-sizing:border-box; width:100%; overflow-x:auto;
-            border:1px solid lightgray; padding:0.25em; font-family:inherit">
+            border:1px solid gray; padding:0.25em; font-family:inherit">
 Preserve screen scroll position
 Dark blueish background color
 Clips with slide deck
@@ -187,6 +187,8 @@ Circles:
   Leave circle
 
 DJ:
+  Load DJ pages separately; move open-dj list to act; load selected dj in created()
+  Close button on tab or page
   Select DJ as current feed
   Comment on Program
 
