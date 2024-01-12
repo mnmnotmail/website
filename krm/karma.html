@@ -64,7 +64,7 @@
            @playing="$refs.feed.pause()"
            @djrev="function(c) { $refs.feed.revDjs(c) }"
            ref="finder"/>
-   <div style="margin-top:3em; border-top:1px solid lightgray; padding-left:0.5em;
+   <div style="margin-top:3em; border-top:1px solid dimgray; padding-left:0.5em;
                font-family:monospace; white-space:pre-wrap;">
       <a @click.prevent="debug = !debug"
          style="text-decoration:none"
@@ -274,7 +274,7 @@
       <krm-dropdown ref="feedAdd"
                     title="Add feed"
                     style="position:absolute; right:0.5em; top:3em">
-         <template #icon>&#x2795;</template>
+         <template #icon>&#xff0b;</template>
          <form onsubmit="return false"
                method="POST" autocomplete="off">
             <input v-model="feedName"
@@ -285,7 +285,7 @@
                     :disabled="krm.kEmpty.test(feedName) || act.saved.find(c => c.name === feedName)"
                     title="Create feed"
                     style="float:right"
-                    >&#x2795; Feed</button>
+                    >&#xff0b; Feed</button>
          </form>
       </krm-dropdown>
       <table style="border-spacing:1em 0">
@@ -439,7 +439,7 @@
       <krm-dropdown ref="circStart"
                     title="Start circle"
                     style="position:absolute; right:0.5em; top:3em">
-         <template #icon>&#x2795;</template>
+         <template #icon>&#xff0b;</template>
          <form onsubmit="return false"
                method="POST" autocomplete="off">
             <input v-model="circName"
@@ -450,7 +450,7 @@
                     :disabled="krm.kEmpty.test(circName) || circ.find(c => c.name === circName)"
                     title="Create circle"
                     style="float:right"
-                    >&#x2795; Circle</button>
+                    >&#xff0b; Circle</button>
          </form>
       </krm-dropdown>
       <div v-for="(aV, aK) in circOpen"
@@ -464,7 +464,7 @@
                   method="POST"
                   style="float:right">
                <button @click="aV.invited = aV.members.find(c => c.id === act.id).invited = null"
-                       >&#x2795; Join Circle!</button></form>
+                       >&#xff0b; Join Circle!</button></form>
          </div>
          <div style="margin-bottom:1em">
             <krm-dropdown v-if="aK !== 'new' && !aV.invited"
@@ -638,7 +638,7 @@
       <krm-dropdown ref="progAdd"
                     title="Add program"
                     style="position:absolute; right:0.5em; top:3em">
-         <template #icon>&#x2795;</template>
+         <template #icon>&#xff0b;</template>
          <form onsubmit="return false"
                method="POST" autocomplete="off">
             <input v-model="newProg.name" k--="todo: focus input field on open"
@@ -649,7 +649,7 @@
                     :disabled="!checkProgName(newProg)"
                     title="Create program"
                     style="float:right"
-                    >&#x2795; Program</button>
+                    >&#xff0b; Program</button>
          </form>
       </krm-dropdown>
       <div v-show="curate.openId === 'home'">
@@ -756,7 +756,7 @@
                  v-show="!aP.edit"
                  @click="aP.edit = {desc: ''}"
                  title="Add description"
-                 >&#x2795; Description</button>
+                 >&#xff0b; Description</button>
          <form v-if="aP.edit"
                onsubmit="return false"
                method="POST"
@@ -801,7 +801,7 @@
                         style="float:left; margin-right:1em">
                      <select @change="addProgClip(aP, $event.target.value), $event.target.value = ''"
                              title="Add clip from Library">
-                        <option value="">&#x2795; Clip...</option>
+                        <option value="">&#xff0b; Clip...</option>
                         <template v-for="(aV, aK) in curate.clips">
                            <option :value="aK"
                                    >{{aV.name}}, {{aV.artist}}</option>
@@ -1144,7 +1144,7 @@
       </div>
       <span style="float:right; margin-right:1.5em">
          <span v-show="!nextBuf"
-               style="margin-right:1em; vertical-align:-1px; padding:0 0.5em; background-color:lightgray"
+               style="margin-right:1em; vertical-align:-1px; padding:0 0.5em; background-color:lightgray; color:#222"
                title="Loading clip"
                >&#x2913;</span>
          <button @click="skip()"
@@ -1284,7 +1284,7 @@
    <krm-dropdown :side="side"
                  title="Add to feed"
                  ref="dropPane">
-      <template #icon>&#x2795;&#x266c;</template>
+      <template #icon>&#xff0b;&#x266c;</template>
       {{srcname}} heard on...
       <form onsubmit="return false"
             method="POST">
@@ -1477,7 +1477,7 @@
                     :disabled="needsInput"
                     title="Add album"
                     style="margin-left:2.5em"
-                    >&#x2795; Album</button>
+                    >&#xff0b; Album</button>
          </div>
          <div v-for="(aC, aCi) in up.set.length ? up.set : setEmpty" :key="aC.file"
               style="margin-top:0.5em">
@@ -1511,7 +1511,7 @@
                     :disabled="needsInput"
                     title="Add clip"
                     style="margin-left:2.5em"
-                    >&#x2795; Clip</button>
+                    >&#xff0b; Clip</button>
          </div>
       </div>
    </form>
