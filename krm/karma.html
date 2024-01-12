@@ -371,27 +371,27 @@
                          v-model="catSet[a.name]"
                          type="checkbox"/>{{a.name}}</label></td></tr></table>
       </form>
-      <span v-show="found.length"
-            @click="found.length = 0, catSet = {_w:'any'}, catN = 0, catUi = true"
-            :title="'Drop search'+ (found.length > 1 ? 'es' : '')"
-            class="uilink uibrdr" style="float:right; margin-right:1.5em"
-            >&#x2a09;</span>
-      <span v-show="found.length > 1"
-            @click="browseBack()"
-            title="Back to prior search"
-            class="uilink uibrdr" style="float:right; margin-right:1em; padding-right:0.65em"
-            >&#x276e;</span>
-      <div v-show="found.length"
-           style="margin-bottom:1em">
-         <div @click="catUi = !catUi"
-              :title="(catUi ? 'Hide' : 'Show') +' search panel'"
-              class="uilink uibrdr" style="float:left; margin-right:1em"
-              >&#x2714;</div>
-         <em>DJs with {{found.length && found[found.length-1].set._w}} of: </em>
-         <template v-for="(aV, aK) in found.length ? found[found.length-1].set : null">
-            <span v-if="aK !== '_w' && aK !== '_q' && aV"
-                  class="tag"
-                  >{{aK}}</span>{{' '}}</template>
+      <div v-show="found.length">
+         <span @click="found.length = 0, catSet = {_w:'any'}, catN = 0, catUi = true"
+               :title="'Drop search'+ (found.length > 1 ? 'es' : '')"
+               class="uilink uibrdr" style="float:right; margin-right:0.5em"
+               >&#x2a09;</span>
+         <span v-show="found.length > 1"
+               @click="browseBack()"
+               title="Back to prior search"
+               class="uilink uibrdr" style="float:right; margin-right:1em; padding-right:0.65em"
+               >&#x276e;</span>
+         <span @click="catUi = !catUi"
+               :title="(catUi ? 'Hide' : 'Show') +' search panel'"
+               class="uilink uibrdr" style="float:left; margin-right:1em"
+               >&#x2714;</span>
+         <div style="margin-bottom:1em; line-height:1.75">
+            <em>DJs with {{found.length && found[found.length-1].set._w}} of: </em>
+            <template v-for="(aV, aK) in found.length ? found[found.length-1].set : null">
+               <span v-if="aK !== '_w' && aK !== '_q' && aV"
+                     class="tag"
+                     >{{aK}}</span>{{' '}}</template>
+         </div>
       </div>
       <em v-show="found.length && !found[found.length-1].res"
           >Looking...</em>
@@ -571,15 +571,15 @@
          <table style="clear:right; border-spacing:0.5em">
             <tr><th>Recent Programs</th><th>Clips</th></tr>
             <tr v-for="aP in aD.progs" :key="aP.id">
-               <td>
-                  <div style="margin-bottom:0.25em"
-                       >{{aP.name}} &ndash;
-                     <span class="uitalic"
-                           >{{aP.desc || '?'}}</span></div>
-                  {{aP.date}}
-                  <template v-for="aT in aP.tags" :key="aT">
-                     <span class="tag"
-                           >{{aT}}</span>{{' '}}</template>
+               <td>{{aP.name}} &ndash;
+                  <span class="uitalic"
+                        >{{aP.desc || '. . .'}}</span>
+                  <div style="margin-top:0.25em; line-height:1.75"
+                       >{{aP.date}}
+                     <template v-for="aT in aP.tags" :key="aT">
+                        <span class="tag"
+                              >{{aT}}</span>{{' '}}</template>
+                  </div>
                </td>
                <td class="uialignr"
                    >{{aP.count}}</td>
@@ -774,7 +774,7 @@
                    name="desc" type="text"
                    style="width:26em"/>
          </form>
-         <div style="margin-top:1em">
+         <div style="margin-top:0.5em; line-height:1.75">
             <em v-if="!aP.tags.length"
                 >No tags&nbsp;</em>
             <template v-for="a in aP.tags" :key="a">
