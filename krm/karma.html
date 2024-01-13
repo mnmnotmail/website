@@ -342,7 +342,14 @@
          </tr>
       </table>
    </div>
-   <div v-show="krm.s.screen === krm.kSc.br">
+   <div v-show="krm.s.screen === krm.kSc.br"
+        style="position:relative">
+      <span v-show="found.length"
+            @click="catUi = !catUi"
+            :title="(catUi ? 'Hide' : 'Show') +' search panel'"
+            class="uilink uibrdr"
+            style="position:absolute; left:calc(50vw - 1em); top:0; padding:0 0.5em"
+            >{{catUi ? '&#xfe3d;' : '&#xfe3e;'}}</span>
       <form v-show="catUi"
             onsubmit="return false"
             method="GET">
@@ -358,18 +365,19 @@
                <input v-model="catSet._w"
                       name="_w" value="all" type="radio"/>All&nbsp;&nbsp;of:</label>
          </div>
-         <div>Search DJs<br/>
-            <input v-model="catSet._q"
-                   placeholder="Tags or Keywords"
-                   name="_q" type="text" autocomplete="off"
-                   style="margin-top:0.25em; width:18em"/></div>
-         <table style="margin:0.5em 0 1em; border-spacing:1em 0">
-            <tr><td v-for="aCol in cats">
+         Search DJs<br/>
+         <input v-model="catSet._q"
+                placeholder="Tags or Keywords"
+                name="_q" type="text" autocomplete="off"
+                style="margin-top:0.25em; width:16em"/>
+         <table style="margin:0.5em 0; border-spacing:1em 0"><tr>
+            <td v-for="aCol in cats">
                <label v-for="a in aCol"
                       style="display:block">
                   <input @input="catN += $event.target.checked *2-1"
                          v-model="catSet[a.name]"
-                         type="checkbox"/>{{a.name}}</label></td></tr></table>
+                         type="checkbox"/>{{a.name}}</label></td>
+         </tr></table>
       </form>
       <div v-show="found.length">
          <span @click="found.length = 0, catSet = {_w:'any'}, catN = 0, catUi = true"
@@ -381,12 +389,9 @@
                title="Back to prior search"
                class="uilink uibrdr" style="float:right; margin-right:1em; padding-right:0.65em"
                >&#x276e;</span>
-         <span @click="catUi = !catUi"
-               :title="(catUi ? 'Hide' : 'Show') +' search panel'"
-               class="uilink uibrdr" style="float:left; margin-right:1em"
-               >&#x2714;</span>
          <div style="margin-bottom:1em; line-height:1.75">
             <em>DJs with {{found.length && found[found.length-1].set._w}} of: </em>
+            <br/>
             <template v-for="(aV, aK) in found.length ? found[found.length-1].set : null">
                <span v-if="aK !== '_w' && aK !== '_q' && aV"
                      class="tag"
