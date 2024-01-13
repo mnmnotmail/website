@@ -1147,7 +1147,7 @@
                class="person uilink"
                >{{a.name}}</span>
       </div>
-      <span style="float:right; margin-right:1.5em">
+      <span style="float:right; margin-right:0.5em">
          <span v-show="!nextBuf"
                style="margin-right:1em; vertical-align:-1px; padding:0 0.5em; background-color:lightgray; color:#222"
                title="Loading clip"
@@ -1158,7 +1158,7 @@
                  >&#x276f;&#x276f;</button>
          <button @click="toggle()"
                  :disabled="state === 'off' && !nextBuf"
-                 style="width:2.5em"
+                 style="width:2.5em; white-space:pre"
                  >{{state === 'run' ? '&#x2759;&hairsp;&#x2759;' : '&#x25b6;'}}</button>
       </span>
       <h3 style="margin:1rem 0"
