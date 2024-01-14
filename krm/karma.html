@@ -1698,12 +1698,12 @@
       emits: [ 'open' ],
       data() { return { unsparse: false, shown: false, localMd: false } },
       beforeMount() {
-         window.addEventListener('mousedown', this.handleWinMd);
-         window.addEventListener('keyup', this.handleWinKey);
+         document.addEventListener('mousedown', this.handleWinMd);
+         document.addEventListener('keyup', this.handleWinKey);
       },
       unmounted() {
-         window.removeEventListener('mousedown', this.handleWinMd);
-         window.removeEventListener('keyup', this.handleWinKey);
+         document.removeEventListener('mousedown', this.handleWinMd);
+         document.removeEventListener('keyup', this.handleWinKey);
       },
       methods: {
          hide() { this.shown = false },
