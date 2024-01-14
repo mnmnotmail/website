@@ -787,7 +787,8 @@
                      >{{a}}</span>{{' '}}</template>
             <krm-tag :set="curate.filter" :tags="aP.tags" :setro="true"/>
          </div>
-         <table style="margin-top:1em; border-spacing:1em 0">
+         <table class="hlrow"
+                style="margin-top:1em">
             <tr>
                <td colspan="6">
                   <form onsubmit="return false"
@@ -821,7 +822,7 @@
             <tr v-else>
                <th>(No clips)</th></tr>
             <tr v-for="(a, aI) in aP.clips"
-                :class="{inunpub: a.status === 'unpub', inhide: a.status === 'hide'}">
+                :class="{hlunpub: a.status === 'unpub', hlhide: a.status === 'hide'}">
                <td>{{a.name}}</td>
                <td>{{a.artist}}</td>
                <td>{{a.date}}</td>
@@ -1164,10 +1165,10 @@
       <h3 style="margin:1rem 0"
           >{{name}} ({{id}})</h3>
       <table v-if="feed"
-             style="border-spacing:1em 0">
+             class="hlrow">
          <tr><th></th><th>Artist</th><th>DJ</th><th>Released</th><th>Runs</th></tr>
          <tr v-for="(aC, aCi) in feed.clips"
-             :class="{inplay: aCi === clipsN}">
+             :class="{hlplay: aCi === clipsN}">
             <td>{{aC.name}}</td>
             <td>{{aC.artist}}</td>
             <td>{{djName(aC.dj)}}</td>

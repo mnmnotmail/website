@@ -165,9 +165,17 @@ td > .person {
    color: var(--fgb);
 }
 
-tr.inunpub { color: var(--fgb); box-shadow: inset 0 4em #ed5 }
-tr.inhide  { color: var(--fgb); box-shadow: inset 0 4em #ddd9 }
-tr.inplay  { color: var(--fgb); box-shadow: inset 0 4em #cdf }
+table.hlrow { border-collapse: collapse }
+
+table.hlrow > tr > th,
+table.hlrow > tr > td {
+   border-left:  1em solid transparent;
+   border-right: 1em solid transparent;
+}
+
+tr.hlunpub > td { color: var(--fgb); background-color: #ed5 }
+tr.hlhide  > td { color: var(--fgb); background-color: #ddd9 }
+tr.hlplay  > td { color: var(--fgb); background-color: #cdf }
 
 .dropdn {
    position: relative
