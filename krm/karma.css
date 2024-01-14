@@ -96,6 +96,7 @@ textarea:focus {
 .tabset > span,
 .tabset > div > span {
    margin-right: 1em;
+   border-top: 2px solid transparent;
    cursor: pointer;
 }
 .tabset > span:last-of-type,
@@ -107,18 +108,20 @@ textarea:focus {
    display: inline-block;
    margin-bottom: 0.5em;
    border-bottom: 1px solid var(--bdr);
-   padding: 0 0 0.5em 1em;
+   padding: 0 0 0.25em 1em;
 }
 .tabset2 > span {
    display: inline-block;
    margin-right: 1em;
+   margin-bottom: 0.25em;
    min-width: 1.5em;
+   border-top: 2px solid transparent;
    cursor: pointer;
    white-space: break-spaces;
 }
 
 span.tabshow {
-   border-top: 2px solid lightblue;
+   border-color: lightblue !important;
    cursor: default !important;
 }
 
