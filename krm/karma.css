@@ -80,7 +80,7 @@ textarea:focus {
 
 .box50vw {
    max-width: 50vw;
-   min-width: max-content;
+   width: max-content;
 }
 
 .tabset {
