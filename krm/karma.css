@@ -222,6 +222,11 @@ tr.hlplay  > td { color: var(--fgb); background-color: #cdf }
 }
 .logo > span { vertical-align: middle }
 
+table.circle { border-spacing: 1em 0.25em }
+table.circle.uisep { border-spacing: 1em 1px }
+
+table.circle.uisep > tr:nth-child(n+2) > td[colspan] { border-top: 0.25em solid transparent }
+
 .circle-invite {
    border: 2px solid var(--bdr);
    border-radius: 6px;

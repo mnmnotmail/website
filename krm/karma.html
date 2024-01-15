@@ -532,26 +532,31 @@
                       :checked="aFv"
                       :disabled="aFk ? aV.filterCount && aV.filter[''] : !aV.filterCount"
                       type="checkbox"/>&nbsp;{{aFk || 'All'}}</label></div>
-         <table style="margin-top:1em; border-spacing:1em 0.25em">
-            <tr v-for="aP in aV.fltrPosts" :key="aP.id">
-               <td>{{aP.heard ? '' : aP.tags && aP.tags[0] === 'circle_invite' ? '&#x2709;' : '&#x2600;'}}</td>
-               <td>{{aP.date}}</td>
-               <td v-if="aK === 'new'"
-                   @click="goCircle(aP.circle)"
-                   class="uilink"
-                   >{{circleName(aP.circle)}}</td>
-               <td>{{aP.alias}}</td>
-               <td><krm-playbtn @click.native="toggleClient(aP.clip)"
-                                :playing="clientClip === aP.clip"/></td>
-               <td class="uifont80 uivalignm uialignr"
-                   >{{aP.runtime}}</td>
-               <td><template v-for="a in aP.tags" :key="a">
-                     <span class="tag"
-                           >{{a}}</span>{{' '}}</template>
-                  <krm-tag v-if="aK !== 'new' && !aV.invited"
-                           :set="aV.filter" :tags="aP.tags" :sparse="true"/>
-               </td>
-            </tr></table>
+         <table :class="['circle', {uisep: aK === 'new'}]"
+                style="margin-top:1em">
+            <template v-for="(aP, aPi) in aV.fltrPosts" :key="aP.id">
+               <tr v-if="aP.circle && (aPi === 0 || aP.circle !== aV.fltrPosts[aPi-1].circle)">
+                  <td></td><td colspan="5">
+                     <span @click="goCircle(aP.circle)"
+                           class="uilink"
+                           >{{circleName(aP.circle)}}</span></td></tr>
+               <tr>
+                  <td>{{aP.heard ? '' : aP.tags && aP.tags[0] === 'circle_invite' ? '&#x2709;' : '&#x2600;'}}</td>
+                  <td>{{aP.date}}</td>
+                  <td>{{aP.alias}}</td>
+                  <td><krm-playbtn @click.native="toggleClient(aP.clip)"
+                                   :playing="clientClip === aP.clip"/></td>
+                  <td class="uifont80 uivalignm uialignr"
+                      >{{aP.runtime}}</td>
+                  <td>
+                     <template v-for="a in aP.tags" :key="a">
+                        <span class="tag"
+                              >{{a}}</span>{{' '}}</template>
+                     <krm-tag v-if="aK !== 'new' && !aV.invited"
+                              :set="aV.filter" :tags="aP.tags" :sparse="true"/>
+                  </td>
+               </tr>
+            </template></table>
       </div>
    </div>
    <div v-show="krm.s.screen === krm.kSc.dj"
