@@ -452,7 +452,7 @@
          <table :class="['circle', {uisep: aK === 'new'}]"
                 style="margin-top:1em">
             <template v-for="(aP, aPi) in aV.fltrPosts" :key="aP.id">
-               <tr v-if="aP.circle && (aPi === 0 || aP.circle !== aV.fltrPosts[aPi-1].circle)">
+               <tr v-if="aK === 'new' && (aPi === 0 || aP.circle !== aV.fltrPosts[aPi-1].circle)">
                   <td></td><td colspan="5">
                      <span @click="goCircle(aP.circle)"
                            class="uilink"
