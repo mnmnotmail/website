@@ -27,8 +27,8 @@
       client: 'd.1',
       app: null,
       appRoot: null,
-      s: { feedRef: {}, screen: -1 },
-      kSc: {fe:0, st:1, jo:2, si:3, re:1, br:2, ci:3, dj:4, cu:5, ab:6},
+      s: { feedRef: {}, screen: -1, act: null },
+      kSc: {fe:0, st:1, jo:2, si:3, br:1, ci:2, dj:3, cu:4, ab:5},
       kEmpty: /^\s*$/,
    };
    window.onload = () => {
@@ -51,13 +51,13 @@
 
 <script type="text/x-template" id="krm-main">
    <div style="margin-top:3em"></div>
-   <feed v-show="krm.s.screen === krm.kSc.fe"
-         @playing="$refs.finder && ($refs.finder.stopClient(), $refs.finder.stopAudsrc())"
-         @gosrc="function(c) { if ($refs.finder) c.slice(0,3) === 'Thr' ? $refs.finder.goCircle(c)
-                                                                        : $refs.finder.goDj(c) }"
-         :id="krm.s.feedRef.id" :name="krm.s.feedRef.name"
-         :go="firstStart"
-         ref="feed"/>
+   <div v-show="krm.s.screen === krm.kSc.fe">
+      <feed @playing="$refs.finder && ($refs.finder.stopClient(), $refs.finder.stopAudsrc())"
+            @gosrc="function(c) { if ($refs.finder) c.slice(0,3) === 'Thr' ? $refs.finder.goCircle(c)
+                                                                           : $refs.finder.goDj(c) }"
+            :id="krm.s.feedRef.id" :name="krm.s.feedRef.name"
+            :go="firstStart"
+            ref="feed"/></div>
    <start v-if="firstStart"
           @ok="firstStart = false"/>
    <finder v-else
@@ -231,9 +231,6 @@
       <span @click="krm.s.screen = krm.kSc.fe"
             :class="{tabshow: krm.s.screen === krm.kSc.fe}"
             >Feed</span>
-      <span @click="krm.s.screen = krm.kSc.re"
-            :class="{tabshow: krm.s.screen === krm.kSc.re}"
-            >Recent</span>
       <span @click="krm.s.screen = krm.kSc.br"
             :class="{tabshow: krm.s.screen === krm.kSc.br}"
             >Browse</span>
@@ -261,86 +258,6 @@
                  >About</div>
          </krm-dropdown>
       </div>
-   </div>
-   <div v-show="krm.s.screen === krm.kSc.re" v-if="act">
-      <div class="tabset2">
-         <span @click="recSaved = false"
-               :class="{tabshow: !recSaved}"
-               >Played</span>
-         <span @click="recSaved = true"
-               :class="{tabshow: recSaved}"
-               >Saved</span>
-      </div>
-      <krm-dropdown ref="feedAdd"
-                    title="Add feed"
-                    style="position:absolute; right:0.5em; top:3em">
-         <template #icon>&#xff0b;</template>
-         <form onsubmit="return false"
-               method="POST" autocomplete="off">
-            <input v-model="feedName"
-                   placeholder="New feed name"
-                   name="name" type="text"
-                   style="width:12em; margin-bottom:0.5em"/>
-            <button @click="addFeed(feedName), feedName = '', $refs.feedAdd.hide(), recSaved = true"
-                    :disabled="krm.kEmpty.test(feedName) || act.saved.find(c => c.name === feedName)"
-                    title="Create feed"
-                    style="float:right"
-                    >&#xff0b; Feed</button>
-         </form>
-      </krm-dropdown>
-      <table style="border-spacing:1em 0">
-         <tr><th></th> <th>{{recSaved ? 'Revised' : 'Played on'}}</th> <th>Sched</th> <th>Plays</th></tr>
-         <tr v-for="(aF, aFi) in (recSaved ? act.saved : act.played)" :key="aF.id">
-            <td>
-               <span v-if="aF.djs && !aF.djs.length"
-                     class="uibold"
-                     >{{aF.name}}</span>
-               <span v-else
-                     @click="setPlayed(aF), krm.s.screen = krm.kSc.fe"
-                     class="uilink"
-                     >{{aF.name}}</span>
-            </td>
-            <td>{{recSaved ? aF.saved : aF.played}}</td>
-            <td>{{aF.schedule}}</td>
-            <td>
-               <span v-for="a in aF.djs"
-                     class="person"
-                     >{{a.name}}</span>
-               <em v-if="aF.saved && !aF.djs.length"
-                   >None </em>
-               <krm-dropdown v-if="aF.saved"
-                             :sparse="true"
-                             :ref="function(c) { aF.refs.drop = c }"
-                             title="Trim feed"
-                             :class="{uihide: !recSaved}"
-                             style="display:inline-block">
-                  <template #icon>&bigotimes;</template>
-                  <form onsubmit="return false"
-                        method="POST">
-                     <div class="box40vh box50vw uishowspc uibreakword">
-                        <label v-for="aDj in aF.djs" :key="aDj.id"
-                               style="display:block">
-                           <input @input="aDj.drop = $event.target.checked"
-                                  :name="aDj.id" type="checkbox"
-                                  style="margin-right:0.5em"
-                                  />{{aDj.name}}</label>
-                        <label style="display:block"
-                               :class="{uisep: aF.djs.length}">
-                           <input @input="aF.drop = $event.target.checked"
-                                  :name="aF.id" type="checkbox"
-                                  style="margin-right:0.5em"
-                                  />Entire feed</label>
-                     </div>
-                     <button @click="trimFeed(aF), aF.refs.drop.hide()"
-                             :disabled="!aF.drop && aF.djs.every(c => !c.drop)"
-                             :title="'Remove '+ (aF.drop ? 'feed' : 'selected')"
-                             style="float:right; margin-top:0.25em"
-                             >Remove</button>
-                  </form>
-               </krm-dropdown>
-            </td>
-         </tr>
-      </table>
    </div>
    <div v-show="krm.s.screen === krm.kSc.br"
         style="position:relative">
@@ -864,7 +781,7 @@
       template: '#krm-finder',
       emits: [ 'playing', 'djrev' ],
       data() { return { clientClip: null, //todo must be array? pop() in client @ended & @pause events
-                        act: null, recSaved: false, feedName: '',
+                        act: null,
                         circ: null, circOpen: {}, circId: 'new', circName: '',
                         cats: null, catUi: true, catN: 0, catSet: {_w:'any'}, found: [],
                         djs: null, djId: 0,
@@ -890,8 +807,9 @@
          this.$root.xhrGet('Act', 'json', 'account',     c => {
             c.saved.forEach((cId, cN) => { c.saved[cN] = c.feeds[cId]; c.feeds[cId].refs = {}; });
             c.played.forEach((cId, cN) => { c.played[cN] = c.feeds[cId] });
-            delete c.feeds;
-            this.act = c;
+            c.feeds = null;
+            krm.s.act = this.act = c;
+            krm.s.feedRef = c.played[0];
          });
          this.$root.xhrGet('Cir', 'json', 'circles',     c => {
             this.ppl = c.contacts;
@@ -900,12 +818,6 @@
             this.filterCircle(c);
             this.circOpen.new = c;
          });
-      },
-      watch: {
-         'act.played': {
-            deep: true,
-            handler() { krm.s.feedRef = this.act.played[0] }
-         },
       },
       methods: {
          toggleClient(iClip) {
@@ -928,31 +840,6 @@
          stopAudsrc() {
             if (this.aud.src)
                this.aud.src.stop(0);
-         },
-         setPlayed(iFeed) {
-            var aPos = this.act.played.findIndex(c => c.id === iFeed.id);
-            if (aPos === 0)
-               return;
-            if (aPos > 0)
-               this.act.played.splice(aPos, 1);
-            this.act.played.unshift(iFeed);
-            this.act.played[0].played = 'Today';
-         },
-         addFeed(iName) {
-            this.act.saved.unshift({ name: iName, id: 'Fx'+ this.act.saved.length, saved: 'Today',
-                                     played: null, schedule: null, djs: [], refs: {} });
-         },
-         trimFeed(iF) {
-            if (iF.drop) {
-               this.act.saved.splice(this.act.saved.findIndex(c => c === iF), 1);
-               iF.saved = null;
-               return;
-            }
-            for (var a = iF.djs.length-1; a >= 0; --a)
-               if (iF.djs[a].drop)
-                  iF.djs.splice(a, 1);
-            if (iF === krm.s.feedRef)
-               this.$emit('djrev', iF.djs);
          },
          goBrowse() {
             var aF = {set: {}, n: this.catN, res: null};
@@ -1144,7 +1031,37 @@
 </script>
 
 <script type="text/x-template" id="krm-feed">
-   <div>
+   <div v-if="krm.s.act"
+        class="tabset2">
+      <span @click="showFeed = false, listSaved = false"
+            :class="{tabshow: !showFeed && !listSaved}"
+            >Played</span>
+      <span @click="showFeed = false, listSaved = true"
+            :class="{tabshow: !showFeed && listSaved}"
+            >Saved</span>
+      <span @click="showFeed = true"
+            :class="{tabshow: showFeed}"
+            >{{name}}</span>
+   </div>
+   <krm-dropdown v-if="krm.s.act"
+                 ref="feedAdd"
+                 title="Add feed"
+                 style="position:absolute; right:0.5em; top:3em">
+      <template #icon>&#xff0b;</template>
+      <form onsubmit="return false"
+            method="POST" autocomplete="off">
+         <input v-model="addName"
+                placeholder="New feed name"
+                name="name" type="text"
+                style="width:12em; margin-bottom:0.5em"/>
+         <button @click="addFeed(addName), addName = '', $refs.feedAdd.hide(), showFeed = false, listSaved = true"
+                 :disabled="krm.kEmpty.test(addName) || krm.s.act.saved.find(c => c.name === addName)"
+                 title="Create feed"
+                 style="float:right"
+                 >&#xff0b; Feed</button>
+      </form>
+   </krm-dropdown>
+   <div v-show="showFeed">
       <div v-if="feed"
            style="margin:0 0.5em 1em 0">
          DJs
@@ -1183,6 +1100,61 @@
          </tr>
       </table>
    </div>
+   <div v-show="!showFeed" v-if="krm.s.act">
+      <table style="border-spacing:1em 0">
+         <tr><th></th> <th>{{listSaved ? 'Revised' : 'Played on'}}</th> <th>Sched</th> <th>Plays</th></tr>
+         <tr v-for="(aF, aFi) in (listSaved ? krm.s.act.saved : krm.s.act.played)" :key="aF.id">
+            <td>
+               <span v-if="aF.djs && !aF.djs.length"
+                     class="uibold"
+                     >{{aF.name}}</span>
+               <span v-else
+                     @click="setPlayed(aF), showFeed = true"
+                     class="uilink"
+                     >{{aF.name}}</span>
+            </td>
+            <td>{{listSaved ? aF.saved : aF.played}}</td>
+            <td>{{aF.schedule}}</td>
+            <td>
+               <span v-for="a in aF.djs"
+                     class="person"
+                     >{{a.name}}</span>
+               <em v-if="aF.saved && !aF.djs.length"
+                   >None </em>
+               <krm-dropdown v-if="aF.saved"
+                             :sparse="true"
+                             :ref="function(c) { aF.refs.drop = c }"
+                             title="Trim feed"
+                             :class="{uihide: !listSaved}"
+                             style="display:inline-block">
+                  <template #icon>&bigotimes;</template>
+                  <form onsubmit="return false"
+                        method="POST">
+                     <div class="box40vh box50vw uishowspc uibreakword">
+                        <label v-for="aDj in aF.djs" :key="aDj.id"
+                               style="display:block">
+                           <input @input="aDj.drop = $event.target.checked"
+                                  :name="aDj.id" type="checkbox"
+                                  style="margin-right:0.5em"
+                                  />{{aDj.name}}</label>
+                        <label style="display:block"
+                               :class="{uisep: aF.djs.length}">
+                           <input @input="aF.drop = $event.target.checked"
+                                  :name="aF.id" type="checkbox"
+                                  style="margin-right:0.5em"
+                                  />Entire feed</label>
+                     </div>
+                     <button @click="trimFeed(aF), aF.refs.drop.hide()"
+                             :disabled="!aF.drop && aF.djs.every(c => !c.drop)"
+                             :title="'Remove '+ (aF.drop ? 'feed' : 'selected')"
+                             style="float:right; margin-top:0.25em"
+                             >Remove</button>
+                  </form>
+               </krm-dropdown>
+            </td>
+         </tr>
+      </table>
+   </div>
 </script><script type="module">
    import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
@@ -1192,7 +1164,11 @@
       props: { id: String, name: String, go: Boolean },
       data() { return { audCtx: new AudioContext(), audSrc: null, state: 'run',
                         feed: null, clipsN: 0,
-                        xhr: null, nextBuf: null } },
+                        xhr: null, nextBuf: null,
+                        showFeed: true, listSaved: false, addName: '' } },
+      computed: {
+         krm() { return krm }
+      },
       created() {
          if (!this.go) {
             this.audSrc = true;
@@ -1286,6 +1262,32 @@
             this.feed.curators.length = 0;
             for (let a of i)
                this.feed.curators.push({id: a.id, name: a.name});
+         },
+         setPlayed(iFeed) {
+            var aPos = krm.s.act.played.findIndex(c => c.id === iFeed.id);
+            if (aPos === 0)
+               return;
+            if (aPos > 0)
+               krm.s.act.played.splice(aPos, 1);
+            krm.s.act.played.unshift(iFeed);
+            krm.s.act.played[0].played = 'Today';
+            krm.s.feedRef = krm.s.act.played[0];
+         },
+         addFeed(iName) {
+            krm.s.act.saved.unshift({ name: iName, id: 'Fx'+ krm.s.act.saved.length, saved: 'Today',
+                                      played: null, schedule: null, djs: [], refs: {} });
+         },
+         trimFeed(iF) {
+            if (iF.drop) {
+               krm.s.act.saved.splice(krm.s.act.saved.findIndex(c => c === iF), 1);
+               iF.saved = null;
+               return;
+            }
+            for (var a = iF.djs.length-1; a >= 0; --a)
+               if (iF.djs[a].drop)
+                  iF.djs.splice(a, 1);
+            if (iF === krm.s.feedRef)
+               this.revDjs(iF.djs);
          },
       },
    });
