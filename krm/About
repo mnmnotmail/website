@@ -9,6 +9,7 @@ For example, they...
 <ul>
 <li>Drown out the work of compassionate, skilled creators by letting anyone post virtually anything.</li>
 <li>Rely on secret, ever-shifting algorithms to select content for users.</li>
+<li>Distract your audience from absorbing the full length of each work they open.</li>
 <li>Yank or demonetize works and whole accounts without warnings or stated reasons.</li>
 <li>Deny creators fair payment for their work.</li>
 <li>Exclude expert curators who feature others' works on their own channels.</li>
@@ -42,7 +43,7 @@ Note: the Listener UI refers to all creators as "DJs".
 (See the <em>Curate</em> screen.)
 
 <p><em>Home:</em> your DJ profile, and list of Programs.
-You create a Program with the &#x2795; dropdown at top-right of <em>Curate</em>.
+You create a Program with the &#xff0b; dropdown at top-right of <em>Curate</em>.
 </p>
 
 <p><em>Library:</em> your clips repository 
@@ -109,36 +110,33 @@ what we care about is a compassionate, constructive tone conveying each perspect
 
 <h3>Listener features</h3>
 
-<p><em>Feed:</em> Your selected feed, or default feed if you haven't created any others.
-A feed plays material from one or more DJs and/or Circles, listed at the top of <em>Feed</em>.
-You can add more sources to the feed from <em>DJs</em> or <em>Circles</em> 
-using the &#x2795;&#x266c; dropdown.
-</p>
-
-<p><em>Recent:</em> Your Played and Saved feed lists.
-Tapping or clicking the name of a feed begins playing it on the <em>Feed</em> screen.
+<p><em>Feed:</em> Your currently selected feed, and lists of played &amp; saved feeds.
+A feed plays material from one or more DJs and/or Circles, listed at the top of its screen.
+You create a feed with the &#xff0b; dropdown at top-right of <em>Feed</em>, 
+or from <em>DJs</em> or <em>Circles</em> using the &#xff0b;&#x266c; dropdown.
+On <em>Played</em> &amp; <em>Saved</em>, tapping or clicking a feed name makes it your selected feed.
 Within <em>Saved</em>, the &bigotimes; dropdown lets you remove sources from a feed, 
 or delete an entire feed.
-You create a feed with the &#x2795; dropdown at top-right of <em>Recent</em>, 
-or from <em>DJs</em> or <em>Circles</em> using the &#x2795;&#x266c; dropdown.
+You can also add/remove sources in a feed from <em>DJs</em> or <em>Circles</em> 
+using the &#xff0b;&#x266c; dropdown.
 </p>
 
 <p><em>Browse:</em> Lets you find &amp; sample DJs by topic tag or input terms.
 A search returns matching "Programs" (a named sequence of related clips), grouped by DJ.
-From a search result, you can refine your query, back up to the prior result 
+From a search result, you can refine your query, or back up to the prior result 
 (if there's more than one), or drop all search results.
 </p>
 
 <p><em>DJs:</em> Opened DJ profiles.
 From <em>Feed</em> or <em>Browse</em>, tapping or clicking a DJ name opens <em>DJs</em>, 
 and displays that DJ's profile.
-You can add or remove the DJ to/from a feed using the &#x2795;&#x266c; dropdown.
+You can add or remove the DJ to/from a feed using the &#xff0b;&#x266c; dropdown.
 </p>
 
 <p><em>Circles:</em> Private (by invitation only) groups where members can post their own recordings 
 and share clips published by creators.
 When invited to join a circle, your invitation appears in the <em>Latest</em> list.
-You create a Circle with the &#x2795; dropdown at top-right of <em>Circles</em>.
+You create a Circle with the &#xff0b; dropdown at top-right of <em>Circles</em>.
 Within a specific Circle, you can invite new members with the \o/ dropdown, 
 and post new content with the &#x2af7; dropdown.
 For any post in a Circle, you can add/drop tags with the &sharp; dropdown in the right-side column.
@@ -155,8 +153,8 @@ For any post in a Circle, you can add/drop tags with the &sharp; dropdown in the
 
 <pre style="box-sizing:border-box; width:100%; overflow-x:auto;
             border:1px solid gray; padding:0.25em; font-family:inherit">
+Link-style buttons for local-effect ops
 Preserve screen scroll position
-Dark blueish background color
 Clips with slide deck
 Location-based content
 Users can invite friends to platform
@@ -180,6 +178,7 @@ Recent:
 
 Browse:
   Result shows program subtitle and matched search terms/tags
+  Result has tofeed dropdown under dj name
 
 Circles:
   Post clip from feed
