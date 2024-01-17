@@ -20,8 +20,6 @@ td { vertical-align: top }
 
 ul { padding-left: 1.5em }
 
-button:disabled { color: var(--fgb) }
-
 input[type=text],
 textarea {
    border: 1px solid;
@@ -67,6 +65,24 @@ textarea:focus {
    border: 1px solid var(--fgl);
    border-radius: 5px;
    padding: 0.1em 0.4em;
+}
+
+button.ui {
+   margin: 0;
+   border: 1px solid darkgray;
+   border-radius: 4px;
+   padding: 2px 5px;
+   background-color: gainsboro;
+   color: black;
+   font-size: 13px;
+}
+button.ui:disabled {
+   opacity: 0.55;
+   color: var(--fgb);
+}
+button.ui:active:hover:not(:disabled) {
+   background-color: var(--fgl);
+   color: white;
 }
 
 .box40vh {
@@ -209,7 +225,6 @@ tr.hlplay  > td { color: var(--fgb); background-color: #cdf }
    left: 0;
    right: auto;
 }
-.dropdn button:disabled { color: revert }
 
 .logo {
    height: 64px;

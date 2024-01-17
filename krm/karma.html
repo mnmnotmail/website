@@ -173,7 +173,7 @@
       </template>
       <template v-else>
          <button @click="krm.s.screen = krm.kSc.fe, select = 0, getMix()"
-                 style="float:right; margin:1em 0.5em 0 0"
+                 style="float:right; margin:1em 0.5em 0 0" class="ui"
                  >&#x25b6; Listen</button>
          <div style="margin-bottom:1em"
               >Select topics of interest for your first feed<br/>
@@ -191,6 +191,7 @@
       Full name or alias<br/>
       <input type="text" style="width:12em"/><br/>
       <button @click="$emit('ok')"
+              class="ui"
               >Sign Up</button>
    </div>
    <div v-show="krm.s.screen === krm.kSc.si">
@@ -204,6 +205,7 @@
                     style="width:12em"/></td>
       </tr></table>
       <button @click="$emit('ok')"
+              class="ui"
               >Sign In</button>
    </div>
 </script><script type="module">
@@ -272,7 +274,7 @@
             method="GET">
          <button @click="goBrowse()"
                  :disabled="!catN && !catSet._q"
-                 style="float:right; margin-right:1em"
+                 style="float:right; margin-right:1em" class="ui"
                  >Find DJs</button>
          <div style="float:left; margin-right:2em">
             <label style="display:block; padding-top:1px">
@@ -371,7 +373,7 @@
             <button @click="circId = addCircle(circName), circName = '', $refs.circStart.hide()"
                     :disabled="krm.kEmpty.test(circName) || circ.find(c => c.name === circName)"
                     title="Create circle"
-                    style="float:right"
+                    style="float:right" class="ui"
                     >&#xff0b; Circle</button>
          </form>
       </krm-dropdown>
@@ -386,6 +388,7 @@
                   method="POST"
                   style="float:right">
                <button @click="aV.invited = aV.members.find(c => c.id === act.id).invited = null"
+                       class="ui"
                        >&#xff0b; Join Circle!</button></form>
          </div>
          <div style="margin-bottom:1em">
@@ -410,7 +413,7 @@
                   <button @click="inviteToCircle(aV), aV.refs.inv.hide()"
                           :disabled="aV.invList.every(c => !c)"
                           title="Invite new members"
-                          style="float:right; margin-top:0.25em"
+                          style="float:right; margin-top:0.25em" class="ui"
                           >Invite</button>
                </form>
             </krm-dropdown>
@@ -575,7 +578,7 @@
             <button @click="curate.openId = addProgram(newProg), newProg.name = '', $refs.progAdd.hide()"
                     :disabled="!checkProgName(newProg)"
                     title="Create program"
-                    style="float:right"
+                    style="float:right" class="ui"
                     >&#xff0b; Program</button>
          </form>
       </krm-dropdown>
@@ -587,11 +590,12 @@
             <button v-show="!curate.edit"
                     @click="curate.edit = curate.title"
                     title="Edit profile"
+                    class="ui"
                     >Edit</button>
             <button v-if="curate.edit"
                     @click="curate.title = curate.edit, curate.edit = false"
                     title="Cancel edits"
-                    style="margin-right:0.5em"
+                    style="margin-right:0.5em" class="ui"
                     >&#x2a09;</button>
          </div>
          <h3>{{curate.name}} ({{curate.id}})</h3>
@@ -623,6 +627,7 @@
                         method="POST">
                      <button @click="dropProgram(aP)"
                              title="Drop empty program"
+                             class="ui"
                              >&#x274c;</button></form></td>
                <td v-else-if="aP.status"
                    class="uitalic"
@@ -665,11 +670,12 @@
             <button v-if="!aP.edit"
                     @click="aP.edit = {name: aP.name, desc: aP.desc}"
                     title="Edit name & description"
+                    class="ui"
                     >Edit</button>
             <button v-else
                     @click="aP.edit.name && (aP.name = aP.edit.name), aP.desc = aP.edit.desc, aP.edit = null"
                     title="Cancel edits"
-                    style="margin-right:0.5em"
+                    style="margin-right:0.5em" class="ui"
                     >&#x2a09;</button>
          </div>
          <h4 v-show="!aP.edit || !aP.edit.name"
@@ -683,6 +689,7 @@
                  v-show="!aP.edit"
                  @click="aP.edit = {desc: ''}"
                  title="Add description"
+                 class="ui"
                  >&#xff0b; Description</button>
          <form v-if="aP.edit"
                onsubmit="return false"
@@ -723,6 +730,7 @@
                                      aP.status = ''"
                              :disabled="!aP.clips || aP.clips.every(c => c.status !== 'unpub')"
                              title="Post draft clips"
+                             class="ui"
                              >&#x266c; Post</button></form>
                   <form onsubmit="return false"
                         method="POST"
@@ -761,6 +769,7 @@
                                                      : aP.status = 'empty'"
                              :disabled="clientClip === a"
                              title="Drop clip"
+                             class="ui"
                              >&#x274c;</button></form>
                   <form v-else
                         onsubmit="return false"
@@ -768,6 +777,7 @@
                      <button @click="a.status = !a.status ? 'hide' : '',
                                      aP.hidden += (a.status === 'hide') *2-1"
                              :title="(!a.status ? 'Hide' : 'Publish') +' clip'"
+                             class="ui"
                              >{{!a.status ? '&#x229d;' : '&#x266c;'}}</button></form>
                </td>
             </tr>
@@ -1057,7 +1067,7 @@
          <button @click="addFeed(addName), addName = '', $refs.feedAdd.hide(), showFeed = false, listSaved = true"
                  :disabled="krm.kEmpty.test(addName) || krm.s.act.saved.find(c => c.name === addName)"
                  title="Create feed"
-                 style="float:right"
+                 style="float:right" class="ui"
                  >&#xff0b; Feed</button>
       </form>
    </krm-dropdown>
@@ -1077,11 +1087,11 @@
                >&#x2913;</span>
          <button @click="skip()"
                  :disabled="state !== 'run'"
-                 style="margin-right:1.5em; width:2.5em"
+                 style="margin-right:1.5em; width:2.5em" class="ui"
                  >&#x276f;&#x276f;</button>
          <button @click="toggle()"
                  :disabled="state === 'off' && !nextBuf"
-                 style="width:2.5em; white-space:pre"
+                 style="width:2.5em; white-space:pre" class="ui"
                  >{{state === 'run' ? '&#x2759;&hairsp;&#x2759;' : '&#x25b6;'}}</button>
       </span>
       <h3 style="margin:1rem 0"
@@ -1147,7 +1157,7 @@
                      <button @click="trimFeed(aF), aF.refs.drop.hide()"
                              :disabled="!aF.drop && aF.djs.every(c => !c.drop)"
                              :title="'Remove '+ (aF.drop ? 'feed' : 'selected')"
-                             style="float:right; margin-top:0.25em"
+                             style="float:right; margin-top:0.25em" class="ui"
                              >Remove</button>
                   </form>
                </krm-dropdown>
@@ -1314,7 +1324,7 @@
                  @click="update(), $refs.dropPane.hide()"
                  :disabled="flags.every(c => !c)"
                  title="Update feeds"
-                 style="float:right; margin-top:0.25em"
+                 style="float:right; margin-top:0.25em" class="ui"
                  >Update</button>
          <br>
       </form>
@@ -1389,7 +1399,7 @@
                  @click="update(), $refs.dropPane.hide()"
                  :disabled="flags.every(c => !c)"
                  title="Update tags"
-                 style="float:right; margin-top:0.25em"
+                 style="float:right; margin-top:0.25em" class="ui"
                  >Update</button>
          <br>
       </form>
@@ -1458,11 +1468,13 @@
                  @click="$refs.fileSelect.click()"
                  type="button"
                  title="Upload new clip"
+                 class="ui"
                  >Upload...</button>
          <button v-show="!upHide"
                  @click="upStop(), upClear()"
                  type="reset"
                  title="Cancel upload"
+                 class="ui"
                  >&#x2a09;</button>
       </div>
       <div :class="{uihide: upHide}"
@@ -1489,7 +1501,7 @@
             <button @click="upStop(), $emit('post', up), upClear()"
                     :disabled="needsInput"
                     title="Add album"
-                    style="margin-left:2.5em"
+                    style="margin-left:2.5em" class="ui"
                     >&#xff0b; Album</button>
          </div>
          <div v-for="(aC, aCi) in up.set.length ? up.set : setEmpty" :key="aC.file"
@@ -1523,7 +1535,7 @@
                     @click="upStop(), $emit('post', up), upClear()"
                     :disabled="needsInput"
                     title="Add clip"
-                    style="margin-left:2.5em"
+                    style="margin-left:2.5em" class="ui"
                     >&#xff0b; Clip</button>
          </div>
       </div>
@@ -1635,7 +1647,7 @@
       <button v-show="!state"
               @click="state = 1, $nextTick(() => { $refs.fileSelect.click() })"
               title="Replace image"
-              style="position:absolute; right:2px; bottom:2px"
+              style="position:absolute; right:2px; bottom:2px" class="ui"
               >Set</button>
       <form v-if="state"
             @submit.prevent="state = 0"
@@ -1647,12 +1659,12 @@
                 ref="fileSelect"/>
          <button :disabled="state < 2"
                  title="Save new image"
-                 style="position:absolute; right:2px; bottom:2px"
+                 style="position:absolute; right:2px; bottom:2px" class="ui"
                  >OK</button>
          <button @click="state = 0, $refs.image.src = src"
                  title="Cancel change"
                  type="reset"
-                 style="position:absolute; left:2px; bottom:2px"
+                 style="position:absolute; left:2px; bottom:2px" class="ui"
                  >&#x2a09;</button>
       </form>
    </div>
@@ -1743,7 +1755,8 @@
 </script>
 
 <script type="text/x-template" id="krm-playbtn">
-   <button>{{playing ? '&#x25fc;' : '&#x25b6;'}}</button>
+   <button class="ui"
+           >{{playing ? '&#x25fc;' : '&#x25b6;'}}</button>
 </script><script type="module">
    import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
