@@ -179,10 +179,10 @@
               >Select topics of interest for your first feed<br/>
                (You can add or amend feeds anytime.)
          </div>
-         <table style="border-spacing:0.5em 0"><tr>
+         <table class="checklist"
+                style="border-spacing:0.5em 0"><tr>
             <td v-for="aCol in cats">
-               <label v-for="a in aCol"
-                      style="display:block">
+               <label v-for="a in aCol">
                   <input type="checkbox" :name="a.name"/>{{a.name}}</label></td>
          </tr></table>
       </template>
@@ -289,10 +289,10 @@
                 placeholder="Tags or Keywords"
                 name="_q" type="text" autocomplete="off"
                 style="margin-top:0.25em; width:16em"/>
-         <table style="margin:0.5em 0; border-spacing:1em 0"><tr>
+         <table class="checklist"
+                style="margin:0.5em 0; border-spacing:0.5em 0"><tr>
             <td v-for="aCol in cats">
-               <label v-for="a in aCol"
-                      style="display:block">
+               <label v-for="a in aCol">
                   <input @input="catN += $event.target.checked *2-1"
                          v-model="catSet[a.name]"
                          type="checkbox"/>{{a.name}}</label></td>

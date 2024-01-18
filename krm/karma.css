@@ -155,6 +155,11 @@ span.tabshow {
    cursor: default;
 }
 
+table.checklist > tr > td > label {
+   margin-bottom: 0.25em;
+   display: block;
+}
+
 .checkset > label {
    margin-right: 1em;
    display: inline-block;
