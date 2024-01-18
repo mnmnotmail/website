@@ -429,8 +429,9 @@
                   :class="{uifade: a.invited}"
                   >{{a.alias}}</span>
          </div>
-         <div style="float:right"
-              >{{aV.fltrPosts.length}} of {{aV.posts.length}}<!---->
+         <div style="float:right">
+            <strong v-show="aV.fltrPosts !== aV.posts"
+                    >{{aV.fltrPosts.length}}</strong>
             <krm-dropdown v-if="aK !== 'new' && !aV.invited"
                           @open="aV.refs.up.chooseFile()"
                           :ref="function(c) { aV.refs.post = c }"
