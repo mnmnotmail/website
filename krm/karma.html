@@ -171,8 +171,11 @@
                class="uilink"
                >Try It!</span>
       </template>
-      <template v-else>
+      <form v-else
+            onsubmit="return false"
+            method="GET">
          <button @click="krm.s.screen = krm.kSc.fe, select = 0, getMix()"
+                 :disabled="!catN"
                  style="float:right; margin:1em 0.5em 0 0" class="ui"
                  >&#x25b6; Listen</button>
          <div style="margin-bottom:1em"
@@ -183,9 +186,10 @@
                 style="border-spacing:0.5em 0"><tr>
             <td v-for="aCol in cats">
                <label v-for="a in aCol">
-                  <input type="checkbox" :name="a.name"/>{{a.name}}</label></td>
+                  <input @input="catN += $event.target.checked *2-1"
+                         :name="a.id" type="checkbox"/>{{a.name}}</label></td>
          </tr></table>
-      </template>
+      </form>
    </div>
    <div v-show="krm.s.screen === krm.kSc.jo">
       Full name or alias<br/>
@@ -214,7 +218,7 @@
    krm.app.component('start', {
       template: '#krm-start',
       emits: ['ok'],
-      data() { return { select: 1, cats: null } },
+      data() { return { select: 1, cats: null, catN: 0 } },
       computed: {
          krm() { return krm },
       },
@@ -295,7 +299,7 @@
                <label v-for="a in aCol">
                   <input @input="catN += $event.target.checked *2-1"
                          v-model="catSet[a.name]"
-                         type="checkbox"/>{{a.name}}</label></td>
+                         :name="a.id" type="checkbox"/>{{a.name}}</label></td>
          </tr></table>
       </form>
       <div v-show="found.length">
