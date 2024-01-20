@@ -250,7 +250,10 @@ tr.hlplay  > td { color: var(--fgb); background-color: #cdf }
    font-size: 32px;
    color: white;
 }
-.logo > span { vertical-align: middle }
+.logo > span {
+   vertical-align: middle;
+   vertical-align: -webkit-baseline-middle;
+}
 
 table.circle { border-spacing: 1em 0.25em }
 table.circle.uisep { border-spacing: 1em 1px }
