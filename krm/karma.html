@@ -407,13 +407,13 @@
                <form v-else
                      onsubmit="return false"
                      method="POST">
-                  <div class="box40vh box50vw uishowspc uibreakword">
+                  <div class="box40vh box35vw uishowspc uibreakword">
                      <template v-for="(a, aI) in ppl" k--="todo: compute array of non-member ppl?">
-                        <label v-if="aV.members.every(c => c.id !== a.id)"
-                               style="display:block">
+                        <label v-if="aV.members.every(c => c.id !== a.id)">
                            <input @input="aV.invList[aI] = $event.target.checked ? a : null"
-                                  :name="a.id" type="checkbox"
-                                  style="margin-right:0.5em"/>{{a.alias}}</label></template></div>
+                                  :name="a.id" type="checkbox"/>
+                           <div>{{a.alias}}</div>
+                        </label></template></div>
                   <button @click="inviteToCircle(aV), aV.refs.inv.hide()"
                           :disabled="aV.invList.every(c => !c)"
                           title="Invite new members"
@@ -719,7 +719,8 @@
             <template v-for="a in aP.tags" :key="a">
                <span class="tag"
                      >{{a}}</span>{{' '}}</template>
-            <krm-tag :set="curate.filter" :tags="aP.tags" :setro="true"/>
+            <krm-tag :set="curate.filter" :tags="aP.tags" :setro="true"
+                     style="line-height:normal"/>
          </div>
          <table class="hlrow"
                 style="margin-top:1em">
@@ -1145,19 +1146,17 @@
                   <template #icon>&bigotimes;</template>
                   <form onsubmit="return false"
                         method="POST">
-                     <div class="box40vh box50vw uishowspc uibreakword">
-                        <label v-for="aDj in aF.djs" :key="aDj.id"
-                               style="display:block">
+                     <div class="box40vh box35vw uishowspc uibreakword">
+                        <label v-for="aDj in aF.djs" :key="aDj.id">
                            <input @input="aDj.drop = $event.target.checked"
-                                  :name="aDj.id" type="checkbox"
-                                  style="margin-right:0.5em"
-                                  />{{aDj.name}}</label>
-                        <label style="display:block"
-                               :class="{uisep: aF.djs.length}">
+                                  :name="aDj.id" type="checkbox"/>
+                           <div>{{aDj.name}}</div>
+                        </label>
+                        <label :class="{uisep: aF.djs.length}">
                            <input @input="aF.drop = $event.target.checked"
-                                  :name="aF.id" type="checkbox"
-                                  style="margin-right:0.5em"
-                                  />Entire feed</label>
+                                  :name="aF.id" type="checkbox"/>
+                           <div>Entire feed</div>
+                        </label>
                      </div>
                      <button @click="trimFeed(aF), aF.refs.drop.hide()"
                              :disabled="!aF.drop && aF.djs.every(c => !c.drop)"
@@ -1316,13 +1315,13 @@
       {{srcname}} heard on...
       <form onsubmit="return false"
             method="POST">
-         <div class="box40vh box50vw uishowspc uibreakword">
-            <label v-for="(aF, aFi) in feeds" :key="aF.id"
-                   style="display:block">
+         <div class="box40vh box35vw uishowspc uibreakword">
+            <label v-for="(aF, aFi) in feeds" :key="aF.id">
                <input @input="flags[aFi] = !flags[aFi], feedSet[aF.id] = $event.target.checked"
                       :checked="aF.djs.find(c => c.id === src)"
-                      :name="aF.id" type="checkbox"
-                      style="margin-right:0.5em"/>{{aF.name}}</label></div>
+                      :name="aF.id" type="checkbox"/>
+               <div>{{aF.name}}</div>
+            </label></div>
          <em v-if="!feeds.length"
              >Saved feeds</em>
          <button v-show="feeds.length"
@@ -1391,13 +1390,13 @@
       <template #icon>&sharp;</template>
       <form onsubmit="return false"
             method="POST">
-         <div class="box40vh box50vw uishowspc uibreakword">
-            <label v-for="(aT, aTi) in tagSet" :key="aT"
-                   style="display:block">
+         <div class="box40vh box35vw uishowspc uibreakword">
+            <label v-for="(aT, aTi) in tagSet" :key="aT">
                <input @input="flags[aTi] = !flags[aTi], chgSet[aT] = $event.target.checked"
                       :checked="tags.some(c => c === aT)"
-                      :name="aT" type="checkbox"
-                      style="margin-right:0.5em"/>{{aT}}</label></div>
+                      :name="aT" type="checkbox"/>
+               <div>{{aT}}</div>
+            </label></div>
          <em v-if="!tagSet.length"
              >Circle tags</em>
          <button v-show="tagSet.length"

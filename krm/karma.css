@@ -94,9 +94,19 @@ button.ui:active:hover:not(:disabled) {
    border-top: 1px solid darkgray;
 }
 
-.box50vw {
-   max-width: 50vw;
+.box35vw {
    width: max-content;
+}
+.box35vw > label {
+   display: block;
+}
+.box35vw > label > input {
+   float: left;
+   margin: 0.35em 0.5em 0 0;
+}
+.box35vw > label > div {
+   display: inline-block;
+   max-width: 35vw;
 }
 
 .tabset {
