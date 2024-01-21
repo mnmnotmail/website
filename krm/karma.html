@@ -243,7 +243,7 @@
       <span @click="krm.s.screen = krm.kSc.ci"
             :class="{tabshow: krm.s.screen === krm.kSc.ci}"
             >Circles</span>
-      <span v-show="!!djs"
+      <span v-show="djId" k--="todo: act.djs.length"
             @click="krm.s.screen = krm.kSc.dj"
             :class="{tabshow: krm.s.screen === krm.kSc.dj}"
             >DJs</span>
@@ -482,15 +482,15 @@
             </template></table>
       </div>
    </div>
-   <div v-show="krm.s.screen === krm.kSc.dj"
+   <div v-show="krm.s.screen === krm.kSc.dj" v-if="act"
         style="margin-right:0.5em">
       <div class="tabset2">
-         <span v-for="aD in djs" :key="aD.id"
-               @click="djId = aD.id"
+         <span v-for="aD in act.djs" :key="aD.id"
+               @click="goDj(aD.id)"
                :class="{tabshow: djId === aD.id}"
                >{{aD.name}}</span>
       </div>
-      <div v-for="aD in djs" :key="aD.id"
+      <div v-for="aD in djOpen" :key="aD.id"
            v-show="aD.id === djId">
          <img :src="aD.img"
               style="float:right; margin:0 0 0.5em 0.5em;
@@ -797,7 +797,7 @@
                         act: null,
                         circ: null, circOpen: {}, circId: 'new', circName: '',
                         cats: null, catUi: true, catN: 0, catSet: {_w:'any'}, found: [],
-                        djs: null, djId: 0,
+                        djOpen: {}, djId: null,
                         about: null, aboutId: 'dj',
                         curators: {}, curId: '', newProg: {name:'', id:null},
                         aud: {ctx: new AudioContext(), src: null, next: null}, //todo: only for curator & circles
@@ -934,15 +934,18 @@
             });
          },
          goDj(iId) {
-            if (this.djs && this.djs.some(c => c.id === iId)) {
+            if (iId in this.djOpen) {
                this.djId = iId;
                krm.s.screen = krm.kSc.dj;
-            } else
-               this.$root.xhrGet('Djs', 'json', 'djs', c => {
-                  this.djs = c;
-                  this.djId = iId;
-                  krm.s.screen = krm.kSc.dj;
-               });
+               return;
+            }
+            this.$root.xhrGet('dj-'+ iId, 'json', 'dj', cD => {
+               if (!this.act.djs.some(c => c.id === iId))
+                  this.act.djs.push({id: iId, name: cD.name});
+               this.djOpen[iId] = cD;
+               this.djId = iId;
+               krm.s.screen = krm.kSc.dj;
+            });
          },
          loadAbout() {
             if (this.about)

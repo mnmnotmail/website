@@ -1,0 +1,12 @@
+{
+  "name": "Tharu", "id": "Cur3",
+  "title": "Awakening consciousness",
+  "img": "/w/img/logo-400-bleed-dim.png",
+  "file": "greeting",
+  "progs": [{
+    "id": "Cur3.1", "name": "main",
+    "date": "2023-11-10", "count": 42, "clip": {"dur": 360, "file": "opq"},
+    "desc": "",
+    "tags": []
+  }]
+}

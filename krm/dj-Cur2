@@ -1,0 +1,17 @@
+{
+  "name": "Fiona",  "id": "Cur2",
+  "title": "Insights from the borderlands",
+  "img": "/w/img/logo-400-bleed-dim.png",
+  "file": "greeting",
+  "progs": [{
+    "id": "Cur2.1", "name": "Watching the Road",
+    "date": "2023-09-06", "count": 24, "clip": {"dur": 190, "file": "xyz"},
+    "desc": "On the passage of travellers, time, nature, and self",
+    "tags": ["Stories", "Travel", "Outdoors", "Philosophy"]
+  },{
+    "id": "Cur2.2", "name": "Over & Done",
+    "date": "2023-08-04", "count": 7,  "clip": {"dur": 50,  "file": "uvw"},
+    "desc": "On finding endings and letting go",
+    "tags": ["Stories", "Heartwarming", "Love"]
+  }]
+}
