@@ -1,5 +1,6 @@
 {
   "alias": "Tharu", "id": "T111",
+  "djs": [{ "id": "Cur3", "name": "Tharu"  }],
   "curate": ["Cur1"],
   "played": [ "F11", "F12", "F13" ],
   "saved":  [ "F11", "F12" ],

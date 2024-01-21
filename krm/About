@@ -186,7 +186,7 @@ Circles:
   Leave circle
 
 DJ:
-  Load DJ pages separately; move open-dj list to act; load selected dj in created()
+  Load act-selected dj in created()
   Close button on tab or page
   Select DJ as current feed
   Comment on Program
