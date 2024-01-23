@@ -733,7 +733,8 @@
                      <span v-show="aP.hidden"
                            style="margin-right:1em"
                            >{{aP.hidden}}&nbsp;hidden</span>
-                     <button @click="aP.clips.forEach(c => { if (c.status === 'unpub') c.status = '' }),
+                     <button @click="aP.clips.forEach(c => {
+                                        if (c.status === 'unpub') c.status = '', c.date = krm.now() }),
                                      aP.status = ''"
                              :disabled="!aP.clips || aP.clips.every(c => c.status !== 'unpub')"
                              title="Post draft clips"
@@ -755,14 +756,19 @@
                      </select></form>
                </td></tr>
             <tr v-if="aP.clips && aP.clips.length">
-               <th>Title</th><th>Artist</th><th>Released</th></tr>
+               <th>Title</th><th>Artist</th><th>Posted</th></tr>
             <tr v-else>
                <th>(No clips)</th></tr>
             <tr v-for="(a, aI) in aP.clips"
                 :class="{hlunpub: a.status === 'unpub', hlhide: a.status === 'hide'}">
                <td>{{a.name}}</td>
                <td>{{a.artist}}</td>
-               <td><krm-date :iso="a.date" ymd="_Md"/></td>
+               <td>
+                  <template v-if="a.status === 'unpub'"
+                            >&mdash;</template>
+                  <krm-date v-else
+                            :iso="a.date" ymd="_Md"/>
+               </td>
                <td><krm-playbtn @click.native="toggleClient(a)"
                                 :playing="clientClip === a"/></td>
                <td class="uifont80 uivalignm uialignr"
@@ -1021,7 +1027,7 @@
                iP.clips = [];
                iP.hidden = 0;
             }
-            iP.clips.unshift(this.makeClip('+'+ iC));
+            iP.clips.unshift(this.makeClip({id:iC, date:krm.now(), st:'+'}));
             iP.status = 'unpub';
          },
          makeClips(iProg) {
@@ -1030,22 +1036,21 @@
                iProg.hidden = iProg.clips.reduce((cA, c) => cA + (c.status === 'hide') *1, 0);
             }
          },
-         makeClip(iId) {
+         makeClip(iClip) {
             var aStat;
-            switch (iId.charAt(0)) {
+            switch (iClip.st) {
             case '+': aStat = 'unpub'; break;
             case '-': aStat = 'hide';  break;
             case '=': aStat = '';      break;
             }
-            iId = iId.substring(1);
-            var aPkg, aSub, aDot = iId.indexOf('.');
+            var aPkg, aSub, aDot = iClip.id.indexOf('.');
             if (aDot < 0) {
-               aPkg = aSub = this.curate.clips[iId];
+               aPkg = aSub = this.curate.clips[iClip.id];
             } else {
-               aPkg = this.curate.clips[iId.substring(0, aDot)];
-               aSub = aPkg.set[iId.substring(aDot+1)*1];
+               aPkg = this.curate.clips[iClip.id.substring(0, aDot)];
+               aSub = aPkg.set[iClip.id.substring(aDot+1)*1];
             }
-            return {id: iId, name: aSub.name, artist: aPkg.artist, date: aPkg.date,
+            return {id: iClip.id, name: aSub.name, artist: aPkg.artist, date: iClip.date,
                     dur: aSub.dur, file: aSub.file, status: aStat};
          },
       },

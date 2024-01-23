@@ -10,19 +10,28 @@
       "date": "2023-11-10", "status": "empty", "count": 0, "dur": 0,
       "desc": "",
       "tags": [],
-      "clips": null },
+      "clips": null
+    },
     "P2": {
       "id": "P2", "name": "Celtic Muse",
       "date": "2023-10-14", "status": "", "count": 16, "dur": 1800,
       "desc": "Pondering the Legends & Culture of the Celtic World",
       "tags": ["Music", "Stories", "History", "Mythology", "Ghosts", "Fairies"],
-      "clips": ["=Clp1", "=Clp2", "-Clp3"] },
+      "clips": [
+        { "id": "Clp1", "date": "2023-12-05", "st": "=" },
+        { "id": "Clp2", "date": "2023-11-30", "st": "=" },
+        { "id": "Clp3", "date": "2023-11-28", "st": "-" }]
+    },
     "P3": {
       "id": "P3", "name": "Mountain Walk",
       "date": "2023-10-01", "status": "unpub", "count": 3, "dur": 180,
       "desc": "Soundscapes of Hiking in High & Wild Places",
       "tags": ["Soundscape", "Stories", "Outdoors", "Wilderness", "Adventure"],
-      "clips": ["+Clp1", "+Clp3", "+Clp4"] }
+      "clips": [
+        { "id": "Clp1", "date": "2023-10-31", "st": "+" },
+        { "id": "Clp3", "date": "2023-10-31", "st": "+" },
+        { "id": "Clp4", "date": "2023-10-31", "st": "+" }]
+    }
   },
   "open": [ "P2" ],
   "openId": "home",
