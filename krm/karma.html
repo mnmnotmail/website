@@ -16,7 +16,8 @@
    <link rel="stylesheet" href="karma.css"/>
    <!--script type="importmap">
    { "imports": { 
-      "vue":     "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+      "vue":     "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js",
+      "luxon":   "https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.js"
    }}
    </script-->
 </head><body>
@@ -30,6 +31,7 @@
       s: { feedRef: {}, screen: -1, act: null },
       kSc: {fe:0, st:1, jo:2, si:3, br:1, ci:2, dj:3, cu:4, ab:5},
       kEmpty: /^\s*$/,
+      now: null, //todo: temporary
    };
    window.onload = () => {
       krm.appRoot = krm.app.mount('#krm-app');
@@ -335,8 +337,9 @@
                         >{{aD.name}}</span></td>
                <td>{{aP.name}} &ndash;
                   <em>{{aP.desc || '. . .'}}</em>
-                  <div style="margin-top:0.25em; line-height:1.75"
-                       >{{aP.date}}
+                  <div style="margin-top:0.25em; line-height:1.75">
+                     <krm-date :iso="aP.date" ymd="_Md"/>
+                     {{' '}}
                      <template v-for="aT in aP.tags" :key="aT">
                         <span class="tag"
                               >{{aT}}</span>{{' '}}</template>
@@ -465,7 +468,7 @@
                            >{{circleName(aP.circle)}}</span></td></tr>
                <tr>
                   <td>{{aP.heard ? '' : aP.tags && aP.tags[0] === 'circle_invite' ? '&#x2709;' : '&#x2600;'}}</td>
-                  <td>{{aP.date}}</td>
+                  <td><krm-date :iso="aP.date" ymd="_Md"/></td>
                   <td>{{aP.alias}}</td>
                   <td><krm-playbtn @click.native="toggleClient(aP.clip)"
                                    :playing="clientClip === aP.clip"/></td>
@@ -506,8 +509,9 @@
             <tr v-for="aP in aD.progs" :key="aP.id">
                <td>{{aP.name}} &ndash;
                   <em>{{aP.desc || '. . .'}}</em>
-                  <div style="margin-top:0.25em; line-height:1.75"
-                       >{{aP.date}}
+                  <div style="margin-top:0.25em; line-height:1.75">
+                     <krm-date :iso="aP.date" ymd="_Md"/>
+                     {{' '}}
                      <template v-for="aT in aP.tags" :key="aT">
                         <span class="tag"
                               >{{aT}}</span>{{' '}}</template>
@@ -618,7 +622,7 @@
                <td><span @click="openProg(aP), curate.openId = aP.id"
                          class="uilink uishowspc"
                          >{{aP.edit && aP.edit.name || aP.name}}</span></td>
-               <td>{{aP.date}}</td>
+               <td><krm-date :iso="aP.date" ymd="_Md"/></td>
                <td class="uialignr"
                    >{{aP.count}}</td>
                <td class="uialignr"
@@ -648,7 +652,7 @@
                <tr>
                   <td>{{aC.name}}</td>
                   <td>{{aC.artist}}</td>
-                  <td>{{aC.date}}</td>
+                  <td><krm-date :iso="aC.date" ymd="ymd"/></td>
                   <td><krm-playbtn v-if="aC.file"
                                    @click.native="toggleClient(aC)"
                                    :playing="clientClip === aC"/></td>
@@ -758,7 +762,7 @@
                 :class="{hlunpub: a.status === 'unpub', hlhide: a.status === 'hide'}">
                <td>{{a.name}}</td>
                <td>{{a.artist}}</td>
-               <td>{{a.date}}</td>
+               <td><krm-date :iso="a.date" ymd="_Md"/></td>
                <td><krm-playbtn @click.native="toggleClient(a)"
                                 :playing="clientClip === a"/></td>
                <td class="uifont80 uivalignm uialignr"
@@ -788,7 +792,8 @@
       </div>
    </div>
 </script><script type="module">
-   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js";
+   import { DateTime } from "https://cdn.jsdelivr.net/npm/luxon@3.4.4/+esm";
 
    krm.app.component('finder', {
       template: '#krm-finder',
@@ -888,12 +893,12 @@
          inviteToCircle(iC) {
             for (var a of iC.invList)
                if (a)
-                  iC.members.push({alias: a.alias, id: a.id, invited: {by: this.act.alias, date: 'Today'}});
+                  iC.members.push({alias: a.alias, id: a.id, invited: {by: this.act.alias, date: krm.now()}});
             iC.invList.fill(null);
          },
          addCircleClip(iC, iId, iUp) {
             let aClip = this.newLibClip(iUp);
-            iC.posts.unshift({ circle: iId, date: 'Today', alias: this.act.alias, tags: [], heard: true,
+            iC.posts.unshift({ circle: iId, date: krm.now(), alias: this.act.alias, tags: [], heard: true,
                                runtime: aClip.dur, clip: aClip });
             this.filterCircle(iC);
             this.circOpen.new.posts.unshift(iC.posts[0]);
@@ -976,7 +981,7 @@
          addProgram(iP) {
             var aId = 'P'+ ++this.curate.progN;
             var aP = this.curate.progs[aId] =
-               {id: aId, name: iP.name, date: 'Today', status: 'empty', count: 0, dur: 0,
+               {id: aId, name: iP.name, date: krm.now(), status: 'empty', count: 0, dur: 0,
                 desc: '', tags: [], clips: null};
             this.curate.open.unshift(aP);
             return aId;
@@ -995,6 +1000,7 @@
             this.curate.clips['Clu'+ ++this.curate.clipN] = this.newLibClip(iUp);
          },
          newLibClip(iUp) {
+            iUp.date = iUp.date === 'today' ? krm.now() : DateTime.fromISO(iUp.date).toISO();
             let aSum = Math.round(iUp.set.reduce((cA, c) => cA + c.buf.duration, 0));
             if (!iUp.album)
                return { name: iUp.set[0].title, artist: iUp.artist, date: iUp.date, dur: aSum,
@@ -1110,7 +1116,7 @@
             <td>{{aC.name}}</td>
             <td>{{aC.artist}}</td>
             <td>{{djName(aC.dj)}}</td>
-            <td>{{aC.date}}</td>
+            <td><krm-date :iso="aC.date" ymd="ymd"/></td>
             <td class="uialignr"
                 >{{aC.dur}}</td>
          </tr>
@@ -1118,7 +1124,7 @@
    </div>
    <div v-show="!showFeed" v-if="krm.s.act">
       <table style="border-spacing:1em 0">
-         <tr><th></th> <th>{{listSaved ? 'Revised' : 'Played on'}}</th> <th>Sched</th> <th>Plays</th></tr>
+         <tr><th></th> <th>{{listSaved ? 'Revised' : 'Heard'}}</th> <th>Sched</th> <th>Plays</th></tr>
          <tr v-for="(aF, aFi) in (listSaved ? krm.s.act.saved : krm.s.act.played)" :key="aF.id">
             <td>
                <span v-if="aF.djs && !aF.djs.length"
@@ -1129,7 +1135,7 @@
                      class="uilink"
                      >{{aF.name}}</span>
             </td>
-            <td>{{listSaved ? aF.saved : aF.played}}</td>
+            <td><krm-date :iso="listSaved ? aF.saved : aF.played" ymd="_Md"/></td>
             <td>{{aF.schedule}}</td>
             <td>
                <span v-for="a in aF.djs"
@@ -1284,11 +1290,11 @@
             if (aPos > 0)
                krm.s.act.played.splice(aPos, 1);
             krm.s.act.played.unshift(iFeed);
-            krm.s.act.played[0].played = 'Today';
+            krm.s.act.played[0].played = krm.now();
             krm.s.feedRef = krm.s.act.played[0];
          },
          addFeed(iName) {
-            krm.s.act.saved.unshift({ name: iName, id: 'Fx'+ krm.s.act.saved.length, saved: 'Today',
+            krm.s.act.saved.unshift({ name: iName, id: 'Fx'+ krm.s.act.saved.length, saved: krm.now(),
                                       played: null, schedule: null, djs: [], refs: {} });
          },
          trimFeed(iF) {
@@ -1354,7 +1360,7 @@
             if (krm.kEmpty.test(iName) || this.feeds.some(c => c.name === iName))
                return false;
             this.feeds.unshift({name: iName, id: 'Fx'+ this.feeds.length,
-                                saved: 'Today', played: null, schedule: null,
+                                saved: krm.now(), played: null, schedule: null,
                                 djs: [{name: this.srcname, id: this.src}], });
             return true;
          },
@@ -1371,7 +1377,7 @@
                } else if (aDj >= 0)
                   aF.djs.splice(aDj, 1);
                if (aF.djs.length !== aLen) {
-                  aF.saved = 'Today';
+                  aF.saved = krm.now();
                   if (aF.id === krm.s.feedRef.id)
                      this.$emit('djrev', aF.djs);
                }
@@ -1545,7 +1551,8 @@
       </div>
    </form>
 </script><script type="module">
-   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js";
+   import { DateTime } from "https://cdn.jsdelivr.net/npm/luxon@3.4.4/+esm";
 
    const sSetEmpty = [{title: '', file: '', buf: {duration:60*60-1}}];
 
@@ -1561,7 +1568,8 @@
             return this.upHide ||
                    this.up.set.length < this.$refs.fileSelect.files.length ||
                    this.up.set.length > 1 && krm.kEmpty.test(this.up.album) ||
-                   krm.kEmpty.test(this.up.artist) || krm.kEmpty.test(this.up.date) ||
+                   krm.kEmpty.test(this.up.artist) ||
+                   this.up.date !== 'today' && !DateTime.fromISO(this.up.date).isValid ||
                    this.up.set.some(c => c.error || krm.kEmpty.test(c.title) ||
                                          this.up.set.some(c1 => c1.file !== c.file && c1.title === c.title));
          },
@@ -1753,6 +1761,45 @@
          handleWinKey(iEvt) {
             if (iEvt.key === 'Escape')
                this.shown = false;
+         },
+      },
+   });
+</script>
+
+<script type="text/x-template" id="krm-date">
+   <span :title="title">{{text}}</span>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js";
+   import { DateTime } from "https://cdn.jsdelivr.net/npm/luxon@3.4.4/+esm";
+
+   krm.now = () => DateTime.utc().toISO(); //todo: temporary
+
+   krm.app.component('krm-date', {
+      template: '#krm-date',
+      props: {iso:String, ymd:String, hms:String},
+      computed: {
+         dt() { return DateTime.fromISO(this.iso) },
+         text() {
+            if (!this.dt.isValid)
+               return 'NaDT';
+            var aMd = this.ymd === 'md' || this.ymd === 'Md';
+            if (this.ymd === '_md' || this.ymd === '_Md') {
+               var aNow = DateTime.utc();
+               aMd = this.dt.year === aNow.year ||
+                     this.dt.year === aNow.year-1 && this.dt.month >= aNow.month+2;
+            }
+            var aDate = this.dt.toString();
+            var aD = aDate.substring(aMd ? 5 : 0, 10);
+            if (this.ymd === 'Md' || (this.ymd === '_Md' && aMd))
+               aD = this.dt.toFormat('LLL') +' '+ aD.substring(3);
+            else if (aD.charAt(0) === '0')
+               aD = '\u2007' + aD.substring(1); // digit-width space
+            if (!this.hms)
+               return aD;
+            return aD +' '+ aDate.substring(11, this.hms === 'hm' ? 16 : 19);
+         },
+         title() {
+            return this.dt.toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS);
          },
       },
    });
