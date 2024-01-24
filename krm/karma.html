@@ -1116,13 +1116,13 @@
           >{{name}} ({{id}})</h3>
       <table v-if="feed"
              class="hlrow">
-         <tr><th></th><th>Artist</th><th>DJ</th><th>Released</th><th>Runs</th></tr>
+         <tr><th></th><th>DJ</th><th>Artist</th><th>Year</th><th>Runs</th></tr>
          <tr v-for="(aC, aCi) in feed.clips"
              :class="{hlplay: aCi === clipsN}">
             <td>{{aC.name}}</td>
-            <td>{{aC.artist}}</td>
             <td>{{djName(aC.dj)}}</td>
-            <td><krm-date :iso="aC.date" ymd="ymd"/></td>
+            <td>{{aC.artist}}</td>
+            <td><krm-date :iso="aC.date" ymd="y"/></td>
             <td class="uialignr"
                 >{{aC.dur}}</td>
          </tr>
@@ -1788,6 +1788,8 @@
          text() {
             if (!this.dt.isValid)
                return 'NaDT';
+            if (this.ymd === 'y')
+               return this.dt.toFormat('y');
             var aMd = this.ymd === 'md' || this.ymd === 'Md';
             if (this.ymd === '_md' || this.ymd === '_Md') {
                var aNow = DateTime.utc();
