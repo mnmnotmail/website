@@ -450,7 +450,8 @@
             </krm-dropdown>
          </div>
          <div class="checkset">
-            <label v-for="(aFv, aFk) in aV.filter">
+            <label v-for="(aFv, aFk) in aV.filter"
+                   v-show="aFk" k--="todo: drop All box">
                <input @input="aV.filter[aFk] = $event.target.checked,
                               aV.filterCount += aV.filter[aFk] *2-1,
                               aFk && (aV.filter[''] = !aV.filterCount),
@@ -467,7 +468,7 @@
                            class="uilink"
                            >{{circleName(aP.circle)}}</span></td></tr>
                <tr>
-                  <td>{{aP.heard ? '' : aP.tags && aP.tags[0] === 'circle_invite' ? '&#x2709;' : '&#x2600;'}}</td>
+                  <td>{{aP.heard ? '' : aP.tags && aP.tags[0] === 'circle_invite' ? '&#x2709;' : '&star;'}}</td>
                   <td><krm-date :iso="aP.date" ymd="_Md"/></td>
                   <td>{{aP.alias}}</td>
                   <td><krm-playbtn @click.native="toggleClient(aP.clip)"
