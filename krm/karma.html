@@ -1547,7 +1547,7 @@
             </template>
             <div v-if="many"
                  v-show="up.set.length > 1"
-                 @click="dropFile(aC.file, aCi)"
+                 @click="aud.src && aud.src.buffer === aC.buf && upStop(), dropFile(aC.file, aCi)"
                  title="Drop file"
                  style="float:right; margin-right:1.5em" class="uilink"
                  >&#x2a09;</div>
