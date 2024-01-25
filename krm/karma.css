@@ -239,6 +239,7 @@ tr.hlplay  > td { color: var(--fgb); background-color: #cdf }
 .dropdn.uileft0 > :nth-child(2) {
    left: 0;
    right: auto;
+   border-radius: 0 6px 6px 6px;
 }
 
 .logo {

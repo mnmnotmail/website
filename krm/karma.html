@@ -334,7 +334,12 @@
                    :rowspan="aD.rec.length">
                   <span @click="goDj(aD.id)"
                         class="uilink"
-                        >{{aD.name}}</span></td>
+                        >{{aD.name}}</span>
+                  <br/>
+                  <krm-tofeed @djrev="function(c) { $emit('djrev', c) }"
+                              :src="aD.id" :srcname="aD.name" :feeds="act.saved" :side="'left'"
+                              style="display:inline"/>
+               </td>
                <td>{{aP.name}} &ndash;
                   <em>{{aP.desc || '. . .'}}</em>
                   <div style="margin-top:0.25em; line-height:1.75">
