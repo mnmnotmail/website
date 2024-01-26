@@ -1476,7 +1476,7 @@
 </script>
 
 <script type="text/x-template" id="krm-upload">
-   <form onsubmit="return false"
+   <form @submit.prevent="upStop(), $emit('post', up), upClear(), $event.target.reset()"
          method="POST" autocomplete="off"
          enctype="multipart/form-data">
       <div style="height:0; overflow:hidden">
@@ -1519,8 +1519,7 @@
                   >{{duration}}</span>
             <input :value="duration"
                    name="dur" type="hidden"/>
-            <button @click="upStop(), $emit('post', up), upClear()"
-                    :disabled="needsInput"
+            <button :disabled="needsInput"
                     title="Add album"
                     style="margin-left:2.5em" class="ui"
                     >&#xff0b; Album</button>
@@ -1553,7 +1552,6 @@
                  >&#x2a09;</div>
             <button v-if="aCi === 0"
                     v-show="up.set.length <= 1"
-                    @click="upStop(), $emit('post', up), upClear()"
                     :disabled="needsInput"
                     title="Add clip"
                     style="margin-left:2.5em" class="ui"
@@ -1595,7 +1593,8 @@
                this.upClear();
                return;
             }
-            this.up.set.length = 0;
+            if (this.up.set.length)
+               return;
             for (const aF of iFiles) {
                let aFr = new FileReader();
                aFr.onloadend = () => {
@@ -1611,7 +1610,7 @@
                      this.up.set.push(cSet);
                      this.upHide = false;
                   }, cErr => {
-                     cSet.error = cErr.message;
+                     cSet.error = cErr ? cErr.message : 'audio decode failed';
                      this.up.set.push(cSet);
                      this.upHide = false;
                   });
@@ -1624,7 +1623,7 @@
             for (var a of this.$refs.fileSelect.files)
                if (a.name !== iName)
                   aDt.items.add(a);
-            this.$refs.fileSelect.files = aDt.files;
+            this.$refs.fileSelect.files = aDt.files; // triggers readAudioFiles() in some browsers
             this.up.set.splice(iN, 1);
             if (this.up.set.length <= 1)
                this.up.album = '';
