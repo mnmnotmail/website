@@ -622,8 +622,8 @@
                    placeholder="Slogan or mission statement"
                    name="title" type="text"
                    style="width:70%"/></form>
-         <table style="clear:right; margin-top:0.5em; border-spacing:1em 0">
-            <tr><th></th><th>Updated</th><th>Clips</th><th>Len</th></tr>
+         <table style="clear:right; margin-top:0.5em; border-spacing:0.5em 0">
+            <tr><th></th><th>Posted</th><th>Clips</th><th>Len</th></tr>
             <tr v-for="aP in curProgSort" :key="aP.id">
                <td><span @click="openProg(aP), curate.openId = aP.id"
                          class="uilink uishowspc"
@@ -652,7 +652,7 @@
                      @playing="$emit('playing'), stopClient()"
                      :aud="aud" :many="true"
                      style="margin-bottom:0.5em"/>
-         <table style="border-spacing:1em 0">
+         <table style="border-spacing:0.5em 0">
             <tr><th>Title</th><th>Artist</th><th>Released</th></tr>
             <template v-for="aC in curClipSort">
                <tr>
@@ -1134,8 +1134,8 @@
       </table>
    </div>
    <div v-show="!showFeed" v-if="krm.s.act">
-      <table style="border-spacing:1em 0">
-         <tr><th></th> <th>{{listSaved ? 'Revised' : 'Heard'}}</th> <th>Sched</th> <th>Plays</th></tr>
+      <table style="border-spacing:0.5em 0">
+         <tr><th></th> <th>{{listSaved ? 'Revised' : 'Heard'}}</th> <th><!--Sched--></th> <th>Plays</th></tr>
          <tr v-for="(aF, aFi) in (listSaved ? krm.s.act.saved : krm.s.act.played)" :key="aF.id">
             <td>
                <span v-if="aF.djs && !aF.djs.length"

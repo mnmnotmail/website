@@ -203,8 +203,8 @@ table.hlrow { border-collapse: collapse }
 
 table.hlrow > tr > th,
 table.hlrow > tr > td {
-   border-left:  1em solid transparent;
-   border-right: 1em solid transparent;
+   border-left:  0.5em solid transparent;
+   border-right: 0.5em solid transparent;
 }
 
 table.hlrow > tr > td:first-child { border-radius: 4px 0 0 4px }
@@ -256,8 +256,8 @@ tr.hlplay  > td { color: var(--fgb); background-color: #cdf }
    vertical-align: -webkit-baseline-middle;
 }
 
-table.circle { border-spacing: 1em 0.25em }
-table.circle.uisep { border-spacing: 1em 1px }
+table.circle { border-spacing: 0.5em 0.25em }
+table.circle.uisep { border-spacing: 0.5em 1px }
 
 table.circle.uisep > tr:nth-child(n+2) > td[colspan] { border-top: 0.25em solid transparent }
 
