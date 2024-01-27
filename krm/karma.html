@@ -1803,7 +1803,7 @@
             var aDate = this.dt.toString();
             var aD = aDate.substring(aMd ? 5 : 0, 10);
             if (this.ymd === 'Md' || (this.ymd === '_Md' && aMd))
-               aD = this.dt.toFormat('LLL') +' '+ aD.substring(3);
+               aD = this.dt.toFormat('LLL') +'\u00a0'+ aD.substring(3);
             else if (aD.charAt(0) === '0')
                aD = '\u2007' + aD.substring(1); // digit-width space
             if (!this.hms)
