@@ -28,7 +28,7 @@
       client: 'd.1',
       app: null,
       appRoot: null,
-      s: { feedRef: {}, screen: -1, act: null },
+      s: { feedRef: {}, screen: -1, act: null, circ: null },
       kSc: {fe:0, st:1, jo:2, si:3, br:1, ci:2, dj:3, cu:4, ab:5},
       kEmpty: /^\s*$/,
       now: null, //todo: temporary
@@ -57,6 +57,7 @@
       <feed @playing="$refs.finder && ($refs.finder.stopClient(), $refs.finder.stopAudsrc())"
             @gosrc="function(c) { if ($refs.finder) c.slice(0,3) === 'Thr' ? $refs.finder.goCircle(c)
                                                                            : $refs.finder.goDj(c) }"
+            @share="function(cA, cB) { $refs.finder.shareToCircle(cA, cB) }"
             :id="krm.s.feedRef.id" :name="krm.s.feedRef.name"
             :go="firstStart"
             ref="feed"/></div>
@@ -397,7 +398,8 @@
             <form onsubmit="return false"
                   method="POST"
                   style="float:right">
-               <button @click="aV.invited = aV.members.find(c => c.id === act.id).invited = null"
+               <button @click="aV.invited = circ.find(c => c.id === aK).invite =
+                                  aV.members.find(c => c.id === act.id).invited = null"
                        class="ui"
                        >&#xff0b; Join Circle!</button></form>
          </div>
@@ -843,7 +845,7 @@
          });
          this.$root.xhrGet('Cir', 'json', 'circles',     c => {
             this.ppl = c.contacts;
-            this.circ = c.circles;
+            krm.s.circ = this.circ = c.circles;
             this.circN = c.circles.length; //todo temporary
             this.filterCircle(c);
             this.circOpen.new = c;
@@ -908,10 +910,17 @@
                   iC.members.push({alias: a.alias, id: a.id, invited: {by: this.act.alias, date: krm.now()}});
             iC.invList.fill(null);
          },
-         addCircleClip(iC, iId, iUp) {
-            let aClip = this.newLibClip(iUp);
+         shareToCircle(iClip, iCircles) {
+            iCircles.forEach(c => {
+               if (c && c in this.circOpen)
+                  this.addCircleClip(this.circOpen[c], c, null, iClip);
+            });
+         },
+         addCircleClip(iC, iId, iUp, iClip) {
+            if (iUp)
+               iClip = this.newLibClip(iUp);
             iC.posts.unshift({ circle: iId, date: krm.now(), alias: this.act.alias, tags: [], heard: true,
-                               runtime: aClip.dur, clip: aClip });
+                               runtime: iClip.dur, clip: iClip });
             this.filterCircle(iC);
             this.circOpen.new.posts.unshift(iC.posts[0]);
             this.filterCircle(this.circOpen.new);
@@ -1130,6 +1139,11 @@
             <td><krm-date :iso="aC.date" ymd="y"/></td>
             <td class="uialignr"
                 >{{aC.dur}}</td>
+            <td v-if="krm.s.circ">
+               <krm-share @share="function(cA, cB) { $emit('share', cA, cB) }"
+                          :clip="aC"
+                          title="Share clip on circles"
+                          style="display:inline"/></td>
          </tr>
       </table>
    </div>
@@ -1191,7 +1205,7 @@
 
    krm.app.component('feed', {
       template: '#krm-feed',
-      emits: [ 'playing', 'gosrc' ],
+      emits: [ 'playing', 'gosrc', 'share' ],
       props: { id: String, name: String, go: Boolean },
       data() { return { audCtx: new AudioContext(), audSrc: null, state: 'run',
                         feed: null, clipsN: 0,
@@ -1395,6 +1409,42 @@
             }
             this.feeds.sort((cA, cB) => cA.saved > cB.saved ? -1 : cA.saved < cB.saved ? 1 : 0);
          },
+      },
+   });
+</script>
+
+<script type="text/x-template" id="krm-share">
+   <krm-dropdown :sparse="true"
+                 ref="dropPane">
+      <template #icon>&#x2af8;</template>
+      Share {{clip.name}} on...
+      <form onsubmit="return false"
+            method="POST">
+         <div class="box40vh box35vw uishowspc uibreakword">
+            <template v-for="(aC, aCi) in krm.s.circ" :key="aC.id">
+               <label v-if="!aC.invite">
+                  <input @input="circles[aCi] = $event.target.checked && aC.id"
+                         :checked="circles[aCi]"
+                         :name="aC.id" type="checkbox"/>
+                  <div>{{aC.name}}</div>
+               </label></template></div>
+         <button @click="$emit('share', clip, circles), circles.fill(false), $refs.dropPane.hide()"
+                 :disabled="circles.every(c => !c)"
+                 title="Share clip"
+                 style="float:right; margin-top:0.25em" class="ui"
+                 >Share</button>
+      </form>
+   </krm-dropdown>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+
+   krm.app.component('krm-share', {
+      template: '#krm-share',
+      emits: [ 'share' ],
+      props: { clip: Object },
+      data() { return { circles: [] } },
+      computed: {
+         krm() { return krm },
       },
    });
 </script>
