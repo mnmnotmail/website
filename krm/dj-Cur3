@@ -5,7 +5,7 @@
   "file": "greeting",
   "progs": [{
     "id": "Cur3.1", "name": "main",
-    "date": "2023-11-10", "count": 42, "clip": {"dur": 360, "file": "opq"},
+    "date": "2023-11-10", "count": 42, "clip": {"dur": 360000, "file": "opq"},
     "desc": "",
     "tags": []
   }]

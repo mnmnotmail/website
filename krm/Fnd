@@ -1,24 +1,24 @@
 [{
   "name": "Seamus", "id": "Cur1", "rec": [{
     "id": "Cur1.1", "name": "Celtic Muse",
-    "date": "2023-10-14", "count": 16, "clip": {"dur": 180, "file": "abc"},
+    "date": "2023-10-14", "count": 16, "clip": {"dur": 180000, "file": "abc"},
     "desc": "Pondering the Legends & Culture of the Celtic World",
     "tags": ["History", "Music"]
   },{
     "id": "Cur1.2", "name": "In Progress",
-    "date": "2023-09-03", "count": 27, "clip": {"dur": 40,  "file": "def"},
+    "date": "2023-09-03", "count": 27, "clip": {"dur": 40000,  "file": "def"},
     "desc": "New concept blending sound and diverse voices",
     "tags": ["Philosophy"]
   }]
 },{
   "name": "Fiona",  "id": "Cur2", "rec": [{
     "id": "Cur2.1", "name": "Watching the Road",
-    "date": "2023-09-06", "count": 24, "clip": {"dur": 190, "file": "xyz"},
+    "date": "2023-09-06", "count": 24, "clip": {"dur": 190000, "file": "xyz"},
     "desc": "On the passage of travellers, time, nature, and self",
     "tags": ["Travel", "Outdoor"]
   },{
     "id": "Cur2.2", "name": "Over & Done",
-    "date": "2023-08-04", "count": 7,  "clip": {"dur": 50,  "file": "uvw"},
+    "date": "2023-08-04", "count": 7,  "clip": {"dur": 50000,  "file": "uvw"},
     "desc": "On finding endings and letting go",
     "tags": ["Stories", "Love"]
   }]

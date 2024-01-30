@@ -5,12 +5,12 @@
   "file": "greeting",
   "progs": [{
     "id": "Cur1.1", "name": "Celtic Muse",
-    "date": "2023-10-14", "count": 16, "clip": {"dur": 180, "file": "abc"},
+    "date": "2023-10-14", "count": 16, "clip": {"dur": 180000, "file": "abc"},
     "desc": "Pondering the Legends & Culture of the Celtic World",
     "tags": ["Music", "Stories", "History", "Mythology", "Ghosts", "Fairies"]
   },{
     "id": "Cur1.2", "name": "In Progress",
-    "date": "2023-09-03", "count": 27, "clip": {"dur": 40,  "file": "def"},
+    "date": "2023-09-03", "count": 27, "clip": {"dur": 40000,  "file": "def"},
     "desc": "New concept blending sound and diverse voices",
     "tags": ["Soundscape", "Philosophy", "Diversity", "Discovery"]
   }]

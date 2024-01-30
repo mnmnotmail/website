@@ -3,7 +3,7 @@
     { "name": "Seamus", "id": "Cur1" }
   ],
   "clips": [
-    { "name": "Ho-hum", "artist": "self", "dj": "Cur1", "date": "2022-09-04", "dur": 60,
+    { "name": "Ho-hum", "artist": "self", "dj": "Cur1", "date": "2022-09-04", "dur": 60000,
       "file": "audio_4ad28ef70b.mp3" }
   ]
 }

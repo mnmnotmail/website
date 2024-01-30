@@ -3,7 +3,7 @@
     { "name": "Fiona",  "id": "Cur2" }
   ],
   "clips": [
-    { "name": "Sleep 2", "artist": "RioMez", "dj": "Cur2", "date": "2020-10-01", "dur": 128,
+    { "name": "Sleep 2", "artist": "RioMez", "dj": "Cur2", "date": "2020-10-01", "dur": 128000,
       "file": "https://jplayer.org/audio/mp3/RioMez-01-Sleep_together.mp3" }
   ]
 }

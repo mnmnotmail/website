@@ -355,8 +355,8 @@
                    >{{aP.count}}</td>
                <td><krm-playbtn @click.native="toggleClient(aP.clip)"
                                 :playing="clientClip === aP.clip"/></td>
-               <td class="uifont80 uialignr"
-                   >{{aP.clip.dur}}</td>
+               <td class="clipdur">
+                  <krm-duration :ms="aP.clip.dur"/></td>
             </tr></template>
       </table>
    </div>
@@ -480,8 +480,8 @@
                   <td>{{aP.alias}}</td>
                   <td><krm-playbtn @click.native="toggleClient(aP.clip)"
                                    :playing="clientClip === aP.clip"/></td>
-                  <td class="uifont80 uivalignm uialignr"
-                      >{{aP.runtime}}</td>
+                  <td class="clipdur">
+                     <krm-duration :ms="aP.clip.dur"/></td>
                   <td>
                      <template v-for="a in aP.tags" :key="a">
                         <span class="tag"
@@ -529,8 +529,8 @@
                    >{{aP.count}}</td>
                <td><krm-playbtn @click.native="toggleClient(aP.clip)"
                                 :playing="clientClip === aP.clip"/></td>
-               <td class="uifont80 uialignr"
-                   >{{aP.clip.dur}}</td>
+               <td class="clipdur">
+                  <krm-duration :ms="aP.clip.dur"/></td>
             </tr>
          </table>
       </div>
@@ -633,8 +633,8 @@
                <td><krm-date :iso="aP.date" ymd="_Md"/></td>
                <td class="uialignr"
                    >{{aP.count}}</td>
-               <td class="uialignr"
-                   >{{aP.dur}}</td>
+               <td class="uialignr">
+                  <krm-duration :ms="aP.dur"/></td>
                <td v-if="aP.status === 'empty'"
                    class="uialignr">
                   <form onsubmit="return false"
@@ -664,16 +664,16 @@
                   <td><krm-playbtn v-if="aC.file"
                                    @click.native="toggleClient(aC)"
                                    :playing="clientClip === aC"/></td>
-                  <td class="uifont80 uivalignm uialignr"
-                      >{{aC.dur}}</td>
+                  <td class="clipdur">
+                     <krm-duration :ms="aC.dur"/></td>
                </tr>
                <tr v-for="(aSub, aSubi) in aC.set">
                   <td colspan="3"
                       >&nbsp; {{aSubi+1}}. <em>{{aSub.name}}</em></td>
                   <td><krm-playbtn @click.native="toggleClient(aSub)"
                                    :playing="clientClip === aSub"/></td>
-                  <td class="uifont80 uivalignm uialignr"
-                      >{{aSub.dur}}</td>
+                  <td class="clipdur">
+                     <krm-duration :ms="aSub.dur"/></td>
                </tr>
             </template>
          </table>
@@ -779,8 +779,8 @@
                </td>
                <td><krm-playbtn @click.native="toggleClient(a)"
                                 :playing="clientClip === a"/></td>
-               <td class="uifont80 uivalignm uialignr"
-                   >{{a.dur}}</td>
+               <td class="clipdur">
+                  <krm-duration :ms="a.dur"/></td>
                <td>
                   <form v-if="a.status === 'unpub'"
                         onsubmit="return false"
@@ -920,7 +920,7 @@
             if (iUp)
                iClip = this.newLibClip(iUp);
             iC.posts.unshift({ circle: iId, date: krm.now(), alias: this.act.alias, tags: [], heard: true,
-                               runtime: iClip.dur, clip: iClip });
+                               clip: iClip });
             this.filterCircle(iC);
             this.circOpen.new.posts.unshift(iC.posts[0]);
             this.filterCircle(this.circOpen.new);
@@ -1022,12 +1022,12 @@
          },
          newLibClip(iUp) {
             iUp.date = iUp.date === 'today' ? krm.now() : DateTime.fromISO(iUp.date).toISO();
-            let aSum = Math.round(iUp.set.reduce((cA, c) => cA + c.buf.duration, 0));
+            let aSum = Math.round(iUp.set.reduce((cA, c) => cA + c.buf.duration, 0) * 1000);
             if (!iUp.album)
                return { name: iUp.set[0].title, artist: iUp.artist, date: iUp.date, dur: aSum,
                         file: iUp.set[0].file };
             return { name: iUp.album, artist: iUp.artist, date: iUp.date, dur: aSum,
-                     set: iUp.set.map(c => ({name: c.title, dur: Math.round(c.buf.duration), file: c.file})) };
+                     set: iUp.set.map(c => ({name: c.title, dur: Math.round(c.buf.duration*1000), file: c.file})) };
          },
          openProg(iP) {
             if (this.curate.open.find(c => c.id === iP.id))
@@ -1137,8 +1137,8 @@
             <td>{{djName(aC.dj)}}</td>
             <td>{{aC.artist}}</td>
             <td><krm-date :iso="aC.date" ymd="y"/></td>
-            <td class="uialignr"
-                >{{aC.dur}}</td>
+            <td class="uialignr">
+               <krm-duration :ms="aC.dur"/></td>
             <td v-if="krm.s.circ">
                <krm-share @share="function(cA, cB) { $emit('share', cA, cB) }"
                           :clip="aC"
@@ -1565,8 +1565,8 @@
                    placeholder="Album name"
                    name="album" type="text"
                    style="margin-right:0.5em; width:16em"/>
-            <span class="uifont80"
-                  >{{duration}}</span>
+            <span class="clipdur">
+               <krm-duration :sec="duration"/></span>
             <input :value="duration"
                    name="dur" type="hidden"/>
             <button :disabled="needsInput"
@@ -1589,9 +1589,9 @@
                             :title="'Play '+ aC.file"
                             style="margin-right:0.5em"
                             :playing="!!aud.src && aud.src.buffer === aC.buf"/>
-               <span class="uifont80"
-                     >{{Math.round(aC.buf.duration)}}</span>
-               <input :value="Math.round(aC.buf.duration)"
+               <span class="clipdur">
+                  <krm-duration :sec="aC.buf.duration"/></span>
+               <input :value="aC.buf.duration"
                       :name="aC.file +':dur'" type="hidden"/>
             </template>
             <div v-if="many"
@@ -1622,7 +1622,7 @@
       data() { return { upHide: true, up: {album:'', date:'', artist:'', set:[]} } },
       computed: {
          setEmpty() { return sSetEmpty },
-         duration() { return Math.round(this.up.set.reduce((cA, c) => c.buf ? cA + c.buf.duration : cA, 0)) },
+         duration() { return this.up.set.reduce((cA, c) => c.buf ? cA + c.buf.duration : cA, 0) },
          needsInput() {
             return this.upHide ||
                    this.up.set.length < this.$refs.fileSelect.files.length ||
@@ -1862,6 +1862,27 @@
          },
          title() {
             return this.dt.toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS);
+         },
+      },
+   });
+</script>
+
+<script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js";
+   import { Duration } from "https://cdn.jsdelivr.net/npm/luxon@3.4.4/+esm";
+
+   const k1hr = 60 * 60 * 1000;
+   const k1mn = 60 * 1000;
+
+   krm.app.component('krm-duration', {
+      template: '{{text}}',
+      props: { ms: Number, sec: Number },
+      computed: {
+         text() {
+            var aMs = this.ms >= 0 ? this.ms : this.sec * 1000;
+            if (aMs % 1000 >= 500)
+               aMs += 1000;
+            return Duration.fromMillis(aMs).toFormat(aMs >= k1hr ? 'h:mm:ss' : aMs >= k1mn ? 'm:ss' : ':ss');
          },
       },
    });

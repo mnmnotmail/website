@@ -14,7 +14,7 @@
     },
     "P2": {
       "id": "P2", "name": "Celtic Muse",
-      "date": "2023-10-14", "status": "", "count": 16, "dur": 1800,
+      "date": "2023-10-14", "status": "", "count": 16, "dur": 1800900,
       "desc": "Pondering the Legends & Culture of the Celtic World",
       "tags": ["Music", "Stories", "History", "Mythology", "Ghosts", "Fairies"],
       "clips": [
@@ -24,7 +24,7 @@
     },
     "P3": {
       "id": "P3", "name": "Mountain Walk",
-      "date": "2023-10-01", "status": "unpub", "count": 3, "dur": 180,
+      "date": "2023-10-01", "status": "unpub", "count": 3, "dur": 180000,
       "desc": "Soundscapes of Hiking in High & Wild Places",
       "tags": ["Soundscape", "Stories", "Outdoors", "Wilderness", "Adventure"],
       "clips": [
@@ -37,19 +37,19 @@
   "openId": "home",
 
   "clips": {
-    "Clp1": { "name": "Ho-hum", "artist": "self", "date": "2022-09-04", "dur": 60,
+    "Clp1": { "name": "Ho-hum", "artist": "self", "date": "2022-09-04", "dur": 60000,
               "file": "abc" },
-    "Clp2": { "name": "Wonder", "artist": "self", "date": "2022-08-02", "dur": 60,
+    "Clp2": { "name": "Wonder", "artist": "self", "date": "2022-08-02", "dur": 60000,
               "file": "def" },
-    "Clp3": { "name": "Runner", "artist": "self", "date": "2023-07-21", "dur": 120,
+    "Clp3": { "name": "Runner", "artist": "self", "date": "2023-07-21", "dur": 120000,
               "file": "ghi" },
-    "Clp4": { "name": "Sing",   "artist": "self", "date": "2022-12-24", "dur": 23,
+    "Clp4": { "name": "Sing",   "artist": "self", "date": "2022-12-24", "dur": 23000,
               "file": "jkl" },
-    "Set1": { "name": "Album",  "artist": "self", "date": "2021-11-21", "dur": 240,
+    "Set1": { "name": "Album",  "artist": "self", "date": "2021-11-21", "dur": 240000,
               "set": [
-                { "name": "First",  "dur": 120, "file": "xyz" },
-                { "name": "Second", "dur": 60,  "file": "uvw" },
-                { "name": "Third",  "dur": 60,  "file": "rst" }
+                { "name": "First",  "dur": 120000, "file": "xyz" },
+                { "name": "Second", "dur": 60000,  "file": "uvw" },
+                { "name": "Third",  "dur": 60000,  "file": "rst" }
               ]}
   }
 }

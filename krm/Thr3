@@ -12,10 +12,10 @@
 
   "posts": [{
     "id": "Thr3.1", "date": "2023-12-09", "tags": ["question"], "alias": "Liam",
-    "heard": false, "runtime": 13, "clip": {"file": "tbd"}
+    "heard": false, "clip": {"dur": 13000, "file": "tbd"}
   },{
     "id": "Thr3.2", "date": "2023-12-08", "tags": ["circle_intro"], "alias": "Ananda",
-    "heard": false, "runtime": 45, "clip": {"file": "tbd"}
+    "heard": false, "clip": {"dur": 45000, "file": "tbd"}
   }],
 
   "invited": true
