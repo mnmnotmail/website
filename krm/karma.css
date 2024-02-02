@@ -207,6 +207,36 @@ td.clipdur {
    text-align: right;
 }
 
+.clipmenu {
+   display: inline-block;
+}
+.clipmenu > :last-child > div {
+   box-sizing: border-box;
+   min-width: calc(100% + 7px);
+   max-width: 85vw;
+   max-height: 45vh;
+   overflow-y: auto;
+   box-shadow: 5px 5px 5px #323;
+   border-radius: 0 6px 6px 6px;
+   background-color: gainsboro;
+   padding: 4px;
+   z-index: 3;
+   color: var(--fgb);
+}
+.clipmenu > :last-child > div > div {
+   overflow-x: hidden;
+   padding: 0 0.2em;
+   white-space: pre;
+   cursor: default;
+}
+.clipmenu > :last-child > div > div:last-child {
+   text-align: center;
+   font-style: italic;
+}
+.clipmenu > :last-child > div > div.uiselect {
+   background-color: white;
+}
+
 table.hlrow { border-collapse: collapse }
 
 table.hlrow > tr > th,

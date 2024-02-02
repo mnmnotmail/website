@@ -731,38 +731,37 @@
             <krm-tag :set="curate.filter" :tags="aP.tags" :setro="true"
                      style="line-height:normal"/>
          </div>
+         <div style="margin-top:0.5em; text-align:right"
+              >&nbsp;
+            <span v-show="aP.hidden"
+                  >{{aP.hidden}} hidden</span></div>
          <table class="hlrow"
-                style="margin-top:1em">
+                style="margin-top:0.5em">
             <tr>
-               <td colspan="6">
+               <td colspan="4"
+                   style="padding-bottom:0.5em">
+                  <form onsubmit="return false"
+                        method="POST">
+                     <krm-clipmenu @clip="addProgClip(aP, $event), $refs.progClipAdd.value = $event"
+                                   :clipsdb="curate.clips"
+                                   placeholder="Clip title or artist"
+                                   title="Add clip from Library"
+                                   style="min-width:12em"/>
+                     <input ref="progClipAdd"
+                            name="clipId" type="hidden"/>
+                  </form></td>
+               <td colspan="2">
                   <form onsubmit="return false"
                         method="POST"
                         style="float:right">
-                     <span v-show="aP.hidden"
-                           style="margin-right:1em"
-                           >{{aP.hidden}}&nbsp;hidden</span>
                      <button @click="aP.clips.forEach(c => {
                                         if (c.status === 'unpub') c.status = '', c.date = krm.now() }),
                                      aP.status = ''"
                              :disabled="!aP.clips || aP.clips.every(c => c.status !== 'unpub')"
                              title="Post draft clips"
                              class="ui"
-                             >&#x266c; Post</button></form>
-                  <form onsubmit="return false"
-                        method="POST"
-                        style="float:left; margin-right:1em">
-                     <select @change="addProgClip(aP, $event.target.value), $event.target.value = ''"
-                             title="Add clip from Library">
-                        <option value="">&#xff0b; Clip...</option>
-                        <template v-for="(aV, aK) in curate.clips">
-                           <option :value="aK"
-                                   >{{aV.name}}, {{aV.artist}}</option>
-                           <option v-for="(aSub, aSubi) in aV.set"
-                                   :value="aK +'.'+ aSubi"
-                                   >&nbsp; {{aSubi+1}}. <em>{{aSub.name}}</em></option>
-                        </template>
-                     </select></form>
-               </td></tr>
+                             >&#x266c; Post</button></form></td>
+            </tr>
             <tr v-if="aP.clips && aP.clips.length">
                <th>Title</th><th>Artist</th><th>Posted</th></tr>
             <tr v-else>
@@ -1520,6 +1519,118 @@
                } else if (aTi >= 0)
                   this.tags.splice(aTi, 1);
             }
+         },
+      },
+   });
+</script>
+
+<script type="text/x-template" id="krm-clipmenu">
+   <div class="clipmenu">
+      <input @focus="$refs.menu.style.display = null"
+             @blur ="$refs.menu.style.display = 'none'"
+             @input="search($event.target.value)"
+             @keydown.prevent.down="selectItem(1)"
+             @keydown.prevent.up  ="selectItem(-1)"
+             @keydown.esc="selectNone(), $event.target.blur()"
+             @keyup.enter="enterKey"
+             v-bind="$attrs" type="text"/>
+      <div @click="emitClip(selectId($event.target.id))"
+           ref="menu"
+           style="position:relative; display:none">
+         <div v-show="state"
+              @mousedown.prevent="selectId($event.target.id)"
+              ref="list"
+              style="position:absolute">
+            <div v-for="(aC, aCi) in list" :key="aC.id"
+                 :id="'cm_'+ aCi"
+                 :title="'Use \u2191\u2193 keys to select'"
+                 :class="{uiselect: aCi === select}"
+                 >{{aC.val}}</div>
+            <div v-show="!list.length"
+                 >None</div>
+         </div></div>
+   </div>
+</script><script type="module">
+   import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
+
+   krm.app.component('krm-clipmenu', {
+      template: '#krm-clipmenu',
+      props: { clipsdb: Object }, //todo: temporary
+      inheritAttrs: false,
+      emits: [ 'clip' ],
+      data() { return { state: 0, list:[], select:-1 } },
+      methods: {
+         clear() {
+            this.state = 0;
+            this.select = -1;
+            this.list.length = 0;
+            this.$refs.list.scrollTop = 0;
+         },
+         search(iQuery) {
+            this.clear();
+            if (!iQuery)
+               return;
+            this.state = 1; //todo: display search-in-progress
+            var aQ = iQuery.toLowerCase();
+            for (var aK in this.clipsdb) {
+               var aC = this.clipsdb[aK];
+               if (aC.name.toLowerCase().startsWith(aQ) || aC.artist.toLowerCase().startsWith(aQ))
+                  this.list.push({id: aK, val: aC.name +', '+ aC.artist});
+               if (aC.set)
+                  aC.set.forEach((c, ci) => {
+                     if (c.name.toLowerCase().startsWith(aQ) || aC.artist.toLowerCase().startsWith(aQ))
+                        this.list.push({id: aK +'.'+ ci, val: c.name +', '+ aC.artist});
+                  });
+            }
+            this.results(this.list);
+         },
+         results(iList) {
+            this.list = iList;
+            this.state = 2;
+         },
+         selectNone() {
+            this.select = -1;
+            return null;
+         },
+         selectId(iId) {
+            if (!iId)
+               return null;
+            this.select = parseInt(iId.substring(3), 10);
+            this.setScroll();
+            return this.list[this.select];
+         },
+         selectItem(iDirection) {
+            this.select += iDirection;
+            if (this.select === this.list.length || this.select === -1)
+               return this.selectNone();
+            if (this.select < -1)
+               this.select = this.list.length - 1;
+            this.setScroll();
+            return this.list[this.select];
+         },
+         setScroll() {
+            var aList = this.$refs.list;
+            var aSel = aList.children[this.select];
+            if (aSel.offsetTop < aList.scrollTop)
+               aList.scrollTop = this.select ? aSel.offsetTop : 0;
+            else if (aSel.offsetTop + aSel.clientHeight > aList.scrollTop + aList.clientHeight)
+               aList.scrollTop = aSel.offsetTop + aSel.clientHeight - aList.clientHeight +4;
+         },
+         enterKey(iEvt) {
+            if (this.select >= 0) {
+               this.emitClip(this.list[this.select]);
+               return;
+            }
+            iEvt.stopPropagation();
+            iEvt.preventDefault();
+            this.selectItem(1);
+         },
+         emitClip(iVal) {
+            if (!iVal)
+               return;
+            this.clear();
+            this.$el.firstChild.value = '';
+            this.$emit('clip', iVal.id);
          },
       },
    });
