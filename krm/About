@@ -162,28 +162,43 @@ Users can invite friends to platform
 Startpage: Allow re-selection of categories
 
 Account:
+  Add Alias
+  Disable Alias
+  Add device (creates new credential)
+  Disable device
+  Set contact info (phone, email)
   Give listeners periodic coupons which they can assign to multiple DJs
     free coupons expire
     let them buy coupons anytime, or subscribe to periodic coupon
     let DJ payout be tied to future work
 
 Feed:
+  Rename to Station, fix in About
+  Merge played & saved into History
+  Skip-program widget
   Button to rewind n seconds
   Adjust playback speed; persists for that Program (at least)
   Set play-time proportion for each source ?
   Listeners can register mental/emotional impact of feed ?
-
-Recent:
   Scheduling UI
+  Find-screen to search heard clips
+  Track heard clips for 30(?) days
 
 Browse:
   Result shows matched search terms
+  Blank line before to-feed icon in results
+  Overlay panel with program description, clip count, date
 
 Circles:
+  Mention use of personal circle to save favorite clips in About
+  Flag personal circles on circle-tabs?
+  DJ-link for shared clips
+  Tag count instead of tag-list?
   Record a clip to post
   Leave circle
 
 DJ:
+  Tags-checklist instead of per-item tags; same on Curate:Home
   Load act-selected dj in created()
   Close button on tab or page
   Select DJ as current feed
@@ -191,6 +206,7 @@ DJ:
 
 Curate:
   Profile: audio bio, URL, languages, etc
+    program stats, overlay panel with details
   Library:
     add clip from feed or circle
     search box & result tabs
