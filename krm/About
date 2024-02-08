@@ -110,12 +110,13 @@ what we care about is a compassionate, constructive tone conveying each perspect
 
 <h3>Listener features</h3>
 
-<p><em>Feed:</em> Your currently selected feed, and lists of played &amp; saved feeds.
-A feed plays material from one or more DJs and/or Circles, listed at the top of its screen.
-You create a feed with the &#xff0b; dropdown at top-right of <em>Feed</em>, 
+<p><em>Feed:</em> A feed plays content from one or more DJs and/or Circles that you designate.
+The <em>On: <strong>feed-name</strong></em> screen displays your currently selected feed.
+You create an editable feed with the &#xff0b; dropdown at top-right of <em>Feed</em>, 
 or from <em>DJs</em> or <em>Circles</em> using the &#xff0b;&#x266c; dropdown.
-On <em>Played</em> &amp; <em>Saved</em>, tapping or clicking a feed name makes it your selected feed.
-Within <em>Saved</em>, the &bigotimes; dropdown lets you remove sources from a feed, 
+The <em>History</em> screen lists your feeds, sorted by the date when you last selected each one.
+Tapping or clicking a name in the list makes it the selected feed.
+Also on <em>History</em>, the &bigotimes; menus let you remove sources from a feed, 
 or delete an entire feed.
 You can also add/remove sources in a feed from <em>DJs</em> or <em>Circles</em> 
 using the &#xff0b;&#x266c; dropdown.
