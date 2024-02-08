@@ -182,8 +182,8 @@
                  style="float:right; margin:1em 0.5em 0 0" class="ui"
                  >&#x25b6; Listen</button>
          <div style="margin-bottom:1em"
-              >Select topics of interest for your first feed<br/>
-               (You can add or amend feeds anytime.)
+              >Select topics of interest for your first Station<br/>
+               (You can add or amend Stations anytime.)
          </div>
          <table class="checklist"
                 style="border-spacing:0.5em 0"><tr>
@@ -230,7 +230,7 @@
          this.$root.xhrGet('Cat', 'json', 'categories',  c => { this.cats = c });
       },
       methods: {
-         getMix() { this.$root.xhrGet('Mix', 'json', 'audio feed', c => { krm.s.feedRef = c }) },
+         getMix() { this.$root.xhrGet('Mix', 'json', 'audio mix', c => { krm.s.feedRef = c }) },
       },
    });
 </script>
@@ -239,7 +239,7 @@
    <div class="tabset">
       <span @click="krm.s.screen = krm.kSc.fe"
             :class="{tabshow: krm.s.screen === krm.kSc.fe}"
-            >Feed</span>
+            >Station</span>
       <span @click="krm.s.screen = krm.kSc.br"
             :class="{tabshow: krm.s.screen === krm.kSc.br}"
             >Browse</span>
@@ -1087,20 +1087,20 @@
    </div>
    <krm-dropdown v-if="krm.s.act"
                  ref="feedAdd"
-                 title="Add feed"
+                 title="Add station"
                  style="position:absolute; right:0.5em; top:3em">
       <template #icon>&#xff0b;</template>
       <form onsubmit="return false"
             method="POST" autocomplete="off">
          <input v-model="addName"
-                placeholder="New feed name"
+                placeholder="New station name"
                 name="name" type="text"
                 style="width:12em; margin-bottom:0.5em"/>
          <button @click="addFeed(addName), addName = '', $refs.feedAdd.hide(), showFeed = false"
                  :disabled="krm.kEmpty.test(addName) || krm.s.act.history.some(c => c.saved && c.name === addName)"
-                 title="Create feed"
+                 title="Create station"
                  style="float:right" class="ui"
-                 >&#xff0b; Feed</button>
+                 >&#xff0b; Station</button>
       </form>
    </krm-dropdown>
    <div v-show="showFeed">
@@ -1175,7 +1175,7 @@
                <krm-dropdown v-if="aF.saved"
                              :sparse="true"
                              :ref="function(c) { aF.refs.drop = c }"
-                             title="Trim feed"
+                             title="Trim station"
                              style="display:inline-block">
                   <template #icon>&bigotimes;</template>
                   <form onsubmit="return false"
@@ -1189,12 +1189,12 @@
                         <label :class="{uisep: aF.djs.length}">
                            <input @input="aF.drop = $event.target.checked"
                                   :name="aF.id" type="checkbox"/>
-                           <div>Entire feed</div>
+                           <div>Entire Station</div>
                         </label>
                      </div>
                      <button @click="trimFeed(aF), aF.refs.drop.hide()"
                              :disabled="!aF.drop && aF.djs.every(c => !c.drop)"
-                             :title="'Remove '+ (aF.drop ? 'feed' : 'selected')"
+                             :title="'Remove '+ (aF.drop ? 'station' : 'selected')"
                              style="float:right; margin-top:0.25em" class="ui"
                              >Remove</button>
                   </form>
@@ -1351,7 +1351,7 @@
 
 <script type="text/x-template" id="krm-tofeed">
    <krm-dropdown :side="side"
-                 title="Add to feed"
+                 title="Add to station"
                  ref="dropPane">
       <template #icon>&#xff0b;&#x266c;</template>
       {{srcname}} heard on...
@@ -1367,11 +1367,11 @@
                </label></template></div>
          <em v-if="!hasSaved"
              style="margin-left:1em"
-             >No saved feeds</em>
+             >No saved Stations</em>
          <button v-show="hasSaved"
                  @click="update(), $refs.dropPane.hide()"
                  :disabled="flags.every(c => !c)"
-                 title="Update feeds"
+                 title="Update stations"
                  style="float:right; margin-top:0.25em" class="ui"
                  >Update</button>
          <br>
@@ -1380,7 +1380,7 @@
             method="POST" autocomplete="off"
             style="margin-top:0.5em">
          <input @keydown.enter="add($event.target.value) || $event.preventDefault()"
-                placeholder="New feed"
+                placeholder="New station"
                 name="new" type="text"
                 style="width:10em"/></form>
    </krm-dropdown>

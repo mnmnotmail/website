@@ -110,15 +110,15 @@ what we care about is a compassionate, constructive tone conveying each perspect
 
 <h3>Listener features</h3>
 
-<p><em>Feed:</em> A feed plays content from one or more DJs and/or Circles that you designate.
-The <em>On: <strong>feed-name</strong></em> screen displays your currently selected feed.
-You create an editable feed with the &#xff0b; dropdown at top-right of <em>Feed</em>, 
+<p><em>Station:</em> A station plays content from one or more DJs and/or Circles that you designate.
+The <em>On: <strong>station-name</strong></em> screen displays your currently selected station.
+You create an editable station with the &#xff0b; dropdown at top-right of <em>Station</em>, 
 or from <em>DJs</em> or <em>Circles</em> using the &#xff0b;&#x266c; dropdown.
-The <em>History</em> screen lists your feeds, sorted by the date when you last selected each one.
-Tapping or clicking a name in the list makes it the selected feed.
-Also on <em>History</em>, the &bigotimes; menus let you remove sources from a feed, 
-or delete an entire feed.
-You can also add/remove sources in a feed from <em>DJs</em> or <em>Circles</em> 
+The <em>History</em> screen lists your stations, sorted by the date when you last selected each one.
+Tapping or clicking a name in the list makes it the selected station.
+Also on <em>History</em>, the &bigotimes; menus let you remove sources from a station, 
+or delete an entire station.
+You can also add/remove sources in a station from <em>DJs</em> or <em>Circles</em> 
 using the &#xff0b;&#x266c; dropdown.
 </p>
 
@@ -129,9 +129,9 @@ From a search result, you can refine your query, or back up to the prior result
 </p>
 
 <p><em>DJs:</em> Opened DJ profiles.
-From <em>Feed</em> or <em>Browse</em>, tapping or clicking a DJ name opens <em>DJs</em>, 
+From <em>Station</em> or <em>Browse</em>, tapping or clicking a DJ name opens <em>DJs</em>, 
 and displays that DJ's profile.
-You can add or remove the DJ to/from a feed using the &#xff0b;&#x266c; dropdown.
+You can add or remove the DJ to/from a station using the &#xff0b;&#x266c; dropdown.
 </p>
 
 <p><em>Circles:</em> Private (by invitation only) groups where members can post their own recordings 
@@ -173,8 +173,7 @@ Account:
     let them buy coupons anytime, or subscribe to periodic coupon
     let DJ payout be tied to future work
 
-Feed:
-  Rename to Station, fix in About
+Station:
   Merge played & saved into History
   Skip-program widget
   Button to rewind n seconds
