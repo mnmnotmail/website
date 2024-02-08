@@ -1481,7 +1481,8 @@
                <div>{{aT}}</div>
             </label></div>
          <em v-if="!tagSet.length"
-             >Circle tags</em>
+             style="margin-left:1em"
+             >Untagged</em>
          <button v-show="tagSet.length"
                  @click="update(), $refs.dropPane.hide()"
                  :disabled="flags.every(c => !c)"
