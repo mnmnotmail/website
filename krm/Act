@@ -2,7 +2,6 @@
   "alias": "Tharu", "id": "T111",
   "djs": [{ "id": "Cur3", "name": "Tharu"  }],
   "curate": ["Cur1"],
-  "played": [  ],
   "history":  [{
     "name": "Songs",      "id": "F11", "saved": "2023-10-18", "played": "2024-01-26",
     "schedule": null,

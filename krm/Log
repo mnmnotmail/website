@@ -1,0 +1,27 @@
+{
+  "last":  "2024-02-07",
+  "first": "2023-10-16",
+  "count": 42,
+
+  "recent": [{
+    "heard": "2024-02-07T02:22:22Z", "feed": "F12",
+    "clip": { "name": "Dia Feliz", "artist": "So Many",
+              "dj": "Cur1", "date": "2020-12-25", "dur": 124000,
+              "file": "tbd" }
+  },{
+    "heard": "2024-02-01T20:31:00Z", "feed": "F11",
+    "clip": { "name": "Ho-hum", "artist": "self",
+              "dj": "Cur1", "date": "2022-09-04", "dur": 60000,
+              "file": "audio_4ad28ef70b.mp3" }
+  },{
+    "heard": "2024-01-31T16:22:00Z", "feed": "F11",
+    "clip": { "name": "Sleep 2", "artist": "RioMez",
+              "dj": "Cur2", "date": "2020-10-01", "dur": 128000,
+              "file": "https://jplayer.org/audio/mp3/RioMez-01-Sleep_together.mp3" }
+  },{
+    "heard": "2023-01-16T10:03:00Z", "feed": "F12",
+    "clip": { "name": "Debut", "artist": "Lao Tzu",
+              "dj": "Cur1", "date": "1970-01-01", "dur": 1800000,
+              "file": "zyz" }
+  }]
+}

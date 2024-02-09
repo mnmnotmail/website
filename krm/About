@@ -113,13 +113,19 @@ what we care about is a compassionate, constructive tone conveying each perspect
 <p><em>Station:</em> A station plays content from one or more DJs and/or Circles that you designate.
 The <em>On: <strong>station-name</strong></em> screen displays your currently selected station.
 You create an editable station with the &#xff0b; dropdown at top-right of <em>Station</em>, 
-or from <em>DJs</em> or <em>Circles</em> using the &#xff0b;&#x266c; dropdown.
-The <em>History</em> screen lists your stations, sorted by the date when you last selected each one.
+or from <em>DJs</em> or <em>Circles</em> using the &#xff0b;&#x2060;&#x266c; dropdown.
+</p>
+
+<p>The station <em>History</em> lists your stations, sorted by the date when you last selected each one.
 Tapping or clicking a name in the list makes it the selected station.
 Also on <em>History</em>, the &bigotimes; menus let you remove sources from a station, 
 or delete an entire station.
 You can also add/remove sources in a station from <em>DJs</em> or <em>Circles</em> 
-using the &#xff0b;&#x266c; dropdown.
+using the &#xff0b;&#x2060;&#x266c; dropdown.
+</p>
+
+<p>The station <em>Playlog</em> lists recently heard clips from all stations, 
+and lets you search for clips you've heard within the past year (longer?).
 </p>
 
 <p><em>Browse:</em> Lets you find &amp; sample DJs by topic tag or input terms.
@@ -131,7 +137,7 @@ From a search result, you can refine your query, or back up to the prior result
 <p><em>DJs:</em> Opened DJ profiles.
 From <em>Station</em> or <em>Browse</em>, tapping or clicking a DJ name opens <em>DJs</em>, 
 and displays that DJ's profile.
-You can add or remove the DJ to/from a station using the &#xff0b;&#x266c; dropdown.
+You can add or remove the DJ to/from a station using the &#xff0b;&#x2060;&#x266c; dropdown.
 </p>
 
 <p><em>Circles:</em> Private (by invitation only) groups where members can post their own recordings 
@@ -181,8 +187,11 @@ Station:
   Set play-time proportion for each source ?
   Listeners can register mental/emotional impact of feed ?
   Scheduling UI
-  Find-screen to search heard clips
-  Track heard clips for 30(?) days
+  More-clips button at end of Playlog ?
+  By-station sort of Playlog ?
+  Track heard clips for 1? year
+  Playlog search-stack as with Browse ?
+  Playlog indicates status: skipped, partial, etc
 
 Browse:
   Result shows matched search terms

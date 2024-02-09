@@ -54,7 +54,7 @@
 <script type="text/x-template" id="krm-main">
    <div style="margin-top:3em"></div>
    <div v-show="krm.s.screen === krm.kSc.fe">
-      <feed @playing="$refs.finder && ($refs.finder.stopClient(), $refs.finder.stopAudsrc())"
+      <feed @playing="stopClient(), $refs.finder && $refs.finder.stopAudsrc()"
             @gosrc="function(c) { if ($refs.finder) c.slice(0,3) === 'Thr' ? $refs.finder.goCircle(c)
                                                                            : $refs.finder.goDj(c) }"
             @share="function(cA, cB) { $refs.finder.shareToCircle(cA, cB) }"
@@ -64,9 +64,14 @@
    <start v-if="firstStart"
           @ok="firstStart = false"/>
    <finder v-else
-           @playing="$refs.feed.pause()"
+           @playing="stopClient(), $refs.feed.pause()"
            @djrev="function(c) { $refs.feed.revDjs(c) }"
            ref="finder"/>
+   <audio v-if="client"
+          @pause="clientClip = null"
+          @ended="clientClip = null"
+          preload="none"
+          ref="audioClient"/>
    <div style="margin-top:3em; border-top:1px solid dimgray; padding-left:0.5em;
                font-family:monospace; white-space:pre-wrap;">
       <a @click.prevent="debug = !debug"
@@ -82,13 +87,37 @@
 
    krm.app = Vue.createApp({
       template: '#krm-main',
-      data() { return { debug: false, logtxt: '', scrollPos: {}, scrollKey: null,
+      data() { return { debug: false, logtxt: '',
+                        client: false, clientClip: null, //todo must be array? pop() in @ended & @pause
+                        scrollPos: {}, scrollKey: null,
                         firstStart: location.search === '?start' } },
       computed: {
          krm() { return krm },
       },
       methods: {
          log(i) { this.logtxt += '\n'+ i },
+         toggleClient(iClip) {
+            if (iClip === this.clientClip) {
+               this.$refs.audioClient.pause();
+               return;
+            }
+            if (!this.client) {
+               this.client = true;
+               this.$nextTick(() => { this.toggleClient(iClip) });
+               return;
+            }
+            this.$refs.feed.pause();
+            this.$refs.finder.stopAudsrc();
+            let aUrl = 'audio_4ad28ef70b.mp3'; //todo: temporary
+            this.$refs.audioClient.src = aUrl; // iClip.file
+            this.$refs.audioClient.load();
+            this.$refs.audioClient.play();
+            this.clientClip = iClip;
+         },
+         stopClient() {
+            if (this.clientClip)
+               this.$refs.audioClient.pause();
+         },
          setScroll() {
             this.scrollPos[this.scrollKey] = document.scrollingElement.scrollTop;
          },
@@ -353,8 +382,8 @@
                </td>
                <td class="uialignr"
                    >{{aP.count}}</td>
-               <td><krm-playbtn @click.native="toggleClient(aP.clip)"
-                                :playing="clientClip === aP.clip"/></td>
+               <td><krm-playbtn @click.native="$root.toggleClient(aP.clip)"
+                                :playing="$root.clientClip === aP.clip"/></td>
                <td class="clipdur">
                   <krm-duration :ms="aP.clip.dur"/></td>
             </tr></template>
@@ -452,7 +481,7 @@
                           style="display:inline; margin-left:1em">
                <template #icon>&#x2af7;</template>
                <krm-upload @post="function(c) { addCircleClip(aV, aK, c), aV.refs.post.hide() }"
-                           @playing="$emit('playing'), stopClient()"
+                           @playing="$emit('playing')"
                            :aud="aud"
                            :ref="function(c) { aV.refs.up = c }"/>
             </krm-dropdown>
@@ -479,8 +508,8 @@
                   <td>{{aP.heard ? '' : aP.tags && aP.tags[0] === 'circle_invite' ? '&#x2709;' : '&star;'}}</td>
                   <td><krm-date :iso="aP.date" ymd="_Md"/></td>
                   <td>{{aP.alias}}</td>
-                  <td><krm-playbtn @click.native="toggleClient(aP.clip)"
-                                   :playing="clientClip === aP.clip"/></td>
+                  <td><krm-playbtn @click.native="$root.toggleClient(aP.clip)"
+                                   :playing="$root.clientClip === aP.clip"/></td>
                   <td class="clipdur">
                      <krm-duration :ms="aP.clip.dur"/></td>
                   <td>
@@ -528,8 +557,8 @@
                </td>
                <td class="uialignr"
                    >{{aP.count}}</td>
-               <td><krm-playbtn @click.native="toggleClient(aP.clip)"
-                                :playing="clientClip === aP.clip"/></td>
+               <td><krm-playbtn @click.native="$root.toggleClient(aP.clip)"
+                                :playing="$root.clientClip === aP.clip"/></td>
                <td class="clipdur">
                   <krm-duration :ms="aP.clip.dur"/></td>
             </tr>
@@ -560,11 +589,6 @@
            >client: {{krm.client}}<br/>
             server: {{act && act.server || 'none'}}</div>
    </div>
-   <audio v-if="circ || curId"
-          @pause="clientClip = null"
-          @ended="clientClip = null"
-          preload="none"
-          ref="audioClient"/>
    <div v-if="curId in curators"
         v-show="krm.s.screen === krm.kSc.cu"
         style="margin-right:0.5em">
@@ -652,7 +676,7 @@
       </div>
       <div v-show="curate.openId === 'lib'">
          <krm-upload @post="addClip"
-                     @playing="$emit('playing'), stopClient()"
+                     @playing="$emit('playing')"
                      :aud="aud" :many="true"
                      style="margin-bottom:0.5em"/>
          <table style="border-spacing:0.5em 0">
@@ -663,16 +687,16 @@
                   <td>{{aC.artist}}</td>
                   <td><krm-date :iso="aC.date" ymd="ymd"/></td>
                   <td><krm-playbtn v-if="aC.file"
-                                   @click.native="toggleClient(aC)"
-                                   :playing="clientClip === aC"/></td>
+                                   @click.native="$root.toggleClient(aC)"
+                                   :playing="$root.clientClip === aC"/></td>
                   <td class="clipdur">
                      <krm-duration :ms="aC.dur"/></td>
                </tr>
                <tr v-for="(aSub, aSubi) in aC.set">
                   <td colspan="3"
                       >&nbsp; {{aSubi+1}}. <em>{{aSub.name}}</em></td>
-                  <td><krm-playbtn @click.native="toggleClient(aSub)"
-                                   :playing="clientClip === aSub"/></td>
+                  <td><krm-playbtn @click.native="$root.toggleClient(aSub)"
+                                   :playing="$root.clientClip === aSub"/></td>
                   <td class="clipdur">
                      <krm-duration :ms="aSub.dur"/></td>
                </tr>
@@ -777,8 +801,8 @@
                   <krm-date v-else
                             :iso="a.date" ymd="_Md"/>
                </td>
-               <td><krm-playbtn @click.native="toggleClient(a)"
-                                :playing="clientClip === a"/></td>
+               <td><krm-playbtn @click.native="$root.toggleClient(a)"
+                                :playing="$root.clientClip === a"/></td>
                <td class="clipdur">
                   <krm-duration :ms="a.dur"/></td>
                <td>
@@ -788,7 +812,7 @@
                      <button @click="aP.clips.splice(aI, 1),
                                      aP.clips.length ? aP.clips[0].status !== 'unpub' && (aP.status = '')
                                                      : aP.status = 'empty'"
-                             :disabled="clientClip === a"
+                             :disabled="$root.clientClip === a"
                              title="Drop clip"
                              class="ui"
                              >&#x274c;</button></form>
@@ -812,8 +836,7 @@
    krm.app.component('finder', {
       template: '#krm-finder',
       emits: [ 'playing', 'djrev' ],
-      data() { return { clientClip: null, //todo must be array? pop() in client @ended & @pause events
-                        act: null,
+      data() { return { act: null,
                         circ: null, circOpen: {}, circId: 'new', circName: '',
                         cats: null, catUi: true, catN: 0, catSet: {_w:'any'}, found: [],
                         djOpen: {}, djId: null,
@@ -852,23 +875,6 @@
          });
       },
       methods: {
-         toggleClient(iClip) {
-            if (iClip !== this.clientClip) {
-               this.$emit('playing');
-               this.stopAudsrc();
-               let aUrl = 'audio_4ad28ef70b.mp3'; //todo: temporary
-               this.$refs.audioClient.src = aUrl; // iClip.file
-               this.$refs.audioClient.load();
-               this.$refs.audioClient.play();
-               this.clientClip = iClip;
-            } else {
-               this.$refs.audioClient.pause();
-            }
-         },
-         stopClient() {
-            if (this.clientClip)
-               this.$refs.audioClient.pause();
-         },
          stopAudsrc() {
             if (this.aud.src)
                this.aud.src.stop(0);
@@ -1075,14 +1081,14 @@
 <script type="text/x-template" id="krm-feed">
    <div v-if="krm.s.act"
         class="tabset2">
-      <span @click="showFeed = false"
-            :class="{tabshow: !showFeed}"
+      <span @click="view = 'hist'"
+            :class="{tabshow: view === 'hist'}"
             >History</span>
-      <span v-if="false" @click="showFeed = false"
-            :class="{tabshow: !showFeed}"
-            >Saved</span>
-      <span @click="showFeed = true"
-            :class="{tabshow: showFeed}"
+      <span @click="view = 'log', goLog()"
+            :class="{tabshow: view === 'log'}"
+            >Playlog</span>
+      <span @click="view = 'feed'"
+            :class="{tabshow: view === 'feed'}"
             >On: <strong>{{name}}</strong></span>
    </div>
    <krm-dropdown v-if="krm.s.act"
@@ -1096,14 +1102,14 @@
                 placeholder="New station name"
                 name="name" type="text"
                 style="width:12em; margin-bottom:0.5em"/>
-         <button @click="addFeed(addName), addName = '', $refs.feedAdd.hide(), showFeed = false"
+         <button @click="addFeed(addName), addName = '', $refs.feedAdd.hide(), view = 'hist'"
                  :disabled="krm.kEmpty.test(addName) || krm.s.act.history.some(c => c.saved && c.name === addName)"
                  title="Create station"
                  style="float:right" class="ui"
                  >&#xff0b; Station</button>
       </form>
    </krm-dropdown>
-   <div v-show="showFeed">
+   <div v-show="view === 'feed'">
       <div v-if="feed"
            style="margin:0 0.5em 1em 0">
          DJs
@@ -1147,7 +1153,7 @@
          </tr>
       </table>
    </div>
-   <div v-show="!showFeed" v-if="krm.s.act">
+   <div v-show="view === 'hist'" v-if="krm.s.act">
       <table style="margin-top:0.75em; border-spacing:0.5em 0">
          <tr v-for="(aF, aFi) in krm.s.act.history" :key="aF.id">
             <td>
@@ -1155,7 +1161,7 @@
                      class="uibold"
                      >{{aF.name}}</span>
                <span v-else
-                     @click="setPlayed(aF), showFeed = true"
+                     @click="setPlayed(aF), view = 'feed'"
                      class="uilink"
                      >{{aF.name}}</span>
             </td>
@@ -1203,6 +1209,35 @@
          </tr>
       </table>
    </div>
+   <div v-show="view === 'log'" v-if="krm.s.act">
+      <input @keyup.enter="logSearch"
+             placeholder="Title, artist, DJ, or station"
+             type="text"
+             style="margin-left:0.5em; width:85vw; max-width:40em"/>
+      <div v-if="logPart"
+           style="margin-top:1em">
+         <span @click="logPart = null"
+               title="Drop log search"
+               class="uilink uibrdr" style="float:right; margin-right:0.5em"
+               >&#x2a09;</span>
+         <em>Clips with:</em> {{logTerm}}
+      </div>
+      <table style="margin-top:1em; border-spacing:0.5em 0">
+         <tr><th></th> <th>Title</th> <th>Artist</th> <th>DJ</th> </tr>
+         <tr v-for="aH in logPart || log && log.recent" :key="aH.heard">
+            <td><krm-date :iso="aH.heard" ymd="Md"/></td>
+            <td>{{aH.clip.name}}</td>
+            <td>{{aH.clip.artist}}</td>
+            <td><span @click="$emit('gosrc', aH.clip.dj)"
+                      class="uilink"
+                      >{{djName(aH.clip.dj, aH.feed)}}</span></td>
+            <td><krm-playbtn @click.native="$root.toggleClient(aH.clip)"
+                             :playing="$root.clientClip === aH.clip"/></td>
+            <td class="clipdur"
+                ><krm-duration :ms="aH.clip.dur"/></td>
+         </tr>
+      </table>
+   </div>
 </script><script type="module">
    import * as Vue from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js"
 
@@ -1213,7 +1248,8 @@
       data() { return { audCtx: new AudioContext(), audSrc: null, state: 'run',
                         feed: null, clipsN: 0,
                         xhr: null, nextBuf: null,
-                        showFeed: true, addName: '' } },
+                        log: null, logTerm: '', logPart: null, logFirst: true,
+                        view: 'feed', addName: '' } },
       computed: {
          krm() { return krm }
       },
@@ -1302,8 +1338,14 @@
                });
             });
          },
-         djName(iId) { //todo: obtain curators from finder:act.history[n]
-            var aDj = this.feed.curators.find(c => c.id === iId);
+         djName(iId, iFeed) {
+            var aDj;
+            if (iFeed) {
+               aDj = krm.s.act.history.find(c => c.id === iFeed);
+               if (aDj)
+                  aDj = aDj.djs.find(c => c.id === iId);
+            } else
+               aDj = this.feed.curators.find(c => c.id === iId);
             return aDj ? aDj.name : '??';
          },
          revDjs(i) {
@@ -1344,6 +1386,21 @@
                   iF.djs.splice(a, 1);
             if (iF === krm.s.feedRef)
                this.revDjs(iF.djs);
+         },
+         goLog() {
+            if (!this.logFirst)
+               return;
+            this.logFirst = false;
+            this.$root.xhrGet('Log', 'json', 'playlog', c => { this.log = c });
+         },
+         logSearch(iEvt) {
+            if (krm.kEmpty.test(iEvt.target.value))
+               return;
+            this.logTerm = iEvt.target.value;
+            this.$root.xhrGet('Logf', 'json', 'log search', c => {
+               this.logPart = c;
+               iEvt.target.value = '';
+            });
          },
       },
    });
