@@ -809,10 +809,10 @@
                   <form v-if="a.status === 'unpub'"
                         onsubmit="return false"
                         method="POST">
-                     <button @click="aP.clips.splice(aI, 1),
+                     <button @click="$root.clientClip === a && $root.stopClient(),
+                                     aP.clips.splice(aI, 1),
                                      aP.clips.length ? aP.clips[0].status !== 'unpub' && (aP.status = '')
                                                      : aP.status = 'empty'"
-                             :disabled="$root.clientClip === a"
                              title="Drop clip"
                              class="ui"
                              >&#x274c;</button></form>
