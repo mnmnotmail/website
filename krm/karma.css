@@ -106,6 +106,9 @@ button.ui:active:hover:not(:disabled) {
 }
 .box35vw > label > div {
    display: inline-block;
+}
+.box35vw > label > div,
+.box35vw > div {
    max-width: 35vw;
 }
 

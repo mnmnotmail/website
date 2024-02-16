@@ -1,12 +1,21 @@
 {
-  "curators": [
+  "djs": [
     { "name": "Seamus", "id": "Cur1" },
     { "name": "Fiona",  "id": "Cur2" }
   ],
-  "clips": [
-    { "name": "Ho-hum", "artist": "self", "dj": "Cur1", "date": "2022-09-04", "dur": 60000,
-      "file": "audio_4ad28ef70b.mp3" },
-    { "name": "Sleep 2", "artist": "RioMez", "dj": "Cur2", "date": "2020-10-01", "dur": 128000,
-      "file": "https://jplayer.org/audio/mp3/RioMez-01-Sleep_together.mp3" }
-  ]
+  "programs": {
+    "Cur1.1": "Celtic Muse",
+    "Cur1.2": "In Progress",
+    "Cur2.1": "Watching the Road",
+    "Cur2.2": "Over & Done"
+  },
+  "clips": [{
+    "name": "Ho-hum", "artist": "self", "dj": "Cur1", "program": "Cur1.1",
+    "date": "2022-09-04", "dur": 60000,
+    "file": "audio_4ad28ef70b.mp3"
+  },{
+    "name": "Sleep 2", "artist": "RioMez", "dj": "Cur2", "program": "Cur2.1",
+    "date": "2020-10-01", "dur": 128000,
+    "file": "https://jplayer.org/audio/mp3/RioMez-01-Sleep_together.mp3"
+  }]
 }

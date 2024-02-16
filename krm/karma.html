@@ -1110,16 +1110,24 @@
       </form>
    </krm-dropdown>
    <div v-show="view === 'feed'">
-      <div v-if="feed"
-           style="margin:0 0.5em 1em 0">
-         DJs
-         <span v-for="a in feed.curators"
-               @click="$emit('gosrc', a.id)" k--="todo: popup dj profile card on firstStart"
-               class="person uilink"
-               >{{a.name}}</span>
-      </div>
-      <span style="float:right; margin-right:0.5em">
-         <span v-show="!nextBuf"
+      <krm-dropdown ref="feedInfo"
+                    title="Station info"
+                    style="float:right">
+         <template #icon>&nbsp;&#x2807;</template>
+         <strong>{{name}}</strong><br/>
+         Plays
+         <div class="box40vh box35vw uishowspc uibreakword"
+              style="padding-left:0.5em">
+            <div v-for="a in feed && feed.djs"
+                 @click="$emit('gosrc', a.id)" k--="todo: popup dj profile card on firstStart"
+                 class="uilink"
+                 >{{a.name}}</div></div>
+         <template v-if="krm.s.act"
+                   >Revised<br/>
+            <krm-date :iso="krm.s.act.history.find(c => c.id === id).saved" ymd="_Md"/></template>
+      </krm-dropdown>
+      <div>
+         <span :class="{uihide: nextBuf}"
                style="margin-right:1em; vertical-align:-1px; padding:0 0.5em; background-color:lightgray; color:#222"
                title="Loading clip"
                >&#x2913;</span>
@@ -1131,16 +1139,25 @@
                  :disabled="state === 'off' && !nextBuf"
                  style="width:2.5em; white-space:pre" class="ui"
                  >{{state === 'run' ? '&#x2759;&hairsp;&#x2759;' : '&#x25b6;'}}</button>
-      </span>
-      <h3 style="margin:1rem 0"
-          >{{name}} ({{id}})</h3>
+      </div>
+      <div v-if="feed"
+           style="margin:0.5em 0 1em 0">
+         <span style="display:inline-block; margin-right:0.5em; width:30vw">
+            <strong>Now</strong><br/>
+            {{feed.clips[clipsN].name}}</span>
+         <span style="display:inline-block; margin-right:0.5em; width:25vw">
+            <strong>DJ</strong><br/>
+            {{djName(feed.clips[clipsN].dj)}}</span>
+         <span style="display:inline-block; width:30vw">
+            <strong>Program</strong><br/>
+            {{feed.programs[feed.clips[clipsN].program]}}</span>
+      </div>
       <table v-if="feed"
              class="hlrow">
-         <tr><th></th><th>DJ</th><th>Artist</th><th>Year</th><th>Runs</th></tr>
+         <tr><th></th><th>Artist</th><th>Year</th><th>Runs</th></tr>
          <tr v-for="(aC, aCi) in feed.clips"
              :class="{hlplay: aCi === clipsN}">
             <td>{{aC.name}}</td>
-            <td>{{djName(aC.dj)}}</td>
             <td>{{aC.artist}}</td>
             <td><krm-date :iso="aC.date" ymd="y"/></td>
             <td class="uialignr">
@@ -1345,13 +1362,13 @@
                if (aDj)
                   aDj = aDj.djs.find(c => c.id === iId);
             } else
-               aDj = this.feed.curators.find(c => c.id === iId);
+               aDj = this.feed.djs.find(c => c.id === iId);
             return aDj ? aDj.name : '??';
          },
          revDjs(i) {
-            this.feed.curators.length = 0;
+            this.feed.djs.length = 0;
             for (let a of i)
-               this.feed.curators.push({id: a.id, name: a.name});
+               this.feed.djs.push({id: a.id, name: a.name});
          },
          setPlayed(iFeed) {
             var aPos = krm.s.act.history.findIndex(c => c.id === iFeed.id);
