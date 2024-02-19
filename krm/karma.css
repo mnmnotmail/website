@@ -297,6 +297,13 @@ tr.hlplay  > td { color: var(--fgb); background-color: #cdf }
    vertical-align: -webkit-baseline-middle;
 }
 
+.feednow > span {
+   display: inline-block;
+   margin-right: 0.5em;
+   vertical-align: top;
+   width: 40vw;
+}
+
 table.circle { border-spacing: 0.5em 0.25em }
 table.circle.uisep { border-spacing: 0.5em 1px }
 

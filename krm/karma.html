@@ -1126,36 +1126,38 @@
                    >Revised<br/>
             <krm-date :iso="krm.s.act.history.find(c => c.id === id).saved" ymd="_Md"/></template>
       </krm-dropdown>
-      <div>
-         <span :class="{uihide: nextBuf}"
-               style="margin-right:1em; vertical-align:-1px; padding:0 0.5em; background-color:lightgray; color:#222"
-               title="Loading clip"
-               >&#x2913;</span>
-         <button @click="skip()"
-                 :disabled="state !== 'run'"
-                 style="margin-right:1.5em; width:2.5em" class="ui"
-                 >&#x276f;&#x276f;</button>
-         <button @click="toggle()"
-                 :disabled="state === 'off' && !nextBuf"
-                 style="width:2.5em; white-space:pre" class="ui"
-                 >{{state === 'run' ? '&#x2759;&hairsp;&#x2759;' : '&#x25b6;'}}</button>
-      </div>
-      <div v-if="feed"
-           style="margin:0.5em 0 1em 0">
-         <span style="display:inline-block; margin-right:0.5em; width:30vw">
+      <div class="feednow"
+           style="margin-top:0.5em">
+         <span>
             <strong>Now</strong><br/>
-            {{feed.clips[clipsN].name}}</span>
-         <span style="display:inline-block; margin-right:0.5em; width:25vw">
-            <strong>DJ</strong><br/>
-            {{djName(feed.clips[clipsN].dj)}}</span>
-         <span style="display:inline-block; width:30vw">
-            <strong>Program</strong><br/>
-            {{feed.programs[feed.clips[clipsN].program]}}</span>
+            {{feed && feed.clips[clipsN].name}}</span>
+         <span style="padding-top:0.5em">
+            <button @click="toggle()"
+                    :disabled="state === 'off' && !nextBuf"
+                    style="width:2.5em; white-space:pre" class="ui"
+                    >{{state === 'run' ? '&#x2759;&hairsp;&#x2759;' : '&#x25b6;'}}</button>
+            <span :class="{uihide: nextBuf}"
+                  style="margin: 0 0.5em; vertical-align:-1px; padding:0 0.5em; background-color:lightgray; color:#222"
+                  title="Loading clip"
+                  >&#x2913;</span>
+            <button @click="skip()"
+                    :disabled="state !== 'run'"
+                    style="width:2.5em" class="ui"
+                    >&#x276f;&#x276f;</button>
+         </span>
       </div>
-      <table v-if="feed"
-             class="hlrow">
+      <div class="feednow"
+           style="margin-bottom:1em">
+         <span>
+            <strong>Program</strong><br/>
+            {{feed && feed.programs[feed.clips[clipsN].program]}}</span>
+         <span>
+            <strong>DJ</strong><br/>
+            {{feed && djName(feed.clips[clipsN].dj)}}</span>
+      </div>
+      <table class="hlrow">
          <tr><th></th><th>Artist</th><th>Year</th><th>Runs</th></tr>
-         <tr v-for="(aC, aCi) in feed.clips"
+         <tr v-for="(aC, aCi) in feed && feed.clips"
              :class="{hlplay: aCi === clipsN}">
             <td>{{aC.name}}</td>
             <td>{{aC.artist}}</td>
