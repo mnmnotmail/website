@@ -272,7 +272,8 @@
       <span @click="krm.s.screen = krm.kSc.br"
             :class="{tabshow: krm.s.screen === krm.kSc.br}"
             >Browse</span>
-      <span @click="krm.s.screen = krm.kSc.ci"
+      <span v-if="circMenu"
+            @click="krm.s.screen = krm.kSc.ci"
             :class="{tabshow: krm.s.screen === krm.kSc.ci}"
             >Circles</span>
       <span v-show="djId" k--="todo: act.djs.length"
@@ -288,9 +289,9 @@
                        title="More options"
                        style="display:inline">
             <template #icon>&nbsp;&#x2263;&nbsp;</template>
-            <div @click=""
+            <div @click="$refs.menu.hide(), krm.s.screen = krm.kSc.ci, circMenu = true"
                  class="menutab"
-                 >Tbd</div>
+                 >Circles</div>
             <div @click="$refs.menu.hide(), krm.s.screen = krm.kSc.ab, loadAbout()"
                  class="menutab" :class="{tabshow: krm.s.screen === krm.kSc.ab}"
                  >About</div>
@@ -837,7 +838,7 @@
       template: '#krm-finder',
       emits: [ 'playing', 'djrev' ],
       data() { return { act: null,
-                        circ: null, circOpen: {}, circId: 'new', circName: '',
+                        circ: null, circMenu: false, circOpen: {}, circId: 'new', circName: '',
                         cats: null, catUi: true, catN: 0, catSet: {_w:'any'}, found: [],
                         djOpen: {}, djId: null,
                         about: null, aboutId: 'dj',
